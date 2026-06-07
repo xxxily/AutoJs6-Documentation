@@ -54,6 +54,26 @@
     },
     {
       "type": "text",
+      "text": "[Runtime API Index - 运行时 API 索引](runtimeApiIndex)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Permission Capability Matrix - 权限能力矩阵](permissionCapabilityMatrix)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
       "text": "[Progress - 文档部署进度](progress)"
     },
     {
@@ -1076,6 +1096,26 @@
     },
     {
       "type": "text",
+      "text": "[CursorWrapper](cursorWrapperType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[Database](databaseType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
       "text": "[HttpRequestBuilderOptions](httpRequestBuilderOptionsType)"
     },
     {
@@ -1126,6 +1166,16 @@
     },
     {
       "type": "text",
+      "text": "[HttpSaveResult](httpSaveResultType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
       "text": "[InjectableWebClient](injectableWebClientType)"
     },
     {
@@ -1137,6 +1187,26 @@
     {
       "type": "text",
       "text": "[InjectableWebView](injectableWebViewType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[JsMime](jsMimeType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[MediainfoNativeObject](mediainfoNativeObjectType)"
     },
     {
       "type": "list_item_end"
@@ -1247,6 +1317,26 @@
     {
       "type": "text",
       "text": "[OpenCCConversion](openCCConversionType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[ZipNativeObject](zipNativeObjectType)"
+    },
+    {
+      "type": "list_item_end"
+    },
+    {
+      "type": "list_item_start"
+    },
+    {
+      "type": "text",
+      "text": "[ZipOptions](zipOptionsType)"
     },
     {
       "type": "space"

@@ -60,6 +60,10 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 - [x] 更新导航、全量文档、部署进度、更新日志和静态 HTML / JSON 输出.
 - [x] 修复生成器版本来源与失败检查, 避免硬编码本地 Windows 路径和吞掉 Node 生成失败.
 - [x] 将 `js-yaml` 升级到 `3.14.2`, 消除对应生成器依赖风险.
+- [x] 新增 [Runtime API Index - 运行时 API 索引](runtimeApiIndex), 对照 `ScriptRuntime.kt` 记录所有运行时注入对象、`$` 别名、嵌套对象、源码路径和文档入口.
+- [x] 新增 [Permission Capability Matrix - 权限能力矩阵](permissionCapabilityMatrix), 集中记录权限、Android 版本、Root/Shizuku/无障碍等敏感能力边界.
+- [x] 新增机器可读运行时索引 `json/runtimeApiIndexData.json`, 供后续知识库构建直接读取模块、类型、权限和旧文档风险.
+- [x] 将 `ZipOptions`, `ZipNativeObject`, `Database`, `CursorWrapper`, `HttpSaveResult`, `JsMime`, `MediainfoNativeObject` 拆为独立类型页并接入导航.
 
 ---
 
@@ -115,11 +119,11 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 
 ### P2: 类型页与知识库结构化
 
-- [ ] 为高频类型补齐独立页面: `ZipOptions`, `ZipNativeObject`, `Database`, `CursorWrapper`, `HttpSaveResult`, `JsMime`, `MediainfoNativeObject`.
-- [ ] 为所有运行时注入模块建立机器可读索引: 模块名、版本、源码路径、方法名、参数、返回值、示例.
-- [ ] 为所有页面补充 "源码依据" 小节, 便于知识库回答时回链权威来源.
-- [ ] 为权限敏感能力补充 Android 版本、权限、Shizuku/Root/无障碍依赖.
-- [ ] 清理旧 Auto.js 4.x 文档残留, 标记 AutoJs6 中已删除、替换或行为变化的 API.
+- [x] 为高频类型补齐独立页面: `ZipOptions`, `ZipNativeObject`, `Database`, `CursorWrapper`, `HttpSaveResult`, `JsMime`, `MediainfoNativeObject`.
+- [x] 为所有运行时注入模块建立机器可读索引: 模块名、版本、源码路径、文档入口、方法摘要、关键类型和权限分类; 详细参数、返回值与示例继续回链到已校对页面.
+- [x] 为 P0 / P1 / P2 已校对页面补充 "源码依据" 小节, 便于知识库回答时回链权威来源.
+- [x] 为权限敏感能力补充 Android 版本、权限、Shizuku/Root/无障碍依赖.
+- [x] 清理 P0 / P1 / P2 范围内旧 Auto.js 4.x 文档残留, 标记 AutoJs6 中已删除、替换或行为变化的 API; 未校对旧章节已在 [运行时 API 索引](runtimeApiIndex) 中标记为历史背景风险.
 
 ---
 
@@ -129,41 +133,43 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 |------|----------|--------|
 | [Documentation Audit](documentationAudit) | `[x]` 已新增 | 后续版本变更时更新基准 |
 | [Documentation Roadmap](documentationRoadmap) | `[x]` 已新增 | 每轮更新后同步勾选状态 |
-| [Cvt](cvt) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [Fmt](fmt) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [SQLite](sqlite) | `[x]` P0 源码校对完成 | P2 独立类型页 |
-| [Zip](zip) | `[x]` P0 源码校对完成 | P2 独立类型页 |
-| [MediaInfo](mediainfo) | `[x]` P0 源码校对完成 | P2 独立类型页 |
-| [MIME](mime) | `[x]` P0 源码校对完成 | P2 独立类型页 |
-| [NanoID](nanoid) | `[x]` 基础覆盖 | 增加随机源与参数边界说明 |
-| [Sysprops](sysprops) | `[x]` 基础覆盖 | 增加权限与过滤说明 |
-| [Pinyin](pinyin) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [Pinyin4j](pinyin4j) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [HTTP](http) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [HttpResponse](httpResponseType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
-| [HttpResponseBody](httpResponseBodyType) | `[x]` P0 源码校对完成 | P2 独立 `HttpSaveResult` 类型页 |
-| [Global](global) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
-| [Automator](automator) | `[x]` P1 源码校对完成 | P2 权限/动作矩阵 |
-| [UiSelector](uiSelectorType) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
-| [UiObject](uiObjectType) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
-| [App](app) | `[x]` P1 源码校对完成 | P2 Intent 选项类型页 |
-| [AutoJs6](autojs) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
-| [Device](device) | `[x]` P1 源码校对完成 | P2 权限/Android 版本矩阵 |
-| [Files](files) | `[x]` P1 源码校对完成 | P2 文件对象类型页 |
-| [Engines](engines) | `[x]` P1 源码校对完成 | P2 `ExecutionConfig` 类型页 |
-| [Tasks](tasks) | `[x]` P1 源码校对完成 | P2 `TimedTask` / `IntentTask` 类型页 |
-| [UI](ui) | `[x]` P1 源码校对完成 | P2 UI 组件索引 |
-| [Floaty](floaty) | `[x]` P1 源码校对完成 | P2 窗口对象类型页 |
-| [Web](web) | `[x]` P1 源码校对完成 | P2 InjectableWebView / WebSocket 类型页 |
-| [OCR](ocr) | `[x]` P1 源码校对完成 | P2 OCR 选项与结果类型索引 |
-| [Notice](notice) | `[x]` P1 源码校对完成 | P2 Notice 选项类型页 |
-| [Console](console) | `[x]` P1 源码校对完成 | P2 ConsoleBuildOptions 校对 |
+| [Runtime API Index](runtimeApiIndex) | `[x]` P2 已新增 | 后续版本变更时重新对照 `ScriptRuntime.kt` |
+| [Permission Capability Matrix](permissionCapabilityMatrix) | `[x]` P2 已新增 | 后续权限或 target SDK 变化时更新 |
+| `json/runtimeApiIndexData.json` | `[x]` P2 已新增 | 后续知识库 ingest 前可直接消费 |
+| [Cvt](cvt) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [Fmt](fmt) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [SQLite](sqlite) | `[x]` P0 源码校对完成 | 已拆分 [Database](databaseType) / [CursorWrapper](cursorWrapperType) |
+| [Zip](zip) | `[x]` P0 源码校对完成 | 已拆分 [ZipOptions](zipOptionsType) / [ZipNativeObject](zipNativeObjectType) |
+| [MediaInfo](mediainfo) | `[x]` P0 源码校对完成 | 已拆分 [MediainfoNativeObject](mediainfoNativeObjectType) |
+| [MIME](mime) | `[x]` P0 源码校对完成 | 已拆分 [JsMime](jsMimeType) |
+| [NanoID](nanoid) | `[x]` 基础覆盖 | 后续增加随机源与参数边界说明 |
+| [Sysprops](sysprops) | `[x]` 基础覆盖 | 后续增加权限与过滤说明 |
+| [Pinyin](pinyin) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [Pinyin4j](pinyin4j) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [HTTP](http) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [HttpResponse](httpResponseType) | `[x]` P0 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [HttpResponseBody](httpResponseBodyType) | `[x]` P0 源码校对完成 | 已拆分 [HttpSaveResult](httpSaveResultType) |
+| [Global](global) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [Automator](automator) | `[x]` P1 源码校对完成 | 已纳入 P2 权限/动作矩阵 |
+| [UiSelector](uiSelectorType) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [UiObject](uiObjectType) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [App](app) | `[x]` P1 源码校对完成 | 后续类型拆分候选: Intent 选项 |
+| [AutoJs6](autojs) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引 |
+| [Device](device) | `[x]` P1 源码校对完成 | 已纳入 P2 权限/Android 版本矩阵 |
+| [Files](files) | `[x]` P1 源码校对完成 | 后续类型拆分候选: 文件对象 |
+| [Engines](engines) | `[x]` P1 源码校对完成 | 后续类型拆分候选: `ExecutionConfig` |
+| [Tasks](tasks) | `[x]` P1 源码校对完成 | 后续类型拆分候选: `TimedTask` / `IntentTask` |
+| [UI](ui) | `[x]` P1 源码校对完成 | 后续专题索引候选: UI 组件 |
+| [Floaty](floaty) | `[x]` P1 源码校对完成 | 后续类型拆分候选: 窗口对象 |
+| [Web](web) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引与权限矩阵 |
+| [OCR](ocr) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引与权限矩阵 |
+| [Notice](notice) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引与权限矩阵 |
+| [Console](console) | `[x]` P1 源码校对完成 | 已纳入 P2 机器可读索引与悬浮窗权限矩阵 |
 
 ---
 
 ## 残留风险
 
 - [ ] `generator` 仍依赖 marked `0.3.19`; 安全版本 marked `4.0.10` 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.
-- [ ] P0 / P1 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.
-- [ ] P1 页面已补源码依据小节, 但部分长页面仍保留早期叙述结构; P2 应继续抽取机器可读索引和权限矩阵.
+- [ ] P2 已完成当前基准的运行时索引、权限矩阵和高频类型拆分; 但 `image`, `events`, `timers`, `shell`, `ui`, `modules`, `threads`, `media` 等旧章节仍需后续按源码逐页重写, 知识库回答当前行为时应优先引用 P0 / P1 / P2 已校对页面和源码索引.

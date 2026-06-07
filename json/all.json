@@ -60,6 +60,66 @@
       "displayName": "文档覆盖审计 (Documentation Audit)"
     },
     {
+      "textRaw": "Runtime API Index - 运行时 API 索引",
+      "name": "runtime_api_index_-_运行时_api_索引",
+      "desc": "<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "注入规则",
+          "name": "注入规则",
+          "desc": "<p><code>ScriptRuntime.augment(target)</code> 是运行时 API 注入入口. <code>Augmentable.augment(..., withDollarPrefix = true)</code> 会同时注入 <code>name</code> 和 <code>$name</code>; <code>withDollarPrefix = false</code> 只注入原始名称. 部分对象还会通过 <code>assignWithRuntime(...)</code> 直接把函数、类或 getter 写入全局对象.</p>\n<p>因此, 判断某个 API 是否真实存在时, 应优先对照本页和 <code>ScriptRuntime.kt</code>, 其次再看具体模块页面.</p>\n",
+          "type": "module",
+          "displayName": "注入规则"
+        },
+        {
+          "textRaw": "运行时注入对象",
+          "name": "运行时注入对象",
+          "desc": "<table>\n<thead>\n<tr>\n<th>注入对象</th>\n<th><code>$</code> 别名</th>\n<th>嵌套 / 全局补充</th>\n<th>主要源码</th>\n<th>文档入口</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>global</code> 函数与类</td>\n<td>不适用</td>\n<td><code>Global</code>, <code>GlobalLegacy</code>, <code>GlobalClasses</code> 直接写入全局作用域</td>\n<td><code>augment/global/Global.kt</code><br><code>augment/global/Legacy.kt</code><br><code>augment/global/Classes.kt</code></td>\n<td><a href=\"global\">Global</a></td>\n</tr>\n<tr>\n<td><code>isNullish</code> / <code>isNonNullish</code></td>\n<td>不适用</td>\n<td>直接写入全局作用域</td>\n<td><code>augment/global/IsNullish.kt</code></td>\n<td><a href=\"global\">Global</a></td>\n</tr>\n<tr>\n<td><code>util</code></td>\n<td><code>$util</code></td>\n<td><code>java</code>, <code>version</code>, <code>versionCodes</code>, <code>inspect</code>, <code>morseCode</code></td>\n<td><code>augment/util/Util.kt</code><br><code>augment/util/Java.kt</code><br><code>augment/util/Version.kt</code><br><code>augment/util/VersionCodes.kt</code><br><code>augment/util/Inspect.kt</code><br><code>augment/util/MorseCode.kt</code></td>\n<td><a href=\"util\">Util</a></td>\n</tr>\n<tr>\n<td><code>species</code></td>\n<td><code>$species</code></td>\n<td>判断 JavaScript / Java / Android 对象类型</td>\n<td><code>augment/global/Species.kt</code></td>\n<td><a href=\"global\">Global</a></td>\n</tr>\n<tr>\n<td><code>app</code></td>\n<td><code>$app</code></td>\n<td><code>app.autojs</code> 指向 <code>autojs</code> 对象</td>\n<td><code>augment/app/App.kt</code></td>\n<td><a href=\"app\">App</a></td>\n</tr>\n<tr>\n<td><code>autojs</code></td>\n<td><code>$autojs</code></td>\n<td><code>version</code> 子对象</td>\n<td><code>augment/autojs/Autojs.kt</code><br><code>augment/autojs/Version.kt</code></td>\n<td><a href=\"autojs\">AutoJs6</a></td>\n</tr>\n<tr>\n<td><code>shell</code></td>\n<td><code>$shell</code></td>\n<td>全局 <code>shell(...)</code> 入口与 root shell 辅助</td>\n<td><code>augment/shell/Shell.kt</code></td>\n<td><a href=\"shell\">Shell</a></td>\n</tr>\n<tr>\n<td><code>timers</code></td>\n<td><code>$timers</code></td>\n<td><code>setTimeout</code>, <code>setInterval</code> 等计时器兼容入口</td>\n<td><code>augment/timers/Timers.kt</code><br><code>augment/timers/SetIntervalExt.kt</code></td>\n<td><a href=\"timers\">Timer</a></td>\n</tr>\n<tr>\n<td><code>auto</code></td>\n<td><code>$auto</code></td>\n<td>无障碍服务启停、等待、状态</td>\n<td><code>augment/automator/Auto.kt</code></td>\n<td><a href=\"automator\">Automator</a></td>\n</tr>\n<tr>\n<td><code>automator</code></td>\n<td><code>$automator</code></td>\n<td><code>click</code>, <code>swipe</code>, <code>back</code>, <code>home</code> 等动作还会以全局函数注入</td>\n<td><code>augment/automator/Automator.kt</code></td>\n<td><a href=\"automator\">Automator</a></td>\n</tr>\n<tr>\n<td><code>selector</code></td>\n<td><code>$selector</code></td>\n<td><code>text</code>, <code>id</code>, <code>className</code> 等选择器构造函数以全局函数注入</td>\n<td><code>augment/selector/Selector.kt</code></td>\n<td><a href=\"uiSelectorType\">UiSelector</a></td>\n</tr>\n<tr>\n<td><code>events</code></td>\n<td><code>$events</code></td>\n<td>按键、触摸、通知、Toast、无障碍手势事件</td>\n<td><code>augment/events/Events.kt</code><br><code>runtime/api/Events.java</code></td>\n<td><a href=\"events\">Event</a></td>\n</tr>\n<tr>\n<td><code>keys</code></td>\n<td><code>$keys</code></td>\n<td>按键码和按键辅助函数</td>\n<td><code>augment/events/Keys.kt</code></td>\n<td><a href=\"keys\">Keys</a></td>\n</tr>\n<tr>\n<td><code>Canvas</code></td>\n<td>否</td>\n<td>可构造类, Canvas / Paint / Path 相关包装</td>\n<td><code>augment/canvas/Canvas.kt</code></td>\n<td><a href=\"canvas\">Canvas</a></td>\n</tr>\n<tr>\n<td><code>images</code></td>\n<td><code>$images</code></td>\n<td><code>captureScreen</code>, <code>requestScreenCapture</code>, <code>findImage</code> 等部分函数也有全局入口</td>\n<td><code>augment/images/Images.kt</code></td>\n<td><a href=\"image\">Image</a></td>\n</tr>\n<tr>\n<td><code>ocr</code></td>\n<td><code>$ocr</code></td>\n<td><code>mlkit</code>, <code>paddle</code>, <code>rapid</code> 三个子对象</td>\n<td><code>augment/ocr/Ocr.kt</code><br><code>augment/ocr/OcrMLKit.kt</code><br><code>augment/ocr/OcrPaddle.kt</code><br><code>augment/ocr/OcrRapid.kt</code></td>\n<td><a href=\"ocr\">OCR</a></td>\n</tr>\n<tr>\n<td><code>barcode</code></td>\n<td><code>$barcode</code></td>\n<td>MLKit 条码识别</td>\n<td><code>augment/barcode/Barcode.kt</code></td>\n<td><a href=\"barcode\">Barcode</a></td>\n</tr>\n<tr>\n<td><code>qrcode</code></td>\n<td><code>$qrcode</code></td>\n<td>条码识别的二维码限定包装</td>\n<td><code>augment/barcode/QrCode.kt</code></td>\n<td><a href=\"qrcode\">QR Code</a></td>\n</tr>\n<tr>\n<td><code>threads</code></td>\n<td><code>$threads</code></td>\n<td>线程、锁、原子变量、一次性结果</td>\n<td><code>augment/threads/Threads.kt</code></td>\n<td><a href=\"threads\">Thread</a></td>\n</tr>\n<tr>\n<td><code>ui</code></td>\n<td><code>$ui</code></td>\n<td>UI DSL、线程调度、控件注册</td>\n<td><code>augment/ui/UI.kt</code><br><code>augment/ui/UIWidget.kt</code></td>\n<td><a href=\"ui\">UI</a></td>\n</tr>\n<tr>\n<td><code>colors</code></td>\n<td><code>$colors</code></td>\n<td>Android / CSS / Web / Material 色表</td>\n<td><code>augment/colors/Colors.kt</code></td>\n<td><a href=\"color\">Color</a></td>\n</tr>\n<tr>\n<td><code>color</code></td>\n<td>否</td>\n<td><code>Color</code> 构造与颜色对象能力</td>\n<td><code>augment/colors/Color.kt</code><br><code>augment/colors/ColorNativeObject.kt</code></td>\n<td><a href=\"color\">Color</a></td>\n</tr>\n<tr>\n<td><code>tasks</code></td>\n<td><code>$tasks</code></td>\n<td>定时任务、广播任务、任务查询与更新</td>\n<td><code>augment/tasks/Tasks.kt</code></td>\n<td><a href=\"tasks\">Task</a></td>\n</tr>\n<tr>\n<td><code>dialogs</code></td>\n<td><code>$dialogs</code></td>\n<td>对话框构建与显示</td>\n<td><code>augment/dialogs/Dialogs.kt</code></td>\n<td><a href=\"dialogs\">Dialog</a></td>\n</tr>\n<tr>\n<td><code>continuation</code></td>\n<td><code>$continuation</code></td>\n<td>协程 / continuation 内部模块</td>\n<td><code>augment/continuation/Continuation.kt</code><br><code>augment/continuation/Creator.kt</code></td>\n<td><a href=\"continuation\">Continuation</a></td>\n</tr>\n<tr>\n<td><code>http</code></td>\n<td><code>$http</code></td>\n<td>OkHttp 请求、响应包装、流式保存</td>\n<td><code>augment/http/Http.kt</code><br><code>augment/http/RequestBuilder.kt</code><br><code>augment/http/ResponseWrapper.kt</code><br><code>augment/http/ResponseBodyNativeObject.kt</code></td>\n<td><a href=\"http\">HTTP</a></td>\n</tr>\n<tr>\n<td><code>web</code></td>\n<td><code>$web</code></td>\n<td>WebView 注入、WebClient、WebSocket 辅助</td>\n<td><code>augment/web/Web.kt</code></td>\n<td><a href=\"web\">Web</a></td>\n</tr>\n<tr>\n<td><code>WebSocket</code></td>\n<td>否</td>\n<td>可构造类, 不注入 <code>$WebSocket</code></td>\n<td><code>augment/web/WebSocket.kt</code><br><code>augment/web/WebSocketFields.kt</code></td>\n<td><a href=\"webSocketType\">WebSocket</a></td>\n</tr>\n<tr>\n<td><code>s13n</code></td>\n<td><code>$s13n</code></td>\n<td>标准化工具</td>\n<td><code>augment/s13n/S13n.kt</code></td>\n<td><a href=\"s13n\">Standardization</a></td>\n</tr>\n<tr>\n<td><code>cvt</code></td>\n<td><code>$cvt</code></td>\n<td><code>bytes</code> 子对象</td>\n<td><code>augment/converter/Converter.kt</code><br><code>augment/converter/Bytes.kt</code></td>\n<td><a href=\"cvt\">Cvt</a></td>\n</tr>\n<tr>\n<td><code>fmt</code></td>\n<td><code>$fmt</code></td>\n<td><code>bytes</code> 子对象</td>\n<td><code>augment/formatter/Formatter.kt</code><br><code>augment/formatter/Bytes.kt</code></td>\n<td><a href=\"fmt\">Fmt</a></td>\n</tr>\n<tr>\n<td><code>console</code></td>\n<td><code>$console</code></td>\n<td>代理全局控制台对象, 含悬浮控制台配置</td>\n<td><code>augment/console/Console.kt</code></td>\n<td><a href=\"console\">Console</a></td>\n</tr>\n<tr>\n<td><code>plugins</code></td>\n<td><code>$plugins</code></td>\n<td>插件加载与插件上下文</td>\n<td><code>augment/plugins/Plugins.kt</code></td>\n<td><a href=\"plugins\">Plugins</a></td>\n</tr>\n<tr>\n<td><code>Arrayx</code></td>\n<td>否</td>\n<td><code>Array</code> 扩展工具对象</td>\n<td><code>augment/jsox/Arrayx.kt</code></td>\n<td><a href=\"arrayx\">Arrayx</a></td>\n</tr>\n<tr>\n<td><code>Numberx</code></td>\n<td>否</td>\n<td><code>Number</code> 扩展工具对象</td>\n<td><code>augment/jsox/Numberx.kt</code></td>\n<td><a href=\"numberx\">Numberx</a></td>\n</tr>\n<tr>\n<td><code>Mathx</code></td>\n<td>否</td>\n<td><code>Math</code> 扩展工具对象</td>\n<td><code>augment/jsox/Mathx.kt</code></td>\n<td><a href=\"mathx\">Mathx</a></td>\n</tr>\n<tr>\n<td><code>jsox</code></td>\n<td><code>$jsox</code></td>\n<td>JavaScript 内建对象扩展聚合</td>\n<td><code>augment/jsox/Jsox.kt</code></td>\n<td>暂无独立页; 相关页见 <a href=\"polyfill\">Polyfill</a>, <a href=\"arrayx\">Arrayx</a>, <a href=\"numberx\">Numberx</a>, <a href=\"mathx\">Mathx</a></td>\n</tr>\n<tr>\n<td><code>files</code></td>\n<td><code>$files</code></td>\n<td>全局 <code>open</code>、路径解析、读写、复制移动</td>\n<td><code>augment/files/Files.kt</code></td>\n<td><a href=\"files\">File</a></td>\n</tr>\n<tr>\n<td><code>crypto</code></td>\n<td><code>$crypto</code></td>\n<td>加密、摘要、密钥、密钥对</td>\n<td><code>augment/cryptyo/Crypto.kt</code></td>\n<td><a href=\"crypto\">Crypto</a></td>\n</tr>\n<tr>\n<td><code>RootAutomator</code></td>\n<td>否</td>\n<td>可构造类, 依赖 root 或 Shizuku</td>\n<td><code>augment/automator/RootAutomator.kt</code><br><code>augment/automator/RootAutomatorNativeObject.kt</code></td>\n<td><a href=\"automator\">Automator</a></td>\n</tr>\n<tr>\n<td><code>engines</code></td>\n<td><code>$engines</code></td>\n<td>脚本执行、执行配置、引擎列表</td>\n<td><code>augment/engines/Engines.kt</code></td>\n<td><a href=\"engines\">Engine</a></td>\n</tr>\n<tr>\n<td><code>floaty</code></td>\n<td><code>$floaty</code></td>\n<td>悬浮窗、悬浮窗权限、Android Q+ 剪贴板辅助</td>\n<td><code>augment/floaty/Floaty.kt</code><br><code>runtime/api/Floaty.kt</code></td>\n<td><a href=\"floaty\">Floaty</a></td>\n</tr>\n<tr>\n<td><code>storages</code></td>\n<td><code>$storages</code></td>\n<td>本地键值存储</td>\n<td><code>augment/storages/Storages.kt</code><br><code>augment/storages/StorageNativeObject.kt</code></td>\n<td><a href=\"storages\">Storage</a></td>\n</tr>\n<tr>\n<td><code>device</code></td>\n<td><code>$device</code></td>\n<td>设备信息、亮度、音量、电量、屏幕、指针位置</td>\n<td><code>augment/device/Device.kt</code><br><code>runtime/api/Device.java</code></td>\n<td><a href=\"device\">Device</a></td>\n</tr>\n<tr>\n<td><code>recorder</code></td>\n<td><code>$recorder</code></td>\n<td>录制与输入事件相关能力</td>\n<td><code>augment/recorder/Recorder.kt</code></td>\n<td><a href=\"recorder\">Recorder</a></td>\n</tr>\n<tr>\n<td><code>toast</code></td>\n<td><code>$toast</code></td>\n<td>Toast 显示与解析</td>\n<td><code>augment/toast/Toast.kt</code><br><code>augment/toast/ToastParser.kt</code></td>\n<td><a href=\"toast\">Toast</a></td>\n</tr>\n<tr>\n<td><code>media</code></td>\n<td><code>$media</code></td>\n<td>媒体库扫描等 Android media 能力</td>\n<td><code>augment/media/Media.kt</code></td>\n<td><a href=\"media\">Media</a></td>\n</tr>\n<tr>\n<td><code>sensors</code></td>\n<td><code>$sensors</code></td>\n<td>传感器注册与事件</td>\n<td><code>augment/sensors/Sensors.kt</code></td>\n<td><a href=\"sensors\">Sensor</a></td>\n</tr>\n<tr>\n<td><code>base64</code></td>\n<td><code>$base64</code></td>\n<td>Base64 编解码</td>\n<td><code>augment/base64/Base64.kt</code></td>\n<td><a href=\"base64\">Base64</a></td>\n</tr>\n<tr>\n<td><code>notice</code></td>\n<td><code>$notice</code></td>\n<td><code>channel</code> 子对象, 通知发布与渠道管理</td>\n<td><code>augment/notice/Notice.kt</code><br><code>augment/notice/Channel.kt</code></td>\n<td><a href=\"notice\">Notice</a></td>\n</tr>\n<tr>\n<td><code>shizuku</code></td>\n<td><code>$shizuku</code></td>\n<td>命令执行、状态、前台组件查询</td>\n<td><code>augment/shizuku/Shizuku.kt</code></td>\n<td><a href=\"shizuku\">Shizuku</a></td>\n</tr>\n<tr>\n<td><code>opencc</code></td>\n<td><code>$opencc</code></td>\n<td>中文转换</td>\n<td><code>augment/opencc/OpenCC.kt</code></td>\n<td><a href=\"opencc\">OpenCC</a></td>\n</tr>\n<tr>\n<td><code>mime</code></td>\n<td><code>$mime</code></td>\n<td>MIME 字符串解析</td>\n<td><code>augment/mime/Mime.kt</code><br><code>augment/mime/JsMime.kt</code></td>\n<td><a href=\"mime\">MIME</a></td>\n</tr>\n<tr>\n<td><code>sysprops</code></td>\n<td><code>$sysprops</code></td>\n<td>Android 系统属性读取</td>\n<td><code>augment/sysprops/Sysprops.kt</code></td>\n<td><a href=\"sysprops\">Sysprops</a></td>\n</tr>\n<tr>\n<td><code>sqlite</code></td>\n<td><code>$sqlite</code></td>\n<td>SQLite 打开、<code>Database</code>, <code>CursorWrapper</code></td>\n<td><code>augment/sqlite/SQLite.kt</code><br><code>runtime/api/SQLite.kt</code><br><code>core/database/Database.java</code></td>\n<td><a href=\"sqlite\">SQLite</a></td>\n</tr>\n<tr>\n<td><code>zip</code></td>\n<td><code>$zip</code></td>\n<td>Zip4j 包装、<code>ZipOptions</code>, <code>ZipNativeObject</code></td>\n<td><code>augment/zip/Zip.kt</code><br><code>augment/zip/ZipNativeObject.kt</code></td>\n<td><a href=\"zip\">Zip</a></td>\n</tr>\n<tr>\n<td><code>nanoid</code></td>\n<td><code>$nanoid</code></td>\n<td>Nano ID 生成</td>\n<td><code>augment/nanoid/NanoID.kt</code></td>\n<td><a href=\"nanoid\">NanoID</a></td>\n</tr>\n<tr>\n<td><code>pinyin</code></td>\n<td><code>$pinyin</code></td>\n<td>拼音转换核心</td>\n<td><code>augment/pinyin/Pinyin.kt</code><br><code>augment/pinyin/PinyinCore.kt</code></td>\n<td><a href=\"pinyin\">Pinyin</a></td>\n</tr>\n<tr>\n<td><code>pinyin4j</code></td>\n<td><code>$pinyin4j</code></td>\n<td>Pinyin4j 兼容入口</td>\n<td><code>augment/pinyin4j/Pinyin4j.kt</code></td>\n<td><a href=\"pinyin4j\">Pinyin4j</a></td>\n</tr>\n<tr>\n<td><code>mediainfo</code></td>\n<td><code>$mediainfo</code></td>\n<td>MediaInfo 原生库包装</td>\n<td><code>augment/mediainfo/Mediainfo.kt</code><br><code>augment/mediainfo/MediainfoNativeObject.kt</code></td>\n<td><a href=\"mediainfo\">MediaInfo</a></td>\n</tr>\n</tbody>\n</table>\n",
+          "type": "module",
+          "displayName": "运行时注入对象"
+        },
+        {
+          "textRaw": "高频独立类型页",
+          "name": "高频独立类型页",
+          "desc": "<p>P2 已将以下高频运行时返回类型或选项对象拆为独立页面, 便于知识库按类型建立节点:</p>\n<ul>\n<li><a href=\"zipOptionsType\">ZipOptions</a></li>\n<li><a href=\"zipNativeObjectType\">ZipNativeObject</a></li>\n<li><a href=\"databaseType\">Database</a></li>\n<li><a href=\"cursorWrapperType\">CursorWrapper</a></li>\n<li><a href=\"httpSaveResultType\">HttpSaveResult</a></li>\n<li><a href=\"jsMimeType\">JsMime</a></li>\n<li><a href=\"mediainfoNativeObjectType\">MediainfoNativeObject</a></li>\n</ul>\n",
+          "type": "module",
+          "displayName": "高频独立类型页"
+        },
+        {
+          "textRaw": "旧 Auto.js 4.x 残留核对",
+          "name": "旧_auto.js_4.x_残留核对",
+          "desc": "<p>本轮已对 P0 / P1 / P2 覆盖页面中的旧 Auto.js 4.x 叙述进行集中核对:</p>\n<table>\n<thead>\n<tr>\n<th>位置</th>\n<th>当前处理</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"http\">HTTP</a>, <a href=\"web\">Web</a>, <a href=\"ocr\">OCR</a>, <a href=\"console\">Console</a></td>\n<td>已按 AutoJs6 <code>6.7.0</code> 源码改写旧行为说明, 废弃 / abandoned API 已标注.</td>\n</tr>\n<tr>\n<td><a href=\"uiSelectorType\">UiSelector</a></td>\n<td>仍保留 Auto.js 4.x 差异提示, 但已明确为兼容差异说明, 不是当前行为.</td>\n</tr>\n<tr>\n<td><a href=\"qa\">Q &amp; A</a>, <a href=\"documentation\">About</a>, <a href=\"overview\">Overview</a>, <a href=\"progress\">Progress</a></td>\n<td>保留项目来源和历史背景叙述; 不作为当前 API 行为依据.</td>\n</tr>\n<tr>\n<td><code>timers</code>, <code>shell</code>, <code>ui</code>, <code>modules</code>, <code>threads</code>, <code>image</code>, <code>events</code>, <code>media</code> 等未进入 P0 / P1 的旧章节</td>\n<td>已在 <a href=\"documentationRoadmap\">Documentation Roadmap</a> 中作为后续源码校对风险保留; 知识库回答当前行为时不应优先引用这些旧章节.</td>\n</tr>\n</tbody>\n</table>\n<p>判断原则: 当历史背景与本页运行时索引、具体页面 &quot;源码依据&quot; 小节或源码路径冲突时, 以后者为准.</p>\n<!-- [end-include:runtimeApiIndex.md] -->\n<!-- [start-include:permissionCapabilityMatrix.md] -->\n",
+          "type": "module",
+          "displayName": "旧 Auto.js 4.x 残留核对"
+        }
+      ],
+      "type": "module",
+      "displayName": "Runtime API Index - 运行时 API 索引"
+    },
+    {
+      "textRaw": "Permission Capability Matrix - 权限能力矩阵",
+      "name": "permission_capability_matrix_-_权限能力矩阵",
+      "desc": "<p>本章节集中记录 AutoJs6 <code>6.7.0</code> 中对 Android 权限、系统服务、Root、Shizuku、无障碍或特定 Android 版本敏感的脚本能力.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n<li>主包 SDK: <code>minSdk=24</code>, <code>targetSdk=36</code></li>\n<li>INRT 包 SDK: <code>targetSdk=29</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/AndroidManifest.xml</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/*</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/*</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "能力矩阵",
+          "name": "能力矩阵",
+          "desc": "<table>\n<thead>\n<tr>\n<th>能力</th>\n<th>API / 模块</th>\n<th>依赖 / 权限</th>\n<th>Android 版本边界</th>\n<th>源码依据</th>\n<th>文档入口</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>无障碍服务</td>\n<td><code>auto</code>, <code>automator</code>, <code>selector</code>, <code>UiObject</code>, <code>events.observeKey</code>, <code>events.observeToast</code>, <code>events.observeNotification</code></td>\n<td>用户启用 AutoJs6 无障碍服务; 部分开关可借 root 或 <code>WRITE_SECURE_SETTINGS</code> 写入; 运行时通过 <code>AccessibilityBridge.ensureServiceStarted()</code> 获取服务</td>\n<td>手势分发依赖 Android 无障碍能力; 部分 <code>UiObjectActions</code> 仅在较高 API 返回有效动作</td>\n<td><code>augment/automator/Auto.kt</code><br><code>augment/automator/Automator.kt</code><br><code>core/accessibility/AccessibilityTool.kt</code><br><code>core/accessibility/AccessibilityServiceUsher.kt</code><br><code>core/automator/*</code></td>\n<td><a href=\"automator\">Automator</a><br><a href=\"uiSelectorType\">UiSelector</a><br><a href=\"uiObjectType\">UiObject</a><br><a href=\"events\">Event</a></td>\n</tr>\n<tr>\n<td>全局按键 / 手势 / 控件动作</td>\n<td><code>click</code>, <code>longClick</code>, <code>press</code>, <code>swipe</code>, <code>gesture</code>, <code>back</code>, <code>home</code>, <code>recents</code>, <code>UiObject.click()</code> 等</td>\n<td>优先依赖无障碍服务; <code>RootAutomator</code> 走 root / Shizuku 输入设备后端</td>\n<td><code>Automator.captureScreen()</code> 使用无障碍截图时需 Android R / API 30+</td>\n<td><code>augment/automator/Automator.kt</code><br><code>core/automator/UiObjectActions.kt</code><br><code>core/inputevent/RootAutomator.java</code></td>\n<td><a href=\"automator\">Automator</a><br><a href=\"uiObjectType\">UiObject</a></td>\n</tr>\n<tr>\n<td>Root 输入与 Root shell</td>\n<td><code>new RootAutomator()</code>, <code>shell(cmd, true)</code>, <code>autojs.setRootMode(...)</code>, root 模式启动应用</td>\n<td>root 可用, 或 <code>RootAutomator</code> 可使用 Shizuku 后端; root shell 会执行特权命令</td>\n<td>受设备 root 状态和系统 SELinux / shell 权限限制</td>\n<td><code>augment/automator/RootAutomator.kt</code><br><code>augment/automator/RootAutomatorNativeObject.kt</code><br><code>augment/shell/Shell.kt</code><br><code>runtime/api/ProcessShell.java</code><br><code>util/RootUtils.java</code></td>\n<td><a href=\"automator\">Automator</a><br><a href=\"shell\">Shell</a><br><a href=\"autojs\">AutoJs6</a></td>\n</tr>\n<tr>\n<td>Shizuku 命令与系统组件查询</td>\n<td><code>shizuku.execCommand</code>, <code>shizuku.kill</code>, <code>shizuku.currentPackage</code>, <code>shizuku.currentActivity</code>, <code>shizuku.currentComponent</code></td>\n<td>Shizuku 安装、服务运行、已授权且 <code>WrappedShizuku.isOperational()</code> 为真; manifest 声明 <code>moe.shizuku.manager.permission.API_V23</code></td>\n<td>依赖 Shizuku 服务可用性和用户授权, 不等同于 root</td>\n<td><code>augment/shizuku/Shizuku.kt</code><br><code>runtime/api/WrappedShizuku.kt</code><br><code>permission/ShizukuPermission.kt</code><br><code>core/shizuku/UserService.kt</code><br><code>AndroidManifest.xml</code></td>\n<td><a href=\"shizuku\">Shizuku</a></td>\n</tr>\n<tr>\n<td>当前前台包名 / Activity / Component</td>\n<td><code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>, <code>app.currentPackage</code>, <code>shizuku.currentPackage</code></td>\n<td>默认可走无障碍; 可选择 root / Shizuku 模式</td>\n<td>受 Android 后台限制和可访问窗口信息影响</td>\n<td><code>augment/global/Global.kt</code><br><code>augment/app/App.kt</code><br><code>augment/shizuku/Shizuku.kt</code></td>\n<td><a href=\"global\">Global</a><br><a href=\"app\">App</a><br><a href=\"shizuku\">Shizuku</a></td>\n</tr>\n<tr>\n<td>悬浮窗</td>\n<td><code>floaty.window</code>, <code>floaty.rawWindow</code>, <code>floaty.hasPermission</code>, <code>floaty.ensurePermission</code>, <code>console.show</code>, <code>console.build</code></td>\n<td><code>android.permission.SYSTEM_ALERT_WINDOW</code>; 用户允许 &quot;显示在其他应用上层&quot;</td>\n<td>Android O+ 使用新的 overlay window type; 具体展示还受系统厂商限制</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/floaty/Floaty.kt</code><br><code>runtime/api/Floaty.kt</code><br><code>permission/DisplayOverOtherAppsPermission.kt</code><br><code>util/FloatingPermission.java</code><br><code>ui/enhancedfloaty/util/WindowTypeCompat.java</code></td>\n<td><a href=\"floaty\">Floaty</a><br><a href=\"console\">Console</a></td>\n</tr>\n<tr>\n<td>剪贴板读取</td>\n<td><code>floaty.getClip</code>, 全局 <code>getClip</code> / <code>setClip</code></td>\n<td>Android Q / API 29+ 后台剪贴板限制下, 源码优先借助悬浮窗权限创建窗口后读取</td>\n<td>Android Q+ 对后台剪贴板读取更严格; 无悬浮窗权限时可能失败或返回空</td>\n<td><code>augment/floaty/Floaty.kt</code><br><code>augment/global/Global.kt</code><br><code>runtime/api/Floaty.kt</code><br><code>com/stardust/util/ClipboardUtil.java</code></td>\n<td><a href=\"floaty\">Floaty</a><br><a href=\"global\">Global</a></td>\n</tr>\n<tr>\n<td>屏幕截图 / MediaProjection</td>\n<td><code>images.requestScreenCapture</code>, <code>images.requestScreenCaptureAsync</code>, <code>images.captureScreen</code>, 全局 <code>requestScreenCapture</code>, <code>captureScreen</code></td>\n<td>用户授予 MediaProjection 截屏确认; 或系统 <code>appops PROJECT_MEDIA</code>; manifest 包含前台服务和 media projection 相关权限</td>\n<td>Android 10+ 涉及前台服务类型; Android 14+ 对 MediaProjection 前台服务和一次性授权更严格; AutoJs6 通过 <code>ScreenCaptureRequester</code> / <code>ScreenCapturer</code> 管理会话</td>\n<td><code>augment/images/Images.kt</code><br><code>runtime/api/Images.java</code><br><code>core/image/capture/ScreenCaptureRequester.java</code><br><code>core/image/capture/ScreenCapturer.java</code><br><code>core/image/capture/ScreenCapturerForegroundService.kt</code><br><code>permission/MediaProjectionPermission.kt</code><br><code>AndroidManifest.xml</code></td>\n<td><a href=\"image\">Image</a></td>\n</tr>\n<tr>\n<td>无障碍截图</td>\n<td><code>automator.captureScreen()</code></td>\n<td>已启用无障碍服务</td>\n<td>源码中 <code>takeScreenshot</code> / 无障碍截图依赖 Android R / API 30+</td>\n<td><code>augment/automator/Automator.kt</code><br><code>core/accessibility/AccessibilityService.kt</code></td>\n<td><a href=\"automator\">Automator</a></td>\n</tr>\n<tr>\n<td>通知发布与通知渠道</td>\n<td><code>notice(...)</code>, <code>notice.channel.*</code>, <code>notice.ensureEnabled</code>, <code>events.observeNotification</code></td>\n<td>系统通知开关; Android 13+ 需要 <code>POST_NOTIFICATIONS</code>; 监听通知需通知监听服务或无障碍通知观察</td>\n<td>Android O / API 26+ 必须使用通知渠道; Android 13 / API 33+ 新增运行时通知权限</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/notice/Notice.kt</code><br><code>augment/notice/Channel.kt</code><br><code>runtime/api/Notice.kt</code><br><code>util/NotificationUtils.kt</code><br><code>core/notification/NotificationListenerService.kt</code><br><code>runtime/api/Events.java</code><br><code>core/accessibility/AccessibilityNotificationObserver.kt</code></td>\n<td><a href=\"notice\">Notice</a><br><a href=\"events\">Event</a></td>\n</tr>\n<tr>\n<td>系统设置写入</td>\n<td><code>autojs.canModifySystemSettings</code>, <code>autojs.canWriteSecureSettings</code>, <code>device.setBrightness</code>, <code>device.setMusicVolume</code>, 指针位置相关能力</td>\n<td><code>WRITE_SETTINGS</code> 需用户授权; <code>WRITE_SECURE_SETTINGS</code> 通常需 adb / root / 系统签名; manifest 已声明但不代表已授权</td>\n<td>Android M / API 23+ 对修改系统设置有专门授权页; secure settings 更受系统保护</td>\n<td><code>AndroidManifest.xml</code><br><code>permission/WriteSystemSettingsPermission.kt</code><br><code>permission/WriteSecureSettingsPermission.kt</code><br><code>util/SettingsUtils.java</code><br><code>augment/autojs/Autojs.kt</code><br><code>runtime/api/Device.java</code><br><code>core/accessibility/AccessibilityTool.kt</code></td>\n<td><a href=\"autojs\">AutoJs6</a><br><a href=\"device\">Device</a></td>\n</tr>\n<tr>\n<td>文件 / 外部存储</td>\n<td><code>files.*</code>, <code>sqlite.open</code>, <code>zip.*</code>, <code>http.saveToFile</code>, <code>mediainfo.read</code>, <code>images.read/save</code></td>\n<td>文件路径访问、媒体读取、外部存储权限或 Android scoped storage 策略; manifest 声明 READ/WRITE/MANAGE_EXTERNAL_STORAGE 与 READ_MEDIA_*</td>\n<td>Android 10+ scoped storage; Android 11+ <code>MANAGE_EXTERNAL_STORAGE</code>; Android 13+ 分媒体类型读取权限; manifest 设置 <code>requestLegacyExternalStorage=true</code></td>\n<td><code>AndroidManifest.xml</code><br><code>augment/files/Files.kt</code><br><code>runtime/api/Files.kt</code><br><code>permission/AllFilesAccessPermission.kt</code><br><code>external/fileprovider/AppFileProvider.java</code><br><code>augment/sqlite/SQLite.kt</code><br><code>augment/zip/Zip.kt</code><br><code>augment/http/ResponseBodyNativeObject.kt</code><br><code>augment/mediainfo/Mediainfo.kt</code></td>\n<td><a href=\"files\">File</a><br><a href=\"sqlite\">SQLite</a><br><a href=\"zip\">Zip</a><br><a href=\"http\">HTTP</a><br><a href=\"mediainfo\">MediaInfo</a></td>\n</tr>\n<tr>\n<td>网络请求 / WebSocket / WebView 加载</td>\n<td><code>http.*</code>, <code>web.newWebSocket</code>, <code>new WebSocket</code>, <code>web.loadUrl</code>, <code>images.load</code> URL</td>\n<td>manifest 声明 <code>INTERNET</code>; 网络状态读取依赖 <code>ACCESS_NETWORK_STATE</code> / <code>ACCESS_WIFI_STATE</code></td>\n<td><code>INTERNET</code> 不是运行时弹窗权限; 明文 HTTP 还受网络安全配置和 <code>usesCleartextTraffic=true</code> 影响</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/http/Http.kt</code><br><code>runtime/api/Http.kt</code><br><code>augment/web/Web.kt</code><br><code>augment/web/WebSocket.kt</code><br><code>core/web/WebSocket.kt</code><br><code>augment/images/Images.kt</code></td>\n<td><a href=\"http\">HTTP</a><br><a href=\"web\">Web</a><br><a href=\"webSocketType\">WebSocket</a><br><a href=\"image\">Image</a></td>\n</tr>\n<tr>\n<td>OCR / 条码 / 二维码识别</td>\n<td><code>ocr.mlkit</code>, <code>ocr.paddle</code>, <code>ocr.rapid</code>, <code>barcode</code>, <code>qrcode</code></td>\n<td>传入图片时依赖图片文件 / bitmap; 不传图片而截图识别时依赖屏幕截图能力; Paddle 非 INRT 场景依赖插件或嵌入模型</td>\n<td>MLKit / Paddle / Rapid 各自依赖库可用性; 区域裁剪受图片坐标边界限制</td>\n<td><code>augment/ocr/Ocr.kt</code><br><code>augment/ocr/OcrMLKit.kt</code><br><code>augment/ocr/OcrPaddle.kt</code><br><code>augment/ocr/OcrRapid.kt</code><br><code>runtime/api/OcrMLKit.kt</code><br><code>runtime/api/OcrRapid.kt</code><br><code>core/plugin/ocr/PaddleOcrPluginHost.kt</code><br><code>augment/barcode/Barcode.kt</code><br><code>augment/barcode/QrCode.kt</code><br><code>runtime/api/WrappedBarcode.kt</code></td>\n<td><a href=\"ocr\">OCR</a><br><a href=\"barcode\">Barcode</a><br><a href=\"qrcode\">QR Code</a></td>\n</tr>\n<tr>\n<td>MediaInfo 原生库</td>\n<td><code>mediainfo(path)</code>, <code>mediainfo.read(path)</code></td>\n<td>本地媒体文件路径可访问; MediaInfo 原生库可用</td>\n<td>原生库不可用会抛出 <code>MediaInfo library is not available</code>; stream 函数固定读取 index <code>0</code></td>\n<td><code>augment/mediainfo/Mediainfo.kt</code><br><code>augment/mediainfo/MediainfoNativeObject.kt</code><br><code>org/mediainfo/android/MediaInfo.kt</code></td>\n<td><a href=\"mediainfo\">MediaInfo</a><br><a href=\"mediainfoNativeObjectType\">MediainfoNativeObject</a></td>\n</tr>\n<tr>\n<td>系统属性</td>\n<td><code>sysprops.get</code>, <code>sysprops.list</code>, <code>sysprops.filter</code></td>\n<td>普通属性可读; 受系统属性权限和 SELinux 限制; root / Shizuku 可提升命令读取能力但不是 <code>sysprops</code> 入口默认保证</td>\n<td>Android 版本和厂商系统会影响可见属性</td>\n<td><code>augment/sysprops/Sysprops.kt</code></td>\n<td><a href=\"sysprops\">Sysprops</a></td>\n</tr>\n<tr>\n<td>定时任务 / 精确闹钟 / 开机广播</td>\n<td><code>tasks.*</code></td>\n<td>manifest 声明 <code>USE_EXACT_ALARM</code>, <code>SCHEDULE_EXACT_ALARM</code>, <code>RECEIVE_BOOT_COMPLETED</code>; 用户系统策略可能限制精确闹钟和后台启动</td>\n<td>Android 12+ 精确闹钟权限策略更严格</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/tasks/Tasks.kt</code><br><code>core/database/TimedTaskManager</code></td>\n<td><a href=\"tasks\">Task</a></td>\n</tr>\n<tr>\n<td>应用安装 / 卸载 / 包查询</td>\n<td><code>app.install</code>, <code>app.uninstall</code>, <code>app.getAppName</code>, <code>app.getPackageName</code>, <code>app.openAppSetting</code></td>\n<td>manifest 声明安装 / 删除包、查询全部包等权限; 部分操作需要用户确认或系统授权</td>\n<td>Android 11+ 包可见性受 <code>QUERY_ALL_PACKAGES</code> 和 package visibility 影响</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/app/App.kt</code><br><code>runtime/api/AppUtils.kt</code></td>\n<td><a href=\"app\">App</a></td>\n</tr>\n<tr>\n<td>震动 / 设备状态</td>\n<td><code>device.vibrate</code>, <code>device.getBattery</code>, <code>device.getScreenWidth</code>, <code>device.keepScreenOn</code></td>\n<td><code>VIBRATE</code>, <code>WAKE_LOCK</code>; 大多设备信息读取无需运行时权限</td>\n<td>厂商系统可能限制后台保活与保持亮屏</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/device/Device.kt</code><br><code>runtime/api/Device.java</code></td>\n<td><a href=\"device\">Device</a></td>\n</tr>\n<tr>\n<td>传感器</td>\n<td><code>sensors.register</code>, <code>sensors.on</code></td>\n<td>设备硬件传感器可用; 某些传感器可能受系统隐私策略限制</td>\n<td>Android 版本和设备硬件决定可用传感器列表与采样频率</td>\n<td><code>augment/sensors/Sensors.kt</code></td>\n<td><a href=\"sensors\">Sensor</a></td>\n</tr>\n<tr>\n<td>录音 / 录制</td>\n<td><code>recorder.*</code></td>\n<td>manifest 声明 <code>RECORD_AUDIO</code>; 录音需用户运行时授权</td>\n<td>Android 6+ 危险权限需动态授权; 后台录音受系统策略限制</td>\n<td><code>AndroidManifest.xml</code><br><code>augment/recorder/Recorder.kt</code></td>\n<td><a href=\"recorder\">Recorder</a></td>\n</tr>\n</tbody>\n</table>\n",
+          "type": "module",
+          "displayName": "能力矩阵"
+        },
+        {
+          "textRaw": "使用建议",
+          "name": "使用建议",
+          "desc": "<ul>\n<li>知识库回答权限问题时, 优先引用本矩阵和具体模块页面的 &quot;源码依据&quot; 小节.</li>\n<li>manifest 中存在的权限不代表脚本调用时已获得授权; 仍需结合运行时授权、系统开关和设备策略判断.</li>\n<li>Root / Shizuku / 无障碍是三种不同执行通道, 不能互相等价. API 文档若标注了其中之一, 应按实际源码路径回答.</li>\n</ul>\n<!-- [end-include:permissionCapabilityMatrix.md] -->\n<!-- [start-include:qa.md] -->\n",
+          "type": "module",
+          "displayName": "使用建议"
+        }
+      ],
+      "type": "module",
+      "displayName": "Permission Capability Matrix - 权限能力矩阵"
+    },
+    {
       "textRaw": "疑难解答 (Q & A)",
       "name": "疑难解答_(q_&_a)",
       "desc": "<hr>\n",
@@ -20433,13 +20493,92 @@
         {
           "textRaw": "响应体缓存",
           "name": "响应体缓存",
-          "desc": "<ul>\n<li><code>cacheBody</code> 默认 <code>false</code>.</li>\n<li><code>bodyCacheThresholdBytes</code> 默认 <code>8 * 1024 * 1024</code>.</li>\n</ul>\n<p>启用缓存后, <code>response.body.string()</code> / <code>bytes()</code> 在内容长度未知或不超过阈值时会把结果缓存在 <code>ResponseWrapper</code> 中, 便于重复读取. 完整读取后响应体会自动关闭.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">返回值与资源释放</p>\n\n<hr>\n<ul>\n<li>无 callback 的同步方法返回 <a href=\"httpResponseType\">HttpResponse</a>.</li>\n<li>有 callback 的方法返回 <code>undefined</code>, callback 接收 <code>(response, error)</code>.</li>\n<li><code>*Async</code> 方法返回运行时异步操作对象, callback 同样接收 <code>(response, error)</code>.</li>\n<li><code>response.body.string()</code> / <code>bytes()</code> / <code>json()</code> / <code>saveToFile()</code> 会在完整消费后关闭响应体.</li>\n<li><code>response.body.stream()</code> 不会自动关闭, 调用方需要关闭流或调用 <code>response.body.close()</code>.</li>\n</ul>\n<!-- [end-include:http.md] -->\n<!-- [start-include:base64.md] -->\n",
+          "desc": "<ul>\n<li><code>cacheBody</code> 默认 <code>false</code>.</li>\n<li><code>bodyCacheThresholdBytes</code> 默认 <code>8 * 1024 * 1024</code>.</li>\n</ul>\n<p>启用缓存后, <code>response.body.string()</code> / <code>bytes()</code> 在内容长度未知或不超过阈值时会把结果缓存在 <code>ResponseWrapper</code> 中, 便于重复读取. 完整读取后响应体会自动关闭.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">返回值与资源释放</p>\n\n<hr>\n<ul>\n<li>无 callback 的同步方法返回 <a href=\"httpResponseType\">HttpResponse</a>.</li>\n<li>有 callback 的方法返回 <code>undefined</code>, callback 接收 <code>(response, error)</code>.</li>\n<li><code>*Async</code> 方法返回运行时异步操作对象, callback 同样接收 <code>(response, error)</code>.</li>\n<li><code>response.body.string()</code> / <code>bytes()</code> / <code>json()</code> / <code>saveToFile()</code> 会在完整消费后关闭响应体.</li>\n<li><code>response.body.stream()</code> 不会自动关闭, 调用方需要关闭流或调用 <code>response.body.close()</code>.</li>\n</ul>\n<!-- [end-include:http.md] -->\n<!-- [start-include:httpSaveResultType.md] -->\n",
           "type": "module",
           "displayName": "响应体缓存"
         }
       ],
       "type": "module",
       "displayName": "HTTP"
+    },
+    {
+      "textRaw": "HttpSaveResult",
+      "name": "httpsaveresult",
+      "desc": "<p>HttpSaveResult 是 <a href=\"httpResponseBodyType#m-savetofile\">HttpResponseBody.saveToFile</a> 的返回类型, 用于描述响应体流式保存结果.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/HttpSaveResult.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseBodyNativeObject.kt</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"httpResponseBodyType#m-savetofile\">HttpResponseBody.saveToFile</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">HttpSaveResult</p>\n\n<hr>\n<p><code>saveToFile(path, bufferSize?)</code> 会边读边写响应体, 成功或失败都会关闭输入流、输出流和响应体. 保存过程中发生异常不会向外抛出, 而是返回失败的 <code>HttpSaveResult</code>; 但 <code>path</code> 为目录或以 <code>/</code> 结尾时会在保存前直接抛出参数异常.</p>\n",
+      "modules": [
+        {
+          "textRaw": "[p] code",
+          "name": "[p]_code",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#number\">number</a> } - <code>0</code> 表示成功</li>\n</ul>\n<p>成功为 <code>0</code>; 通用失败为 <code>-1</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] code"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>保存目标路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] bytesCopied",
+          "name": "[p]_bytescopied",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>已写入字节数.</p>\n",
+          "type": "module",
+          "displayName": "[p] bytesCopied"
+        },
+        {
+          "textRaw": "[p] success",
+          "name": "[p]_success",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>是否成功. 等价于 <code>code === 0</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] success"
+        },
+        {
+          "textRaw": "[p] error",
+          "name": "[p]_error",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#error\">Error</a> | null }</li>\n</ul>\n<p>保存失败时的错误对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] error"
+        },
+        {
+          "textRaw": "[m] isSuccess",
+          "name": "[m]_issuccess",
+          "methods": [
+            {
+              "textRaw": "isSuccess()",
+              "type": "method",
+              "name": "isSuccess",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [boolean](dataTypes#boolean) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>判断保存是否成功. 此方法不接受参数.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isSuccess"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let res = http.get(&#39;https://example.com/file.zip&#39;);\nlet saved = res.body.saveToFile(&#39;./file.zip&#39;);\n\nif (!saved.isSuccess()) {\n    console.error(saved.error);\n}\n</code></pre>\n<!-- [end-include:httpSaveResultType.md] -->\n<!-- [start-include:base64.md] -->\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "HttpSaveResult"
     },
     {
       "textRaw": "Base64",
@@ -20874,7 +21013,7 @@
               "textRaw": "open(databaseFilePath, options?, callback?)",
               "type": "method",
               "name": "open",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"databaseType\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -20991,9 +21130,9 @@
                       "type": " [string](dataTypes#string)[] "
                     },
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     }
                   ]
                 },
@@ -21023,9 +21162,9 @@
                       "type": " [android.os.CancellationSignal](https://developer.android.com/reference/android/os/CancellationSignal) "
                     },
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "cancellationSignal"
@@ -21059,7 +21198,7 @@
               "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)",
               "type": "method",
               "name": "rawQueryWithFactory",
-              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"cursorWrapperType\">CursorWrapper</a>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -21102,7 +21241,7 @@
               "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)",
               "type": "method",
               "name": "rawQueryWithFactory",
-              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"cursorWrapperType\">CursorWrapper</a>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -21141,9 +21280,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "table"
@@ -21250,9 +21389,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "table"
@@ -21336,9 +21475,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "distinct"
@@ -21453,9 +21592,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "distinct"
@@ -22425,7 +22564,7 @@
                   ]
                 }
               ],
-              "desc": "<p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>\n<!-- [end-include:sqlite.md] -->\n<!-- [start-include:mime.md] -->\n"
+              "desc": "<p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>\n<!-- [end-include:sqlite.md] -->\n<!-- [start-include:databaseType.md] -->\n"
             }
           ],
           "type": "module",
@@ -22434,6 +22573,1457 @@
       ],
       "type": "module",
       "displayName": "SQLite"
+    },
+    {
+      "textRaw": "Database",
+      "name": "database",
+      "desc": "<p>Database 是 <code>sqlite.open(...)</code> 返回的 SQLite 数据库包装对象.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/sqlite/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Transaction.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/TransactionCallback.java</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"sqlite#m-open\">sqlite.open</a></li>\n<li><a href=\"cursorWrapperType\">CursorWrapper</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 继承 Android <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时 <code>closeableManager</code>. 脚本结束时可被统一关闭, 但长期运行脚本仍建议主动调用 <code>close()</code>.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
+      "modules": [
+        {
+          "textRaw": "[m] execSQL",
+          "name": "[m]_execsql",
+          "methods": [
+            {
+              "textRaw": "execSQL(sql)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            },
+            {
+              "textRaw": "execSQL(sql, bindArgs)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] execSQL"
+        },
+        {
+          "textRaw": "[m] rawQuery",
+          "name": "[m]_rawquery",
+          "methods": [
+            {
+              "textRaw": "rawQuery(sql, selectionArgs)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            },
+            {
+              "textRaw": "rawQuery(sql, selectionArgs, cancellationSignal)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQuery"
+        },
+        {
+          "textRaw": "[m] rawQueryWithFactory",
+          "name": "[m]_rawquerywithfactory",
+          "methods": [
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致.</p>\n"
+            },
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQueryWithFactory"
+        },
+        {
+          "textRaw": "[m] query",
+          "name": "[m]_query",
+          "methods": [
+            {
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
+              "type": "method",
+              "name": "query",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标.</p>\n"
+            },
+            {
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "query",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] query"
+        },
+        {
+          "textRaw": "[m] queryWithFactory",
+          "name": "[m]_querywithfactory",
+          "methods": [
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] queryWithFactory"
+        },
+        {
+          "textRaw": "[m] insert",
+          "name": "[m]_insert",
+          "methods": [
+            {
+              "textRaw": "insert(table, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>\n"
+            },
+            {
+              "textRaw": "insert(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insert"
+        },
+        {
+          "textRaw": "[m] insertOrThrow",
+          "name": "[m]_insertorthrow",
+          "methods": [
+            {
+              "textRaw": "insertOrThrow(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insertOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertOrThrow"
+        },
+        {
+          "textRaw": "[m] insertWithOnConflict",
+          "name": "[m]_insertwithonconflict",
+          "methods": [
+            {
+              "textRaw": "insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)",
+              "type": "method",
+              "name": "insertWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**conflictAlgorithm** { [number](dataTypes#number) } - Android `SQLiteDatabase.CONFLICT_*` 常量值 ",
+                      "name": "**conflictAlgorithm**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "Android `SQLiteDatabase.CONFLICT_*` 常量值"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertWithOnConflict"
+        },
+        {
+          "textRaw": "[m] replace",
+          "name": "[m]_replace",
+          "methods": [
+            {
+              "textRaw": "replace(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replace",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replace"
+        },
+        {
+          "textRaw": "[m] replaceOrThrow",
+          "name": "[m]_replaceorthrow",
+          "methods": [
+            {
+              "textRaw": "replaceOrThrow(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replaceOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replaceOrThrow"
+        },
+        {
+          "textRaw": "[m] update",
+          "name": "[m]_update",
+          "methods": [
+            {
+              "textRaw": "update(table, values, whereClause, whereArgs)",
+              "type": "method",
+              "name": "update",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 受影响行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "受影响行数"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] update"
+        },
+        {
+          "textRaw": "[m] updateWithOnConflict",
+          "name": "[m]_updatewithonconflict",
+          "methods": [
+            {
+              "textRaw": "updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)",
+              "type": "method",
+              "name": "updateWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] updateWithOnConflict"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(table, whereClause, whereArgs)",
+              "type": "method",
+              "name": "delete",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 删除行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "删除行数"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] transaction",
+          "name": "[m]_transaction",
+          "methods": [
+            {
+              "textRaw": "transaction(transactionCallback, exclusive?)",
+              "type": "method",
+              "name": "transaction",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**transactionCallback** { [function](dataTypes#function) } ",
+                      "name": "**transactionCallback**",
+                      "type": " [function](dataTypes#function) "
+                    },
+                    {
+                      "textRaw": "**[ exclusive = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "exclusive = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [EventEmitter](eventEmitterType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [EventEmitter](eventEmitterType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "transactionCallback"
+                    },
+                    {
+                      "name": "exclusive?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>同步执行事务并返回事件发射器. <code>transactionCallback</code> 会收到 <code>Transaction</code> 对象; 正常执行后内部调用 <code>transaction.succeed()</code>, 最终调用 <code>transaction.end()</code>.</p>\n<p>事务事件:</p>\n<ul>\n<li><code>begin</code> - 事务开始</li>\n<li><code>commit</code> - 事务成功提交</li>\n<li><code>rollback</code> - 事务回滚</li>\n<li><code>end</code> - 事务结束</li>\n<li><code>error</code> - 回调抛出异常时触发</li>\n</ul>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] transaction"
+        },
+        {
+          "textRaw": "[m] close",
+          "name": "[m]_close",
+          "methods": [
+            {
+              "textRaw": "close()",
+              "type": "method",
+              "name": "close",
+              "desc": "<p>关闭底层数据库连接, 并从运行时 <code>closeableManager</code> 中移除.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] close"
+        },
+        {
+          "textRaw": "代理方法",
+          "name": "代理方法",
+          "desc": "<p>当前 <code>Database</code> 还暴露以下 Android <code>SQLiteDatabase</code> 代理方法:</p>\n<ul>\n<li><code>acquireReference()</code> / <code>releaseReference()</code></li>\n<li><code>beginTransaction()</code> / <code>beginTransactionNonExclusive()</code> / <code>beginTransactionWithListener(listener)</code> / <code>beginTransactionWithListenerNonExclusive(listener)</code></li>\n<li><code>endTransaction()</code> / <code>setTransactionSuccessful()</code> / <code>inTransaction()</code></li>\n<li><code>compileStatement(sql)</code> / <code>validateSql(sql, cancellationSignal)</code></li>\n<li><code>disableWriteAheadLogging()</code> / <code>enableWriteAheadLogging()</code> / <code>isWriteAheadLoggingEnabled()</code></li>\n<li><code>getAttachedDbs()</code> / <code>getMaximumSize()</code> / <code>getPageSize()</code> / <code>getPath()</code> / <code>getVersion()</code></li>\n<li><code>isDatabaseIntegrityOk()</code> / <code>isDbLockedByCurrentThread()</code> / <code>isOpen()</code> / <code>isReadOnly()</code></li>\n<li><code>needUpgrade(newVersion)</code></li>\n<li><code>setForeignKeyConstraintsEnabled(enable)</code> / <code>setLocale(locale)</code> / <code>setMaxSqlCacheSize(cacheSize)</code></li>\n<li><code>setMaximumSize(numBytes)</code> / <code>setPageSize(numBytes)</code> / <code>setVersion(version)</code></li>\n<li><code>yieldIfContendedSafely()</code> / <code>yieldIfContendedSafely(sleepAfterYieldDelay)</code></li>\n</ul>\n<!-- [end-include:databaseType.md] -->\n<!-- [start-include:cursorWrapperType.md] -->\n",
+          "type": "module",
+          "displayName": "代理方法"
+        }
+      ],
+      "type": "module",
+      "displayName": "Database"
+    },
+    {
+      "textRaw": "CursorWrapper",
+      "name": "cursorwrapper",
+      "desc": "<p>CursorWrapper 是 <code>Database.rawQuery(...)</code>, <code>Database.query(...)</code> 等查询方法返回的游标包装对象.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"databaseType#m-rawquery\">Database.rawQuery</a></li>\n<li><a href=\"databaseType#m-query\">Database.query</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n<p><code>CursorWrapper</code> 委托了 Android <code>Cursor</code> 的全部能力, 并额外提供更适合脚本使用的读取方法. 查询返回游标后, 调用方应主动 <code>close()</code>; <code>single()</code> 与默认的 <code>all()</code> 会自动关闭游标.</p>\n<p>字段类型映射:</p>\n<ul>\n<li><code>FIELD_TYPE_NULL</code> -&gt; <code>null</code></li>\n<li><code>FIELD_TYPE_INTEGER</code> -&gt; <code>Long</code></li>\n<li><code>FIELD_TYPE_FLOAT</code> -&gt; <code>Double</code></li>\n<li><code>FIELD_TYPE_STRING</code> -&gt; <code>String</code></li>\n<li><code>FIELD_TYPE_BLOB</code> -&gt; <code>byte[]</code></li>\n</ul>\n",
+      "modules": [
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(index)",
+              "type": "method",
+              "name": "get",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**index** { [number](dataTypes#number) } - 列索引 ",
+                      "name": "**index**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "列索引"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "index"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按列索引读取当前行字段.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getByColumn",
+          "name": "[m]_getbycolumn",
+          "methods": [
+            {
+              "textRaw": "getByColumn(column)",
+              "type": "method",
+              "name": "getByColumn",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**column** { [string](dataTypes#string) } - 列名 ",
+                      "name": "**column**",
+                      "type": " [string](dataTypes#string) ",
+                      "desc": "列名"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "column"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按列名读取当前行字段. 列不存在时会由 <code>getColumnIndexOrThrow</code> 抛出异常.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getByColumn"
+        },
+        {
+          "textRaw": "[m] pick",
+          "name": "[m]_pick",
+          "methods": [
+            {
+              "textRaw": "pick()",
+              "type": "method",
+              "name": "pick",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>将当前行转换为对象, 键为列名.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] pick"
+        },
+        {
+          "textRaw": "[m] next",
+          "name": "[m]_next",
+          "methods": [
+            {
+              "textRaw": "next()",
+              "type": "method",
+              "name": "next",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>. 此方法不会自动关闭游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] next"
+        },
+        {
+          "textRaw": "[m] single",
+          "name": "[m]_single",
+          "methods": [
+            {
+              "textRaw": "single()",
+              "type": "method",
+              "name": "single",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回第一条记录并关闭游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] single"
+        },
+        {
+          "textRaw": "[m] all",
+          "name": "[m]_all",
+          "methods": [
+            {
+              "textRaw": "all(close?)",
+              "type": "method",
+              "name": "all",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ close = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "close = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [array](dataTypes#array) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [array](dataTypes#array) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "close?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] all"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let cursor = db.rawQuery(&#39;SELECT id, name FROM user&#39;, []);\nlet rows = cursor.all(); // 默认关闭 cursor.\n\nlet one = db.rawQuery(&#39;SELECT id, name FROM user LIMIT 1&#39;, []).single();\nconsole.log(one &amp;&amp; one.name);\n</code></pre>\n<!-- [end-include:cursorWrapperType.md] -->\n<!-- [start-include:mime.md] -->\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "CursorWrapper"
     },
     {
       "textRaw": "MIME",
@@ -22448,7 +24038,7 @@
               "textRaw": "mime(mimeStr)",
               "type": "method",
               "name": "mime",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#jsmime\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.mimeType); // text/html; charset=utf-8\nconsole.log(m.mimeTypeRefined); // text/html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"jsMimeType\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.mimeType); // text/html; charset=utf-8\nconsole.log(m.mimeTypeRefined); // text/html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
               "signatures": [
                 {
                   "params": [
@@ -22508,13 +24098,78 @@
         {
           "textRaw": "解析边界",
           "name": "解析边界",
-          "desc": "<ul>\n<li><code>mime</code> 不做文件扩展名推断; 传入 <code>png</code> 不等同于 <code>image/png</code>.</li>\n<li>参数解析使用 <code>;</code> 分隔, 并按 <code>=</code> 拆分键值. 当前实现期望单个参数片段最多只有一个 <code>=</code>.</li>\n<li><code>null</code> / <code>undefined</code> 会在转字符串阶段失败; 空白字符串会被底层 <code>MimeType</code> 拒绝.</li>\n<li>底层 <code>MimeType</code> 不是严格 MIME 语法校验器. 例如 <code>mime(&#39;jpg&#39;)</code> 这类无 <code>/</code> 的字符串仍可能被接受, 此时 <code>type</code> 来自输入, <code>subtype</code> 可能为 <code>*</code>.</li>\n<li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>\n</ul>\n<!-- [end-include:mime.md] -->\n<!-- [start-include:nanoid.md] -->\n",
+          "desc": "<ul>\n<li><code>mime</code> 不做文件扩展名推断; 传入 <code>png</code> 不等同于 <code>image/png</code>.</li>\n<li>参数解析使用 <code>;</code> 分隔, 并按 <code>=</code> 拆分键值. 当前实现期望单个参数片段最多只有一个 <code>=</code>.</li>\n<li><code>null</code> / <code>undefined</code> 会在转字符串阶段失败; 空白字符串会被底层 <code>MimeType</code> 拒绝.</li>\n<li>底层 <code>MimeType</code> 不是严格 MIME 语法校验器. 例如 <code>mime(&#39;jpg&#39;)</code> 这类无 <code>/</code> 的字符串仍可能被接受, 此时 <code>type</code> 来自输入, <code>subtype</code> 可能为 <code>*</code>.</li>\n<li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>\n</ul>\n<!-- [end-include:mime.md] -->\n<!-- [start-include:jsMimeType.md] -->\n",
           "type": "module",
           "displayName": "解析边界"
         }
       ],
       "type": "module",
       "displayName": "MIME"
+    },
+    {
+      "textRaw": "JsMime",
+      "name": "jsmime",
+      "desc": "<p>JsMime 是 <code>mime(mimeStr)</code> 返回的 MIME 解析结果对象.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/Mime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/JsMime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/Mime.kt</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"mime\">mime</a>(mimeStr)</li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[p] raw",
+          "name": "[p]_raw",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>原始 MIME 字符串.</p>\n",
+          "type": "module",
+          "displayName": "[p] raw"
+        },
+        {
+          "textRaw": "[p] type",
+          "name": "[p]_type",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>主类型, 如 <code>text</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] type"
+        },
+        {
+          "textRaw": "[p] subtype",
+          "name": "[p]_subtype",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>子类型, 如 <code>html</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] subtype"
+        },
+        {
+          "textRaw": "[p] mimeType",
+          "name": "[p]_mimetype",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>由 <code>type/subtype</code> 和有效参数重新拼接出的 MIME 字符串. 参数顺序沿用原始字符串中 <code>;</code> 后的顺序.</p>\n",
+          "type": "module",
+          "displayName": "[p] mimeType"
+        },
+        {
+          "textRaw": "[p] mimeTypeRefined",
+          "name": "[p]_mimetyperefined",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>仅包含主类型与子类型的 MIME 类型, 形如 <code>text/html</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] mimeTypeRefined"
+        },
+        {
+          "textRaw": "[p] parameters",
+          "name": "[p]_parameters",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>参数对象. 当前实现只解析 <code>;</code> 后包含 <code>=</code> 的片段, 并按 <code>key=value</code> 放入对象; 不含 <code>=</code> 的片段只会保留在 <code>mimeType</code> 字符串里, 不会进入 <code>parameters</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] parameters"
+        },
+        {
+          "textRaw": "解析边界",
+          "name": "解析边界",
+          "desc": "<ul>\n<li><code>mime</code> 不做文件扩展名推断; 传入 <code>png</code> 不等同于 <code>image/png</code>.</li>\n<li>参数解析使用 <code>;</code> 分隔, 并按 <code>=</code> 拆分键值. 当前实现期望单个参数片段最多只有一个 <code>=</code>.</li>\n<li><code>null</code> / <code>undefined</code> 会在转字符串阶段失败; 空白字符串会被底层 <code>MimeType</code> 拒绝.</li>\n<li>底层 <code>MimeType</code> 不是严格 MIME 语法校验器. 例如 <code>mime(&#39;jpg&#39;)</code> 这类无 <code>/</code> 的字符串仍可能被接受, 此时 <code>type</code> 来自输入, <code>subtype</code> 可能为 <code>*</code>.</li>\n<li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>\n</ul>\n",
+          "type": "module",
+          "displayName": "示例"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let m = mime(&#39;application/json; charset=utf-8; version=1; flag&#39;);\nconsole.log(m.type); // application\nconsole.log(m.subtype); // json\nconsole.log(m.parameters.charset); // utf-8\nconsole.log(m.parameters.flag); // undefined\n</code></pre>\n<!-- [end-include:jsMimeType.md] -->\n<!-- [start-include:nanoid.md] -->\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "JsMime"
     },
     {
       "textRaw": "NanoID",
@@ -22956,7 +24611,7 @@
         {
           "textRaw": "mode",
           "name": "mode",
-          "desc": "<p><code>mode</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>SURNAME</code> / <code>PLACE_NAME</code> / <code>PLACENAME</code>, 不是 <code>MODE_SURNAME</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid mode constant</code> 或 <code>Invalid mode name</code>.</p>\n<table>\n<thead>\n<tr>\n<th>常量</th>\n<th>字符串</th>\n<th>数值</th>\n<th>行为</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>MODE_NORMAL</code></td>\n<td><code>NORMAL</code></td>\n<td><code>0</code></td>\n<td>普通模式; 默认值</td>\n</tr>\n<tr>\n<td><code>MODE_SURNAME</code></td>\n<td><code>SURNAME</code></td>\n<td><code>1</code></td>\n<td>姓氏/复姓优先模式</td>\n</tr>\n<tr>\n<td><code>MODE_PLACE_NAME</code></td>\n<td><code>PLACE_NAME</code></td>\n<td><code>2</code></td>\n<td>地名模式常量</td>\n</tr>\n<tr>\n<td><code>MODE_PLACENAME</code></td>\n<td><code>PLACENAME</code></td>\n<td><code>2</code></td>\n<td>地名模式兼容别名</td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>注意: 当前 <code>convertRhino</code> 只对 <code>MODE_SURNAME</code> 做特殊分支. <code>MODE_PLACE_NAME</code> / <code>MODE_PLACENAME</code> 已暴露为常量, 但没有独立地名转换逻辑, 行为落回普通转换分支.</p>\n</blockquote>\n<!-- [end-include:pinyin.md] -->\n<!-- [start-include:pinyin4j.md] -->\n",
+          "desc": "<p><code>mode</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>SURNAME</code> / <code>PLACE_NAME</code> / <code>PLACENAME</code>, 不是 <code>MODE_SURNAME</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid mode constant</code> 或 <code>Invalid mode name</code>.</p>\n<table>\n<thead>\n<tr>\n<th>常量</th>\n<th>字符串</th>\n<th>数值</th>\n<th>行为</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>MODE_NORMAL</code></td>\n<td><code>NORMAL</code></td>\n<td><code>0</code></td>\n<td>普通模式; 默认值</td>\n</tr>\n<tr>\n<td><code>MODE_SURNAME</code></td>\n<td><code>SURNAME</code></td>\n<td><code>1</code></td>\n<td>姓氏/复姓优先模式</td>\n</tr>\n<tr>\n<td><code>MODE_PLACE_NAME</code></td>\n<td><code>PLACE_NAME</code></td>\n<td><code>2</code></td>\n<td>地名模式常量</td>\n</tr>\n<tr>\n<td><code>MODE_PLACENAME</code></td>\n<td><code>PLACENAME</code></td>\n<td><code>2</code></td>\n<td>地名模式兼容别名</td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>注意: 当前 <code>convertRhino</code> 只对 <code>MODE_SURNAME</code> 做特殊分支. <code>MODE_PLACE_NAME</code> / <code>MODE_PLACENAME</code> 已暴露为常量, 但没有独立地名转换逻辑, 行为落回普通转换分支.</p>\n</blockquote>\n<!-- [end-include:pinyin.md] -->\n<!-- [start-include:pinyin.md] -->\n",
           "type": "module",
           "displayName": "mode"
         }
@@ -22965,24 +24620,24 @@
       "displayName": "Pinyin - 汉语拼音"
     },
     {
-      "textRaw": "Pinyin4j - 汉语拼音",
-      "name": "pinyin4j_-_汉语拼音",
-      "desc": "<p><code>pinyin4j</code> 模块是对 pinyin4j 库的轻量封装, 用于将汉字转换为拼音字符串.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin4j/Pinyin4j.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin4j</p>\n\n<hr>\n",
+      "textRaw": "Pinyin - 汉语拼音",
+      "name": "pinyin_-_汉语拼音",
+      "desc": "<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持分词、姓氏模式、多音字和多种输出风格.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>, <code>runtime/api/augment/pinyin/Util.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin</p>\n\n<hr>\n",
       "modules": [
         {
-          "textRaw": "[@] pinyin4j",
-          "name": "[@]_pinyin4j",
+          "textRaw": "[@] pinyin",
+          "name": "[@]_pinyin",
           "methods": [
             {
-              "textRaw": "pinyin4j(str, options?)",
+              "textRaw": "pinyin(hans, options?)",
               "type": "method",
-              "name": "pinyin4j",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin4j(...)</code> 与 <a href=\"#m-of\">pinyin4j.of(...)</a> 等价.</p>\n",
+              "name": "pinyin",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin(...)</code> 与 <a href=\"#m-convert\">pinyin.convert(...)</a> 等价.</p>\n",
               "signatures": [
                 {
                   "params": [
                     {
-                      "name": "str"
+                      "name": "hans"
                     },
                     {
                       "name": "options?"
@@ -22993,22 +24648,22 @@
             }
           ],
           "type": "module",
-          "displayName": "[@] pinyin4j"
+          "displayName": "[@] pinyin"
         },
         {
-          "textRaw": "[m] of",
-          "name": "[m]_of",
+          "textRaw": "[m] convert",
+          "name": "[m]_convert",
           "methods": [
             {
-              "textRaw": "of(str, options?)",
+              "textRaw": "convert(hans, options?)",
               "type": "method",
-              "name": "of",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>separator</strong> / <strong>sep</strong> { <a href=\"dataTypes#string\">string</a> } - 分隔符, 默认空字符串</li>\n<li><strong>case</strong> / <strong>caseType</strong> { <a href=\"dataTypes#string\">string</a> | <code>HanyuPinyinCaseType</code> } - 大小写类型</li>\n<li><strong>tone</strong> / <strong>toneType</strong> { <a href=\"dataTypes#string\">string</a> | <code>HanyuPinyinToneType</code> } - 声调类型</li>\n<li><strong>v</strong> / <strong>vChar</strong> / <strong>vCharType</strong> { <a href=\"dataTypes#string\">string</a> | <code>HanyuPinyinVCharType</code> } - <code>ü</code> 的输出形式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将字符串中的 CJK 基本汉字范围 <code>\\u4E00..\\u9FA5</code> 转为拼音; 非该范围字符原样保留. 每个字符转换后都会追加一次分隔符, 最终结果调用 <code>trim()</code>.</p>\n<pre><code class=\"lang-js\">console.log(pinyin4j.of(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin4j.of(&#39;中文&#39;, { sep: &#39; &#39;, tone: &#39;WITH_TONE_NUMBER&#39; }));\nconsole.log(pinyin4j.of(&#39;中文&#39;, { tone: &#39;WITH_TONE_MARK&#39; }));\n</code></pre>\n",
+              "name": "convert",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>hans</strong> { <a href=\"dataTypes#string\">string</a> } - 待转换字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>style</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> | <code>PinyinStyle</code> } - 输出风格, 默认 <code>STYLE_TONE</code></li>\n<li><strong>mode</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> | <code>PinyinMode</code> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>\n<li><strong>segment</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用 Jieba 分词, 默认 <code>false</code></li>\n<li><strong>heteronym</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用多音字, 默认 <code>false</code></li>\n<li><strong>group</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否组合词组结果, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>返回二维数组. 每个汉字、词组或连续非汉字片段对应一个拼音候选数组. 返回数组额外绑定只读不可枚举的 <code>compact()</code> 方法; 该方法会对各组候选做笛卡尔组合, 返回二维组合结果.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.convert(&#39;重庆&#39;));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { heteronym: true }));\nconsole.log(pinyin.convert(&#39;朝阳东升&#39;, { segment: true, heteronym: true }).compact());\n</code></pre>\n<p>转换流程:</p>\n<ul>\n<li><code>hans</code> 会先转为字符串; 空字符串返回空数组.</li>\n<li><code>options</code> 不是 JavaScript 对象时会按空对象处理.</li>\n<li><code>segment: true</code> 时使用 Jieba <code>cutSmall(hans, 4)</code> 分词; 否则按连续汉字/非汉字分组.</li>\n<li>非汉字片段会原样保留为单项数组.</li>\n<li>词组优先查 <code>PhrasesDict</code>; 查不到时退回单字转换.</li>\n<li><code>heteronym: true</code> 时返回多音字候选; 单字分支会去重, 默认只取第一个候选.</li>\n<li><code>group: true</code> 只影响普通转换分支, 会把一个词组内各字候选拼接成一组候选字符串; <code>false</code> 时按字/词组拆成多组.</li>\n</ul>\n",
               "signatures": [
                 {
                   "params": [
                     {
-                      "name": "str"
+                      "name": "hans"
                     },
                     {
                       "name": "options?"
@@ -23016,62 +24671,31 @@
                   ]
                 }
               ]
-            },
-            {
-              "textRaw": "of(str, separator)",
-              "type": "method",
-              "name": "of",
-              "signatures": [
-                {
-                  "params": [
-                    {
-                      "textRaw": "**str** { [string](dataTypes#string) } ",
-                      "name": "**str**",
-                      "type": " [string](dataTypes#string) "
-                    },
-                    {
-                      "textRaw": "**separator** { [string](dataTypes#string) } ",
-                      "name": "**separator**",
-                      "type": " [string](dataTypes#string) "
-                    },
-                    {
-                      "textRaw": "<ins>**returns**</ins> { [string](dataTypes#string) } ",
-                      "name": "<ins>**returns**</ins>",
-                      "type": " [string](dataTypes#string) "
-                    }
-                  ]
-                },
-                {
-                  "params": [
-                    {
-                      "name": "str"
-                    },
-                    {
-                      "name": "separator"
-                    }
-                  ]
-                }
-              ],
-              "desc": "<p>第二个参数为字符串时, 会作为分隔符使用. 如果第二个参数不是字符串也不是 JavaScript 对象, 会按默认选项处理.</p>\n<blockquote>\n<p>注意: <code>separator</code> 会追加在每个字符之后, 最后只调用 <code>trim()</code>. 因此空格分隔符会去掉尾部空格, 但 <code>-</code> 等非空白分隔符会保留在末尾.</p>\n</blockquote>\n"
             }
           ],
           "type": "module",
-          "displayName": "[m] of"
+          "displayName": "[m] convert"
         },
         {
-          "textRaw": "[m] as",
-          "name": "[m]_as",
+          "textRaw": "[m] simple",
+          "name": "[m]_simple",
           "methods": [
             {
-              "textRaw": "as(str)",
+              "textRaw": "simple(str, enableNumericTone?, enableSegment?)",
               "type": "method",
-              "name": "as",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> } - 带数字声调的拼音字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将 <code>zhong1</code> / <code>lü4</code> / <code>nv3</code> / <code>u:3</code> 等数字声调写法转换为声调符号写法. 这是基于内置映射的片段替换器, 不会校验整串拼音; 未匹配或映射表没有的片段会保持原样.</p>\n<pre><code class=\"lang-js\">console.log(pinyin4j.as(&#39;zhong1wen2&#39;)); // zhōngwén\nconsole.log(pinyin4j.as(&#39;nv3&#39;)); // nǚ\nconsole.log(pinyin4j.as(&#39;u:4&#39;)); // ǜ\n</code></pre>\n",
+              "name": "simple",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ enableNumericTone = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>[ enableSegment = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>返回拼接后的简化拼音字符串. <code>enableNumericTone</code> 为 <code>true</code> 时使用 <code>STYLE_TONE2</code>, 否则使用 <code>STYLE_NORMAL</code>; <code>enableSegment</code> 对应 <code>segment</code> 选项.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.simple(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
                     {
                       "name": "str"
+                    },
+                    {
+                      "name": "enableNumericTone?"
+                    },
+                    {
+                      "name": "enableSegment?"
                     }
                   ]
                 }
@@ -23079,47 +24703,120 @@
             }
           ],
           "type": "module",
-          "displayName": "[m] as"
+          "displayName": "[m] simple"
         },
         {
-          "textRaw": "选项取值",
-          "name": "选项取值",
-          "modules": [
+          "textRaw": "[m] fromCodePoint",
+          "name": "[m]_fromcodepoint",
+          "methods": [
             {
-              "textRaw": "case / caseType",
-              "name": "case_/_casetype",
-              "desc": "<p>默认 <code>LOWERCASE</code>.</p>\n<ul>\n<li><code>LOWERCASE</code> / <code>LOW</code> / <code>L</code> / <code>0</code></li>\n<li><code>UPPERCASE</code> / <code>UP</code> / <code>U</code> / <code>1</code></li>\n</ul>\n<p>非法值会抛出 <code>Invalid case type</code>.</p>\n",
-              "type": "module",
-              "displayName": "case / caseType"
-            },
-            {
-              "textRaw": "tone / toneType",
-              "name": "tone_/_tonetype",
-              "desc": "<p>默认 <code>WITHOUT_TONE</code>.</p>\n<ul>\n<li><code>WITH_TONE_NUMBER</code> / <code>WITH_NUMBER</code> / <code>NUMBER</code> / <code>NUM</code></li>\n<li><code>WITHOUT_TONE</code> / <code>NO_TONE</code> / <code>NO</code> / <code>FALSE</code> / <code>0</code></li>\n<li><code>WITH_TONE_MARK</code> / <code>WITH_MARK</code> / <code>MARK</code> / <code>TRUE</code> / <code>1</code></li>\n</ul>\n<p>非法值会抛出 <code>Invalid tone type</code>.</p>\n",
-              "type": "module",
-              "displayName": "tone / toneType"
-            },
-            {
-              "textRaw": "v / vChar / vCharType",
-              "name": "v_/_vchar_/_vchartype",
-              "desc": "<p>默认 <code>WITH_V</code>; 当 <code>toneType</code> 为 <code>WITH_TONE_MARK</code> 且没有显式设置 vChar 时, 默认改为 <code>WITH_U_UNICODE</code>.</p>\n<ul>\n<li><code>WITH_U_AND_COLON</code> / <code>U_AND_COLON</code> / <code>U_COLON</code> / <code>U:</code></li>\n<li><code>WITH_V</code> / <code>V</code></li>\n<li><code>WITH_U_UNICODE</code> / <code>U_UNICODE</code> / <code>UNICODE</code> / <code>Ü</code></li>\n</ul>\n<p>非法值会抛出 <code>Invalid v char type</code>.</p>\n",
-              "type": "module",
-              "displayName": "v / vChar / vCharType"
+              "textRaw": "fromCodePoint(codePoint)",
+              "type": "method",
+              "name": "fromCodePoint",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>codePoint</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>按 Unicode code point 查询单字拼音. 返回字典中的原始拼音字符串; 不存在时返回 <code>null</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "codePoint"
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "type": "module",
-          "displayName": "选项取值"
+          "displayName": "[m] fromCodePoint"
         },
         {
-          "textRaw": "返回与边界",
-          "name": "返回与边界",
-          "desc": "<ul>\n<li>空字符串返回空字符串.</li>\n<li>单个汉字如果底层 pinyin4j 返回多个读音, 当前实现只取 <code>firstOrNull()</code>.</li>\n<li><code>of</code> 返回的是一维字符串, 不保留多音字候选结构; 需要二维候选时应使用 <a href=\"pinyin#m-convert\">pinyin.convert</a>.</li>\n<li>pinyin4j 库自身的非法格式组合异常不会被重新包装.</li>\n</ul>\n<!-- [end-include:pinyin4j.md] -->\n<!-- [start-include:opencc.md] -->\n",
+          "textRaw": "[m] fromPhrase",
+          "name": "[m]_fromphrase",
+          "methods": [
+            {
+              "textRaw": "fromPhrase(phrase)",
+              "type": "method",
+              "name": "fromPhrase",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>phrase</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>查询词组拼音字典, 返回按 <code>OrderIndex ASC</code> 排列的二维数组. 未命中时返回空数组.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "phrase"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
           "type": "module",
-          "displayName": "返回与边界"
+          "displayName": "[m] fromPhrase"
+        },
+        {
+          "textRaw": "[m] compare",
+          "name": "[m]_compare",
+          "methods": [
+            {
+              "textRaw": "compare(a, b)",
+              "type": "method",
+              "name": "compare",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前脚本入口源码是占位实现, 参数数量为 <code>1..2</code>, 返回空字符串. <code>PinyinCore.compare(...)</code> 内部存在排序逻辑, 但没有被该入口调用; 知识库回答中不应将 <code>pinyin.compare()</code> 描述为可用排序函数.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "a"
+                    },
+                    {
+                      "name": "b"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compare"
+        },
+        {
+          "textRaw": "[m] compact",
+          "name": "[m]_compact",
+          "methods": [
+            {
+              "textRaw": "compact(arr)",
+              "type": "method",
+              "name": "compact",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前脚本入口源码是占位实现, 参数数量为 <code>1..2</code>, 返回空字符串. <a href=\"#m-convert\">convert</a> 返回值上绑定的 <code>compact()</code> 方法由 <code>Util.compact</code> 另行绑定, 两者不是同一个实现.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">选项与常量</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "arr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compact"
+        },
+        {
+          "textRaw": "style",
+          "name": "style",
+          "desc": "<p><code>style</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>TONE</code> / <code>TONE2</code> 等枚举名, 不是 <code>STYLE_TONE</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid style constant</code> 或 <code>Invalid style name</code>.</p>\n<table>\n<thead>\n<tr>\n<th>常量</th>\n<th>字符串</th>\n<th>数值</th>\n<th>行为</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>STYLE_NORMAL</code></td>\n<td><code>NORMAL</code></td>\n<td><code>0</code></td>\n<td>普通风格, 去掉声调</td>\n</tr>\n<tr>\n<td><code>STYLE_TONE</code></td>\n<td><code>TONE</code></td>\n<td><code>1</code></td>\n<td>标准风格, 声调在韵母上; 默认值</td>\n</tr>\n<tr>\n<td><code>STYLE_TONE2</code></td>\n<td><code>TONE2</code></td>\n<td><code>2</code></td>\n<td>数字声调放在拼音末尾, 如 <code>zhong1</code></td>\n</tr>\n<tr>\n<td><code>STYLE_INITIALS</code></td>\n<td><code>INITIALS</code></td>\n<td><code>3</code></td>\n<td>仅保留声母</td>\n</tr>\n<tr>\n<td><code>STYLE_FIRST_LETTER</code></td>\n<td><code>FIRST_LETTER</code></td>\n<td><code>4</code></td>\n<td>仅保留首字母</td>\n</tr>\n<tr>\n<td><code>STYLE_TO3NE</code></td>\n<td><code>TO3NE</code></td>\n<td><code>5</code></td>\n<td>将声调数字嵌入声母之后的形式</td>\n</tr>\n</tbody>\n</table>\n",
+          "type": "module",
+          "displayName": "style"
+        },
+        {
+          "textRaw": "mode",
+          "name": "mode",
+          "desc": "<p><code>mode</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>SURNAME</code> / <code>PLACE_NAME</code> / <code>PLACENAME</code>, 不是 <code>MODE_SURNAME</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid mode constant</code> 或 <code>Invalid mode name</code>.</p>\n<table>\n<thead>\n<tr>\n<th>常量</th>\n<th>字符串</th>\n<th>数值</th>\n<th>行为</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>MODE_NORMAL</code></td>\n<td><code>NORMAL</code></td>\n<td><code>0</code></td>\n<td>普通模式; 默认值</td>\n</tr>\n<tr>\n<td><code>MODE_SURNAME</code></td>\n<td><code>SURNAME</code></td>\n<td><code>1</code></td>\n<td>姓氏/复姓优先模式</td>\n</tr>\n<tr>\n<td><code>MODE_PLACE_NAME</code></td>\n<td><code>PLACE_NAME</code></td>\n<td><code>2</code></td>\n<td>地名模式常量</td>\n</tr>\n<tr>\n<td><code>MODE_PLACENAME</code></td>\n<td><code>PLACENAME</code></td>\n<td><code>2</code></td>\n<td>地名模式兼容别名</td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>注意: 当前 <code>convertRhino</code> 只对 <code>MODE_SURNAME</code> 做特殊分支. <code>MODE_PLACE_NAME</code> / <code>MODE_PLACENAME</code> 已暴露为常量, 但没有独立地名转换逻辑, 行为落回普通转换分支.</p>\n</blockquote>\n<!-- [end-include:pinyin.md] -->\n<p>4j\n<!-- [start-include:opencc.md] --></p>\n",
+          "type": "module",
+          "displayName": "mode"
         }
       ],
       "type": "module",
-      "displayName": "Pinyin4j - 汉语拼音"
+      "displayName": "Pinyin - 汉语拼音"
     },
     {
       "textRaw": "OpenCC",
@@ -24311,7 +26008,7 @@
               "textRaw": "open(zipPath, options?)",
               "type": "method",
               "name": "open",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -24337,7 +26034,7 @@
               "textRaw": "zipFile(filePath, destZipPath, options?)",
               "type": "method",
               "name": "zipFile",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -24368,7 +26065,7 @@
               "textRaw": "zipFile(filePath, options)",
               "type": "method",
               "name": "zipFile",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -24394,7 +26091,7 @@
               "textRaw": "zipDir(filePath, destZipPath, options?)",
               "type": "method",
               "name": "zipDir",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -24425,7 +26122,7 @@
               "textRaw": "zipDir(filePath, options)",
               "type": "method",
               "name": "zipDir",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -24451,7 +26148,7 @@
               "textRaw": "zipFiles(filePathList, destZipPath, options?)",
               "type": "method",
               "name": "zipFiles",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
               "signatures": [
                 {
                   "params": [
@@ -24482,7 +26179,7 @@
               "textRaw": "zipFiles(filePathList, options)",
               "type": "method",
               "name": "zipFiles",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
               "signatures": [
                 {
                   "params": [
@@ -24508,7 +26205,7 @@
               "textRaw": "unzip(zipPath, destPath, options?)",
               "type": "method",
               "name": "unzip",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -24539,7 +26236,7 @@
               "textRaw": "unzip(zipPath, options)",
               "type": "method",
               "name": "unzip",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -24588,14 +26285,14 @@
         {
           "textRaw": "[p] zipParameters",
           "name": "[p]_zipparameters",
-          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html\">net.lingala.zip4j.model.ZipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"#zipoptions\">ZipOptions</a> 构造出的压缩参数.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html\">net.lingala.zip4j.model.ZipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的压缩参数.</p>\n",
           "type": "module",
           "displayName": "[p] zipParameters"
         },
         {
           "textRaw": "[p] unzipParameters",
           "name": "[p]_unzipparameters",
-          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html\">net.lingala.zip4j.model.UnzipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"#zipoptions\">ZipOptions</a> 构造出的解压参数.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html\">net.lingala.zip4j.model.UnzipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的解压参数.</p>\n",
           "type": "module",
           "displayName": "[p] unzipParameters"
         },
@@ -24616,9 +26313,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -24661,9 +26358,9 @@
                       "type": " [Iterable](dataTypes#iterable) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -24706,9 +26403,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -24751,9 +26448,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -24803,9 +26500,9 @@
                       "desc": "解压目标目录"
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "**[ newFileName ]** { [string](dataTypes#string) } - 解压后的新文件名 ",
@@ -25103,7 +26800,866 @@
         {
           "textRaw": "示例",
           "name": "示例",
-          "desc": "<pre><code class=\"lang-js\">let z = zip.zipFiles([\n    &#39;./logs/a.txt&#39;,\n    &#39;./logs/b.txt&#39;,\n], &#39;./logs.zip&#39;, {\n    password: &#39;secret&#39;,\n    compressionLevel: &#39;MAXIMUM&#39;,\n    aesKeyStrength: 256,\n    includeRootFolder: false,\n});\n\nconsole.log(z.isEncrypted());\nconsole.log(z.getFileHeaders().length);\n</code></pre>\n<!-- [end-include:zip.md] -->\n<!-- [start-include:media.md] -->\n",
+          "desc": "<pre><code class=\"lang-js\">let z = zip.zipFiles([\n    &#39;./logs/a.txt&#39;,\n    &#39;./logs/b.txt&#39;,\n], &#39;./logs.zip&#39;, {\n    password: &#39;secret&#39;,\n    compressionLevel: &#39;MAXIMUM&#39;,\n    aesKeyStrength: 256,\n    includeRootFolder: false,\n});\n\nconsole.log(z.isEncrypted());\nconsole.log(z.getFileHeaders().length);\n</code></pre>\n<!-- [end-include:zip.md] -->\n<!-- [start-include:zipOptionsType.md] -->\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "Zip"
+    },
+    {
+      "textRaw": "ZipOptions",
+      "name": "zipoptions",
+      "desc": "<p>ZipOptions 是 <code>zip</code> 模块的压缩 / 解压选项对象, 会被转换为 Zip4j 的 <code>ZipParameters</code> 和 <code>UnzipParameters</code>.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"zip#m-open\">zip.open</a>(zipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipfile\">zip.zipFile</a>(filePath, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipdir\">zip.zipDir</a>(filePath, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipfiles\">zip.zipFiles</a>(filePathList, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-unzip\">zip.unzip</a>(zipPath, destPath, <strong>options</strong>)</li>\n<li><a href=\"zipNativeObjectType#m-addfile\">ZipNativeObject.addFile</a>(filePath, <strong>options</strong>)</li>\n<li><a href=\"zipNativeObjectType#m-extractall\">ZipNativeObject.extractAll</a>(destPath, <strong>options</strong>)</li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipOptions</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "异常与边界",
+          "name": "异常与边界",
+          "desc": "<ul>\n<li><code>options</code> 必须是 JavaScript 对象; <code>null</code> / <code>undefined</code> 会按空对象处理.</li>\n<li><code>excludeFileFilter</code> 只能是 Zip4j <code>ExcludeFileFilter</code> 或 JavaScript 函数; 其他值会抛出参数异常.</li>\n<li><code>aesKeyStrength</code>, <code>compressionLevel</code>, <code>compressionMethod</code>, <code>encryptionMethod</code>, <code>symbolicLinkAction</code> 等枚举字段传入非法值时会抛出异常.</li>\n<li><code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持. 传入这些选项会抛出异常.</li>\n</ul>\n",
+          "type": "module",
+          "displayName": "示例"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let z = zip.zipFiles([\n    &#39;./logs/a.txt&#39;,\n    &#39;./logs/b.txt&#39;,\n], &#39;./logs.zip&#39;, {\n    password: &#39;secret&#39;,\n    compressionLevel: &#39;MAXIMUM&#39;,\n    aesKeyStrength: 256,\n    includeRootFolder: false,\n});\n\nconsole.log(z.isEncrypted());\n</code></pre>\n<!-- [end-include:zipOptionsType.md] -->\n<!-- [start-include:zip.md] -->\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "ZipOptions"
+    },
+    {
+      "textRaw": "Zip",
+      "name": "zip",
+      "desc": "<p><code>zip</code> 模块用于创建、读取、解压和修改 ZIP 文件. 底层使用 Zip4j.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/zip/Zip.kt</code>, <code>runtime/api/augment/zip/ZipNativeObject.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">zip</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] zip",
+          "name": "[@]_zip",
+          "methods": [
+            {
+              "textRaw": "zip(zipPath)",
+              "type": "method",
+              "name": "zip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p><code>zip(zipPath)</code> 与 <a href=\"#m-open\">zip.open(zipPath)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] zip"
+        },
+        {
+          "textRaw": "[m] open",
+          "name": "[m]_open",
+          "methods": [
+            {
+              "textRaw": "open(zipPath, options?)",
+              "type": "method",
+              "name": "open",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] open"
+        },
+        {
+          "textRaw": "[m] zipFile",
+          "name": "[m]_zipfile",
+          "methods": [
+            {
+              "textRaw": "zipFile(filePath, destZipPath, options?)",
+              "type": "method",
+              "name": "zipFile",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "zipFile(filePath, options)",
+              "type": "method",
+              "name": "zipFile",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFile"
+        },
+        {
+          "textRaw": "[m] zipDir",
+          "name": "[m]_zipdir",
+          "methods": [
+            {
+              "textRaw": "zipDir(filePath, destZipPath, options?)",
+              "type": "method",
+              "name": "zipDir",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "zipDir(filePath, options)",
+              "type": "method",
+              "name": "zipDir",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipDir"
+        },
+        {
+          "textRaw": "[m] zipFiles",
+          "name": "[m]_zipfiles",
+          "methods": [
+            {
+              "textRaw": "zipFiles(filePathList, destZipPath, options?)",
+              "type": "method",
+              "name": "zipFiles",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "destZipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "zipFiles(filePathList, options)",
+              "type": "method",
+              "name": "zipFiles",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFiles"
+        },
+        {
+          "textRaw": "[m] unzip",
+          "name": "[m]_unzip",
+          "methods": [
+            {
+              "textRaw": "unzip(zipPath, destPath, options?)",
+              "type": "method",
+              "name": "unzip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "unzip(zipPath, options)",
+              "type": "method",
+              "name": "unzip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] unzip"
+        },
+        {
+          "textRaw": "[p] name",
+          "name": "[p]_name",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>创建对象的操作名, 如 <code>open</code> / <code>zipFile</code> / <code>unzip</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] name"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>ZIP 文件的运行时解析路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] zipFile",
+          "name": "[p]_zipfile",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html\">net.lingala.zip4j.ZipFile</a> }</li>\n</ul>\n<p>底层 Zip4j 对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] zipFile"
+        },
+        {
+          "textRaw": "[p] options",
+          "name": "[p]_options",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>原始选项对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] options"
+        },
+        {
+          "textRaw": "[p] zipParameters",
+          "name": "[p]_zipparameters",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html\">net.lingala.zip4j.model.ZipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的压缩参数.</p>\n",
+          "type": "module",
+          "displayName": "[p] zipParameters"
+        },
+        {
+          "textRaw": "[p] unzipParameters",
+          "name": "[p]_unzipparameters",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html\">net.lingala.zip4j.model.UnzipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的解压参数.</p>\n",
+          "type": "module",
+          "displayName": "[p] unzipParameters"
+        },
+        {
+          "textRaw": "[m] addFile",
+          "name": "[m]_addfile",
+          "methods": [
+            {
+              "textRaw": "addFile(filePath, options?)",
+              "type": "method",
+              "name": "addFile",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**filePath** { [string](dataTypes#string) } ",
+                      "name": "**filePath**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
+                      "name": "**[",
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>添加文件到当前 ZIP.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFile"
+        },
+        {
+          "textRaw": "[m] addFiles",
+          "name": "[m]_addfiles",
+          "methods": [
+            {
+              "textRaw": "addFiles(filePathList, options?)",
+              "type": "method",
+              "name": "addFiles",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**filePathList** { [Iterable](dataTypes#iterable) } ",
+                      "name": "**filePathList**",
+                      "type": " [Iterable](dataTypes#iterable) "
+                    },
+                    {
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
+                      "name": "**[",
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFiles"
+        },
+        {
+          "textRaw": "[m] addFolder",
+          "name": "[m]_addfolder",
+          "methods": [
+            {
+              "textRaw": "addFolder(filePath, options?)",
+              "type": "method",
+              "name": "addFolder",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**filePath** { [string](dataTypes#string) } ",
+                      "name": "**filePath**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
+                      "name": "**[",
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>添加文件夹.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFolder"
+        },
+        {
+          "textRaw": "[m] extractAll",
+          "name": "[m]_extractall",
+          "methods": [
+            {
+              "textRaw": "extractAll(destPath, options?)",
+              "type": "method",
+              "name": "extractAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**destPath** { [string](dataTypes#string) } ",
+                      "name": "**destPath**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
+                      "name": "**[",
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>解压全部文件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractAll"
+        },
+        {
+          "textRaw": "[m] extractFile",
+          "name": "[m]_extractfile",
+          "methods": [
+            {
+              "textRaw": "extractFile(zipFilePath, destPath, options?, newFileName?)",
+              "type": "method",
+              "name": "extractFile",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**zipFilePath** { [string](dataTypes#string) } - ZIP 内部文件路径 ",
+                      "name": "**zipFilePath**",
+                      "type": " [string](dataTypes#string) ",
+                      "desc": "ZIP 内部文件路径"
+                    },
+                    {
+                      "textRaw": "**destPath** { [string](dataTypes#string) } - 解压目标目录 ",
+                      "name": "**destPath**",
+                      "type": " [string](dataTypes#string) ",
+                      "desc": "解压目标目录"
+                    },
+                    {
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
+                      "name": "**[",
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
+                    },
+                    {
+                      "textRaw": "**[ newFileName ]** { [string](dataTypes#string) } - 解压后的新文件名 ",
+                      "name": "**[",
+                      "desc": "newFileName ]** { [string](dataTypes#string) } - 解压后的新文件名"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "zipFilePath"
+                    },
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "newFileName?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>解压指定文件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractFile"
+        },
+        {
+          "textRaw": "[m] setPassword",
+          "name": "[m]_setpassword",
+          "methods": [
+            {
+              "textRaw": "setPassword(password)",
+              "type": "method",
+              "name": "setPassword",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**password** { [string](dataTypes#string) } ",
+                      "name": "**password**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "password"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>设置 ZIP 密码.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] setPassword"
+        },
+        {
+          "textRaw": "[m] getFileHeader",
+          "name": "[m]_getfileheader",
+          "methods": [
+            {
+              "textRaw": "getFileHeader(fileName)",
+              "type": "method",
+              "name": "getFileHeader",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**fileName** { [string](dataTypes#string) } ",
+                      "name": "**fileName**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [net.lingala.zip4j.model.FileHeader](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/FileHeader.html) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [net.lingala.zip4j.model.FileHeader](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/FileHeader.html) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>返回指定文件头.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeader"
+        },
+        {
+          "textRaw": "[m] getFileHeaders",
+          "name": "[m]_getfileheaders",
+          "methods": [
+            {
+              "textRaw": "getFileHeaders()",
+              "type": "method",
+              "name": "getFileHeaders",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [array](dataTypes#array) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [array](dataTypes#array) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回全部文件头数组.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeaders"
+        },
+        {
+          "textRaw": "[m] isEncrypted",
+          "name": "[m]_isencrypted",
+          "methods": [
+            {
+              "textRaw": "isEncrypted()",
+              "type": "method",
+              "name": "isEncrypted",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [boolean](dataTypes#boolean) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回 ZIP 是否加密.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isEncrypted"
+        },
+        {
+          "textRaw": "[m] removeFile",
+          "name": "[m]_removefile",
+          "methods": [
+            {
+              "textRaw": "removeFile(fileName)",
+              "type": "method",
+              "name": "removeFile",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**fileName** { [string](dataTypes#string) } ",
+                      "name": "**fileName**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>移除指定文件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeFile"
+        },
+        {
+          "textRaw": "[m] isValidZipFile",
+          "name": "[m]_isvalidzipfile",
+          "methods": [
+            {
+              "textRaw": "isValidZipFile()",
+              "type": "method",
+              "name": "isValidZipFile",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [boolean](dataTypes#boolean) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回是否为有效 ZIP 文件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isValidZipFile"
+        },
+        {
+          "textRaw": "[m] getPath",
+          "name": "[m]_getpath",
+          "methods": [
+            {
+              "textRaw": "getPath()",
+              "type": "method",
+              "name": "getPath",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [string](dataTypes#string) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [string](dataTypes#string) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回 ZIP 路径.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getPath"
+        },
+        {
+          "textRaw": "[m] getZipFile",
+          "name": "[m]_getzipfile",
+          "methods": [
+            {
+              "textRaw": "getZipFile()",
+              "type": "method",
+              "name": "getZipFile",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [net.lingala.zip4j.ZipFile](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [net.lingala.zip4j.ZipFile](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回底层 Zip4j 对象.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipOptions</p>\n\n<hr>\n<p><code>ZipOptions</code> 会被转换为 Zip4j 的 <code>ZipParameters</code> 和 <code>UnzipParameters</code>. 选项对象必须是 JavaScript 对象.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getZipFile"
+        },
+        {
+          "textRaw": "解压选项",
+          "name": "解压选项",
+          "desc": "<ul>\n<li><strong>password</strong> { <a href=\"dataTypes#string\">string</a> } - 解压加密 ZIP 时使用.</li>\n<li><strong>isExtractSymbolicLinks</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 当前源码读取此项, 默认 <code>true</code>; 但没有写回 <code>UnzipParameters</code>, 行为以 Zip4j 默认值为准.</li>\n</ul>\n<p>注: <code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持. 传入这些选项会抛出异常.</p>\n",
+          "type": "module",
+          "displayName": "示例"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let z = zip.zipFiles([\n    &#39;./logs/a.txt&#39;,\n    &#39;./logs/b.txt&#39;,\n], &#39;./logs.zip&#39;, {\n    password: &#39;secret&#39;,\n    compressionLevel: &#39;MAXIMUM&#39;,\n    aesKeyStrength: 256,\n    includeRootFolder: false,\n});\n\nconsole.log(z.isEncrypted());\nconsole.log(z.getFileHeaders().length);\n</code></pre>\n<!-- [end-include:zip.md] -->\n<p>NativeObjectType\n<!-- [start-include:media.md] --></p>\n",
           "type": "module",
           "displayName": "示例"
         }
@@ -25304,7 +27860,206 @@
               "params": []
             }
           ],
-          "desc": "<p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.\n<!-- [end-include:media.md] --></p>\n<p>info\n<!-- [start-include:e4x.md] --></p>\n"
+          "desc": "<p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.\n<!-- [end-include:media.md] --></p>\n<p>info\n<!-- [start-include:media.md] --></p>\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "多媒体 (Media)"
+    },
+    {
+      "textRaw": "多媒体 (Media)",
+      "name": "多媒体_(media)",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>media模块提供多媒体编程的支持. 目前仅支持音乐播放和媒体文件扫描. 后续会结合UI加入视频播放等功能.</p>\n<p>需要注意是, 使用该模块播放音乐时是在后台异步播放的, 在脚本结束后会自动结束播放, 因此可能需要插入诸如<code>sleep()</code>的语句来使脚本保持运行. 例如：</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//让音乐播放完\nsleep(media.getMusicDuration());\n</code></pre>",
+      "methods": [
+        {
+          "textRaw": "media.scanFile(path)",
+          "type": "method",
+          "name": "scanFile",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`path` {string} 媒体文件路径 ",
+                  "name": "path",
+                  "type": "string",
+                  "desc": "媒体文件路径"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "path"
+                }
+              ]
+            }
+          ],
+          "desc": "<p>扫描路径path的媒体文件, 将它加入媒体库中；或者如果该文件以及被删除, 则通知媒体库移除该文件.</p>\n<p>媒体库包括相册、音乐库等, 因此该函数可以用于把某个图片文件加入相册.</p>\n<pre><code>//请求截图\nrequestScreenCapture(false);\n//截图\nvar im = captureScreen();\nvar path = &quot;/sdcard/screenshot.png&quot;;\n//保存图片\nim.saveTo(path);\n//把图片加入相册\nmedia.scanFile(path);\n</code></pre>"
+        },
+        {
+          "textRaw": "media.playMusic(path[, volume, looping])",
+          "type": "method",
+          "name": "playMusic",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`path` {string} 音乐文件路径 ",
+                  "name": "path",
+                  "type": "string",
+                  "desc": "音乐文件路径"
+                },
+                {
+                  "textRaw": "`volume` {number} 播放音量, 为0~1的浮点数, 默认为1 ",
+                  "name": "volume",
+                  "type": "number",
+                  "desc": "播放音量, 为0~1的浮点数, 默认为1",
+                  "optional": true
+                },
+                {
+                  "textRaw": "`looping` {boolean} 是否循环播放, 如果looping为`true`则循环播放, 默认为`false` ",
+                  "name": "looping",
+                  "type": "boolean",
+                  "desc": "是否循环播放, 如果looping为`true`则循环播放, 默认为`false`",
+                  "optional": true
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "volume",
+                  "optional": true
+                },
+                {
+                  "name": "looping",
+                  "optional": true
+                }
+              ]
+            }
+          ],
+          "desc": "<p>播放音乐文件path. 该函数不会显示任何音乐播放界面. 如果文件不存在或者文件不是受支持的音乐格式, 则抛出<code>UncheckedIOException</code>异常.</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//让音乐播放完\nsleep(media.getMusicDuration());\n</code></pre><p>如果要循环播放音乐, 则使用looping参数：</p>\n<pre><code>\n</code></pre><p>//传递第三个参数为true以循环播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;, 1, true);\n//等待三次播放的时间\nsleep(media.getMusicDuration() * 3);</p>\n<pre><code>\n</code></pre><p>如果要使用音乐播放器播放音乐, 调用<code>app.viewFile(path)</code>函数.</p>\n"
+        },
+        {
+          "textRaw": "media.musicSeekTo(msec)",
+          "type": "method",
+          "name": "musicSeekTo",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`msec` {number} 毫秒数, 表示音乐进度 ",
+                  "name": "msec",
+                  "type": "number",
+                  "desc": "毫秒数, 表示音乐进度"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "msec"
+                }
+              ]
+            }
+          ],
+          "desc": "<p>把当前播放进度调整到时间msec的位置. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n<p>例如, 要把音乐调到1分钟的位置, 为<code>media.musicSeekTo(60 * 1000)</code>.</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//调整到30秒的位置\nmedia.musicSeekTo(30 * 1000);\n//等待音乐播放完成\nsleep(media.getMusicDuration() - 30 * 1000);\n</code></pre>"
+        },
+        {
+          "textRaw": "media.pauseMusic()",
+          "type": "method",
+          "name": "pauseMusic",
+          "desc": "<p>暂停音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.resumeMusic()",
+          "type": "method",
+          "name": "resumeMusic",
+          "desc": "<p>继续音乐播放. 如果当前没有播放过音乐, 则调用该函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.stopMusic()",
+          "type": "method",
+          "name": "stopMusic",
+          "desc": "<p>停止音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.isMusicPlaying()",
+          "type": "method",
+          "name": "isMusicPlaying",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {boolean} ",
+                  "name": "返回",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前是否正在播放音乐.</p>\n"
+        },
+        {
+          "textRaw": "media.getMusicDuration()",
+          "type": "method",
+          "name": "getMusicDuration",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {number} ",
+                  "name": "返回",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前音乐的时长. 单位毫秒.</p>\n"
+        },
+        {
+          "textRaw": "media.getMusicCurrentPosition()",
+          "type": "method",
+          "name": "getMusicCurrentPosition",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {number} ",
+                  "name": "返回",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.\n<!-- [end-include:media.md] --></p>\n<p>infoNativeObjectType\n<!-- [start-include:e4x.md] --></p>\n"
         }
       ],
       "type": "module",
@@ -26371,7 +29126,7 @@
         {
           "textRaw": "声明",
           "name": "声明",
-          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<p>Roadmap\n<!-- [start-include:qa.md] --></p>\n",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<p>Roadmap\n<!-- [start-include:runtimeApiIndex.md] --></p>\n",
           "type": "misc",
           "displayName": "声明"
         }

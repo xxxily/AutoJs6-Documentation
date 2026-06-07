@@ -1,0 +1,218 @@
+{
+  "source": "../api/cursorWrapperType.md",
+  "modules": [
+    {
+      "textRaw": "CursorWrapper",
+      "name": "cursorwrapper",
+      "desc": "<p>CursorWrapper 是 <code>Database.rawQuery(...)</code>, <code>Database.query(...)</code> 等查询方法返回的游标包装对象.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"databaseType#m-rawquery\">Database.rawQuery</a></li>\n<li><a href=\"databaseType#m-query\">Database.query</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n<p><code>CursorWrapper</code> 委托了 Android <code>Cursor</code> 的全部能力, 并额外提供更适合脚本使用的读取方法. 查询返回游标后, 调用方应主动 <code>close()</code>; <code>single()</code> 与默认的 <code>all()</code> 会自动关闭游标.</p>\n<p>字段类型映射:</p>\n<ul>\n<li><code>FIELD_TYPE_NULL</code> -&gt; <code>null</code></li>\n<li><code>FIELD_TYPE_INTEGER</code> -&gt; <code>Long</code></li>\n<li><code>FIELD_TYPE_FLOAT</code> -&gt; <code>Double</code></li>\n<li><code>FIELD_TYPE_STRING</code> -&gt; <code>String</code></li>\n<li><code>FIELD_TYPE_BLOB</code> -&gt; <code>byte[]</code></li>\n</ul>\n",
+      "modules": [
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(index)",
+              "type": "method",
+              "name": "get",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**index** { [number](dataTypes#number) } - 列索引 ",
+                      "name": "**index**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "列索引"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "index"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按列索引读取当前行字段.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getByColumn",
+          "name": "[m]_getbycolumn",
+          "methods": [
+            {
+              "textRaw": "getByColumn(column)",
+              "type": "method",
+              "name": "getByColumn",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**column** { [string](dataTypes#string) } - 列名 ",
+                      "name": "**column**",
+                      "type": " [string](dataTypes#string) ",
+                      "desc": "列名"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "column"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按列名读取当前行字段. 列不存在时会由 <code>getColumnIndexOrThrow</code> 抛出异常.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getByColumn"
+        },
+        {
+          "textRaw": "[m] pick",
+          "name": "[m]_pick",
+          "methods": [
+            {
+              "textRaw": "pick()",
+              "type": "method",
+              "name": "pick",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>将当前行转换为对象, 键为列名.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] pick"
+        },
+        {
+          "textRaw": "[m] next",
+          "name": "[m]_next",
+          "methods": [
+            {
+              "textRaw": "next()",
+              "type": "method",
+              "name": "next",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>. 此方法不会自动关闭游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] next"
+        },
+        {
+          "textRaw": "[m] single",
+          "name": "[m]_single",
+          "methods": [
+            {
+              "textRaw": "single()",
+              "type": "method",
+              "name": "single",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>返回第一条记录并关闭游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] single"
+        },
+        {
+          "textRaw": "[m] all",
+          "name": "[m]_all",
+          "methods": [
+            {
+              "textRaw": "all(close?)",
+              "type": "method",
+              "name": "all",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ close = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "close = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [array](dataTypes#array) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [array](dataTypes#array) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "close?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] all"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let cursor = db.rawQuery(&#39;SELECT id, name FROM user&#39;, []);\nlet rows = cursor.all(); // 默认关闭 cursor.\n\nlet one = db.rawQuery(&#39;SELECT id, name FROM user LIMIT 1&#39;, []).single();\nconsole.log(one &amp;&amp; one.name);\n</code></pre>\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "CursorWrapper"
+    }
+  ]
+}

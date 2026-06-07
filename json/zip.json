@@ -37,7 +37,7 @@
               "textRaw": "open(zipPath, options?)",
               "type": "method",
               "name": "open",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -63,7 +63,7 @@
               "textRaw": "zipFile(filePath, destZipPath, options?)",
               "type": "method",
               "name": "zipFile",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -94,7 +94,7 @@
               "textRaw": "zipFile(filePath, options)",
               "type": "method",
               "name": "zipFile",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\nzip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -120,7 +120,7 @@
               "textRaw": "zipDir(filePath, destZipPath, options?)",
               "type": "method",
               "name": "zipDir",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -151,7 +151,7 @@
               "textRaw": "zipDir(filePath, options)",
               "type": "method",
               "name": "zipDir",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> } - 目录路径</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -177,7 +177,7 @@
               "textRaw": "zipFiles(filePathList, destZipPath, options?)",
               "type": "method",
               "name": "zipFiles",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
               "signatures": [
                 {
                   "params": [
@@ -208,7 +208,7 @@
               "textRaw": "zipFiles(filePathList, options)",
               "type": "method",
               "name": "zipFiles",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>destZipPath</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>\n<ul>\n<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>\n<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>\n<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>\n</ul>\n",
               "signatures": [
                 {
                   "params": [
@@ -234,7 +234,7 @@
               "textRaw": "unzip(zipPath, destPath, options?)",
               "type": "method",
               "name": "unzip",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -265,7 +265,7 @@
               "textRaw": "unzip(zipPath, options)",
               "type": "method",
               "name": "unzip",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>destPath</strong> { <a href=\"dataTypes#string\">string</a> } - 解压目标目录</li>\n<li><strong>[ options ]</strong> { <a href=\"zipOptionsType\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"zipNativeObjectType\">ZipNativeObject</a> }</li>\n</ul>\n<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\nzip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -314,14 +314,14 @@
         {
           "textRaw": "[p] zipParameters",
           "name": "[p]_zipparameters",
-          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html\">net.lingala.zip4j.model.ZipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"#zipoptions\">ZipOptions</a> 构造出的压缩参数.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html\">net.lingala.zip4j.model.ZipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的压缩参数.</p>\n",
           "type": "module",
           "displayName": "[p] zipParameters"
         },
         {
           "textRaw": "[p] unzipParameters",
           "name": "[p]_unzipparameters",
-          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html\">net.lingala.zip4j.model.UnzipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"#zipoptions\">ZipOptions</a> 构造出的解压参数.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html\">net.lingala.zip4j.model.UnzipParameters</a> }</li>\n</ul>\n<p>由 <a href=\"zipOptionsType\">ZipOptions</a> 构造出的解压参数.</p>\n",
           "type": "module",
           "displayName": "[p] unzipParameters"
         },
@@ -342,9 +342,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -387,9 +387,9 @@
                       "type": " [Iterable](dataTypes#iterable) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -432,9 +432,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -477,9 +477,9 @@
                       "type": " [string](dataTypes#string) "
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
@@ -529,9 +529,9 @@
                       "desc": "解压目标目录"
                     },
                     {
-                      "textRaw": "**[ options ]** { [ZipOptions](#zipoptions) } ",
+                      "textRaw": "**[ options ]** { [ZipOptions](zipOptionsType) } ",
                       "name": "**[",
-                      "desc": "options ]** { [ZipOptions](#zipoptions) }"
+                      "desc": "options ]** { [ZipOptions](zipOptionsType) }"
                     },
                     {
                       "textRaw": "**[ newFileName ]** { [string](dataTypes#string) } - 解压后的新文件名 ",

@@ -1,0 +1,1243 @@
+{
+  "source": "../api/databaseType.md",
+  "modules": [
+    {
+      "textRaw": "Database",
+      "name": "database",
+      "desc": "<p>Database 是 <code>sqlite.open(...)</code> 返回的 SQLite 数据库包装对象.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/sqlite/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Transaction.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/TransactionCallback.java</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"sqlite#m-open\">sqlite.open</a></li>\n<li><a href=\"cursorWrapperType\">CursorWrapper</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 继承 Android <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时 <code>closeableManager</code>. 脚本结束时可被统一关闭, 但长期运行脚本仍建议主动调用 <code>close()</code>.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
+      "modules": [
+        {
+          "textRaw": "[m] execSQL",
+          "name": "[m]_execsql",
+          "methods": [
+            {
+              "textRaw": "execSQL(sql)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            },
+            {
+              "textRaw": "execSQL(sql, bindArgs)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] execSQL"
+        },
+        {
+          "textRaw": "[m] rawQuery",
+          "name": "[m]_rawquery",
+          "methods": [
+            {
+              "textRaw": "rawQuery(sql, selectionArgs)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            },
+            {
+              "textRaw": "rawQuery(sql, selectionArgs, cancellationSignal)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQuery"
+        },
+        {
+          "textRaw": "[m] rawQueryWithFactory",
+          "name": "[m]_rawquerywithfactory",
+          "methods": [
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致.</p>\n"
+            },
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQueryWithFactory"
+        },
+        {
+          "textRaw": "[m] query",
+          "name": "[m]_query",
+          "methods": [
+            {
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
+              "type": "method",
+              "name": "query",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标.</p>\n"
+            },
+            {
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "query",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] query"
+        },
+        {
+          "textRaw": "[m] queryWithFactory",
+          "name": "[m]_querywithfactory",
+          "methods": [
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](cursorWrapperType) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] queryWithFactory"
+        },
+        {
+          "textRaw": "[m] insert",
+          "name": "[m]_insert",
+          "methods": [
+            {
+              "textRaw": "insert(table, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>\n"
+            },
+            {
+              "textRaw": "insert(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insert"
+        },
+        {
+          "textRaw": "[m] insertOrThrow",
+          "name": "[m]_insertorthrow",
+          "methods": [
+            {
+              "textRaw": "insertOrThrow(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insertOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertOrThrow"
+        },
+        {
+          "textRaw": "[m] insertWithOnConflict",
+          "name": "[m]_insertwithonconflict",
+          "methods": [
+            {
+              "textRaw": "insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)",
+              "type": "method",
+              "name": "insertWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**conflictAlgorithm** { [number](dataTypes#number) } - Android `SQLiteDatabase.CONFLICT_*` 常量值 ",
+                      "name": "**conflictAlgorithm**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "Android `SQLiteDatabase.CONFLICT_*` 常量值"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertWithOnConflict"
+        },
+        {
+          "textRaw": "[m] replace",
+          "name": "[m]_replace",
+          "methods": [
+            {
+              "textRaw": "replace(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replace",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replace"
+        },
+        {
+          "textRaw": "[m] replaceOrThrow",
+          "name": "[m]_replaceorthrow",
+          "methods": [
+            {
+              "textRaw": "replaceOrThrow(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replaceOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replaceOrThrow"
+        },
+        {
+          "textRaw": "[m] update",
+          "name": "[m]_update",
+          "methods": [
+            {
+              "textRaw": "update(table, values, whereClause, whereArgs)",
+              "type": "method",
+              "name": "update",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 受影响行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "受影响行数"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] update"
+        },
+        {
+          "textRaw": "[m] updateWithOnConflict",
+          "name": "[m]_updatewithonconflict",
+          "methods": [
+            {
+              "textRaw": "updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)",
+              "type": "method",
+              "name": "updateWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] updateWithOnConflict"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(table, whereClause, whereArgs)",
+              "type": "method",
+              "name": "delete",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 删除行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "删除行数"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] transaction",
+          "name": "[m]_transaction",
+          "methods": [
+            {
+              "textRaw": "transaction(transactionCallback, exclusive?)",
+              "type": "method",
+              "name": "transaction",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**transactionCallback** { [function](dataTypes#function) } ",
+                      "name": "**transactionCallback**",
+                      "type": " [function](dataTypes#function) "
+                    },
+                    {
+                      "textRaw": "**[ exclusive = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "exclusive = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [EventEmitter](eventEmitterType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [EventEmitter](eventEmitterType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "transactionCallback"
+                    },
+                    {
+                      "name": "exclusive?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>同步执行事务并返回事件发射器. <code>transactionCallback</code> 会收到 <code>Transaction</code> 对象; 正常执行后内部调用 <code>transaction.succeed()</code>, 最终调用 <code>transaction.end()</code>.</p>\n<p>事务事件:</p>\n<ul>\n<li><code>begin</code> - 事务开始</li>\n<li><code>commit</code> - 事务成功提交</li>\n<li><code>rollback</code> - 事务回滚</li>\n<li><code>end</code> - 事务结束</li>\n<li><code>error</code> - 回调抛出异常时触发</li>\n</ul>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] transaction"
+        },
+        {
+          "textRaw": "[m] close",
+          "name": "[m]_close",
+          "methods": [
+            {
+              "textRaw": "close()",
+              "type": "method",
+              "name": "close",
+              "desc": "<p>关闭底层数据库连接, 并从运行时 <code>closeableManager</code> 中移除.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] close"
+        },
+        {
+          "textRaw": "代理方法",
+          "name": "代理方法",
+          "desc": "<p>当前 <code>Database</code> 还暴露以下 Android <code>SQLiteDatabase</code> 代理方法:</p>\n<ul>\n<li><code>acquireReference()</code> / <code>releaseReference()</code></li>\n<li><code>beginTransaction()</code> / <code>beginTransactionNonExclusive()</code> / <code>beginTransactionWithListener(listener)</code> / <code>beginTransactionWithListenerNonExclusive(listener)</code></li>\n<li><code>endTransaction()</code> / <code>setTransactionSuccessful()</code> / <code>inTransaction()</code></li>\n<li><code>compileStatement(sql)</code> / <code>validateSql(sql, cancellationSignal)</code></li>\n<li><code>disableWriteAheadLogging()</code> / <code>enableWriteAheadLogging()</code> / <code>isWriteAheadLoggingEnabled()</code></li>\n<li><code>getAttachedDbs()</code> / <code>getMaximumSize()</code> / <code>getPageSize()</code> / <code>getPath()</code> / <code>getVersion()</code></li>\n<li><code>isDatabaseIntegrityOk()</code> / <code>isDbLockedByCurrentThread()</code> / <code>isOpen()</code> / <code>isReadOnly()</code></li>\n<li><code>needUpgrade(newVersion)</code></li>\n<li><code>setForeignKeyConstraintsEnabled(enable)</code> / <code>setLocale(locale)</code> / <code>setMaxSqlCacheSize(cacheSize)</code></li>\n<li><code>setMaximumSize(numBytes)</code> / <code>setPageSize(numBytes)</code> / <code>setVersion(version)</code></li>\n<li><code>yieldIfContendedSafely()</code> / <code>yieldIfContendedSafely(sleepAfterYieldDelay)</code></li>\n</ul>\n",
+          "type": "module",
+          "displayName": "代理方法"
+        }
+      ],
+      "type": "module",
+      "displayName": "Database"
+    }
+  ]
+}

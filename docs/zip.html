@@ -25,6 +25,8 @@
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
 <li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
 <li><a class="nav-documentationRoadmap" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
+<li><a class="nav-runtimeApiIndex" href="runtimeApiIndex.html">Runtime API Index - 运行时 API 索引</a></li>
+<li><a class="nav-permissionCapabilityMatrix" href="permissionCapabilityMatrix.html">Permission Capability Matrix - 权限能力矩阵</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -144,13 +146,18 @@
 <li><a class="nav-cryptoKeyType" href="cryptoKeyType.html">CryptoKey</a></li>
 <li><a class="nav-cryptoKeyPairType" href="cryptoKeyPairType.html">CryptoKeyPair</a></li>
 <li><a class="nav-consoleBuildOptionsType" href="consoleBuildOptionsType.html">ConsoleBuildOptions</a></li>
+<li><a class="nav-cursorWrapperType" href="cursorWrapperType.html">CursorWrapper</a></li>
+<li><a class="nav-databaseType" href="databaseType.html">Database</a></li>
 <li><a class="nav-httpRequestBuilderOptionsType" href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></li>
 <li><a class="nav-httpRequestHeadersType" href="httpRequestHeadersType.html">HttpRequestHeaders</a></li>
 <li><a class="nav-httpResponseBodyType" href="httpResponseBodyType.html">HttpResponseBody</a></li>
 <li><a class="nav-httpResponseHeadersType" href="httpResponseHeadersType.html">HttpResponseHeaders</a></li>
 <li><a class="nav-httpResponseType" href="httpResponseType.html">HttpResponse</a></li>
+<li><a class="nav-httpSaveResultType" href="httpSaveResultType.html">HttpSaveResult</a></li>
 <li><a class="nav-injectableWebClientType" href="injectableWebClientType.html">InjectableWebClient</a></li>
 <li><a class="nav-injectableWebViewType" href="injectableWebViewType.html">InjectableWebView</a></li>
+<li><a class="nav-jsMimeType" href="jsMimeType.html">JsMime</a></li>
+<li><a class="nav-mediainfoNativeObjectType" href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></li>
 <li><a class="nav-noticeOptionsType" href="noticeOptionsType.html">NoticeOptions</a></li>
 <li><a class="nav-noticeChannelOptionsType" href="noticeChannelOptionsType.html">NoticeChannelOptions</a></li>
 <li><a class="nav-noticePresetConfigurationType" href="noticePresetConfigurationType.html">NoticePresetConfiguration</a></li>
@@ -162,6 +169,8 @@
 <li><a class="nav-opencvRectType" href="opencvRectType.html">OpenCVRect</a></li>
 <li><a class="nav-opencvSizeType" href="opencvSizeType.html">OpenCVSize</a></li>
 <li><a class="nav-openCCConversionType" href="openCCConversionType.html">OpenCCConversion</a></li>
+<li><a class="nav-zipNativeObjectType" href="zipNativeObjectType.html">ZipNativeObject</a></li>
+<li><a class="nav-zipOptionsType" href="zipOptionsType.html">ZipOptions</a></li>
 </ul>
 <div class="line"></div>
 
@@ -302,8 +311,8 @@
 <p><strong><code>6.7.0</code></strong></p>
 <ul>
 <li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 文件路径, 不可为空</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#zip_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>
 <h2>[m] zipFile<span><a class="mark" href="#zip_m_zipfile" id="zip_m_zipfile">#</a></span></h2>
@@ -313,8 +322,8 @@
 <ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#zip_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>
 <pre><code class="lang-js">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);
@@ -327,8 +336,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目录路径</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#zip_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>
 <h2>[m] zipFiles<span><a class="mark" href="#zip_m_zipfiles" id="zip_m_zipfiles">#</a></span></h2>
@@ -338,8 +347,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> } - 文件路径列表</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#zip_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>
 <ul>
@@ -354,8 +363,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#zip_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>
 <pre><code class="lang-js">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);
@@ -390,17 +399,17 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html">net.lingala.zip4j.model.ZipParameters</a></span> }</li>
 </ul>
-</div><p>由 <a href="#zip_zipoptions">ZipOptions</a> 构造出的压缩参数.</p>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的压缩参数.</p>
 <h2>[p] unzipParameters<span><a class="mark" href="#zip_p_unzipparameters" id="zip_p_unzipparameters">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html">net.lingala.zip4j.model.UnzipParameters</a></span> }</li>
 </ul>
-</div><p>由 <a href="#zip_zipoptions">ZipOptions</a> 构造出的解压参数.</p>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的解压参数.</p>
 <h2>[m] addFile<span><a class="mark" href="#zip_m_addfile" id="zip_m_addfile">#</a></span></h2>
 <h3>addFile(filePath, options?)<span><a class="mark" href="#zip_addfile_filepath_options" id="zip_addfile_filepath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加文件到当前 ZIP.</p>
@@ -408,7 +417,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>addFiles(filePathList, options?)<span><a class="mark" href="#zip_addfiles_filepathlist_options" id="zip_addfiles_filepathlist_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>
@@ -416,7 +425,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>addFolder(filePath, options?)<span><a class="mark" href="#zip_addfolder_filepath_options" id="zip_addfolder_filepath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加文件夹.</p>
@@ -424,7 +433,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>extractAll(destPath, options?)<span><a class="mark" href="#zip_extractall_destpath_options" id="zip_extractall_destpath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>解压全部文件.</p>
@@ -433,7 +442,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <div class="signature"><ul>
 <li><strong>zipFilePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 内部文件路径</li>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#zip_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><strong>[ newFileName ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压后的新文件名</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>

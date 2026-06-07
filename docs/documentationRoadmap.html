@@ -25,6 +25,8 @@
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
 <li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
 <li><a class="nav-documentationRoadmap active" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
+<li><a class="nav-runtimeApiIndex" href="runtimeApiIndex.html">Runtime API Index - 运行时 API 索引</a></li>
+<li><a class="nav-permissionCapabilityMatrix" href="permissionCapabilityMatrix.html">Permission Capability Matrix - 权限能力矩阵</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -144,13 +146,18 @@
 <li><a class="nav-cryptoKeyType" href="cryptoKeyType.html">CryptoKey</a></li>
 <li><a class="nav-cryptoKeyPairType" href="cryptoKeyPairType.html">CryptoKeyPair</a></li>
 <li><a class="nav-consoleBuildOptionsType" href="consoleBuildOptionsType.html">ConsoleBuildOptions</a></li>
+<li><a class="nav-cursorWrapperType" href="cursorWrapperType.html">CursorWrapper</a></li>
+<li><a class="nav-databaseType" href="databaseType.html">Database</a></li>
 <li><a class="nav-httpRequestBuilderOptionsType" href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></li>
 <li><a class="nav-httpRequestHeadersType" href="httpRequestHeadersType.html">HttpRequestHeaders</a></li>
 <li><a class="nav-httpResponseBodyType" href="httpResponseBodyType.html">HttpResponseBody</a></li>
 <li><a class="nav-httpResponseHeadersType" href="httpResponseHeadersType.html">HttpResponseHeaders</a></li>
 <li><a class="nav-httpResponseType" href="httpResponseType.html">HttpResponse</a></li>
+<li><a class="nav-httpSaveResultType" href="httpSaveResultType.html">HttpSaveResult</a></li>
 <li><a class="nav-injectableWebClientType" href="injectableWebClientType.html">InjectableWebClient</a></li>
 <li><a class="nav-injectableWebViewType" href="injectableWebViewType.html">InjectableWebView</a></li>
+<li><a class="nav-jsMimeType" href="jsMimeType.html">JsMime</a></li>
+<li><a class="nav-mediainfoNativeObjectType" href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></li>
 <li><a class="nav-noticeOptionsType" href="noticeOptionsType.html">NoticeOptions</a></li>
 <li><a class="nav-noticeChannelOptionsType" href="noticeChannelOptionsType.html">NoticeChannelOptions</a></li>
 <li><a class="nav-noticePresetConfigurationType" href="noticePresetConfigurationType.html">NoticePresetConfiguration</a></li>
@@ -162,6 +169,8 @@
 <li><a class="nav-opencvRectType" href="opencvRectType.html">OpenCVRect</a></li>
 <li><a class="nav-opencvSizeType" href="opencvSizeType.html">OpenCVSize</a></li>
 <li><a class="nav-openCCConversionType" href="openCCConversionType.html">OpenCCConversion</a></li>
+<li><a class="nav-zipNativeObjectType" href="zipNativeObjectType.html">ZipNativeObject</a></li>
+<li><a class="nav-zipOptionsType" href="zipOptionsType.html">ZipOptions</a></li>
 </ul>
 <div class="line"></div>
 
@@ -282,6 +291,10 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <li>[x] 更新导航、全量文档、部署进度、更新日志和静态 HTML / JSON 输出.</li>
 <li>[x] 修复生成器版本来源与失败检查, 避免硬编码本地 Windows 路径和吞掉 Node 生成失败.</li>
 <li>[x] 将 <code>js-yaml</code> 升级到 <code>3.14.2</code>, 消除对应生成器依赖风险.</li>
+<li>[x] 新增 <a href="runtimeApiIndex.html">Runtime API Index - 运行时 API 索引</a>, 对照 <code>ScriptRuntime.kt</code> 记录所有运行时注入对象、<code>$</code> 别名、嵌套对象、源码路径和文档入口.</li>
+<li>[x] 新增 <a href="permissionCapabilityMatrix.html">Permission Capability Matrix - 权限能力矩阵</a>, 集中记录权限、Android 版本、Root/Shizuku/无障碍等敏感能力边界.</li>
+<li>[x] 新增机器可读运行时索引 <code>json/runtimeApiIndexData.json</code>, 供后续知识库构建直接读取模块、类型、权限和旧文档风险.</li>
+<li>[x] 将 <code>ZipOptions</code>, <code>ZipNativeObject</code>, <code>Database</code>, <code>CursorWrapper</code>, <code>HttpSaveResult</code>, <code>JsMime</code>, <code>MediainfoNativeObject</code> 拆为独立类型页并接入导航.</li>
 </ul>
 </div><hr>
 <h2>仍需优先补齐<span><a class="mark" href="#documentationroadmap_2" id="documentationroadmap_2">#</a></span></h2>
@@ -335,11 +348,11 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 </ul>
 </div><h3>P2: 类型页与知识库结构化<span><a class="mark" href="#documentationroadmap_p2" id="documentationroadmap_p2">#</a></span></h3>
 <div class="signature"><ul>
-<li>[ ] 为高频类型补齐独立页面: <code>ZipOptions</code>, <code>ZipNativeObject</code>, <code>Database</code>, <code>CursorWrapper</code>, <code>HttpSaveResult</code>, <code>JsMime</code>, <code>MediainfoNativeObject</code>.</li>
-<li>[ ] 为所有运行时注入模块建立机器可读索引: 模块名、版本、源码路径、方法名、参数、返回值、示例.</li>
-<li>[ ] 为所有页面补充 &quot;源码依据&quot; 小节, 便于知识库回答时回链权威来源.</li>
-<li>[ ] 为权限敏感能力补充 Android 版本、权限、Shizuku/Root/无障碍依赖.</li>
-<li>[ ] 清理旧 Auto.js 4.x 文档残留, 标记 AutoJs6 中已删除、替换或行为变化的 API.</li>
+<li>[x] 为高频类型补齐独立页面: <code>ZipOptions</code>, <code>ZipNativeObject</code>, <code>Database</code>, <code>CursorWrapper</code>, <code>HttpSaveResult</code>, <code>JsMime</code>, <code>MediainfoNativeObject</code>.</li>
+<li>[x] 为所有运行时注入模块建立机器可读索引: 模块名、版本、源码路径、文档入口、方法摘要、关键类型和权限分类; 详细参数、返回值与示例继续回链到已校对页面.</li>
+<li>[x] 为 P0 / P1 / P2 已校对页面补充 &quot;源码依据&quot; 小节, 便于知识库回答时回链权威来源.</li>
+<li>[x] 为权限敏感能力补充 Android 版本、权限、Shizuku/Root/无障碍依赖.</li>
+<li>[x] 清理 P0 / P1 / P2 范围内旧 Auto.js 4.x 文档残留, 标记 AutoJs6 中已删除、替换或行为变化的 API; 未校对旧章节已在 <a href="runtimeApiIndex.html">运行时 API 索引</a> 中标记为历史背景风险.</li>
 </ul>
 </div><hr>
 <h2>覆盖矩阵<span><a class="mark" href="#documentationroadmap_3" id="documentationroadmap_3">#</a></span></h2>
@@ -363,154 +376,169 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <td>每轮更新后同步勾选状态</td>
 </tr>
 <tr>
+<td><a href="runtimeApiIndex.html">Runtime API Index</a></td>
+<td><code>[x]</code> P2 已新增</td>
+<td>后续版本变更时重新对照 <code>ScriptRuntime.kt</code></td>
+</tr>
+<tr>
+<td><a href="permissionCapabilityMatrix.html">Permission Capability Matrix</a></td>
+<td><code>[x]</code> P2 已新增</td>
+<td>后续权限或 target SDK 变化时更新</td>
+</tr>
+<tr>
+<td><code>json/runtimeApiIndexData.json</code></td>
+<td><code>[x]</code> P2 已新增</td>
+<td>后续知识库 ingest 前可直接消费</td>
+</tr>
+<tr>
 <td><a href="cvt.html">Cvt</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="fmt.html">Fmt</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="sqlite.html">SQLite</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 独立类型页</td>
+<td>已拆分 <a href="databaseType.html">Database</a> / <a href="cursorWrapperType.html">CursorWrapper</a></td>
 </tr>
 <tr>
 <td><a href="zip.html">Zip</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 独立类型页</td>
+<td>已拆分 <a href="zipOptionsType.html">ZipOptions</a> / <a href="zipNativeObjectType.html">ZipNativeObject</a></td>
 </tr>
 <tr>
 <td><a href="mediainfo.html">MediaInfo</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 独立类型页</td>
+<td>已拆分 <a href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></td>
 </tr>
 <tr>
 <td><a href="mime.html">MIME</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 独立类型页</td>
+<td>已拆分 <a href="jsMimeType.html">JsMime</a></td>
 </tr>
 <tr>
 <td><a href="nanoid.html">NanoID</a></td>
 <td><code>[x]</code> 基础覆盖</td>
-<td>增加随机源与参数边界说明</td>
+<td>后续增加随机源与参数边界说明</td>
 </tr>
 <tr>
 <td><a href="sysprops.html">Sysprops</a></td>
 <td><code>[x]</code> 基础覆盖</td>
-<td>增加权限与过滤说明</td>
+<td>后续增加权限与过滤说明</td>
 </tr>
 <tr>
 <td><a href="pinyin.html">Pinyin</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="pinyin4j.html">Pinyin4j</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="http.html">HTTP</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="httpResponseType.html">HttpResponse</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="httpResponseBodyType.html">HttpResponseBody</a></td>
 <td><code>[x]</code> P0 源码校对完成</td>
-<td>P2 独立 <code>HttpSaveResult</code> 类型页</td>
+<td>已拆分 <a href="httpSaveResultType.html">HttpSaveResult</a></td>
 </tr>
 <tr>
 <td><a href="global.html">Global</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="automator.html">Automator</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 权限/动作矩阵</td>
+<td>已纳入 P2 权限/动作矩阵</td>
 </tr>
 <tr>
 <td><a href="uiSelectorType.html">UiSelector</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="uiObjectType.html">UiObject</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="app.html">App</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 Intent 选项类型页</td>
+<td>后续类型拆分候选: Intent 选项</td>
 </tr>
 <tr>
 <td><a href="autojs.html">AutoJs6</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 机器可读索引</td>
+<td>已纳入 P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="device.html">Device</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 权限/Android 版本矩阵</td>
+<td>已纳入 P2 权限/Android 版本矩阵</td>
 </tr>
 <tr>
 <td><a href="files.html">Files</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 文件对象类型页</td>
+<td>后续类型拆分候选: 文件对象</td>
 </tr>
 <tr>
 <td><a href="engines.html">Engines</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 <code>ExecutionConfig</code> 类型页</td>
+<td>后续类型拆分候选: <code>ExecutionConfig</code></td>
 </tr>
 <tr>
 <td><a href="tasks.html">Tasks</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 <code>TimedTask</code> / <code>IntentTask</code> 类型页</td>
+<td>后续类型拆分候选: <code>TimedTask</code> / <code>IntentTask</code></td>
 </tr>
 <tr>
 <td><a href="ui.html">UI</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 UI 组件索引</td>
+<td>后续专题索引候选: UI 组件</td>
 </tr>
 <tr>
 <td><a href="floaty.html">Floaty</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 窗口对象类型页</td>
+<td>后续类型拆分候选: 窗口对象</td>
 </tr>
 <tr>
 <td><a href="web.html">Web</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 InjectableWebView / WebSocket 类型页</td>
+<td>已纳入 P2 机器可读索引与权限矩阵</td>
 </tr>
 <tr>
 <td><a href="ocr.html">OCR</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 OCR 选项与结果类型索引</td>
+<td>已纳入 P2 机器可读索引与权限矩阵</td>
 </tr>
 <tr>
 <td><a href="notice.html">Notice</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 Notice 选项类型页</td>
+<td>已纳入 P2 机器可读索引与权限矩阵</td>
 </tr>
 <tr>
 <td><a href="console.html">Console</a></td>
 <td><code>[x]</code> P1 源码校对完成</td>
-<td>P2 ConsoleBuildOptions 校对</td>
+<td>已纳入 P2 机器可读索引与悬浮窗权限矩阵</td>
 </tr>
 </tbody>
 </table>
@@ -518,8 +546,7 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <h2>残留风险<span><a class="mark" href="#documentationroadmap_4" id="documentationroadmap_4">#</a></span></h2>
 <div class="signature"><ul>
 <li>[ ] <code>generator</code> 仍依赖 marked <code>0.3.19</code>; 安全版本 marked <code>4.0.10</code> 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.</li>
-<li>[ ] P0 / P1 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.</li>
-<li>[ ] P1 页面已补源码依据小节, 但部分长页面仍保留早期叙述结构; P2 应继续抽取机器可读索引和权限矩阵.</li>
+<li>[ ] P2 已完成当前基准的运行时索引、权限矩阵和高频类型拆分; 但 <code>image</code>, <code>events</code>, <code>timers</code>, <code>shell</code>, <code>ui</code>, <code>modules</code>, <code>threads</code>, <code>media</code> 等旧章节仍需后续按源码逐页重写, 知识库回答当前行为时应优先引用 P0 / P1 / P2 已校对页面和源码索引.</li>
 </ul>
 </div>
         </div>

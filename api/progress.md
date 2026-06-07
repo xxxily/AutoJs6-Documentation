@@ -16,6 +16,8 @@
 
 |                         章节                          |   部署进度   |
 |:---------------------------------------------------:|:--------:|
+|     [Runtime API Index - 运行时 API 索引](runtimeApiIndex)     |    √     |
+| [Permission Capability Matrix - 权限能力矩阵](permissionCapabilityMatrix) |    √     |
 |               [Global - 全局对象](global)               | &gt; 90% |
 |            [Automator - 自动化](automator)             | &gt; 60% |
 |              [AutoJs6 - 本体应用](autojs)               |    √     |
@@ -84,6 +86,13 @@
 |               [App - 应用枚举类](appType)                |    √     |
 |              [Color - 颜色类](colorType)               |    √     |
 |           [Version - 版本工具类](versionType)            |    √     |
+|            [CursorWrapper](cursorWrapperType)            |    √     |
+|                 [Database](databaseType)                 |    √     |
+|              [HttpSaveResult](httpSaveResultType)              |    √     |
+|                  [JsMime](jsMimeType)                   |    √     |
+|       [MediainfoNativeObject](mediainfoNativeObjectType)       |    √     |
+|            [ZipNativeObject](zipNativeObjectType)             |    √     |
+|                [ZipOptions](zipOptionsType)                |    √     |
 |             [Polyfill - 代码填泥](polyfill)             |    √     |
 |             [Arrayx - Array 扩展](arrayx)             |    √     |
 |           [Numberx - Number 扩展](numberx)            |    √     |

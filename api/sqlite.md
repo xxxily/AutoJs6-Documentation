@@ -35,7 +35,7 @@
     - **onUpgrade(database, oldVersion, newVersion)** { [function](dataTypes#function) }
     - **onCorruption(db)** { [function](dataTypes#function) }
 - }}
-- <ins>**returns**</ins> { [Database](#database) }
+- <ins>**returns**</ins> { [Database](databaseType) }
 
 打开 SQLite 数据库. `databaseFilePath` 会经过 AutoJs6 运行时路径解析; `options` 必须是 JavaScript 对象, `callback` 会被转换为 `DatabaseCallback`.
 
@@ -92,14 +92,14 @@ db.close();
 
 - **sql** { [string](dataTypes#string) }
 - **selectionArgs** { [string](dataTypes#string)[] }
-- <ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) }
+- <ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) }
 
 执行原始查询并返回包装后的游标.
 
 ### rawQuery(sql, selectionArgs, cancellationSignal)
 
 - **cancellationSignal** { [android.os.CancellationSignal](https://developer.android.com/reference/android/os/CancellationSignal) }
-- <ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) }
+- <ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) }
 
 ## [m] rawQueryWithFactory
 
@@ -107,7 +107,7 @@ db.close();
 
 ### rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)
 
-参数含义与 Android `SQLiteDatabase.rawQueryWithFactory` 保持一致, 返回 [CursorWrapper](#cursorwrapper).
+参数含义与 Android `SQLiteDatabase.rawQueryWithFactory` 保持一致, 返回 [CursorWrapper](cursorWrapperType).
 
 ## [m] query
 
@@ -119,7 +119,7 @@ db.close();
 
 ### query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)
 
-- <ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) }
+- <ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) }
 
 查询表并返回包装后的游标. 参数含义与 Android `SQLiteDatabase.query` 保持一致.
 
@@ -129,7 +129,7 @@ db.close();
 
 ### queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)
 
-- <ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) }
+- <ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) }
 
 ## [m] insert
 

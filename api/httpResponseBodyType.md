@@ -58,9 +58,9 @@ HttpResponseBody 是 `http` 模块响应对象的 `body` 字段类型.
 
 - **path** { [string](dataTypes#string) } - 保存目标文件路径, 不可为目录
 - **[ bufferSize = `8192` ]** { [number](dataTypes#number) } - 缓冲区大小
-- <ins>**returns**</ins> { [HttpSaveResult](#httpsaveresult) }
+- <ins>**returns**</ins> { [HttpSaveResult](httpSaveResultType) }
 
-将响应体直接保存到文件, 避免把大响应整体加载到内存. `bufferSize` 小于等于 `0` 时使用默认值 `8192`. `path` 指向目录或以 `/` 结尾时会直接抛出异常. 复制过程中失败不会抛出, 而是返回失败的 [HttpSaveResult](#httpsaveresult). 无论成功或失败, 最终都会关闭输入流、输出流和响应体.
+将响应体直接保存到文件, 避免把大响应整体加载到内存. `bufferSize` 小于等于 `0` 时使用默认值 `8192`. `path` 指向目录或以 `/` 结尾时会直接抛出异常. 复制过程中失败不会抛出, 而是返回失败的 [HttpSaveResult](httpSaveResultType). 无论成功或失败, 最终都会关闭输入流、输出流和响应体.
 
 ```js
 let res = http.get('https://example.com/file.zip');

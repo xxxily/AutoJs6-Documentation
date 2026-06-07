@@ -6,6 +6,9 @@
 
 - `新增` [文档覆盖审计](https://docs.autojs6.com/#/documentationAudit) 页面, 记录文档仓库 `1.1.8` 与 AutoJs6 上游 `6.7.0` 源码之间的差异基线
 - `新增` [文档更新推进清单](https://docs.autojs6.com/#/documentationRoadmap) 页面, 记录已完成、待更新和后续 agent 验收规则
+- `新增` [运行时 API 索引](https://docs.autojs6.com/#/runtimeApiIndex) 页面, 对照 `ScriptRuntime.kt` 记录所有运行时注入对象、`$` 别名、嵌套对象、源码路径和文档入口
+- `新增` [权限能力矩阵](https://docs.autojs6.com/#/permissionCapabilityMatrix) 页面, 集中记录无障碍、Root/Shizuku、悬浮窗、截屏、通知、系统设置、存储、网络、OCR 等敏感能力的权限与 Android 版本边界
+- `新增` 机器可读运行时索引 `json/runtimeApiIndexData.json`, 为后续知识库构建提供模块、类型、权限与旧文档风险的结构化数据
 - `新增` [单位转换 (Cvt)](https://docs.autojs6.com/#/cvt) 文档, 覆盖 `cvt.bytes` / `cvt.bytes.strict` / `cvt.bytes.loose`
 - `新增` [数据格式化 (Fmt)](https://docs.autojs6.com/#/fmt) 文档, 覆盖 `fmt.bytes` / `fmt.bytes.strict` / `fmt.bytes.loose`
 - `新增` [SQLite](https://docs.autojs6.com/#/sqlite) 文档, 覆盖 `sqlite.open`、`Database` 与 `CursorWrapper` 基础能力
@@ -15,12 +18,14 @@
 - `新增` [NanoID](https://docs.autojs6.com/#/nanoid) 文档, 覆盖随机 ID 生成
 - `新增` [系统属性 (Sysprops)](https://docs.autojs6.com/#/sysprops) 文档, 覆盖系统属性读取及过滤
 - `新增` [汉语拼音 (Pinyin)](https://docs.autojs6.com/#/pinyin) 与 [Pinyin4j](https://docs.autojs6.com/#/pinyin4j) 文档
+- `新增` [ZipOptions](https://docs.autojs6.com/#/zipOptionsType), [ZipNativeObject](https://docs.autojs6.com/#/zipNativeObjectType), [Database](https://docs.autojs6.com/#/databaseType), [CursorWrapper](https://docs.autojs6.com/#/cursorWrapperType), [HttpSaveResult](https://docs.autojs6.com/#/httpSaveResultType), [JsMime](https://docs.autojs6.com/#/jsMimeType), [MediainfoNativeObject](https://docs.autojs6.com/#/mediainfoNativeObjectType) 独立类型页
 - `优化` [HTTP](https://docs.autojs6.com/#/http) 章节补充 `6.7.0` 新增异步请求、PUT/DELETE/HEAD、响应体保存及请求选项
 - `优化` [HttpRequestBuilderOptions](https://docs.autojs6.com/#/httpRequestBuilderOptionsType) 与 [HttpResponseBody](https://docs.autojs6.com/#/httpResponseBodyType) 类型说明
 - `优化` 完成 P1 高频 API 源码校对, 覆盖 [Global](https://docs.autojs6.com/#/global), [Automator](https://docs.autojs6.com/#/automator), [UiSelector](https://docs.autojs6.com/#/uiSelectorType), [UiObject](https://docs.autojs6.com/#/uiObjectType), [App](https://docs.autojs6.com/#/app), [AutoJs6](https://docs.autojs6.com/#/autojs), [Device](https://docs.autojs6.com/#/device), [Files](https://docs.autojs6.com/#/files), [Engines](https://docs.autojs6.com/#/engines), [Tasks](https://docs.autojs6.com/#/tasks), [UI](https://docs.autojs6.com/#/ui), [Floaty](https://docs.autojs6.com/#/floaty), [Web](https://docs.autojs6.com/#/web), [OCR](https://docs.autojs6.com/#/ocr), [Notice](https://docs.autojs6.com/#/notice), [Console](https://docs.autojs6.com/#/console)
 - `修复` [Global](https://docs.autojs6.com/#/global) 中 `cY()` 示例高度引用、`wait` UI 线程标签和 `species` 中源码不存在的条目
 - `修复` [Web](https://docs.autojs6.com/#/web) 与 [OCR](https://docs.autojs6.com/#/ocr) 中 Auto.js 4.x / 2023 年旧说明, 补充 Rapid OCR 与当前 WebSocket / WebView 行为
 - `修复` [Console](https://docs.autojs6.com/#/console) 中 `input` / `rawInput` 的废弃行为说明
+- `修复` P0 / P1 / P2 覆盖页面中的旧 Auto.js 4.x 行为残留, 并在运行时索引中标记仍应作为历史背景处理的旧章节
 - `优化` 更新侧边栏、静态页目录、全量文档和部署进度
 
 ## v1.1.8

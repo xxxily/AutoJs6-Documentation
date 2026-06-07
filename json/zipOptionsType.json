@@ -1,0 +1,28 @@
+{
+  "source": "../api/zipOptionsType.md",
+  "modules": [
+    {
+      "textRaw": "ZipOptions",
+      "name": "zipoptions",
+      "desc": "<p>ZipOptions 是 <code>zip</code> 模块的压缩 / 解压选项对象, 会被转换为 Zip4j 的 <code>ZipParameters</code> 和 <code>UnzipParameters</code>.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"zip#m-open\">zip.open</a>(zipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipfile\">zip.zipFile</a>(filePath, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipdir\">zip.zipDir</a>(filePath, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-zipfiles\">zip.zipFiles</a>(filePathList, destZipPath, <strong>options</strong>)</li>\n<li><a href=\"zip#m-unzip\">zip.unzip</a>(zipPath, destPath, <strong>options</strong>)</li>\n<li><a href=\"zipNativeObjectType#m-addfile\">ZipNativeObject.addFile</a>(filePath, <strong>options</strong>)</li>\n<li><a href=\"zipNativeObjectType#m-extractall\">ZipNativeObject.extractAll</a>(destPath, <strong>options</strong>)</li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipOptions</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "异常与边界",
+          "name": "异常与边界",
+          "desc": "<ul>\n<li><code>options</code> 必须是 JavaScript 对象; <code>null</code> / <code>undefined</code> 会按空对象处理.</li>\n<li><code>excludeFileFilter</code> 只能是 Zip4j <code>ExcludeFileFilter</code> 或 JavaScript 函数; 其他值会抛出参数异常.</li>\n<li><code>aesKeyStrength</code>, <code>compressionLevel</code>, <code>compressionMethod</code>, <code>encryptionMethod</code>, <code>symbolicLinkAction</code> 等枚举字段传入非法值时会抛出异常.</li>\n<li><code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持. 传入这些选项会抛出异常.</li>\n</ul>\n",
+          "type": "module",
+          "displayName": "示例"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let z = zip.zipFiles([\n    &#39;./logs/a.txt&#39;,\n    &#39;./logs/b.txt&#39;,\n], &#39;./logs.zip&#39;, {\n    password: &#39;secret&#39;,\n    compressionLevel: &#39;MAXIMUM&#39;,\n    aesKeyStrength: 256,\n    includeRootFolder: false,\n});\n\nconsole.log(z.isEncrypted());\n</code></pre>\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "ZipOptions"
+    }
+  ]
+}

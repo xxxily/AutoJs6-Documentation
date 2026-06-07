@@ -2,6 +2,8 @@
 @include documentation
 @include documentationAudit
 @include documentationRoadmap
+@include runtimeApiIndex
+@include permissionCapabilityMatrix
 @include qa
 
 @include global
@@ -39,10 +41,14 @@
 @include ui
 @include web
 @include http
+@include httpSaveResultType
 @include base64
 @include crypto
 @include sqlite
+@include databaseType
+@include cursorWrapperType
 @include mime
+@include jsMimeType
 @include nanoid
 @include sysprops
 @include pinyin
@@ -53,5 +59,8 @@
 @include cvt
 @include fmt
 @include zip
+@include zipOptionsType
+@include zipNativeObjectType
 @include mediainfo
+@include mediainfoNativeObjectType
 @include e4x

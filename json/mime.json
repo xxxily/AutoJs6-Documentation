@@ -14,7 +14,7 @@
               "textRaw": "mime(mimeStr)",
               "type": "method",
               "name": "mime",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#jsmime\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.mimeType); // text/html; charset=utf-8\nconsole.log(m.mimeTypeRefined); // text/html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"jsMimeType\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.mimeType); // text/html; charset=utf-8\nconsole.log(m.mimeTypeRefined); // text/html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
               "signatures": [
                 {
                   "params": [

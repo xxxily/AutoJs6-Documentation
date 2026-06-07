@@ -25,7 +25,7 @@
 **`6.7.0`**
 
 - **path** { [string](dataTypes#string) } - 媒体文件路径, 不可为空
-- <ins>**returns**</ins> { [MediainfoNativeObject](#mediainfonativeobject) }
+- <ins>**returns**</ins> { [MediainfoNativeObject](mediainfoNativeObjectType) }
 
 读取媒体文件信息并返回脚本侧对象. `path` 会先通过运行时文件模块解析为非空路径; `null` / `undefined` 或空白字符串会抛出异常.
 

@@ -25,8 +25,8 @@
 **`6.7.0`**
 
 - **zipPath** { [string](dataTypes#string) } - ZIP 文件路径, 不可为空
-- **[ options ]** { [ZipOptions](#zipoptions) }
-- <ins>**returns**</ins> { [ZipNativeObject](#zipnativeobject) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
+- <ins>**returns**</ins> { [ZipNativeObject](zipNativeObjectType) }
 
 打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.
 
@@ -40,8 +40,8 @@
 
 - **filePath** { [string](dataTypes#string) }
 - **destZipPath** { [string](dataTypes#string) } - 目标 ZIP 路径
-- **[ options ]** { [ZipOptions](#zipoptions) }
-- <ins>**returns**</ins> { [ZipNativeObject](#zipnativeobject) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
+- <ins>**returns**</ins> { [ZipNativeObject](zipNativeObjectType) }
 
 将单个文件加入 ZIP. 当前源码要求参数长度为 `2..3`; 第二个参数为对象时会被识别为 `options`, 目标 ZIP 默认使用源文件名去掉扩展名后追加 `.zip`.
 
@@ -60,8 +60,8 @@ zip.zipFile('./logs/a.txt', { password: 'secret' });
 
 - **filePath** { [string](dataTypes#string) } - 目录路径
 - **destZipPath** { [string](dataTypes#string) } - 目标 ZIP 路径
-- **[ options ]** { [ZipOptions](#zipoptions) }
-- <ins>**returns**</ins> { [ZipNativeObject](#zipnativeobject) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
+- <ins>**returns**</ins> { [ZipNativeObject](zipNativeObjectType) }
 
 将目录创建为 ZIP. 内部调用 `ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)`.
 
@@ -75,8 +75,8 @@ zip.zipFile('./logs/a.txt', { password: 'secret' });
 
 - **filePathList** { [Iterable](dataTypes#iterable) } - 文件路径列表
 - **destZipPath** { [string](dataTypes#string) } - 目标 ZIP 路径
-- **[ options ]** { [ZipOptions](#zipoptions) }
-- <ins>**returns**</ins> { [ZipNativeObject](#zipnativeobject) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
+- <ins>**returns**</ins> { [ZipNativeObject](zipNativeObjectType) }
 
 批量压缩文件. `filePathList` 必须可迭代, 且每个文件必须存在. 省略目标路径时:
 
@@ -94,8 +94,8 @@ zip.zipFile('./logs/a.txt', { password: 'secret' });
 
 - **zipPath** { [string](dataTypes#string) }
 - **destPath** { [string](dataTypes#string) } - 解压目标目录
-- **[ options ]** { [ZipOptions](#zipoptions) }
-- <ins>**returns**</ins> { [ZipNativeObject](#zipnativeobject) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
+- <ins>**returns**</ins> { [ZipNativeObject](zipNativeObjectType) }
 
 解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 `options`, `destPath` 按空字符串解析.
 
@@ -140,20 +140,20 @@ ZIP 文件的运行时解析路径.
 
 - { [net.lingala.zip4j.model.ZipParameters](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html) }
 
-由 [ZipOptions](#zipoptions) 构造出的压缩参数.
+由 [ZipOptions](zipOptionsType) 构造出的压缩参数.
 
 ## [p] unzipParameters
 
 - { [net.lingala.zip4j.model.UnzipParameters](https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html) }
 
-由 [ZipOptions](#zipoptions) 构造出的解压参数.
+由 [ZipOptions](zipOptionsType) 构造出的解压参数.
 
 ## [m] addFile
 
 ### addFile(filePath, options?)
 
 - **filePath** { [string](dataTypes#string) }
-- **[ options ]** { [ZipOptions](#zipoptions) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
 添加文件到当前 ZIP.
@@ -163,7 +163,7 @@ ZIP 文件的运行时解析路径.
 ### addFiles(filePathList, options?)
 
 - **filePathList** { [Iterable](dataTypes#iterable) }
-- **[ options ]** { [ZipOptions](#zipoptions) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
 添加多个文件. `filePathList` 必须可迭代.
@@ -173,7 +173,7 @@ ZIP 文件的运行时解析路径.
 ### addFolder(filePath, options?)
 
 - **filePath** { [string](dataTypes#string) }
-- **[ options ]** { [ZipOptions](#zipoptions) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
 添加文件夹.
@@ -183,7 +183,7 @@ ZIP 文件的运行时解析路径.
 ### extractAll(destPath, options?)
 
 - **destPath** { [string](dataTypes#string) }
-- **[ options ]** { [ZipOptions](#zipoptions) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
 解压全部文件.
@@ -194,7 +194,7 @@ ZIP 文件的运行时解析路径.
 
 - **zipFilePath** { [string](dataTypes#string) } - ZIP 内部文件路径
 - **destPath** { [string](dataTypes#string) } - 解压目标目录
-- **[ options ]** { [ZipOptions](#zipoptions) }
+- **[ options ]** { [ZipOptions](zipOptionsType) }
 - **[ newFileName ]** { [string](dataTypes#string) } - 解压后的新文件名
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 

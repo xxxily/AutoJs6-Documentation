@@ -17,7 +17,7 @@
 **`6.6.0`**
 
 - **mimeStr** { [string](dataTypes#string) } - MIME 类型字符串
-- <ins>**returns**</ins> { [JsMime](#jsmime) }
+- <ins>**returns**</ins> { [JsMime](jsMimeType) }
 
 解析 MIME 字符串. 入口只接受一个参数, 参数会通过 `coerceString` 转为字符串后交给 `eu.medsea.mimeutil.MimeType`.
 

@@ -1,0 +1,84 @@
+{
+  "source": "../api/httpSaveResultType.md",
+  "modules": [
+    {
+      "textRaw": "HttpSaveResult",
+      "name": "httpsaveresult",
+      "desc": "<p>HttpSaveResult 是 <a href=\"httpResponseBodyType#m-savetofile\">HttpResponseBody.saveToFile</a> 的返回类型, 用于描述响应体流式保存结果.</p>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/HttpSaveResult.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseBodyNativeObject.kt</code></li>\n</ul>\n<p>常见相关方法或属性:</p>\n<ul>\n<li><a href=\"httpResponseBodyType#m-savetofile\">HttpResponseBody.saveToFile</a></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">HttpSaveResult</p>\n\n<hr>\n<p><code>saveToFile(path, bufferSize?)</code> 会边读边写响应体, 成功或失败都会关闭输入流、输出流和响应体. 保存过程中发生异常不会向外抛出, 而是返回失败的 <code>HttpSaveResult</code>; 但 <code>path</code> 为目录或以 <code>/</code> 结尾时会在保存前直接抛出参数异常.</p>\n",
+      "modules": [
+        {
+          "textRaw": "[p] code",
+          "name": "[p]_code",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#number\">number</a> } - <code>0</code> 表示成功</li>\n</ul>\n<p>成功为 <code>0</code>; 通用失败为 <code>-1</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] code"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>保存目标路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] bytesCopied",
+          "name": "[p]_bytescopied",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>已写入字节数.</p>\n",
+          "type": "module",
+          "displayName": "[p] bytesCopied"
+        },
+        {
+          "textRaw": "[p] success",
+          "name": "[p]_success",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>是否成功. 等价于 <code>code === 0</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] success"
+        },
+        {
+          "textRaw": "[p] error",
+          "name": "[p]_error",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#error\">Error</a> | null }</li>\n</ul>\n<p>保存失败时的错误对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] error"
+        },
+        {
+          "textRaw": "[m] isSuccess",
+          "name": "[m]_issuccess",
+          "methods": [
+            {
+              "textRaw": "isSuccess()",
+              "type": "method",
+              "name": "isSuccess",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [boolean](dataTypes#boolean) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ],
+              "desc": "<p>判断保存是否成功. 此方法不接受参数.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isSuccess"
+        },
+        {
+          "textRaw": "示例",
+          "name": "示例",
+          "desc": "<pre><code class=\"lang-js\">let res = http.get(&#39;https://example.com/file.zip&#39;);\nlet saved = res.body.saveToFile(&#39;./file.zip&#39;);\n\nif (!saved.isSuccess()) {\n    console.error(saved.error);\n}\n</code></pre>\n",
+          "type": "module",
+          "displayName": "示例"
+        }
+      ],
+      "type": "module",
+      "displayName": "HttpSaveResult"
+    }
+  ]
+}

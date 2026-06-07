@@ -2,6 +2,8 @@
 * [About - 关于文档](documentation)
 * [Documentation Audit - 文档覆盖审计](documentationAudit)
 * [Documentation Roadmap - 文档更新推进清单](documentationRoadmap)
+* [Runtime API Index - 运行时 API 索引](runtimeApiIndex)
+* [Permission Capability Matrix - 权限能力矩阵](permissionCapabilityMatrix)
 * [Progress - 文档部署进度](progress)
 * [Changelog - 文档更新日志](changelog)
 
@@ -118,13 +120,18 @@
 * [CryptoKey](cryptoKeyType)
 * [CryptoKeyPair](cryptoKeyPairType)
 * [ConsoleBuildOptions](consoleBuildOptionsType)
+* [CursorWrapper](cursorWrapperType)
+* [Database](databaseType)
 * [HttpRequestBuilderOptions](httpRequestBuilderOptionsType)
 * [HttpRequestHeaders](httpRequestHeadersType)
 * [HttpResponseBody](httpResponseBodyType)
 * [HttpResponseHeaders](httpResponseHeadersType)
 * [HttpResponse](httpResponseType)
+* [HttpSaveResult](httpSaveResultType)
 * [InjectableWebClient](injectableWebClientType)
 * [InjectableWebView](injectableWebViewType)
+* [JsMime](jsMimeType)
+* [MediainfoNativeObject](mediainfoNativeObjectType)
 * [NoticeOptions](noticeOptionsType)
 * [NoticeChannelOptions](noticeChannelOptionsType)
 * [NoticePresetConfiguration](noticePresetConfigurationType)
@@ -136,6 +143,8 @@
 * [OpenCVRect](opencvRectType)
 * [OpenCVSize](opencvSizeType)
 * [OpenCCConversion](openCCConversionType)
+* [ZipNativeObject](zipNativeObjectType)
+* [ZipOptions](zipOptionsType)
 
 </details>
 

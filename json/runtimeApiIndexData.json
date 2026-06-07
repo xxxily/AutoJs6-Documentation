@@ -1,0 +1,1053 @@
+{
+  "schemaVersion": "2026-06-07.p2",
+  "baseline": {
+    "project": "AutoJs6",
+    "runtimeVersion": "6.7.0",
+    "sourceRepository": "https://github.com/SuperMonster003/AutoJs6",
+    "sourceCommit": "ed3eb10e88db5a8425fd94bdddefa4176e5e1c94",
+    "documentationRepository": "https://github.com/xxxily/AutoJs6-Documentation",
+    "generatedFor": "AutoJs6-Documentation v1.2.0",
+    "sdk": {
+      "minSdk": 24,
+      "targetSdk": 36,
+      "inrtTargetSdk": 29
+    }
+  },
+  "sourceBasis": [
+    "app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt",
+    "app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt",
+    "app/src/main/AndroidManifest.xml"
+  ],
+  "injectionRule": {
+    "withDollarPrefixTrue": "Augmentable.augment(target, true) injects both key and $key.",
+    "withDollarPrefixFalse": "Augmentable.augment(target, false) injects key only.",
+    "assignWithRuntime": "assignWithRuntime writes functions, getters or classes directly into the target/global object."
+  },
+  "modules": [
+    {
+      "key": "global",
+      "runtimeKeys": ["global functions", "global classes"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "global",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Global.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Legacy.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Classes.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["sleep", "exit", "random", "setScreenMetrics", "requiresApi", "requiresAutojsVersion", "cX", "cY", "currentPackage", "currentActivity", "currentComponent", "getClip", "setClip"],
+        "properties": ["context", "activity", "runtime", "engines", "app", "device"]
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "isNullish",
+      "runtimeKeys": ["isNullish", "isNonNullish"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "global",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/global/IsNullish.kt"],
+      "publicApiSummary": {
+        "functions": ["isNullish(value): boolean", "isNonNullish(value): boolean"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "util",
+      "runtimeKeys": ["util", "$util"],
+      "dollarAlias": true,
+      "nestedKeys": ["java", "version", "versionCodes", "inspect", "morseCode"],
+      "docPage": "util",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/Util.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/Java.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/Version.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/VersionCodes.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/Inspect.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/util/MorseCode.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["inspect(value, options?)", "morseCode.*", "version.*"],
+        "properties": ["java", "version", "versionCodes", "inspect", "morseCode"]
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "species",
+      "runtimeKeys": ["species", "$species"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "global",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Species.kt"],
+      "publicApiSummary": {
+        "functions": ["species(value): string"],
+        "properties": []
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "app",
+      "runtimeKeys": ["app", "$app"],
+      "dollarAlias": true,
+      "nestedKeys": ["autojs"],
+      "docPage": "app",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/app/App.kt"],
+      "publicApiSummary": {
+        "functions": ["launch", "launchApp", "startActivity", "sendBroadcast", "intent", "parseUri", "getPackageName", "getAppName", "openAppSetting", "viewFile", "editFile", "install", "uninstall"],
+        "properties": ["autojs"]
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "autojs",
+      "runtimeKeys": ["autojs", "$autojs", "app.autojs"],
+      "dollarAlias": true,
+      "nestedKeys": ["version"],
+      "docPage": "autojs",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Autojs.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Version.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["isRootAvailable", "getRootMode", "setRootMode", "canModifySystemSettings", "canWriteSecureSettings", "restart", "exit"],
+        "properties": ["versionCode", "versionName", "versionDate", "name", "packageName", "version"]
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "shell",
+      "runtimeKeys": ["shell", "$shell"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "shell",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/shell/Shell.kt"],
+      "publicApiSummary": {
+        "functions": ["shell(command, root?)", "shell.exec(command, options?)", "tap", "swipe", "keyCode", "screencap"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "timers",
+      "runtimeKeys": ["timers", "$timers", "setTimeout", "setInterval", "setImmediate"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "timers",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/timers/Timers.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/timers/SetIntervalExt.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["setTimeout(callback, delay, ...args)", "setInterval(callback, delay, ...args)", "clearTimeout(id)", "clearInterval(id)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "auto",
+      "runtimeKeys": ["auto", "$auto"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "automator",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Auto.kt"],
+      "publicApiSummary": {
+        "functions": ["auto()", "auto.waitFor()", "auto.ensureService()", "auto.isServiceRunning()"],
+        "properties": []
+      },
+      "permissionCategory": "accessibility",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "automator",
+      "runtimeKeys": ["automator", "$automator", "click", "swipe", "back", "home"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "automator",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Automator.kt"],
+      "publicApiSummary": {
+        "functions": ["click", "longClick", "press", "swipe", "gesture", "gestureAsync", "gestures", "gesturesAsync", "captureScreen", "lockScreen", "back", "home", "recents", "quickSettings"],
+        "properties": []
+      },
+      "permissionCategory": "accessibility",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "selector",
+      "runtimeKeys": ["selector", "$selector", "text", "id", "className", "desc"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "uiSelectorType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/selector/Selector.kt"],
+      "publicApiSummary": {
+        "functions": ["text", "textMatch", "id", "idMatch", "className", "desc", "clickable", "findOne", "untilFind"],
+        "properties": []
+      },
+      "permissionCategory": "accessibility",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "events",
+      "runtimeKeys": ["events", "$events"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "events",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/events/Events.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/Events.java"
+      ],
+      "publicApiSummary": {
+        "functions": ["observeKey", "observeTouch", "observeNotification", "observeToast", "on", "once", "removeListener"],
+        "properties": []
+      },
+      "permissionCategory": "accessibility-or-notification-listener",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "keys",
+      "runtimeKeys": ["keys", "$keys"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "keys",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/events/Keys.kt"],
+      "publicApiSummary": {
+        "functions": ["keys.*"],
+        "properties": ["key code constants"]
+      },
+      "permissionCategory": "accessibility",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "Canvas",
+      "runtimeKeys": ["Canvas"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "canvas",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/canvas/Canvas.kt"],
+      "publicApiSummary": {
+        "functions": ["new Canvas()", "new Canvas(image)", "new Canvas(width, height)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "images",
+      "runtimeKeys": ["images", "$images", "captureScreen", "requestScreenCapture"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "image",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/images/Images.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/Images.java"
+      ],
+      "publicApiSummary": {
+        "functions": ["read", "load", "captureScreen", "requestScreenCapture", "save", "findImage", "findColor", "matchTemplate", "compress", "recycle"],
+        "properties": []
+      },
+      "permissionCategory": "storage-or-media-projection",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "ocr",
+      "runtimeKeys": ["ocr", "$ocr"],
+      "dollarAlias": true,
+      "nestedKeys": ["mlkit", "paddle", "rapid"],
+      "docPage": "ocr",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ocr/Ocr.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ocr/OcrMLKit.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ocr/OcrPaddle.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ocr/OcrRapid.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["recognizeText", "detect", "mlkit.recognizeText", "paddle.recognizeText", "rapid.recognizeText"],
+        "properties": ["mlkit", "paddle", "rapid"]
+      },
+      "permissionCategory": "screen-capture-or-storage",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "barcode",
+      "runtimeKeys": ["barcode", "$barcode"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "barcode",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/barcode/Barcode.kt"],
+      "publicApiSummary": {
+        "functions": ["recognizeText", "recognizeTexts", "detect", "detectAll"],
+        "properties": []
+      },
+      "permissionCategory": "screen-capture-or-storage",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "qrcode",
+      "runtimeKeys": ["qrcode", "$qrcode"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "qrcode",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/barcode/QrCode.kt"],
+      "publicApiSummary": {
+        "functions": ["recognizeText", "recognizeTexts", "detect", "detectAll"],
+        "properties": []
+      },
+      "permissionCategory": "screen-capture-or-storage",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "threads",
+      "runtimeKeys": ["threads", "$threads"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "threads",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/threads/Threads.kt"],
+      "publicApiSummary": {
+        "functions": ["start", "shutDownAll", "currentThread", "lock", "atomic", "disposable"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "ui",
+      "runtimeKeys": ["ui", "$ui"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "ui",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UI.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UIWidget.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["layout", "run", "post", "inflate", "registerWidget", "statusBarColor", "navigationBarColor"],
+        "properties": ["isUiMode"]
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "colors",
+      "runtimeKeys": ["colors", "$colors"],
+      "dollarAlias": true,
+      "nestedKeys": ["android", "css", "web", "material"],
+      "docPage": "color",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/colors/Colors.kt"],
+      "publicApiSummary": {
+        "functions": ["toInt", "toHex", "rgb", "argb", "hsv", "hsl", "isSimilar", "equals"],
+        "properties": ["android", "css", "web", "material"]
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "Color",
+      "runtimeKeys": ["Color"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "colorType",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/colors/Color.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/colors/ColorNativeObject.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["Color()", "Color(value)", "Color(r, g, b)", "Color(r, g, b, a)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "tasks",
+      "runtimeKeys": ["tasks", "$tasks"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "tasks",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/tasks/Tasks.kt"],
+      "publicApiSummary": {
+        "functions": ["addDailyTask", "addWeeklyTask", "addDisposableTask", "addIntentTask", "queryTimedTasks", "removeTimedTask", "updateTimedTask"],
+        "properties": []
+      },
+      "permissionCategory": "exact-alarm-or-boot",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "dialogs",
+      "runtimeKeys": ["dialogs", "$dialogs"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "dialogs",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/dialogs/Dialogs.kt"],
+      "publicApiSummary": {
+        "functions": ["build", "alert", "confirm", "prompt", "select", "singleChoice", "multiChoice"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "continuation",
+      "runtimeKeys": ["continuation", "$continuation"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "continuation",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/continuation/Continuation.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/continuation/Creator.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["create", "delay"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "http",
+      "runtimeKeys": ["http", "$http"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "http",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/Http.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/RequestBuilder.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseWrapper.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseBodyNativeObject.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/HttpSaveResult.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["request", "requestAsync", "buildRequest", "get", "post", "postJson", "postMultipart", "head", "put", "delete"],
+        "properties": ["okhttp"]
+      },
+      "permissionCategory": "network-or-storage",
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "web",
+      "runtimeKeys": ["web", "$web"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "web",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/web/Web.kt"],
+      "publicApiSummary": {
+        "functions": ["newWebView", "newInjectableWebView", "newWebSocket", "loadUrl"],
+        "properties": []
+      },
+      "permissionCategory": "network",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "WebSocket",
+      "runtimeKeys": ["WebSocket"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "webSocketType",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/web/WebSocket.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/web/WebSocketFields.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["new WebSocket(url)", "new WebSocket(client, url)"],
+        "properties": []
+      },
+      "permissionCategory": "network",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "s13n",
+      "runtimeKeys": ["s13n", "$s13n"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "s13n",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/s13n/S13n.kt"],
+      "publicApiSummary": {
+        "functions": ["s13n.*"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "cvt",
+      "runtimeKeys": ["cvt", "$cvt"],
+      "dollarAlias": true,
+      "nestedKeys": ["bytes"],
+      "docPage": "cvt",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/converter/Converter.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/converter/Bytes.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["cvt.bytes(value, options?)", "cvt.bytes.strict(value, options?)", "cvt.bytes.loose(value, options?)"],
+        "properties": ["bytes"]
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "fmt",
+      "runtimeKeys": ["fmt", "$fmt"],
+      "dollarAlias": true,
+      "nestedKeys": ["bytes"],
+      "docPage": "fmt",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/formatter/Formatter.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/formatter/Bytes.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["fmt.bytes(value, options?)", "fmt.bytes.strict(value, options?)", "fmt.bytes.loose(value, options?)"],
+        "properties": ["bytes"]
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "console",
+      "runtimeKeys": ["console", "$console"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "console",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/console/Console.kt"],
+      "publicApiSummary": {
+        "functions": ["log", "info", "warn", "error", "trace", "assert", "time", "timeEnd", "show", "hide", "build", "setGlobalLogConfig"],
+        "properties": []
+      },
+      "permissionCategory": "overlay-for-floating-console",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "plugins",
+      "runtimeKeys": ["plugins", "$plugins"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "plugins",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/plugins/Plugins.kt"],
+      "publicApiSummary": {
+        "functions": ["load", "loadAll", "get", "require"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "Arrayx",
+      "runtimeKeys": ["Arrayx"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "arrayx",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/jsox/Arrayx.kt"],
+      "publicApiSummary": {
+        "functions": ["Arrayx.*"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "Numberx",
+      "runtimeKeys": ["Numberx"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "numberx",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/jsox/Numberx.kt"],
+      "publicApiSummary": {
+        "functions": ["Numberx.*"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "Mathx",
+      "runtimeKeys": ["Mathx"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "mathx",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/jsox/Mathx.kt"],
+      "publicApiSummary": {
+        "functions": ["Mathx.*"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "jsox",
+      "runtimeKeys": ["jsox", "$jsox"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": null,
+      "relatedDocPages": ["polyfill", "arrayx", "numberx", "mathx"],
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/jsox/Jsox.kt"],
+      "publicApiSummary": {
+        "functions": ["extend(...modules)", "extendAll()"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "files",
+      "runtimeKeys": ["files", "$files", "open"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "files",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/files/Files.kt"],
+      "publicApiSummary": {
+        "functions": ["path", "cwd", "read", "write", "append", "copy", "move", "remove", "listDir", "join", "open"],
+        "properties": []
+      },
+      "permissionCategory": "storage",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "crypto",
+      "runtimeKeys": ["crypto", "$crypto"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "crypto",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/cryptyo/Crypto.kt"],
+      "publicApiSummary": {
+        "functions": ["digest", "encrypt", "decrypt", "generateKey", "generateKeyPair"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "RootAutomator",
+      "runtimeKeys": ["RootAutomator"],
+      "dollarAlias": false,
+      "nestedKeys": [],
+      "docPage": "automator",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomator.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomatorNativeObject.kt",
+        "app/src/main/java/org/autojs/autojs/core/inputevent/RootAutomator.java"
+      ],
+      "publicApiSummary": {
+        "functions": ["new RootAutomator()", "new RootAutomator(waitForReadyOrTimeout)", "tap", "swipe", "touchDown", "touchMove", "touchUp", "exit"],
+        "properties": []
+      },
+      "permissionCategory": "root-or-shizuku",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "engines",
+      "runtimeKeys": ["engines", "$engines"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "engines",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/engines/Engines.kt"],
+      "publicApiSummary": {
+        "functions": ["execScript", "execScriptFile", "execAutoFile", "myEngine", "all", "stopAll", "getRunningEngines"],
+        "properties": ["execArgv"]
+      },
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "floaty",
+      "runtimeKeys": ["floaty", "$floaty"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "floaty",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/floaty/Floaty.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/Floaty.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["window", "rawWindow", "hasPermission", "requestPermission", "ensurePermission", "closeAll", "getClip"],
+        "properties": []
+      },
+      "permissionCategory": "overlay",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "storages",
+      "runtimeKeys": ["storages", "$storages"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "storages",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/storages/Storages.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/storages/StorageNativeObject.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["create(name)", "remove(name)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "device",
+      "runtimeKeys": ["device", "$device"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "device",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/device/Device.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/Device.java"
+      ],
+      "publicApiSummary": {
+        "functions": ["vibrate", "cancelVibration", "keepScreenOn", "setBrightness", "setMusicVolume", "getBattery", "isScreenOn", "wakeUp"],
+        "properties": ["width", "height", "brand", "model", "sdkInt"]
+      },
+      "permissionCategory": "system-settings-or-device-state",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "recorder",
+      "runtimeKeys": ["recorder", "$recorder"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "recorder",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/recorder/Recorder.kt"],
+      "publicApiSummary": {
+        "functions": ["start", "stop", "isRecording"],
+        "properties": []
+      },
+      "permissionCategory": "record-audio-or-input",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "toast",
+      "runtimeKeys": ["toast", "$toast"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "toast",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/toast/Toast.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/toast/ToastParser.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["toast(message, isLong?)", "toastLog(message)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "media",
+      "runtimeKeys": ["media", "$media"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "media",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/media/Media.kt"],
+      "publicApiSummary": {
+        "functions": ["scanFile(path)"],
+        "properties": []
+      },
+      "permissionCategory": "storage-or-media",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "sensors",
+      "runtimeKeys": ["sensors", "$sensors"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "sensors",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/sensors/Sensors.kt"],
+      "publicApiSummary": {
+        "functions": ["register", "unregister", "unregisterAll", "ignoresUnsupportedSensor"],
+        "properties": []
+      },
+      "permissionCategory": "hardware-sensor",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "base64",
+      "runtimeKeys": ["base64", "$base64"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "base64",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/base64/Base64.kt"],
+      "publicApiSummary": {
+        "functions": ["encode", "decode"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "notice",
+      "runtimeKeys": ["notice", "$notice"],
+      "dollarAlias": true,
+      "nestedKeys": ["channel"],
+      "docPage": "notice",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Notice.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Channel.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["notice(options)", "notice(title, content, options?)", "isEnabled", "ensureEnabled", "launchSettings", "cancel", "getBuilder", "channel.createIfNeeded"],
+        "properties": ["builder", "channel"]
+      },
+      "permissionCategory": "notification",
+      "sourceBasisStatus": "p1-verified"
+    },
+    {
+      "key": "shizuku",
+      "runtimeKeys": ["shizuku", "$shizuku"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "shizuku",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/shizuku/Shizuku.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/WrappedShizuku.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["execCommand", "getCommand", "kill", "currentPackage", "currentActivity", "currentComponent"],
+        "properties": ["state"]
+      },
+      "permissionCategory": "shizuku",
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "opencc",
+      "runtimeKeys": ["opencc", "$opencc"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "opencc",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/opencc/OpenCC.kt"],
+      "publicApiSummary": {
+        "functions": ["convert", "s2t", "t2s", "s2tw", "tw2s"],
+        "properties": []
+      },
+      "sourceBasisStatus": "runtime-indexed"
+    },
+    {
+      "key": "mime",
+      "runtimeKeys": ["mime", "$mime"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "mime",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/Mime.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/JsMime.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/Mime.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["mime(mimeStr): JsMime"],
+        "properties": []
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "sysprops",
+      "runtimeKeys": ["sysprops", "$sysprops"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "sysprops",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/sysprops/Sysprops.kt"],
+      "publicApiSummary": {
+        "functions": ["get", "getOrDefault", "contains", "list", "filter"],
+        "properties": []
+      },
+      "permissionCategory": "system-properties",
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "sqlite",
+      "runtimeKeys": ["sqlite", "$sqlite"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "sqlite",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/sqlite/SQLite.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt",
+        "app/src/main/java/org/autojs/autojs/core/database/Database.java"
+      ],
+      "publicApiSummary": {
+        "functions": ["open(databaseFilePath, options?): Database"],
+        "properties": []
+      },
+      "permissionCategory": "storage",
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "zip",
+      "runtimeKeys": ["zip", "$zip"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "zip",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["open(zipPath, options?): ZipNativeObject", "zipFile", "zipDir", "zipFiles", "unzip"],
+        "properties": []
+      },
+      "permissionCategory": "storage",
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "nanoid",
+      "runtimeKeys": ["nanoid", "$nanoid"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "nanoid",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/nanoid/NanoID.kt"],
+      "publicApiSummary": {
+        "functions": ["nanoid(size?)"],
+        "properties": []
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "pinyin",
+      "runtimeKeys": ["pinyin", "$pinyin"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "pinyin",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin/Pinyin.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin/PinyinCore.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["toPinyin", "toPinyinString", "compact", "match"],
+        "properties": []
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "pinyin4j",
+      "runtimeKeys": ["pinyin4j", "$pinyin4j"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "pinyin4j",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin4j/Pinyin4j.kt"],
+      "publicApiSummary": {
+        "functions": ["toHanyuPinyinStringArray", "toHanyuPinyinString", "format"],
+        "properties": []
+      },
+      "sourceBasisStatus": "p0-verified"
+    },
+    {
+      "key": "mediainfo",
+      "runtimeKeys": ["mediainfo", "$mediainfo"],
+      "dollarAlias": true,
+      "nestedKeys": [],
+      "docPage": "mediainfo",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo/Mediainfo.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo/MediainfoNativeObject.kt",
+        "app/src/main/java/org/mediainfo/android/MediaInfo.kt"
+      ],
+      "publicApiSummary": {
+        "functions": ["mediainfo(path): MediainfoNativeObject", "mediainfo.read(path): MediainfoNativeObject"],
+        "properties": []
+      },
+      "permissionCategory": "storage-or-native-library",
+      "sourceBasisStatus": "p0-verified"
+    }
+  ],
+  "types": [
+    {
+      "name": "ZipOptions",
+      "docPage": "zipOptionsType",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt",
+        "app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt"
+      ],
+      "usedBy": ["zip.open", "zip.zipFile", "zip.zipDir", "zip.zipFiles", "zip.unzip", "ZipNativeObject.addFile", "ZipNativeObject.extractAll"],
+      "fields": ["password", "aesKeyStrength", "aesVersion", "compressionLevel", "compressionMethod", "encryptionMethod", "defaultFolderPath", "entryCRC", "entrySize", "excludeFileFilter", "fileComment", "fileNameInZip", "includeRootFolder", "overrideExistingFilesInZip", "readHiddenFiles", "readHiddenFolders", "unixMode", "writeExtendedLocalFileHeader", "lastModifiedFileTime", "rootFolderNameInZip", "symbolicLinkAction", "encryptFiles", "isExtractSymbolicLinks"]
+    },
+    {
+      "name": "ZipNativeObject",
+      "docPage": "zipNativeObjectType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt"],
+      "properties": ["name", "path", "zipFile", "options", "zipParameters", "unzipParameters"],
+      "methods": ["addFile", "addFiles", "addFolder", "extractAll", "extractFile", "setPassword", "getFileHeader", "getFileHeaders", "isEncrypted", "removeFile", "isValidZipFile", "getPath", "getZipFile"]
+    },
+    {
+      "name": "Database",
+      "docPage": "databaseType",
+      "sourcePaths": [
+        "app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt",
+        "app/src/main/java/org/autojs/autojs/core/database/Database.java"
+      ],
+      "methods": ["execSQL", "rawQuery", "rawQueryWithFactory", "query", "queryWithFactory", "insert", "insertOrThrow", "insertWithOnConflict", "replace", "replaceOrThrow", "update", "updateWithOnConflict", "delete", "transaction", "close"]
+    },
+    {
+      "name": "CursorWrapper",
+      "docPage": "cursorWrapperType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt"],
+      "methods": ["get", "getByColumn", "pick", "next", "single", "all", "close"]
+    },
+    {
+      "name": "HttpSaveResult",
+      "docPage": "httpSaveResultType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/http/HttpSaveResult.kt"],
+      "properties": ["code", "path", "bytesCopied", "success", "error"],
+      "methods": ["isSuccess"]
+    },
+    {
+      "name": "JsMime",
+      "docPage": "jsMimeType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/JsMime.kt"],
+      "properties": ["raw", "type", "subtype", "mimeType", "mimeTypeRefined", "parameters"]
+    },
+    {
+      "name": "MediainfoNativeObject",
+      "docPage": "mediainfoNativeObjectType",
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo/MediainfoNativeObject.kt"],
+      "properties": ["path", "inform", "dynamic stream section properties"],
+      "methods": ["general", "video", "audio", "text", "other", "image", "menu", "max"]
+    }
+  ],
+  "permissions": [
+    {
+      "category": "accessibility",
+      "apis": ["auto", "automator", "selector", "UiObject", "events.observeKey", "events.observeToast"],
+      "requires": ["AutoJs6 accessibility service enabled"],
+      "androidVersionNotes": ["Some accessibility actions are available only on newer Android API levels."],
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Auto.kt", "app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Automator.kt", "app/src/main/java/org/autojs/autojs/core/accessibility/AccessibilityTool.kt", "app/src/main/java/org/autojs/autojs/core/accessibility/AccessibilityServiceUsher.kt", "app/src/main/java/org/autojs/autojs/core/automator"]
+    },
+    {
+      "category": "root-or-shizuku",
+      "apis": ["RootAutomator", "shell(command, true)", "shizuku.*", "autojs.setRootMode"],
+      "requires": ["root access or operational Shizuku depending on API"],
+      "androidVersionNotes": ["Device policy, SELinux and Shizuku service state affect availability."],
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomator.kt", "app/src/main/java/org/autojs/autojs/runtime/api/augment/shizuku/Shizuku.kt", "app/src/main/java/org/autojs/autojs/permission/ShizukuPermission.kt", "app/src/main/java/org/autojs/autojs/runtime/api/ProcessShell.java", "app/src/main/java/org/autojs/autojs/util/RootUtils.java"]
+    },
+    {
+      "category": "overlay",
+      "apis": ["floaty.window", "floaty.rawWindow", "console.show", "floaty.getClip"],
+      "requires": ["android.permission.SYSTEM_ALERT_WINDOW", "user overlay permission"],
+      "androidVersionNotes": ["Android Q and later restrict background clipboard reads; overlay-assisted access may be required."],
+      "sourcePaths": ["app/src/main/AndroidManifest.xml", "app/src/main/java/org/autojs/autojs/runtime/api/Floaty.kt", "app/src/main/java/org/autojs/autojs/permission/DisplayOverOtherAppsPermission.kt", "app/src/main/java/org/autojs/autojs/util/FloatingPermission.java", "app/src/main/java/org/autojs/autojs/ui/enhancedfloaty/util/WindowTypeCompat.java"]
+    },
+    {
+      "category": "screen-capture",
+      "apis": ["images.requestScreenCapture", "images.captureScreen", "automator.captureScreen"],
+      "requires": ["MediaProjection user consent or Android R accessibility screenshot path"],
+      "androidVersionNotes": ["Android R/API 30+ is required for accessibility screenshot; newer Android versions add foreground service constraints."],
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/core/image/capture/ScreenCaptureRequester.java", "app/src/main/java/org/autojs/autojs/core/image/capture/ScreenCapturer.java", "app/src/main/java/org/autojs/autojs/core/image/capture/ScreenCapturerForegroundService.kt", "app/src/main/java/org/autojs/autojs/permission/MediaProjectionPermission.kt"]
+    },
+    {
+      "category": "notification",
+      "apis": ["notice", "notice.channel", "events.observeNotification"],
+      "requires": ["notification enabled", "POST_NOTIFICATIONS on Android 13+", "notification listener or accessibility observer for notification events"],
+      "androidVersionNotes": ["Android O/API 26+ requires notification channels."],
+      "sourcePaths": ["app/src/main/AndroidManifest.xml", "app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Notice.kt", "app/src/main/java/org/autojs/autojs/runtime/api/Notice.kt", "app/src/main/java/org/autojs/autojs/core/notification/NotificationListenerService.kt", "app/src/main/java/org/autojs/autojs/runtime/api/Events.java"]
+    },
+    {
+      "category": "system-settings",
+      "apis": ["autojs.canModifySystemSettings", "autojs.canWriteSecureSettings", "device.setBrightness", "pointer location helpers"],
+      "requires": ["WRITE_SETTINGS or WRITE_SECURE_SETTINGS depending on operation"],
+      "androidVersionNotes": ["Android M/API 23+ uses a dedicated system settings authorization flow."],
+      "sourcePaths": ["app/src/main/AndroidManifest.xml", "app/src/main/java/org/autojs/autojs/permission/WriteSystemSettingsPermission.kt", "app/src/main/java/org/autojs/autojs/permission/WriteSecureSettingsPermission.kt", "app/src/main/java/org/autojs/autojs/util/SettingsUtils.java", "app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Autojs.kt", "app/src/main/java/org/autojs/autojs/runtime/api/augment/device/Device.kt"]
+    },
+    {
+      "category": "storage",
+      "apis": ["files", "sqlite", "zip", "http.saveToFile", "mediainfo", "images.read"],
+      "requires": ["path access", "storage/media permissions as required by Android version"],
+      "androidVersionNotes": ["Android 10+ scoped storage and Android 13+ READ_MEDIA_* permissions affect external paths."],
+      "sourcePaths": ["app/src/main/AndroidManifest.xml", "app/src/main/java/org/autojs/autojs/runtime/api/augment/files/Files.kt", "app/src/main/java/org/autojs/autojs/runtime/api/Files.kt", "app/src/main/java/org/autojs/autojs/permission/AllFilesAccessPermission.kt", "app/src/main/java/org/autojs/autojs/external/fileprovider/AppFileProvider.java"]
+    },
+    {
+      "category": "network",
+      "apis": ["http", "web", "WebSocket", "images.load"],
+      "requires": ["android.permission.INTERNET"],
+      "androidVersionNotes": ["INTERNET is a manifest permission, not a runtime prompt; cleartext HTTP also depends on network security settings."],
+      "sourcePaths": ["app/src/main/AndroidManifest.xml", "app/src/main/java/org/autojs/autojs/runtime/api/augment/http/Http.kt", "app/src/main/java/org/autojs/autojs/runtime/api/augment/web/Web.kt"]
+    },
+    {
+      "category": "ocr-barcode-mediainfo",
+      "apis": ["ocr.mlkit", "ocr.paddle", "ocr.rapid", "barcode", "qrcode", "mediainfo"],
+      "requires": ["input image or readable media file", "screen capture permission when using current screen", "native/model/plugin availability depending on engine"],
+      "androidVersionNotes": ["Library availability and file access are the main runtime constraints."],
+      "sourcePaths": ["app/src/main/java/org/autojs/autojs/runtime/api/augment/ocr", "app/src/main/java/org/autojs/autojs/runtime/api/augment/barcode", "app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo"]
+    }
+  ],
+  "staleDocsPolicy": {
+    "currentBehaviorPriority": ["runtimeApiIndex", "permissionCapabilityMatrix", "page source basis sections", "AutoJs6 source paths"],
+    "historicalContent": ["qa", "documentation", "overview", "progress"],
+    "knownRetainedCompatibilityNotes": ["uiSelectorType Auto.js 4.x selector differences"],
+    "remainingLegacyRisk": "Older pages outside P0/P1/P2 may still contain Auto.js 4.x narrative and should not override source-verified pages."
+  }
+}

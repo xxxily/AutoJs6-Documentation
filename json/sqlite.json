@@ -43,7 +43,7 @@
               "textRaw": "open(databaseFilePath, options?, callback?)",
               "type": "method",
               "name": "open",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"databaseType\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -160,9 +160,9 @@
                       "type": " [string](dataTypes#string)[] "
                     },
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     }
                   ]
                 },
@@ -192,9 +192,9 @@
                       "type": " [android.os.CancellationSignal](https://developer.android.com/reference/android/os/CancellationSignal) "
                     },
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "cancellationSignal"
@@ -228,7 +228,7 @@
               "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)",
               "type": "method",
               "name": "rawQueryWithFactory",
-              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"cursorWrapperType\">CursorWrapper</a>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -271,7 +271,7 @@
               "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)",
               "type": "method",
               "name": "rawQueryWithFactory",
-              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"cursorWrapperType\">CursorWrapper</a>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -310,9 +310,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "table"
@@ -419,9 +419,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "table"
@@ -505,9 +505,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "distinct"
@@ -622,9 +622,9 @@
                 {
                   "params": [
                     {
-                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](cursorWrapperType) } ",
                       "name": "<ins>**returns**</ins>",
-                      "type": " [CursorWrapper](#cursorwrapper) "
+                      "type": " [CursorWrapper](cursorWrapperType) "
                     },
                     {
                       "name": "distinct"

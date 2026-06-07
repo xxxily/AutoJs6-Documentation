@@ -25,6 +25,8 @@
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
 <li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
 <li><a class="nav-documentationRoadmap" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
+<li><a class="nav-runtimeApiIndex" href="runtimeApiIndex.html">Runtime API Index - 运行时 API 索引</a></li>
+<li><a class="nav-permissionCapabilityMatrix" href="permissionCapabilityMatrix.html">Permission Capability Matrix - 权限能力矩阵</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -144,13 +146,18 @@
 <li><a class="nav-cryptoKeyType" href="cryptoKeyType.html">CryptoKey</a></li>
 <li><a class="nav-cryptoKeyPairType" href="cryptoKeyPairType.html">CryptoKeyPair</a></li>
 <li><a class="nav-consoleBuildOptionsType" href="consoleBuildOptionsType.html">ConsoleBuildOptions</a></li>
+<li><a class="nav-cursorWrapperType" href="cursorWrapperType.html">CursorWrapper</a></li>
+<li><a class="nav-databaseType" href="databaseType.html">Database</a></li>
 <li><a class="nav-httpRequestBuilderOptionsType" href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></li>
 <li><a class="nav-httpRequestHeadersType" href="httpRequestHeadersType.html">HttpRequestHeaders</a></li>
 <li><a class="nav-httpResponseBodyType" href="httpResponseBodyType.html">HttpResponseBody</a></li>
 <li><a class="nav-httpResponseHeadersType" href="httpResponseHeadersType.html">HttpResponseHeaders</a></li>
 <li><a class="nav-httpResponseType" href="httpResponseType.html">HttpResponse</a></li>
+<li><a class="nav-httpSaveResultType" href="httpSaveResultType.html">HttpSaveResult</a></li>
 <li><a class="nav-injectableWebClientType" href="injectableWebClientType.html">InjectableWebClient</a></li>
 <li><a class="nav-injectableWebViewType" href="injectableWebViewType.html">InjectableWebView</a></li>
+<li><a class="nav-jsMimeType" href="jsMimeType.html">JsMime</a></li>
+<li><a class="nav-mediainfoNativeObjectType" href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></li>
 <li><a class="nav-noticeOptionsType" href="noticeOptionsType.html">NoticeOptions</a></li>
 <li><a class="nav-noticeChannelOptionsType" href="noticeChannelOptionsType.html">NoticeChannelOptions</a></li>
 <li><a class="nav-noticePresetConfigurationType" href="noticePresetConfigurationType.html">NoticePresetConfiguration</a></li>
@@ -162,6 +169,8 @@
 <li><a class="nav-opencvRectType" href="opencvRectType.html">OpenCVRect</a></li>
 <li><a class="nav-opencvSizeType" href="opencvSizeType.html">OpenCVSize</a></li>
 <li><a class="nav-openCCConversionType" href="openCCConversionType.html">OpenCCConversion</a></li>
+<li><a class="nav-zipNativeObjectType" href="zipNativeObjectType.html">ZipNativeObject</a></li>
+<li><a class="nav-zipOptionsType" href="zipOptionsType.html">ZipOptions</a></li>
 </ul>
 <div class="line"></div>
 
@@ -371,45 +380,57 @@
 <li><span class="stability_undefined"><a href="#documentation_53">声明</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_q_a">疑难解答 (Q &amp; A)</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_autojs6">AutoJs6</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_1">AutoJs6 功能简介</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_2">AutoJs6 如何使用</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_3">AutoJs6 是否免费</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_4">AutoJs6 目标</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_5">AutoJs6 特色</a></span></li>
+<li><span class="stability_undefined"><a href="#documentation_runtime_api_index_api">Runtime API Index - 运行时 API 索引</a></span><ul>
+<li><span class="stability_undefined"><a href="#documentation_54">注入规则</a></span></li>
+<li><span class="stability_undefined"><a href="#documentation_55">运行时注入对象</a></span></li>
+<li><span class="stability_undefined"><a href="#documentation_56">高频独立类型页</a></span></li>
+<li><span class="stability_undefined"><a href="#documentation_auto_js_4_x">旧 Auto.js 4.x 残留核对</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_54">文档</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_55">文档格式不统一</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_56">不支持夜间模式</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_57">内容难以理解</a></span></li>
+<li><span class="stability_undefined"><a href="#permissioncapabilitymatrix_permission_capability_matrix">Permission Capability Matrix - 权限能力矩阵</a></span><ul>
+<li><span class="stability_undefined"><a href="#permissioncapabilitymatrix">能力矩阵</a></span></li>
+<li><span class="stability_undefined"><a href="#permissioncapabilitymatrix_1">使用建议</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_58">图像</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_ocr">OCR 特性</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_59">区域截图</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_q_a">疑难解答 (Q &amp; A)</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_autojs6">AutoJs6</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_autojs6_1">AutoJs6 功能简介</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_autojs6_2">AutoJs6 如何使用</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_autojs6_3">AutoJs6 是否免费</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_autojs6_4">AutoJs6 目标</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_autojs6_5">AutoJs6 特色</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_60">定时任务</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_61">定时运行脚本</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_62">定时任务获取外部参数</a></span></li>
+<li><span class="stability_undefined"><a href="#qa">文档</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_1">文档格式不统一</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_2">不支持夜间模式</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_3">内容难以理解</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_63">脚本执行差异</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_64">不同的系统版本</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_65">不同的设备厂商</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_auto_js">不同的 Auto.js 应用</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_autojs6_6">不同的 AutoJs6 版本</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_4">图像</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_ocr">OCR 特性</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_5">区域截图</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_66">打包应用</a></span><ul>
-<li><span class="stability_undefined"><a href="#documentation_67">图片等资源共同打包及多脚本打包</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_68">打包应用不显示主界面</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_6">定时任务</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_7">定时运行脚本</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_8">定时任务获取外部参数</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#documentation_69">代码转换</a></span></li>
-<li><span class="stability_undefined"><a href="#documentation_70">反馈</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_9">脚本执行差异</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_10">不同的系统版本</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_11">不同的设备厂商</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_auto_js">不同的 Auto.js 应用</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_autojs6_6">不同的 AutoJs6 版本</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#qa_12">打包应用</a></span><ul>
+<li><span class="stability_undefined"><a href="#qa_13">图片等资源共同打包及多脚本打包</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_14">打包应用不显示主界面</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#qa_15">代码转换</a></span></li>
+<li><span class="stability_undefined"><a href="#qa_16">反馈</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#global_global">全局对象 (Global)</a></span><ul>
@@ -2395,6 +2416,19 @@
 <li><span class="stability_undefined"><a href="#http">响应体缓存</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_httpsaveresult">HttpSaveResult</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_p_code">[p] code</a></span></li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_p_path">[p] path</a></span></li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_p_bytescopied">[p] bytesCopied</a></span></li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_p_success">[p] success</a></span></li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_p_error">[p] error</a></span></li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_m_issuccess">[m] isSuccess</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype_issuccess">isSuccess()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpsaveresulttype">示例</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#base64_base64">Base64</a></span><ul>
 <li><span class="stability_undefined"><a href="#base64">可逆性</a></span></li>
 <li><span class="stability_undefined"><a href="#base64_m_encode">[m] encode</a></span><ul>
@@ -2591,6 +2625,106 @@
 </li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#databasetype_database">Database</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_m_execsql">[m] execSQL</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_execsql_sql">execSQL(sql)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_execsql_sql_bindargs">execSQL(sql, bindArgs)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_rawquery">[m] rawQuery</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_rawquery_sql_selectionargs">rawQuery(sql, selectionArgs)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_rawquery_sql_selectionargs_cancellationsignal">rawQuery(sql, selectionArgs, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_rawquerywithfactory">[m] rawQueryWithFactory</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_query">[m] query</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby">query(table, columns, selection, selectionArgs, groupBy, having, orderBy)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_querywithfactory">[m] queryWithFactory</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_insert">[m] insert</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_insert_table_values">insert(table, values)</a></span></li>
+<li><span class="stability_undefined"><a href="#databasetype_insert_table_nullcolumnhack_values">insert(table, nullColumnHack, values)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_insertorthrow">[m] insertOrThrow</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_insertorthrow_table_nullcolumnhack_values">insertOrThrow(table, nullColumnHack, values)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_insertwithonconflict">[m] insertWithOnConflict</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm">insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_replace">[m] replace</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_replace_table_nullcolumnhack_initialvalues">replace(table, nullColumnHack, initialValues)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_replaceorthrow">[m] replaceOrThrow</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_replaceorthrow_table_nullcolumnhack_initialvalues">replaceOrThrow(table, nullColumnHack, initialValues)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_update">[m] update</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_update_table_values_whereclause_whereargs">update(table, values, whereClause, whereArgs)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_updatewithonconflict">[m] updateWithOnConflict</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm">updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_delete">[m] delete</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_delete_table_whereclause_whereargs">delete(table, whereClause, whereArgs)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_transaction">[m] transaction</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_transaction_transactioncallback_exclusive">transaction(transactionCallback, exclusive?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype_m_close">[m] close</a></span><ul>
+<li><span class="stability_undefined"><a href="#databasetype_close">close()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#databasetype">代理方法</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_cursorwrapper">CursorWrapper</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_get">[m] get</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_get_index">get(index)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_getbycolumn">[m] getByColumn</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_getbycolumn_column">getByColumn(column)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_pick">[m] pick</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_pick">pick()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_next">[m] next</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_next">next()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_single">[m] single</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_single">single()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_m_all">[m] all</a></span><ul>
+<li><span class="stability_undefined"><a href="#cursorwrappertype_all_close">all(close?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#cursorwrappertype">示例</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#mime_mime">MIME</a></span><ul>
 <li><span class="stability_undefined"><a href="#mime_mime_1">[@] mime</a></span><ul>
 <li><span class="stability_undefined"><a href="#mime_mime_mimestr">mime(mimeStr)</a></span></li>
@@ -2603,6 +2737,17 @@
 <li><span class="stability_undefined"><a href="#mime_p_mimetyperefined">[p] mimeTypeRefined</a></span></li>
 <li><span class="stability_undefined"><a href="#mime_p_parameters">[p] parameters</a></span></li>
 <li><span class="stability_undefined"><a href="#mime">解析边界</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#jsmimetype_jsmime">JsMime</a></span><ul>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_raw">[p] raw</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_type">[p] type</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_subtype">[p] subtype</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_mimetype">[p] mimeType</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_mimetyperefined">[p] mimeTypeRefined</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_p_parameters">[p] parameters</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype">解析边界</a></span></li>
+<li><span class="stability_undefined"><a href="#jsmimetype_1">示例</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#nanoid_nanoid">NanoID</a></span><ul>
@@ -2979,6 +3124,105 @@
 <li><span class="stability_undefined"><a href="#zip_2">示例</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#zipoptionstype_zipoptions">ZipOptions</a></span><ul>
+<li><span class="stability_undefined"><a href="#zipoptionstype">压缩选项</a></span></li>
+<li><span class="stability_undefined"><a href="#zipoptionstype_1">解压选项</a></span></li>
+<li><span class="stability_undefined"><a href="#zipoptionstype_2">异常与边界</a></span></li>
+<li><span class="stability_undefined"><a href="#zipoptionstype_3">示例</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_zip_2">Zip</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_zip_3">[@] zip</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_zip_zippath_1">zip(zipPath)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_open_1">[m] open</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_open_zippath_options_1">open(zipPath, options?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_zipfile_1">[m] zipFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_zipfile_filepath_destzippath_options_1">zipFile(filePath, destZipPath, options?)</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_zipfile_filepath_options_1">zipFile(filePath, options)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_zipdir_1">[m] zipDir</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_zipdir_filepath_destzippath_options_1">zipDir(filePath, destZipPath, options?)</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_zipdir_filepath_options_1">zipDir(filePath, options)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_zipfiles_1">[m] zipFiles</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_zipfiles_filepathlist_destzippath_options_1">zipFiles(filePathList, destZipPath, options?)</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_zipfiles_filepathlist_options_1">zipFiles(filePathList, options)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_unzip_1">[m] unzip</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_unzip_zippath_destpath_options_1">unzip(zipPath, destPath, options?)</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_unzip_zippath_options_1">unzip(zipPath, options)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_p_name_1">[p] name</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_p_path_1">[p] path</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_p_zipfile_1">[p] zipFile</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_p_options_1">[p] options</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_p_zipparameters_1">[p] zipParameters</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_p_unzipparameters_1">[p] unzipParameters</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_m_addfile_1">[m] addFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_addfile_filepath_options_1">addFile(filePath, options?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_addfiles_1">[m] addFiles</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_addfiles_filepathlist_options_1">addFiles(filePathList, options?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_addfolder_1">[m] addFolder</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_addfolder_filepath_options_1">addFolder(filePath, options?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_extractall_1">[m] extractAll</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_extractall_destpath_options_1">extractAll(destPath, options?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_extractfile_1">[m] extractFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_extractfile_zipfilepath_destpath_options_newfilename_1">extractFile(zipFilePath, destPath, options?, newFileName?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_setpassword_1">[m] setPassword</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_setpassword_password_1">setPassword(password)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_getfileheader_1">[m] getFileHeader</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_getfileheader_filename_1">getFileHeader(fileName)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_getfileheaders_1">[m] getFileHeaders</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_getfileheaders_1">getFileHeaders()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_isencrypted_1">[m] isEncrypted</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_isencrypted_1">isEncrypted()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_removefile_1">[m] removeFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_removefile_filename_1">removeFile(fileName)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_isvalidzipfile_1">[m] isValidZipFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_isvalidzipfile_1">isValidZipFile()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_getpath_1">[m] getPath</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_getpath_1">getPath()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_m_getzipfile_1">[m] getZipFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#zip_getzipfile_1">getZipFile()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#zip_3">压缩选项</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_4">解压选项</a></span></li>
+<li><span class="stability_undefined"><a href="#zip_5">示例</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#media_media_1">多媒体 (Media)</a></span><ul>
 <li><span class="stability_undefined"><a href="#media_media_scanfile_path_1">media.scanFile(path)</a></span></li>
 <li><span class="stability_undefined"><a href="#media_media_playmusic_path_volume_looping_1">media.playMusic(path[, volume, looping])</a></span></li>
@@ -2989,6 +3233,18 @@
 <li><span class="stability_undefined"><a href="#media_media_ismusicplaying_1">media.isMusicPlaying()</a></span></li>
 <li><span class="stability_undefined"><a href="#media_media_getmusicduration_1">media.getMusicDuration()</a></span></li>
 <li><span class="stability_undefined"><a href="#media_media_getmusiccurrentposition_1">media.getMusicCurrentPosition()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#media_media_2">多媒体 (Media)</a></span><ul>
+<li><span class="stability_undefined"><a href="#media_media_scanfile_path_2">media.scanFile(path)</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_playmusic_path_volume_looping_2">media.playMusic(path[, volume, looping])</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_musicseekto_msec_2">media.musicSeekTo(msec)</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_pausemusic_2">media.pauseMusic()</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_resumemusic_2">media.resumeMusic()</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_stopmusic_2">media.stopMusic()</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_ismusicplaying_2">media.isMusicPlaying()</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_getmusicduration_2">media.getMusicDuration()</a></span></li>
+<li><span class="stability_undefined"><a href="#media_media_getmusiccurrentposition_2">media.getMusicCurrentPosition()</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#media_e4x">E4X</a></span></li>
@@ -4106,11 +4362,721 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <h2>声明<span><a class="mark" href="#documentation_53" id="documentation_53">#</a></span></h2>
 <p>当前项目 (文档) 及 <a href="http://project.autojs6.com">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href="https://github.com/hyb1996/Auto.js/">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href="https://github.com/hyb1996/AutoJs-Docs/">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href="http://docs-issues.autojs6.com">Issue</a> 或 <a href="http://docs-pr.autojs6.com">PR</a>.<br><!-- [end-include:documentation.md] --></p>
 <p>Roadmap
-<!-- [start-include:qa.md] --></p>
-<h1>疑难解答 (Q &amp; A)<span><a class="mark" href="#documentation_q_a" id="documentation_q_a">#</a></span></h1>
+<!-- [start-include:runtimeApiIndex.md] --></p>
+<h1>Runtime API Index - 运行时 API 索引<span><a class="mark" href="#documentation_runtime_api_index_api" id="documentation_runtime_api_index_api">#</a></span></h1>
+<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>
+<p>源码基准:</p>
+<ul>
+<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>
+<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>
+<li>版本: <code>6.7.0</code></li>
+</ul>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>
+</ul>
+<p>机器可读数据:</p>
+<ul>
+<li><code>json/runtimeApiIndexData.json</code></li>
+</ul>
 <hr>
-<h2>AutoJs6<span><a class="mark" href="#documentation_autojs6" id="documentation_autojs6">#</a></span></h2>
-<h3>AutoJs6 功能简介<span><a class="mark" href="#documentation_autojs6_1" id="documentation_autojs6_1">#</a></span></h3>
+<h2>注入规则<span><a class="mark" href="#documentation_54" id="documentation_54">#</a></span></h2>
+<p><code>ScriptRuntime.augment(target)</code> 是运行时 API 注入入口. <code>Augmentable.augment(..., withDollarPrefix = true)</code> 会同时注入 <code>name</code> 和 <code>$name</code>; <code>withDollarPrefix = false</code> 只注入原始名称. 部分对象还会通过 <code>assignWithRuntime(...)</code> 直接把函数、类或 getter 写入全局对象.</p>
+<p>因此, 判断某个 API 是否真实存在时, 应优先对照本页和 <code>ScriptRuntime.kt</code>, 其次再看具体模块页面.</p>
+<h2>运行时注入对象<span><a class="mark" href="#documentation_55" id="documentation_55">#</a></span></h2>
+<table>
+<thead>
+<tr>
+<th>注入对象</th>
+<th><code>$</code> 别名</th>
+<th>嵌套 / 全局补充</th>
+<th>主要源码</th>
+<th>文档入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global</code> 函数与类</td>
+<td>不适用</td>
+<td><code>Global</code>, <code>GlobalLegacy</code>, <code>GlobalClasses</code> 直接写入全局作用域</td>
+<td><code>augment/global/Global.kt</code><br><code>augment/global/Legacy.kt</code><br><code>augment/global/Classes.kt</code></td>
+<td><a href="global.html">Global</a></td>
+</tr>
+<tr>
+<td><code>isNullish</code> / <code>isNonNullish</code></td>
+<td>不适用</td>
+<td>直接写入全局作用域</td>
+<td><code>augment/global/IsNullish.kt</code></td>
+<td><a href="global.html">Global</a></td>
+</tr>
+<tr>
+<td><code>util</code></td>
+<td><code>$util</code></td>
+<td><code>java</code>, <code>version</code>, <code>versionCodes</code>, <code>inspect</code>, <code>morseCode</code></td>
+<td><code>augment/util/Util.kt</code><br><code>augment/util/Java.kt</code><br><code>augment/util/Version.kt</code><br><code>augment/util/VersionCodes.kt</code><br><code>augment/util/Inspect.kt</code><br><code>augment/util/MorseCode.kt</code></td>
+<td><a href="util.html">Util</a></td>
+</tr>
+<tr>
+<td><code>species</code></td>
+<td><code>$species</code></td>
+<td>判断 JavaScript / Java / Android 对象类型</td>
+<td><code>augment/global/Species.kt</code></td>
+<td><a href="global.html">Global</a></td>
+</tr>
+<tr>
+<td><code>app</code></td>
+<td><code>$app</code></td>
+<td><code>app.autojs</code> 指向 <code>autojs</code> 对象</td>
+<td><code>augment/app/App.kt</code></td>
+<td><a href="app.html">App</a></td>
+</tr>
+<tr>
+<td><code>autojs</code></td>
+<td><code>$autojs</code></td>
+<td><code>version</code> 子对象</td>
+<td><code>augment/autojs/Autojs.kt</code><br><code>augment/autojs/Version.kt</code></td>
+<td><a href="autojs.html">AutoJs6</a></td>
+</tr>
+<tr>
+<td><code>shell</code></td>
+<td><code>$shell</code></td>
+<td>全局 <code>shell(...)</code> 入口与 root shell 辅助</td>
+<td><code>augment/shell/Shell.kt</code></td>
+<td><a href="shell.html">Shell</a></td>
+</tr>
+<tr>
+<td><code>timers</code></td>
+<td><code>$timers</code></td>
+<td><code>setTimeout</code>, <code>setInterval</code> 等计时器兼容入口</td>
+<td><code>augment/timers/Timers.kt</code><br><code>augment/timers/SetIntervalExt.kt</code></td>
+<td><a href="timers.html">Timer</a></td>
+</tr>
+<tr>
+<td><code>auto</code></td>
+<td><code>$auto</code></td>
+<td>无障碍服务启停、等待、状态</td>
+<td><code>augment/automator/Auto.kt</code></td>
+<td><a href="automator.html">Automator</a></td>
+</tr>
+<tr>
+<td><code>automator</code></td>
+<td><code>$automator</code></td>
+<td><code>click</code>, <code>swipe</code>, <code>back</code>, <code>home</code> 等动作还会以全局函数注入</td>
+<td><code>augment/automator/Automator.kt</code></td>
+<td><a href="automator.html">Automator</a></td>
+</tr>
+<tr>
+<td><code>selector</code></td>
+<td><code>$selector</code></td>
+<td><code>text</code>, <code>id</code>, <code>className</code> 等选择器构造函数以全局函数注入</td>
+<td><code>augment/selector/Selector.kt</code></td>
+<td><a href="uiSelectorType.html">UiSelector</a></td>
+</tr>
+<tr>
+<td><code>events</code></td>
+<td><code>$events</code></td>
+<td>按键、触摸、通知、Toast、无障碍手势事件</td>
+<td><code>augment/events/Events.kt</code><br><code>runtime/api/Events.java</code></td>
+<td><a href="events.html">Event</a></td>
+</tr>
+<tr>
+<td><code>keys</code></td>
+<td><code>$keys</code></td>
+<td>按键码和按键辅助函数</td>
+<td><code>augment/events/Keys.kt</code></td>
+<td><a href="keys.html">Keys</a></td>
+</tr>
+<tr>
+<td><code>Canvas</code></td>
+<td>否</td>
+<td>可构造类, Canvas / Paint / Path 相关包装</td>
+<td><code>augment/canvas/Canvas.kt</code></td>
+<td><a href="canvas.html">Canvas</a></td>
+</tr>
+<tr>
+<td><code>images</code></td>
+<td><code>$images</code></td>
+<td><code>captureScreen</code>, <code>requestScreenCapture</code>, <code>findImage</code> 等部分函数也有全局入口</td>
+<td><code>augment/images/Images.kt</code></td>
+<td><a href="image.html">Image</a></td>
+</tr>
+<tr>
+<td><code>ocr</code></td>
+<td><code>$ocr</code></td>
+<td><code>mlkit</code>, <code>paddle</code>, <code>rapid</code> 三个子对象</td>
+<td><code>augment/ocr/Ocr.kt</code><br><code>augment/ocr/OcrMLKit.kt</code><br><code>augment/ocr/OcrPaddle.kt</code><br><code>augment/ocr/OcrRapid.kt</code></td>
+<td><a href="ocr.html">OCR</a></td>
+</tr>
+<tr>
+<td><code>barcode</code></td>
+<td><code>$barcode</code></td>
+<td>MLKit 条码识别</td>
+<td><code>augment/barcode/Barcode.kt</code></td>
+<td><a href="barcode.html">Barcode</a></td>
+</tr>
+<tr>
+<td><code>qrcode</code></td>
+<td><code>$qrcode</code></td>
+<td>条码识别的二维码限定包装</td>
+<td><code>augment/barcode/QrCode.kt</code></td>
+<td><a href="qrcode.html">QR Code</a></td>
+</tr>
+<tr>
+<td><code>threads</code></td>
+<td><code>$threads</code></td>
+<td>线程、锁、原子变量、一次性结果</td>
+<td><code>augment/threads/Threads.kt</code></td>
+<td><a href="threads.html">Thread</a></td>
+</tr>
+<tr>
+<td><code>ui</code></td>
+<td><code>$ui</code></td>
+<td>UI DSL、线程调度、控件注册</td>
+<td><code>augment/ui/UI.kt</code><br><code>augment/ui/UIWidget.kt</code></td>
+<td><a href="ui.html">UI</a></td>
+</tr>
+<tr>
+<td><code>colors</code></td>
+<td><code>$colors</code></td>
+<td>Android / CSS / Web / Material 色表</td>
+<td><code>augment/colors/Colors.kt</code></td>
+<td><a href="color.html">Color</a></td>
+</tr>
+<tr>
+<td><code>color</code></td>
+<td>否</td>
+<td><code>Color</code> 构造与颜色对象能力</td>
+<td><code>augment/colors/Color.kt</code><br><code>augment/colors/ColorNativeObject.kt</code></td>
+<td><a href="color.html">Color</a></td>
+</tr>
+<tr>
+<td><code>tasks</code></td>
+<td><code>$tasks</code></td>
+<td>定时任务、广播任务、任务查询与更新</td>
+<td><code>augment/tasks/Tasks.kt</code></td>
+<td><a href="tasks.html">Task</a></td>
+</tr>
+<tr>
+<td><code>dialogs</code></td>
+<td><code>$dialogs</code></td>
+<td>对话框构建与显示</td>
+<td><code>augment/dialogs/Dialogs.kt</code></td>
+<td><a href="dialogs.html">Dialog</a></td>
+</tr>
+<tr>
+<td><code>continuation</code></td>
+<td><code>$continuation</code></td>
+<td>协程 / continuation 内部模块</td>
+<td><code>augment/continuation/Continuation.kt</code><br><code>augment/continuation/Creator.kt</code></td>
+<td><a href="continuation.html">Continuation</a></td>
+</tr>
+<tr>
+<td><code>http</code></td>
+<td><code>$http</code></td>
+<td>OkHttp 请求、响应包装、流式保存</td>
+<td><code>augment/http/Http.kt</code><br><code>augment/http/RequestBuilder.kt</code><br><code>augment/http/ResponseWrapper.kt</code><br><code>augment/http/ResponseBodyNativeObject.kt</code></td>
+<td><a href="http.html">HTTP</a></td>
+</tr>
+<tr>
+<td><code>web</code></td>
+<td><code>$web</code></td>
+<td>WebView 注入、WebClient、WebSocket 辅助</td>
+<td><code>augment/web/Web.kt</code></td>
+<td><a href="web.html">Web</a></td>
+</tr>
+<tr>
+<td><code>WebSocket</code></td>
+<td>否</td>
+<td>可构造类, 不注入 <code>$WebSocket</code></td>
+<td><code>augment/web/WebSocket.kt</code><br><code>augment/web/WebSocketFields.kt</code></td>
+<td><a href="webSocketType.html">WebSocket</a></td>
+</tr>
+<tr>
+<td><code>s13n</code></td>
+<td><code>$s13n</code></td>
+<td>标准化工具</td>
+<td><code>augment/s13n/S13n.kt</code></td>
+<td><a href="s13n.html">Standardization</a></td>
+</tr>
+<tr>
+<td><code>cvt</code></td>
+<td><code>$cvt</code></td>
+<td><code>bytes</code> 子对象</td>
+<td><code>augment/converter/Converter.kt</code><br><code>augment/converter/Bytes.kt</code></td>
+<td><a href="cvt.html">Cvt</a></td>
+</tr>
+<tr>
+<td><code>fmt</code></td>
+<td><code>$fmt</code></td>
+<td><code>bytes</code> 子对象</td>
+<td><code>augment/formatter/Formatter.kt</code><br><code>augment/formatter/Bytes.kt</code></td>
+<td><a href="fmt.html">Fmt</a></td>
+</tr>
+<tr>
+<td><code>console</code></td>
+<td><code>$console</code></td>
+<td>代理全局控制台对象, 含悬浮控制台配置</td>
+<td><code>augment/console/Console.kt</code></td>
+<td><a href="console.html">Console</a></td>
+</tr>
+<tr>
+<td><code>plugins</code></td>
+<td><code>$plugins</code></td>
+<td>插件加载与插件上下文</td>
+<td><code>augment/plugins/Plugins.kt</code></td>
+<td><a href="plugins.html">Plugins</a></td>
+</tr>
+<tr>
+<td><code>Arrayx</code></td>
+<td>否</td>
+<td><code>Array</code> 扩展工具对象</td>
+<td><code>augment/jsox/Arrayx.kt</code></td>
+<td><a href="arrayx.html">Arrayx</a></td>
+</tr>
+<tr>
+<td><code>Numberx</code></td>
+<td>否</td>
+<td><code>Number</code> 扩展工具对象</td>
+<td><code>augment/jsox/Numberx.kt</code></td>
+<td><a href="numberx.html">Numberx</a></td>
+</tr>
+<tr>
+<td><code>Mathx</code></td>
+<td>否</td>
+<td><code>Math</code> 扩展工具对象</td>
+<td><code>augment/jsox/Mathx.kt</code></td>
+<td><a href="mathx.html">Mathx</a></td>
+</tr>
+<tr>
+<td><code>jsox</code></td>
+<td><code>$jsox</code></td>
+<td>JavaScript 内建对象扩展聚合</td>
+<td><code>augment/jsox/Jsox.kt</code></td>
+<td>暂无独立页; 相关页见 <a href="polyfill.html">Polyfill</a>, <a href="arrayx.html">Arrayx</a>, <a href="numberx.html">Numberx</a>, <a href="mathx.html">Mathx</a></td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td><code>$files</code></td>
+<td>全局 <code>open</code>、路径解析、读写、复制移动</td>
+<td><code>augment/files/Files.kt</code></td>
+<td><a href="files.html">File</a></td>
+</tr>
+<tr>
+<td><code>crypto</code></td>
+<td><code>$crypto</code></td>
+<td>加密、摘要、密钥、密钥对</td>
+<td><code>augment/cryptyo/Crypto.kt</code></td>
+<td><a href="crypto.html">Crypto</a></td>
+</tr>
+<tr>
+<td><code>RootAutomator</code></td>
+<td>否</td>
+<td>可构造类, 依赖 root 或 Shizuku</td>
+<td><code>augment/automator/RootAutomator.kt</code><br><code>augment/automator/RootAutomatorNativeObject.kt</code></td>
+<td><a href="automator.html">Automator</a></td>
+</tr>
+<tr>
+<td><code>engines</code></td>
+<td><code>$engines</code></td>
+<td>脚本执行、执行配置、引擎列表</td>
+<td><code>augment/engines/Engines.kt</code></td>
+<td><a href="engines.html">Engine</a></td>
+</tr>
+<tr>
+<td><code>floaty</code></td>
+<td><code>$floaty</code></td>
+<td>悬浮窗、悬浮窗权限、Android Q+ 剪贴板辅助</td>
+<td><code>augment/floaty/Floaty.kt</code><br><code>runtime/api/Floaty.kt</code></td>
+<td><a href="floaty.html">Floaty</a></td>
+</tr>
+<tr>
+<td><code>storages</code></td>
+<td><code>$storages</code></td>
+<td>本地键值存储</td>
+<td><code>augment/storages/Storages.kt</code><br><code>augment/storages/StorageNativeObject.kt</code></td>
+<td><a href="storages.html">Storage</a></td>
+</tr>
+<tr>
+<td><code>device</code></td>
+<td><code>$device</code></td>
+<td>设备信息、亮度、音量、电量、屏幕、指针位置</td>
+<td><code>augment/device/Device.kt</code><br><code>runtime/api/Device.java</code></td>
+<td><a href="device.html">Device</a></td>
+</tr>
+<tr>
+<td><code>recorder</code></td>
+<td><code>$recorder</code></td>
+<td>录制与输入事件相关能力</td>
+<td><code>augment/recorder/Recorder.kt</code></td>
+<td><a href="recorder.html">Recorder</a></td>
+</tr>
+<tr>
+<td><code>toast</code></td>
+<td><code>$toast</code></td>
+<td>Toast 显示与解析</td>
+<td><code>augment/toast/Toast.kt</code><br><code>augment/toast/ToastParser.kt</code></td>
+<td><a href="toast.html">Toast</a></td>
+</tr>
+<tr>
+<td><code>media</code></td>
+<td><code>$media</code></td>
+<td>媒体库扫描等 Android media 能力</td>
+<td><code>augment/media/Media.kt</code></td>
+<td><a href="media.html">Media</a></td>
+</tr>
+<tr>
+<td><code>sensors</code></td>
+<td><code>$sensors</code></td>
+<td>传感器注册与事件</td>
+<td><code>augment/sensors/Sensors.kt</code></td>
+<td><a href="sensors.html">Sensor</a></td>
+</tr>
+<tr>
+<td><code>base64</code></td>
+<td><code>$base64</code></td>
+<td>Base64 编解码</td>
+<td><code>augment/base64/Base64.kt</code></td>
+<td><a href="base64.html">Base64</a></td>
+</tr>
+<tr>
+<td><code>notice</code></td>
+<td><code>$notice</code></td>
+<td><code>channel</code> 子对象, 通知发布与渠道管理</td>
+<td><code>augment/notice/Notice.kt</code><br><code>augment/notice/Channel.kt</code></td>
+<td><a href="notice.html">Notice</a></td>
+</tr>
+<tr>
+<td><code>shizuku</code></td>
+<td><code>$shizuku</code></td>
+<td>命令执行、状态、前台组件查询</td>
+<td><code>augment/shizuku/Shizuku.kt</code></td>
+<td><a href="shizuku.html">Shizuku</a></td>
+</tr>
+<tr>
+<td><code>opencc</code></td>
+<td><code>$opencc</code></td>
+<td>中文转换</td>
+<td><code>augment/opencc/OpenCC.kt</code></td>
+<td><a href="opencc.html">OpenCC</a></td>
+</tr>
+<tr>
+<td><code>mime</code></td>
+<td><code>$mime</code></td>
+<td>MIME 字符串解析</td>
+<td><code>augment/mime/Mime.kt</code><br><code>augment/mime/JsMime.kt</code></td>
+<td><a href="mime.html">MIME</a></td>
+</tr>
+<tr>
+<td><code>sysprops</code></td>
+<td><code>$sysprops</code></td>
+<td>Android 系统属性读取</td>
+<td><code>augment/sysprops/Sysprops.kt</code></td>
+<td><a href="sysprops.html">Sysprops</a></td>
+</tr>
+<tr>
+<td><code>sqlite</code></td>
+<td><code>$sqlite</code></td>
+<td>SQLite 打开、<code>Database</code>, <code>CursorWrapper</code></td>
+<td><code>augment/sqlite/SQLite.kt</code><br><code>runtime/api/SQLite.kt</code><br><code>core/database/Database.java</code></td>
+<td><a href="sqlite.html">SQLite</a></td>
+</tr>
+<tr>
+<td><code>zip</code></td>
+<td><code>$zip</code></td>
+<td>Zip4j 包装、<code>ZipOptions</code>, <code>ZipNativeObject</code></td>
+<td><code>augment/zip/Zip.kt</code><br><code>augment/zip/ZipNativeObject.kt</code></td>
+<td><a href="zip.html">Zip</a></td>
+</tr>
+<tr>
+<td><code>nanoid</code></td>
+<td><code>$nanoid</code></td>
+<td>Nano ID 生成</td>
+<td><code>augment/nanoid/NanoID.kt</code></td>
+<td><a href="nanoid.html">NanoID</a></td>
+</tr>
+<tr>
+<td><code>pinyin</code></td>
+<td><code>$pinyin</code></td>
+<td>拼音转换核心</td>
+<td><code>augment/pinyin/Pinyin.kt</code><br><code>augment/pinyin/PinyinCore.kt</code></td>
+<td><a href="pinyin.html">Pinyin</a></td>
+</tr>
+<tr>
+<td><code>pinyin4j</code></td>
+<td><code>$pinyin4j</code></td>
+<td>Pinyin4j 兼容入口</td>
+<td><code>augment/pinyin4j/Pinyin4j.kt</code></td>
+<td><a href="pinyin4j.html">Pinyin4j</a></td>
+</tr>
+<tr>
+<td><code>mediainfo</code></td>
+<td><code>$mediainfo</code></td>
+<td>MediaInfo 原生库包装</td>
+<td><code>augment/mediainfo/Mediainfo.kt</code><br><code>augment/mediainfo/MediainfoNativeObject.kt</code></td>
+<td><a href="mediainfo.html">MediaInfo</a></td>
+</tr>
+</tbody>
+</table>
+<h2>高频独立类型页<span><a class="mark" href="#documentation_56" id="documentation_56">#</a></span></h2>
+<p>P2 已将以下高频运行时返回类型或选项对象拆为独立页面, 便于知识库按类型建立节点:</p>
+<ul>
+<li><a href="zipOptionsType.html">ZipOptions</a></li>
+<li><a href="zipNativeObjectType.html">ZipNativeObject</a></li>
+<li><a href="databaseType.html">Database</a></li>
+<li><a href="cursorWrapperType.html">CursorWrapper</a></li>
+<li><a href="httpSaveResultType.html">HttpSaveResult</a></li>
+<li><a href="jsMimeType.html">JsMime</a></li>
+<li><a href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></li>
+</ul>
+<h2>旧 Auto.js 4.x 残留核对<span><a class="mark" href="#documentation_auto_js_4_x" id="documentation_auto_js_4_x">#</a></span></h2>
+<p>本轮已对 P0 / P1 / P2 覆盖页面中的旧 Auto.js 4.x 叙述进行集中核对:</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>当前处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http.html">HTTP</a>, <a href="web.html">Web</a>, <a href="ocr.html">OCR</a>, <a href="console.html">Console</a></td>
+<td>已按 AutoJs6 <code>6.7.0</code> 源码改写旧行为说明, 废弃 / abandoned API 已标注.</td>
+</tr>
+<tr>
+<td><a href="uiSelectorType.html">UiSelector</a></td>
+<td>仍保留 Auto.js 4.x 差异提示, 但已明确为兼容差异说明, 不是当前行为.</td>
+</tr>
+<tr>
+<td><a href="qa.html">Q &amp; A</a>, <a href="documentation.html">About</a>, <a href="overview.html">Overview</a>, <a href="progress.html">Progress</a></td>
+<td>保留项目来源和历史背景叙述; 不作为当前 API 行为依据.</td>
+</tr>
+<tr>
+<td><code>timers</code>, <code>shell</code>, <code>ui</code>, <code>modules</code>, <code>threads</code>, <code>image</code>, <code>events</code>, <code>media</code> 等未进入 P0 / P1 的旧章节</td>
+<td>已在 <a href="documentationRoadmap.html">Documentation Roadmap</a> 中作为后续源码校对风险保留; 知识库回答当前行为时不应优先引用这些旧章节.</td>
+</tr>
+</tbody>
+</table>
+<p>判断原则: 当历史背景与本页运行时索引、具体页面 &quot;源码依据&quot; 小节或源码路径冲突时, 以后者为准.</p>
+<!-- [end-include:runtimeApiIndex.md] -->
+<!-- [start-include:permissionCapabilityMatrix.md] -->
+<h1>Permission Capability Matrix - 权限能力矩阵<span><a class="mark" href="#permissioncapabilitymatrix_permission_capability_matrix" id="permissioncapabilitymatrix_permission_capability_matrix">#</a></span></h1>
+<p>本章节集中记录 AutoJs6 <code>6.7.0</code> 中对 Android 权限、系统服务、Root、Shizuku、无障碍或特定 Android 版本敏感的脚本能力.</p>
+<p>源码基准:</p>
+<ul>
+<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>
+<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>
+<li>版本: <code>6.7.0</code></li>
+<li>主包 SDK: <code>minSdk=24</code>, <code>targetSdk=36</code></li>
+<li>INRT 包 SDK: <code>targetSdk=29</code></li>
+</ul>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/AndroidManifest.xml</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/*</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/*</code></li>
+</ul>
+<p>机器可读数据:</p>
+<ul>
+<li><code>json/runtimeApiIndexData.json</code></li>
+</ul>
+<hr>
+<h2>能力矩阵<span><a class="mark" href="#permissioncapabilitymatrix" id="permissioncapabilitymatrix">#</a></span></h2>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>API / 模块</th>
+<th>依赖 / 权限</th>
+<th>Android 版本边界</th>
+<th>源码依据</th>
+<th>文档入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无障碍服务</td>
+<td><code>auto</code>, <code>automator</code>, <code>selector</code>, <code>UiObject</code>, <code>events.observeKey</code>, <code>events.observeToast</code>, <code>events.observeNotification</code></td>
+<td>用户启用 AutoJs6 无障碍服务; 部分开关可借 root 或 <code>WRITE_SECURE_SETTINGS</code> 写入; 运行时通过 <code>AccessibilityBridge.ensureServiceStarted()</code> 获取服务</td>
+<td>手势分发依赖 Android 无障碍能力; 部分 <code>UiObjectActions</code> 仅在较高 API 返回有效动作</td>
+<td><code>augment/automator/Auto.kt</code><br><code>augment/automator/Automator.kt</code><br><code>core/accessibility/AccessibilityTool.kt</code><br><code>core/accessibility/AccessibilityServiceUsher.kt</code><br><code>core/automator/*</code></td>
+<td><a href="automator.html">Automator</a><br><a href="uiSelectorType.html">UiSelector</a><br><a href="uiObjectType.html">UiObject</a><br><a href="events.html">Event</a></td>
+</tr>
+<tr>
+<td>全局按键 / 手势 / 控件动作</td>
+<td><code>click</code>, <code>longClick</code>, <code>press</code>, <code>swipe</code>, <code>gesture</code>, <code>back</code>, <code>home</code>, <code>recents</code>, <code>UiObject.click()</code> 等</td>
+<td>优先依赖无障碍服务; <code>RootAutomator</code> 走 root / Shizuku 输入设备后端</td>
+<td><code>Automator.captureScreen()</code> 使用无障碍截图时需 Android R / API 30+</td>
+<td><code>augment/automator/Automator.kt</code><br><code>core/automator/UiObjectActions.kt</code><br><code>core/inputevent/RootAutomator.java</code></td>
+<td><a href="automator.html">Automator</a><br><a href="uiObjectType.html">UiObject</a></td>
+</tr>
+<tr>
+<td>Root 输入与 Root shell</td>
+<td><code>new RootAutomator()</code>, <code>shell(cmd, true)</code>, <code>autojs.setRootMode(...)</code>, root 模式启动应用</td>
+<td>root 可用, 或 <code>RootAutomator</code> 可使用 Shizuku 后端; root shell 会执行特权命令</td>
+<td>受设备 root 状态和系统 SELinux / shell 权限限制</td>
+<td><code>augment/automator/RootAutomator.kt</code><br><code>augment/automator/RootAutomatorNativeObject.kt</code><br><code>augment/shell/Shell.kt</code><br><code>runtime/api/ProcessShell.java</code><br><code>util/RootUtils.java</code></td>
+<td><a href="automator.html">Automator</a><br><a href="shell.html">Shell</a><br><a href="autojs.html">AutoJs6</a></td>
+</tr>
+<tr>
+<td>Shizuku 命令与系统组件查询</td>
+<td><code>shizuku.execCommand</code>, <code>shizuku.kill</code>, <code>shizuku.currentPackage</code>, <code>shizuku.currentActivity</code>, <code>shizuku.currentComponent</code></td>
+<td>Shizuku 安装、服务运行、已授权且 <code>WrappedShizuku.isOperational()</code> 为真; manifest 声明 <code>moe.shizuku.manager.permission.API_V23</code></td>
+<td>依赖 Shizuku 服务可用性和用户授权, 不等同于 root</td>
+<td><code>augment/shizuku/Shizuku.kt</code><br><code>runtime/api/WrappedShizuku.kt</code><br><code>permission/ShizukuPermission.kt</code><br><code>core/shizuku/UserService.kt</code><br><code>AndroidManifest.xml</code></td>
+<td><a href="shizuku.html">Shizuku</a></td>
+</tr>
+<tr>
+<td>当前前台包名 / Activity / Component</td>
+<td><code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>, <code>app.currentPackage</code>, <code>shizuku.currentPackage</code></td>
+<td>默认可走无障碍; 可选择 root / Shizuku 模式</td>
+<td>受 Android 后台限制和可访问窗口信息影响</td>
+<td><code>augment/global/Global.kt</code><br><code>augment/app/App.kt</code><br><code>augment/shizuku/Shizuku.kt</code></td>
+<td><a href="global.html">Global</a><br><a href="app.html">App</a><br><a href="shizuku.html">Shizuku</a></td>
+</tr>
+<tr>
+<td>悬浮窗</td>
+<td><code>floaty.window</code>, <code>floaty.rawWindow</code>, <code>floaty.hasPermission</code>, <code>floaty.ensurePermission</code>, <code>console.show</code>, <code>console.build</code></td>
+<td><code>android.permission.SYSTEM_ALERT_WINDOW</code>; 用户允许 &quot;显示在其他应用上层&quot;</td>
+<td>Android O+ 使用新的 overlay window type; 具体展示还受系统厂商限制</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/floaty/Floaty.kt</code><br><code>runtime/api/Floaty.kt</code><br><code>permission/DisplayOverOtherAppsPermission.kt</code><br><code>util/FloatingPermission.java</code><br><code>ui/enhancedfloaty/util/WindowTypeCompat.java</code></td>
+<td><a href="floaty.html">Floaty</a><br><a href="console.html">Console</a></td>
+</tr>
+<tr>
+<td>剪贴板读取</td>
+<td><code>floaty.getClip</code>, 全局 <code>getClip</code> / <code>setClip</code></td>
+<td>Android Q / API 29+ 后台剪贴板限制下, 源码优先借助悬浮窗权限创建窗口后读取</td>
+<td>Android Q+ 对后台剪贴板读取更严格; 无悬浮窗权限时可能失败或返回空</td>
+<td><code>augment/floaty/Floaty.kt</code><br><code>augment/global/Global.kt</code><br><code>runtime/api/Floaty.kt</code><br><code>com/stardust/util/ClipboardUtil.java</code></td>
+<td><a href="floaty.html">Floaty</a><br><a href="global.html">Global</a></td>
+</tr>
+<tr>
+<td>屏幕截图 / MediaProjection</td>
+<td><code>images.requestScreenCapture</code>, <code>images.requestScreenCaptureAsync</code>, <code>images.captureScreen</code>, 全局 <code>requestScreenCapture</code>, <code>captureScreen</code></td>
+<td>用户授予 MediaProjection 截屏确认; 或系统 <code>appops PROJECT_MEDIA</code>; manifest 包含前台服务和 media projection 相关权限</td>
+<td>Android 10+ 涉及前台服务类型; Android 14+ 对 MediaProjection 前台服务和一次性授权更严格; AutoJs6 通过 <code>ScreenCaptureRequester</code> / <code>ScreenCapturer</code> 管理会话</td>
+<td><code>augment/images/Images.kt</code><br><code>runtime/api/Images.java</code><br><code>core/image/capture/ScreenCaptureRequester.java</code><br><code>core/image/capture/ScreenCapturer.java</code><br><code>core/image/capture/ScreenCapturerForegroundService.kt</code><br><code>permission/MediaProjectionPermission.kt</code><br><code>AndroidManifest.xml</code></td>
+<td><a href="image.html">Image</a></td>
+</tr>
+<tr>
+<td>无障碍截图</td>
+<td><code>automator.captureScreen()</code></td>
+<td>已启用无障碍服务</td>
+<td>源码中 <code>takeScreenshot</code> / 无障碍截图依赖 Android R / API 30+</td>
+<td><code>augment/automator/Automator.kt</code><br><code>core/accessibility/AccessibilityService.kt</code></td>
+<td><a href="automator.html">Automator</a></td>
+</tr>
+<tr>
+<td>通知发布与通知渠道</td>
+<td><code>notice(...)</code>, <code>notice.channel.*</code>, <code>notice.ensureEnabled</code>, <code>events.observeNotification</code></td>
+<td>系统通知开关; Android 13+ 需要 <code>POST_NOTIFICATIONS</code>; 监听通知需通知监听服务或无障碍通知观察</td>
+<td>Android O / API 26+ 必须使用通知渠道; Android 13 / API 33+ 新增运行时通知权限</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/notice/Notice.kt</code><br><code>augment/notice/Channel.kt</code><br><code>runtime/api/Notice.kt</code><br><code>util/NotificationUtils.kt</code><br><code>core/notification/NotificationListenerService.kt</code><br><code>runtime/api/Events.java</code><br><code>core/accessibility/AccessibilityNotificationObserver.kt</code></td>
+<td><a href="notice.html">Notice</a><br><a href="events.html">Event</a></td>
+</tr>
+<tr>
+<td>系统设置写入</td>
+<td><code>autojs.canModifySystemSettings</code>, <code>autojs.canWriteSecureSettings</code>, <code>device.setBrightness</code>, <code>device.setMusicVolume</code>, 指针位置相关能力</td>
+<td><code>WRITE_SETTINGS</code> 需用户授权; <code>WRITE_SECURE_SETTINGS</code> 通常需 adb / root / 系统签名; manifest 已声明但不代表已授权</td>
+<td>Android M / API 23+ 对修改系统设置有专门授权页; secure settings 更受系统保护</td>
+<td><code>AndroidManifest.xml</code><br><code>permission/WriteSystemSettingsPermission.kt</code><br><code>permission/WriteSecureSettingsPermission.kt</code><br><code>util/SettingsUtils.java</code><br><code>augment/autojs/Autojs.kt</code><br><code>runtime/api/Device.java</code><br><code>core/accessibility/AccessibilityTool.kt</code></td>
+<td><a href="autojs.html">AutoJs6</a><br><a href="device.html">Device</a></td>
+</tr>
+<tr>
+<td>文件 / 外部存储</td>
+<td><code>files.*</code>, <code>sqlite.open</code>, <code>zip.*</code>, <code>http.saveToFile</code>, <code>mediainfo.read</code>, <code>images.read/save</code></td>
+<td>文件路径访问、媒体读取、外部存储权限或 Android scoped storage 策略; manifest 声明 READ/WRITE/MANAGE_EXTERNAL_STORAGE 与 READ_MEDIA_*</td>
+<td>Android 10+ scoped storage; Android 11+ <code>MANAGE_EXTERNAL_STORAGE</code>; Android 13+ 分媒体类型读取权限; manifest 设置 <code>requestLegacyExternalStorage=true</code></td>
+<td><code>AndroidManifest.xml</code><br><code>augment/files/Files.kt</code><br><code>runtime/api/Files.kt</code><br><code>permission/AllFilesAccessPermission.kt</code><br><code>external/fileprovider/AppFileProvider.java</code><br><code>augment/sqlite/SQLite.kt</code><br><code>augment/zip/Zip.kt</code><br><code>augment/http/ResponseBodyNativeObject.kt</code><br><code>augment/mediainfo/Mediainfo.kt</code></td>
+<td><a href="files.html">File</a><br><a href="sqlite.html">SQLite</a><br><a href="zip.html">Zip</a><br><a href="http.html">HTTP</a><br><a href="mediainfo.html">MediaInfo</a></td>
+</tr>
+<tr>
+<td>网络请求 / WebSocket / WebView 加载</td>
+<td><code>http.*</code>, <code>web.newWebSocket</code>, <code>new WebSocket</code>, <code>web.loadUrl</code>, <code>images.load</code> URL</td>
+<td>manifest 声明 <code>INTERNET</code>; 网络状态读取依赖 <code>ACCESS_NETWORK_STATE</code> / <code>ACCESS_WIFI_STATE</code></td>
+<td><code>INTERNET</code> 不是运行时弹窗权限; 明文 HTTP 还受网络安全配置和 <code>usesCleartextTraffic=true</code> 影响</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/http/Http.kt</code><br><code>runtime/api/Http.kt</code><br><code>augment/web/Web.kt</code><br><code>augment/web/WebSocket.kt</code><br><code>core/web/WebSocket.kt</code><br><code>augment/images/Images.kt</code></td>
+<td><a href="http.html">HTTP</a><br><a href="web.html">Web</a><br><a href="webSocketType.html">WebSocket</a><br><a href="image.html">Image</a></td>
+</tr>
+<tr>
+<td>OCR / 条码 / 二维码识别</td>
+<td><code>ocr.mlkit</code>, <code>ocr.paddle</code>, <code>ocr.rapid</code>, <code>barcode</code>, <code>qrcode</code></td>
+<td>传入图片时依赖图片文件 / bitmap; 不传图片而截图识别时依赖屏幕截图能力; Paddle 非 INRT 场景依赖插件或嵌入模型</td>
+<td>MLKit / Paddle / Rapid 各自依赖库可用性; 区域裁剪受图片坐标边界限制</td>
+<td><code>augment/ocr/Ocr.kt</code><br><code>augment/ocr/OcrMLKit.kt</code><br><code>augment/ocr/OcrPaddle.kt</code><br><code>augment/ocr/OcrRapid.kt</code><br><code>runtime/api/OcrMLKit.kt</code><br><code>runtime/api/OcrRapid.kt</code><br><code>core/plugin/ocr/PaddleOcrPluginHost.kt</code><br><code>augment/barcode/Barcode.kt</code><br><code>augment/barcode/QrCode.kt</code><br><code>runtime/api/WrappedBarcode.kt</code></td>
+<td><a href="ocr.html">OCR</a><br><a href="barcode.html">Barcode</a><br><a href="qrcode.html">QR Code</a></td>
+</tr>
+<tr>
+<td>MediaInfo 原生库</td>
+<td><code>mediainfo(path)</code>, <code>mediainfo.read(path)</code></td>
+<td>本地媒体文件路径可访问; MediaInfo 原生库可用</td>
+<td>原生库不可用会抛出 <code>MediaInfo library is not available</code>; stream 函数固定读取 index <code>0</code></td>
+<td><code>augment/mediainfo/Mediainfo.kt</code><br><code>augment/mediainfo/MediainfoNativeObject.kt</code><br><code>org/mediainfo/android/MediaInfo.kt</code></td>
+<td><a href="mediainfo.html">MediaInfo</a><br><a href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></td>
+</tr>
+<tr>
+<td>系统属性</td>
+<td><code>sysprops.get</code>, <code>sysprops.list</code>, <code>sysprops.filter</code></td>
+<td>普通属性可读; 受系统属性权限和 SELinux 限制; root / Shizuku 可提升命令读取能力但不是 <code>sysprops</code> 入口默认保证</td>
+<td>Android 版本和厂商系统会影响可见属性</td>
+<td><code>augment/sysprops/Sysprops.kt</code></td>
+<td><a href="sysprops.html">Sysprops</a></td>
+</tr>
+<tr>
+<td>定时任务 / 精确闹钟 / 开机广播</td>
+<td><code>tasks.*</code></td>
+<td>manifest 声明 <code>USE_EXACT_ALARM</code>, <code>SCHEDULE_EXACT_ALARM</code>, <code>RECEIVE_BOOT_COMPLETED</code>; 用户系统策略可能限制精确闹钟和后台启动</td>
+<td>Android 12+ 精确闹钟权限策略更严格</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/tasks/Tasks.kt</code><br><code>core/database/TimedTaskManager</code></td>
+<td><a href="tasks.html">Task</a></td>
+</tr>
+<tr>
+<td>应用安装 / 卸载 / 包查询</td>
+<td><code>app.install</code>, <code>app.uninstall</code>, <code>app.getAppName</code>, <code>app.getPackageName</code>, <code>app.openAppSetting</code></td>
+<td>manifest 声明安装 / 删除包、查询全部包等权限; 部分操作需要用户确认或系统授权</td>
+<td>Android 11+ 包可见性受 <code>QUERY_ALL_PACKAGES</code> 和 package visibility 影响</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/app/App.kt</code><br><code>runtime/api/AppUtils.kt</code></td>
+<td><a href="app.html">App</a></td>
+</tr>
+<tr>
+<td>震动 / 设备状态</td>
+<td><code>device.vibrate</code>, <code>device.getBattery</code>, <code>device.getScreenWidth</code>, <code>device.keepScreenOn</code></td>
+<td><code>VIBRATE</code>, <code>WAKE_LOCK</code>; 大多设备信息读取无需运行时权限</td>
+<td>厂商系统可能限制后台保活与保持亮屏</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/device/Device.kt</code><br><code>runtime/api/Device.java</code></td>
+<td><a href="device.html">Device</a></td>
+</tr>
+<tr>
+<td>传感器</td>
+<td><code>sensors.register</code>, <code>sensors.on</code></td>
+<td>设备硬件传感器可用; 某些传感器可能受系统隐私策略限制</td>
+<td>Android 版本和设备硬件决定可用传感器列表与采样频率</td>
+<td><code>augment/sensors/Sensors.kt</code></td>
+<td><a href="sensors.html">Sensor</a></td>
+</tr>
+<tr>
+<td>录音 / 录制</td>
+<td><code>recorder.*</code></td>
+<td>manifest 声明 <code>RECORD_AUDIO</code>; 录音需用户运行时授权</td>
+<td>Android 6+ 危险权限需动态授权; 后台录音受系统策略限制</td>
+<td><code>AndroidManifest.xml</code><br><code>augment/recorder/Recorder.kt</code></td>
+<td><a href="recorder.html">Recorder</a></td>
+</tr>
+</tbody>
+</table>
+<h2>使用建议<span><a class="mark" href="#permissioncapabilitymatrix_1" id="permissioncapabilitymatrix_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>知识库回答权限问题时, 优先引用本矩阵和具体模块页面的 &quot;源码依据&quot; 小节.</li>
+<li>manifest 中存在的权限不代表脚本调用时已获得授权; 仍需结合运行时授权、系统开关和设备策略判断.</li>
+<li>Root / Shizuku / 无障碍是三种不同执行通道, 不能互相等价. API 文档若标注了其中之一, 应按实际源码路径回答.</li>
+</ul>
+</div><!-- [end-include:permissionCapabilityMatrix.md] -->
+<!-- [start-include:qa.md] -->
+<h1>疑难解答 (Q &amp; A)<span><a class="mark" href="#qa_q_a" id="qa_q_a">#</a></span></h1>
+<hr>
+<h2>AutoJs6<span><a class="mark" href="#qa_autojs6" id="qa_autojs6">#</a></span></h2>
+<h3>AutoJs6 功能简介<span><a class="mark" href="#qa_autojs6_1" id="qa_autojs6_1">#</a></span></h3>
 <p>AutoJs6 是 Android 平台支持无障碍服务的 JavaScript 自动化工具.</p>
 <p>可用作 JavaScript IDE, 支持 [ 代码补全 / 变量重命名 / 代码格式化 ] 等.</p>
 <p>AutoJs6 封装了丰富的 JavaScript 模块, 提供丰富功能, 内置实用工具:</p>
@@ -4134,14 +5100,14 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <li>数学运算 / 颜色转换</li>
 <li>... ...</li>
 </ul>
-<h3>AutoJs6 如何使用<span><a class="mark" href="#documentation_autojs6_2" id="documentation_autojs6_2">#</a></span></h3>
+<h3>AutoJs6 如何使用<span><a class="mark" href="#qa_autojs6_2" id="qa_autojs6_2">#</a></span></h3>
 <p>详见 <a href="manual.html">AutoJs6 使用手册</a> 章节.</p>
-<h3>AutoJs6 是否免费<span><a class="mark" href="#documentation_autojs6_3" id="documentation_autojs6_3">#</a></span></h3>
+<h3>AutoJs6 是否免费<span><a class="mark" href="#qa_autojs6_3" id="qa_autojs6_3">#</a></span></h3>
 <p>AutoJs6 永久免费, 它是基于开源版本 (Auto.js 4.1.1 alpha2) 二次开发的, 将保持开源免费.</p>
-<h3>AutoJs6 目标<span><a class="mark" href="#documentation_autojs6_4" id="documentation_autojs6_4">#</a></span></h3>
+<h3>AutoJs6 目标<span><a class="mark" href="#qa_autojs6_4" id="qa_autojs6_4">#</a></span></h3>
 <p>开源版本 (Auto.js 4.1.1 alpha2) 是非常好的学习资料, AutoJs6 之所以存在, 恰恰是因为站在巨人的肩膀上.</p>
 <p>AutoJs6 的目标是对开源版本 (Auto.js 4.1.1 alpha2) 进行完善及扩展.</p>
-<h3>AutoJs6 特色<span><a class="mark" href="#documentation_autojs6_5" id="documentation_autojs6_5">#</a></span></h3>
+<h3>AutoJs6 特色<span><a class="mark" href="#qa_autojs6_5" id="qa_autojs6_5">#</a></span></h3>
 <p>AutoJs6 对以下功能进行了十足的打磨:</p>
 <ul>
 <li>夜间模式</li>
@@ -4156,19 +5122,19 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 </ul>
 <p>其中尤其具备 AutoJs6 特色的, 当属 <a href="uiSelectorType.html#uiselectortype_m_pickup">pickup 选择器</a> 及 <a href="uiObjectType.html#uiobjecttype_m_compass">compass 控件罗盘</a>.</p>
 <p>关于 AutoJs6 的更多内容, 可参阅 <a href="http://changelog.autojs6.com">项目更新日志</a>.</p>
-<h2>文档<span><a class="mark" href="#documentation_54" id="documentation_54">#</a></span></h2>
-<h3>文档格式不统一<span><a class="mark" href="#documentation_55" id="documentation_55">#</a></span></h3>
+<h2>文档<span><a class="mark" href="#qa" id="qa">#</a></span></h2>
+<h3>文档格式不统一<span><a class="mark" href="#qa_1" id="qa_1">#</a></span></h3>
 <p>AutoJs6 文档是在开源版本文档的基础上进行更新和修改的, 目前仅完成部分章节的更新, 未更新的章节依然保留原始文档内容, 因此会存在新旧不同的文档编写格式.<br>因文档编写需要耗费巨量的时间及精力, 文档更新速度会相对缓慢.<br>当全部章节完成编写及更新后, 文档将实现格式统一.</p>
-<h3>不支持夜间模式<span><a class="mark" href="#documentation_56" id="documentation_56">#</a></span></h3>
+<h3>不支持夜间模式<span><a class="mark" href="#qa_2" id="qa_2">#</a></span></h3>
 <p>使用 AutoJs6 查看文档时, 若开启夜间模式后文档依然是亮色主题, 需检查 WebView (或 Google Chrome 等浏览器) 的版本条件:</p>
 <ul>
 <li>API 级别 29 (安卓 10) [Q] 及以上: 版本不低于 76</li>
 <li>API 级别 28 (安卓 9) [P] 及以下: 版本不低于 105</li>
 </ul>
-<h3>内容难以理解<span><a class="mark" href="#documentation_57" id="documentation_57">#</a></span></h3>
+<h3>内容难以理解<span><a class="mark" href="#qa_3" id="qa_3">#</a></span></h3>
 <p>对于存在阅读障碍的文档内容, 可尝试暂时略过, 继续阅读后续内容.<br>当完整阅读一个章节或小节后, 可能对之前略过内容的进一步理解有所帮助.<br>也可提交反馈至 GitHub 项目页面, 开发者可能会根据提交的反馈适当调整文档内容.</p>
-<h2>图像<span><a class="mark" href="#documentation_58" id="documentation_58">#</a></span></h2>
-<h3>OCR 特性<span><a class="mark" href="#documentation_ocr" id="documentation_ocr">#</a></span></h3>
+<h2>图像<span><a class="mark" href="#qa_4" id="qa_4">#</a></span></h2>
+<h3>OCR 特性<span><a class="mark" href="#qa_ocr" id="qa_ocr">#</a></span></h3>
 <p>AutoJs6 的 OCR 特性是基于 <a href="https://developers.google.com/ml-kit?hl=zh-cn">Google ML Kit</a> 的 <a href="https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn">文字识别 API</a> 及 <a href="https://www.paddlepaddle.org.cn/">Baidu PaddlePaddle</a> 的 <a href="https://github.com/PaddlePaddle/Paddle-Lite">Paddle Lite</a> 实现的.</p>
 <blockquote>
 <p>注:<br>AutoJs6 基于 MLKit 引擎的 <a href="http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt">OCR 实现源码</a> 参考自 <a href="https://github.com/TonyJiangWJ">TonyJiangWJ</a> 的 <a href="https://github.com/TonyJiangWJ/Auto.js">Auto.js</a> 项目.<br>AutoJs6 基于 Paddle Lite 引擎的 <a href="http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt">OCR 实现源码</a> 源自 <a href="https://github.com/TonyJiangWJ">TonyJiangWJ</a> 的 <a href="http://pr.autojs6.com/120">GitHub PR</a>.</p>
@@ -4176,17 +5142,17 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <blockquote>
 <p>参阅: <a href="ocr.html">光学字符识别 (OCR)</a> 模块</p>
 </blockquote>
-<h3>区域截图<span><a class="mark" href="#documentation_59" id="documentation_59">#</a></span></h3>
+<h3>区域截图<span><a class="mark" href="#qa_5" id="qa_5">#</a></span></h3>
 <p>AutoJs6 不支持区域截图.</p>
 <p>可通过 <a href="image.html#image_m_capturescreen">images.captureScreen</a> 截取屏幕后使用 <a href="image.html#image_m_clip">images.clip</a> 等方法做进一步处理.</p>
-<h2>定时任务<span><a class="mark" href="#documentation_60" id="documentation_60">#</a></span></h2>
-<h3>定时运行脚本<span><a class="mark" href="#documentation_61" id="documentation_61">#</a></span></h3>
+<h2>定时任务<span><a class="mark" href="#qa_6" id="qa_6">#</a></span></h2>
+<h3>定时运行脚本<span><a class="mark" href="#qa_7" id="qa_7">#</a></span></h3>
 <p>脚本右侧菜单 -&gt; 定时任务, 即可定时运行脚本.<br>需保持 AutoJs6 后台运行, 包括 [ 自启动白名单 / 忽略电池优化 / 忽略后台活动限制 / 系统多任务保留 ] 等.<br>在设备关屏情况下, 可使用 <code>device.wakeUp()</code> 唤醒屏幕.<br>但 AutoJs6 暂未提供解锁功能, 因此可能需要根据设备自行设计解锁代码.</p>
-<h3>定时任务获取外部参数<span><a class="mark" href="#documentation_62" id="documentation_62">#</a></span></h3>
+<h3>定时任务获取外部参数<span><a class="mark" href="#qa_8" id="qa_8">#</a></span></h3>
 <p>若脚本由 intent (如网络状态变化等特定事件) 触发启动, 可通过 <code>engines.myEngine().execArgv.intent</code> 获取 intent, 进而获取外部参数.</p>
-<h2>脚本执行差异<span><a class="mark" href="#documentation_63" id="documentation_63">#</a></span></h2>
+<h2>脚本执行差异<span><a class="mark" href="#qa_9" id="qa_9">#</a></span></h2>
 <p>同样的脚本, 在不同环境 (如设备或系统等) 可能出现执行结果差异, 甚至出现异常而无法正常运行.</p>
-<h3>不同的系统版本<span><a class="mark" href="#documentation_64" id="documentation_64">#</a></span></h3>
+<h3>不同的系统版本<span><a class="mark" href="#qa_10" id="qa_10">#</a></span></h3>
 <p>AutoJs6 可以安装在 <code>Andoird API 24 (7.0) [N]</code> 及以上的操作系统.</p>
 <p>然而不同操作系统 <code>API</code> 是有区别的, 有些 <code>API</code> 在某个系统版本之后 (甚至之前) 才能使用.</p>
 <p>下面列出几个 AutoJs6 中受系统版本影响的方法或属性:</p>
@@ -4198,7 +5164,7 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <li><a href="uiSelectorType.html#uiselectortype_m_showtextsuggestions">UiSelector#showTextSuggestions</a> 只能在 <code>Android API 33 (13) [TIRAMISU]</code> 及以上才能起作用</li>
 <li>... ...</li>
 </ul>
-<h3>不同的设备厂商<span><a class="mark" href="#documentation_65" id="documentation_65">#</a></span></h3>
+<h3>不同的设备厂商<span><a class="mark" href="#qa_11" id="qa_11">#</a></span></h3>
 <p>因不同设备厂商对操作系统进行了不同程度的定制和修改, 一些 <code>API</code> 可能发生变更.</p>
 <p>下表列出了部分厂商及操作系统的信息 (排序无先后):</p>
 <table>
@@ -4304,7 +5270,7 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <blockquote>
 <p>注: 表格中的信息可能与实际存在出入, 仅供参考.</p>
 </blockquote>
-<h3>不同的 Auto.js 应用<span><a class="mark" href="#documentation_auto_js" id="documentation_auto_js">#</a></span></h3>
+<h3>不同的 Auto.js 应用<span><a class="mark" href="#qa_auto_js" id="qa_auto_js">#</a></span></h3>
 <p>不同的 Auto.js 应用对 [ JavaScript 封装模块 / Java 包名及类名 ] 等进行了不同程度的 [ 增添 / 修改 / 删减 ], 因此同样的脚本很难在不同 Auto.js 应用上达到同样的运行效果, 甚至出现无法运行的情况.</p>
 <p>有以下几种可能的解决方案:</p>
 <ul>
@@ -4312,18 +5278,18 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
 <li>修改脚本代码以适应新 Auto.js 应用</li>
 <li>在脚本代码中加入不同 Auto.js 应用的检测, 在对应分支编写兼容代码</li>
 </ul>
-<h3>不同的 AutoJs6 版本<span><a class="mark" href="#documentation_autojs6_6" id="documentation_autojs6_6">#</a></span></h3>
+<h3>不同的 AutoJs6 版本<span><a class="mark" href="#qa_autojs6_6" id="qa_autojs6_6">#</a></span></h3>
 <p>随着 AutoJs6 版本的更新, 一些 <code>API</code> 可能出现 [ 新增 / 修改 / 废弃 / 移除 ] 等操作.</p>
 <p>当升级 AutoJs6 后, 某个或某些 <code>API</code> 出现异常时, 可查询应用文档并定位到相关章节, 根据文档的提示排查并解决上述问题.</p>
 <p>如问题仍未解决, 可在项目的 GitHub 议题页面提交 <a href="#all_反馈">反馈</a>.</p>
-<h2>打包应用<span><a class="mark" href="#documentation_66" id="documentation_66">#</a></span></h2>
+<h2>打包应用<span><a class="mark" href="#qa_12" id="qa_12">#</a></span></h2>
 <p>AutoJs6 打包功能尚不完善, 打包应用与 AutoJs6 主应用可能有较大的功能和界面差异.</p>
 <p>AutoJs6 开发者暂不考虑参与打包功能相关的开发工作, 目前以 <a href="https://github.com/LZX284">LZX284</a> 为主要贡献者进行打包功能的开发及维护, 后续将继续由其他开发者贡献相关代码. </p>
-<h3>图片等资源共同打包及多脚本打包<span><a class="mark" href="#documentation_67" id="documentation_67">#</a></span></h3>
+<h3>图片等资源共同打包及多脚本打包<span><a class="mark" href="#qa_13" id="qa_13">#</a></span></h3>
 <p>上述需求需使用 &quot;项目&quot; 功能.</p>
 <p>点击 AutoJs6 主页面 &quot;+&quot; 图标, 选择项目, 填写信息后可新建一个项目.<br>项目支持存放多个 [ 脚本 / 模块 / 资源文件 ].<br>项目工具栏的 APK 打包图标, 点击可打包一个项目.</p>
 <p>例如:<br>脚本读取同目录 <code>1.png</code>: <code>images.read(&quot;./1.png&quot;)</code>.<br>UI 脚本图片控件引用同目录 <code>2.png</code>: <code>&lt;img src=&quot;file://2.png&quot;/&gt;</code>.<br>AutoJs6 内置模块支持相对路径引用, 其他情况可能需借助 <code>files.path()</code> 转换为绝对路径.</p>
-<h3>打包应用不显示主界面<span><a class="mark" href="#documentation_68" id="documentation_68">#</a></span></h3>
+<h3>打包应用不显示主界面<span><a class="mark" href="#qa_14" id="qa_14">#</a></span></h3>
 <p>需使用 &quot;项目&quot; 功能.<br>新建项目后, 在项目目录 <code>project.json</code> 文件中增加以下条目:</p>
 <pre><code class="lang-json">{
   &quot;launchConfig&quot;: {
@@ -4343,7 +5309,7 @@ console.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 boun
   }
 }
 </code></pre>
-<h2>代码转换<span><a class="mark" href="#documentation_69" id="documentation_69">#</a></span></h2>
+<h2>代码转换<span><a class="mark" href="#qa_15" id="qa_15">#</a></span></h2>
 <p>AutoJs6 支持直接调用 [ Java / Android / 扩展库 ] 等 API.<br>对于 AutoJs6 没有内置的功能, 可进行 Java 脚本化, 即直接参照 Java (或 Kotlin 等) 源码, 转换为 JavaScript 代码.<br>例如:</p>
 <pre><code class="lang-java">import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -4369,7 +5335,7 @@ function rotate(src, degrees, px, py) {
 }
 </code></pre>
 <p>关于脚本化 Java 的更多信息, 参阅 <a href="scriptingJava.html">Scripting Java - 脚本化 Java</a> 章节.</p>
-<h2>反馈<span><a class="mark" href="#documentation_70" id="documentation_70">#</a></span></h2>
+<h2>反馈<span><a class="mark" href="#qa_16" id="qa_16">#</a></span></h2>
 <p>如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.</p>
 <p>关于 <strong>应用文档</strong> 的反馈:<br><a href="http://docs-issues.autojs6.com">http://docs-issues.autojs6.com</a></p>
 <p>关于 <strong>AutoJs6</strong> 的反馈:<br><a href="http://issues.autojs6.com">http://issues.autojs6.com</a></p>
@@ -16146,6 +17112,63 @@ console.log(res.body.string());
 <li><code>response.body.stream()</code> 不会自动关闭, 调用方需要关闭流或调用 <code>response.body.close()</code>.</li>
 </ul>
 <!-- [end-include:http.md] -->
+<!-- [start-include:httpSaveResultType.md] -->
+<h1>HttpSaveResult<span><a class="mark" href="#httpsaveresulttype_httpsaveresult" id="httpsaveresulttype_httpsaveresult">#</a></span></h1>
+<p>HttpSaveResult 是 <a href="httpResponseBodyType.html#httpresponsebodytype_m_savetofile">HttpResponseBody.saveToFile</a> 的返回类型, 用于描述响应体流式保存结果.</p>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/HttpSaveResult.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseBodyNativeObject.kt</code></li>
+</ul>
+<p>常见相关方法或属性:</p>
+<ul>
+<li><a href="httpResponseBodyType.html#httpresponsebodytype_m_savetofile">HttpResponseBody.saveToFile</a></li>
+</ul>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">HttpSaveResult</p>
+
+<hr>
+<p><code>saveToFile(path, bufferSize?)</code> 会边读边写响应体, 成功或失败都会关闭输入流、输出流和响应体. 保存过程中发生异常不会向外抛出, 而是返回失败的 <code>HttpSaveResult</code>; 但 <code>path</code> 为目录或以 <code>/</code> 结尾时会在保存前直接抛出参数异常.</p>
+<h2>[p] code<span><a class="mark" href="#httpsaveresulttype_p_code" id="httpsaveresulttype_p_code">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - <code>0</code> 表示成功</li>
+</ul>
+</div><p>成功为 <code>0</code>; 通用失败为 <code>-1</code>.</p>
+<h2>[p] path<span><a class="mark" href="#httpsaveresulttype_p_path" id="httpsaveresulttype_p_path">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>保存目标路径.</p>
+<h2>[p] bytesCopied<span><a class="mark" href="#httpsaveresulttype_p_bytescopied" id="httpsaveresulttype_p_bytescopied">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><p>已写入字节数.</p>
+<h2>[p] success<span><a class="mark" href="#httpsaveresulttype_p_success" id="httpsaveresulttype_p_success">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><p>是否成功. 等价于 <code>code === 0</code>.</p>
+<h2>[p] error<span><a class="mark" href="#httpsaveresulttype_p_error" id="httpsaveresulttype_p_error">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_error">Error</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>保存失败时的错误对象.</p>
+<h2>[m] isSuccess<span><a class="mark" href="#httpsaveresulttype_m_issuccess" id="httpsaveresulttype_m_issuccess">#</a></span></h2>
+<h3>isSuccess()<span><a class="mark" href="#httpsaveresulttype_issuccess" id="httpsaveresulttype_issuccess">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><p>判断保存是否成功. 此方法不接受参数.</p>
+<h2>示例<span><a class="mark" href="#httpsaveresulttype" id="httpsaveresulttype">#</a></span></h2>
+<pre><code class="lang-js">let res = http.get(&#39;https://example.com/file.zip&#39;);
+let saved = res.body.saveToFile(&#39;./file.zip&#39;);
+
+if (!saved.isSuccess()) {
+    console.error(saved.error);
+}
+</code></pre>
+<!-- [end-include:httpSaveResultType.md] -->
 <!-- [start-include:base64.md] -->
 <h1>Base64<span><a class="mark" href="#base64_base64" id="base64_base64">#</a></span></h1>
 <p>Base64 是一种编码方式, 同时可作为一种数据的存储格式, 并非严格意义上的加密与解密.</p>
@@ -16600,7 +17623,7 @@ console.log(copiedKeyPairC);
 </ul>
 </li>
 <li>}}</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_database">Database</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="databaseType.html">Database</a></span> }</li>
 </ul>
 <p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>
 <pre><code class="lang-js">let db = sqlite.open(&#39;./data/demo.db&#39;, {
@@ -16646,32 +17669,32 @@ db.close();
 <div class="signature"><ul>
 <li><strong>sql</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>selectionArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><p>执行原始查询并返回包装后的游标.</p>
 <h3>rawQuery(sql, selectionArgs, cancellationSignal)<span><a class="mark" href="#sqlite_rawquery_sql_selectionargs_cancellationsignal" id="sqlite_rawquery_sql_selectionargs_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>cancellationSignal</strong> { <span class="type"><a href="https://developer.android.com/reference/android/os/CancellationSignal">android.os.CancellationSignal</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><h2>[m] rawQueryWithFactory<span><a class="mark" href="#sqlite_m_rawquerywithfactory" id="sqlite_m_rawquerywithfactory">#</a></span></h2>
 <h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">#</a></span></h3>
 <h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">#</a></span></h3>
-<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href="#all_cursorwrapper">CursorWrapper</a>.</p>
+<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href="cursorWrapperType.html">CursorWrapper</a>.</p>
 <h2>[m] query<span><a class="mark" href="#sqlite_m_query" id="sqlite_m_query">#</a></span></h2>
 <h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby">#</a></span></h3>
 <h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><p>查询表并返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>
 <h2>[m] queryWithFactory<span><a class="mark" href="#sqlite_m_querywithfactory" id="sqlite_m_querywithfactory">#</a></span></h2>
 <h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><h2>[m] insert<span><a class="mark" href="#sqlite_m_insert" id="sqlite_m_insert">#</a></span></h2>
 <h3>insert(table, values)<span><a class="mark" href="#sqlite_insert_table_values" id="sqlite_insert_table_values">#</a></span></h3>
@@ -16844,6 +17867,236 @@ events.on(&#39;commit&#39;, function () {
 </ul>
 </div><p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>
 <!-- [end-include:sqlite.md] -->
+<!-- [start-include:databaseType.md] -->
+<h1>Database<span><a class="mark" href="#databasetype_database" id="databasetype_database">#</a></span></h1>
+<p>Database 是 <code>sqlite.open(...)</code> 返回的 SQLite 数据库包装对象.</p>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/sqlite/SQLite.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/database/Transaction.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/database/TransactionCallback.java</code></li>
+</ul>
+<p>常见相关方法或属性:</p>
+<ul>
+<li><a href="sqlite.html#sqlite_m_open">sqlite.open</a></li>
+<li><a href="cursorWrapperType.html">CursorWrapper</a></li>
+</ul>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">Database</p>
+
+<hr>
+<p><code>Database</code> 继承 Android <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时 <code>closeableManager</code>. 脚本结束时可被统一关闭, 但长期运行脚本仍建议主动调用 <code>close()</code>.</p>
+<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>
+<ul>
+<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>
+<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>
+<li><code>boolean</code></li>
+<li><code>string</code></li>
+<li><code>byte[]</code></li>
+</ul>
+<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>
+<h2>[m] execSQL<span><a class="mark" href="#databasetype_m_execsql" id="databasetype_m_execsql">#</a></span></h2>
+<h3>execSQL(sql)<span><a class="mark" href="#databasetype_execsql_sql" id="databasetype_execsql_sql">#</a></span></h3>
+<h3>execSQL(sql, bindArgs)<span><a class="mark" href="#databasetype_execsql_sql_bindargs" id="databasetype_execsql_sql_bindargs">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>sql</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>bindArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>执行不返回结果集的 SQL.</p>
+<h2>[m] rawQuery<span><a class="mark" href="#databasetype_m_rawquery" id="databasetype_m_rawquery">#</a></span></h2>
+<h3>rawQuery(sql, selectionArgs)<span><a class="mark" href="#databasetype_rawquery_sql_selectionargs" id="databasetype_rawquery_sql_selectionargs">#</a></span></h3>
+<h3>rawQuery(sql, selectionArgs, cancellationSignal)<span><a class="mark" href="#databasetype_rawquery_sql_selectionargs_cancellationsignal" id="databasetype_rawquery_sql_selectionargs_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>sql</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>selectionArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
+</ul>
+</div><p>执行原始查询并返回包装后的游标.</p>
+<h2>[m] rawQueryWithFactory<span><a class="mark" href="#databasetype_m_rawquerywithfactory" id="databasetype_m_rawquerywithfactory">#</a></span></h2>
+<h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)<span><a class="mark" href="#databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable" id="databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">#</a></span></h3>
+<h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)<span><a class="mark" href="#databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal" id="databasetype_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
+</ul>
+</div><p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致.</p>
+<h2>[m] query<span><a class="mark" href="#databasetype_m_query" id="databasetype_m_query">#</a></span></h2>
+<h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy)<span><a class="mark" href="#databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby" id="databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby">#</a></span></h3>
+<h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="databasetype_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="databasetype_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
+</ul>
+</div><p>查询表并返回包装后的游标.</p>
+<h2>[m] queryWithFactory<span><a class="mark" href="#databasetype_m_querywithfactory" id="databasetype_m_querywithfactory">#</a></span></h2>
+<h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="databasetype_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
+</ul>
+</div><h2>[m] insert<span><a class="mark" href="#databasetype_m_insert" id="databasetype_m_insert">#</a></span></h2>
+<h3>insert(table, values)<span><a class="mark" href="#databasetype_insert_table_values" id="databasetype_insert_table_values">#</a></span></h3>
+<h3>insert(table, nullColumnHack, values)<span><a class="mark" href="#databasetype_insert_table_nullcolumnhack_values" id="databasetype_insert_table_nullcolumnhack_values">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>values</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>
+<h2>[m] insertOrThrow<span><a class="mark" href="#databasetype_m_insertorthrow" id="databasetype_m_insertorthrow">#</a></span></h2>
+<h3>insertOrThrow(table, nullColumnHack, values)<span><a class="mark" href="#databasetype_insertorthrow_table_nullcolumnhack_values" id="databasetype_insertorthrow_table_nullcolumnhack_values">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] insertWithOnConflict<span><a class="mark" href="#databasetype_m_insertwithonconflict" id="databasetype_m_insertwithonconflict">#</a></span></h2>
+<h3>insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)<span><a class="mark" href="#databasetype_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm" id="databasetype_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>conflictAlgorithm</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - Android <code>SQLiteDatabase.CONFLICT_*</code> 常量值</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] replace<span><a class="mark" href="#databasetype_m_replace" id="databasetype_m_replace">#</a></span></h2>
+<h3>replace(table, nullColumnHack, initialValues)<span><a class="mark" href="#databasetype_replace_table_nullcolumnhack_initialvalues" id="databasetype_replace_table_nullcolumnhack_initialvalues">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] replaceOrThrow<span><a class="mark" href="#databasetype_m_replaceorthrow" id="databasetype_m_replaceorthrow">#</a></span></h2>
+<h3>replaceOrThrow(table, nullColumnHack, initialValues)<span><a class="mark" href="#databasetype_replaceorthrow_table_nullcolumnhack_initialvalues" id="databasetype_replaceorthrow_table_nullcolumnhack_initialvalues">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] update<span><a class="mark" href="#databasetype_m_update" id="databasetype_m_update">#</a></span></h2>
+<h3>update(table, values, whereClause, whereArgs)<span><a class="mark" href="#databasetype_update_table_values_whereclause_whereargs" id="databasetype_update_table_values_whereclause_whereargs">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>values</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+<li><strong>whereClause</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><strong>whereArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 受影响行数</li>
+</ul>
+</div><h2>[m] updateWithOnConflict<span><a class="mark" href="#databasetype_m_updatewithonconflict" id="databasetype_m_updatewithonconflict">#</a></span></h2>
+<h3>updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)<span><a class="mark" href="#databasetype_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm" id="databasetype_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] delete<span><a class="mark" href="#databasetype_m_delete" id="databasetype_m_delete">#</a></span></h2>
+<h3>delete(table, whereClause, whereArgs)<span><a class="mark" href="#databasetype_delete_table_whereclause_whereargs" id="databasetype_delete_table_whereclause_whereargs">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>whereClause</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><strong>whereArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 删除行数</li>
+</ul>
+</div><h2>[m] transaction<span><a class="mark" href="#databasetype_m_transaction" id="databasetype_m_transaction">#</a></span></h2>
+<h3>transaction(transactionCallback, exclusive?)<span><a class="mark" href="#databasetype_transaction_transactioncallback_exclusive" id="databasetype_transaction_transactioncallback_exclusive">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>transactionCallback</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><strong>[ exclusive = <code>true</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="eventEmitterType.html">EventEmitter</a></span> }</li>
+</ul>
+</div><p>同步执行事务并返回事件发射器. <code>transactionCallback</code> 会收到 <code>Transaction</code> 对象; 正常执行后内部调用 <code>transaction.succeed()</code>, 最终调用 <code>transaction.end()</code>.</p>
+<p>事务事件:</p>
+<ul>
+<li><code>begin</code> - 事务开始</li>
+<li><code>commit</code> - 事务成功提交</li>
+<li><code>rollback</code> - 事务回滚</li>
+<li><code>end</code> - 事务结束</li>
+<li><code>error</code> - 回调抛出异常时触发</li>
+</ul>
+<h2>[m] close<span><a class="mark" href="#databasetype_m_close" id="databasetype_m_close">#</a></span></h2>
+<h3>close()<span><a class="mark" href="#databasetype_close" id="databasetype_close">#</a></span></h3>
+<p>关闭底层数据库连接, 并从运行时 <code>closeableManager</code> 中移除.</p>
+<h2>代理方法<span><a class="mark" href="#databasetype" id="databasetype">#</a></span></h2>
+<p>当前 <code>Database</code> 还暴露以下 Android <code>SQLiteDatabase</code> 代理方法:</p>
+<ul>
+<li><code>acquireReference()</code> / <code>releaseReference()</code></li>
+<li><code>beginTransaction()</code> / <code>beginTransactionNonExclusive()</code> / <code>beginTransactionWithListener(listener)</code> / <code>beginTransactionWithListenerNonExclusive(listener)</code></li>
+<li><code>endTransaction()</code> / <code>setTransactionSuccessful()</code> / <code>inTransaction()</code></li>
+<li><code>compileStatement(sql)</code> / <code>validateSql(sql, cancellationSignal)</code></li>
+<li><code>disableWriteAheadLogging()</code> / <code>enableWriteAheadLogging()</code> / <code>isWriteAheadLoggingEnabled()</code></li>
+<li><code>getAttachedDbs()</code> / <code>getMaximumSize()</code> / <code>getPageSize()</code> / <code>getPath()</code> / <code>getVersion()</code></li>
+<li><code>isDatabaseIntegrityOk()</code> / <code>isDbLockedByCurrentThread()</code> / <code>isOpen()</code> / <code>isReadOnly()</code></li>
+<li><code>needUpgrade(newVersion)</code></li>
+<li><code>setForeignKeyConstraintsEnabled(enable)</code> / <code>setLocale(locale)</code> / <code>setMaxSqlCacheSize(cacheSize)</code></li>
+<li><code>setMaximumSize(numBytes)</code> / <code>setPageSize(numBytes)</code> / <code>setVersion(version)</code></li>
+<li><code>yieldIfContendedSafely()</code> / <code>yieldIfContendedSafely(sleepAfterYieldDelay)</code></li>
+</ul>
+<!-- [end-include:databaseType.md] -->
+<!-- [start-include:cursorWrapperType.md] -->
+<h1>CursorWrapper<span><a class="mark" href="#cursorwrappertype_cursorwrapper" id="cursorwrappertype_cursorwrapper">#</a></span></h1>
+<p>CursorWrapper 是 <code>Database.rawQuery(...)</code>, <code>Database.query(...)</code> 等查询方法返回的游标包装对象.</p>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>
+</ul>
+<p>常见相关方法或属性:</p>
+<ul>
+<li><a href="databaseType.html#databasetype_m_rawquery">Database.rawQuery</a></li>
+<li><a href="databaseType.html#databasetype_m_query">Database.query</a></li>
+</ul>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">CursorWrapper</p>
+
+<hr>
+<p><code>CursorWrapper</code> 委托了 Android <code>Cursor</code> 的全部能力, 并额外提供更适合脚本使用的读取方法. 查询返回游标后, 调用方应主动 <code>close()</code>; <code>single()</code> 与默认的 <code>all()</code> 会自动关闭游标.</p>
+<p>字段类型映射:</p>
+<ul>
+<li><code>FIELD_TYPE_NULL</code> -&gt; <code>null</code></li>
+<li><code>FIELD_TYPE_INTEGER</code> -&gt; <code>Long</code></li>
+<li><code>FIELD_TYPE_FLOAT</code> -&gt; <code>Double</code></li>
+<li><code>FIELD_TYPE_STRING</code> -&gt; <code>String</code></li>
+<li><code>FIELD_TYPE_BLOB</code> -&gt; <code>byte[]</code></li>
+</ul>
+<h2>[m] get<span><a class="mark" href="#cursorwrappertype_m_get" id="cursorwrappertype_m_get">#</a></span></h2>
+<h3>get(index)<span><a class="mark" href="#cursorwrappertype_get_index" id="cursorwrappertype_get_index">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>index</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 列索引</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
+</ul>
+</div><p>按列索引读取当前行字段.</p>
+<h2>[m] getByColumn<span><a class="mark" href="#cursorwrappertype_m_getbycolumn" id="cursorwrappertype_m_getbycolumn">#</a></span></h2>
+<h3>getByColumn(column)<span><a class="mark" href="#cursorwrappertype_getbycolumn_column" id="cursorwrappertype_getbycolumn_column">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>column</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 列名</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
+</ul>
+</div><p>按列名读取当前行字段. 列不存在时会由 <code>getColumnIndexOrThrow</code> 抛出异常.</p>
+<h2>[m] pick<span><a class="mark" href="#cursorwrappertype_m_pick" id="cursorwrappertype_m_pick">#</a></span></h2>
+<h3>pick()<span><a class="mark" href="#cursorwrappertype_pick" id="cursorwrappertype_pick">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+</div><p>将当前行转换为对象, 键为列名.</p>
+<h2>[m] next<span><a class="mark" href="#cursorwrappertype_m_next" id="cursorwrappertype_m_next">#</a></span></h2>
+<h3>next()<span><a class="mark" href="#cursorwrappertype_next" id="cursorwrappertype_next">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>. 此方法不会自动关闭游标.</p>
+<h2>[m] single<span><a class="mark" href="#cursorwrappertype_m_single" id="cursorwrappertype_m_single">#</a></span></h2>
+<h3>single()<span><a class="mark" href="#cursorwrappertype_single" id="cursorwrappertype_single">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>返回第一条记录并关闭游标.</p>
+<h2>[m] all<span><a class="mark" href="#cursorwrappertype_m_all" id="cursorwrappertype_m_all">#</a></span></h2>
+<h3>all(close?)<span><a class="mark" href="#cursorwrappertype_all_close" id="cursorwrappertype_all_close">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>[ close = <code>true</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
+</ul>
+</div><p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>
+<h2>示例<span><a class="mark" href="#cursorwrappertype" id="cursorwrappertype">#</a></span></h2>
+<pre><code class="lang-js">let cursor = db.rawQuery(&#39;SELECT id, name FROM user&#39;, []);
+let rows = cursor.all(); // 默认关闭 cursor.
+
+let one = db.rawQuery(&#39;SELECT id, name FROM user LIMIT 1&#39;, []).single();
+console.log(one &amp;&amp; one.name);
+</code></pre>
+<!-- [end-include:cursorWrapperType.md] -->
 <!-- [start-include:mime.md] -->
 <h1>MIME<span><a class="mark" href="#mime_mime" id="mime_mime">#</a></span></h1>
 <p><code>mime</code> 模块用于解析 MIME 类型字符串, 返回一个包含主类型、子类型和参数的 <code>JsMime</code> 对象.</p>
@@ -16859,7 +18112,7 @@ events.on(&#39;commit&#39;, function () {
 <p><strong><code>6.6.0</code></strong></p>
 <ul>
 <li><strong>mimeStr</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - MIME 类型字符串</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_jsmime">JsMime</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="jsMimeType.html">JsMime</a></span> }</li>
 </ul>
 <p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>
 <pre><code class="lang-js">let m = mime(&#39;text/html; charset=utf-8&#39;);
@@ -16917,6 +18170,69 @@ console.log(m.parameters.flag); // undefined
 <li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>
 </ul>
 </div><!-- [end-include:mime.md] -->
+<!-- [start-include:jsMimeType.md] -->
+<h1>JsMime<span><a class="mark" href="#jsmimetype_jsmime" id="jsmimetype_jsmime">#</a></span></h1>
+<p>JsMime 是 <code>mime(mimeStr)</code> 返回的 MIME 解析结果对象.</p>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/Mime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/JsMime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/Mime.kt</code></li>
+</ul>
+<p>常见相关方法或属性:</p>
+<ul>
+<li><a href="mime.html">mime</a>(mimeStr)</li>
+</ul>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">JsMime</p>
+
+<hr>
+<h2>[p] raw<span><a class="mark" href="#jsmimetype_p_raw" id="jsmimetype_p_raw">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>原始 MIME 字符串.</p>
+<h2>[p] type<span><a class="mark" href="#jsmimetype_p_type" id="jsmimetype_p_type">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>主类型, 如 <code>text</code>.</p>
+<h2>[p] subtype<span><a class="mark" href="#jsmimetype_p_subtype" id="jsmimetype_p_subtype">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>子类型, 如 <code>html</code>.</p>
+<h2>[p] mimeType<span><a class="mark" href="#jsmimetype_p_mimetype" id="jsmimetype_p_mimetype">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>由 <code>type/subtype</code> 和有效参数重新拼接出的 MIME 字符串. 参数顺序沿用原始字符串中 <code>;</code> 后的顺序.</p>
+<h2>[p] mimeTypeRefined<span><a class="mark" href="#jsmimetype_p_mimetyperefined" id="jsmimetype_p_mimetyperefined">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>仅包含主类型与子类型的 MIME 类型, 形如 <code>text/html</code>.</p>
+<h2>[p] parameters<span><a class="mark" href="#jsmimetype_p_parameters" id="jsmimetype_p_parameters">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+</div><p>参数对象. 当前实现只解析 <code>;</code> 后包含 <code>=</code> 的片段, 并按 <code>key=value</code> 放入对象; 不含 <code>=</code> 的片段只会保留在 <code>mimeType</code> 字符串里, 不会进入 <code>parameters</code>.</p>
+<h2>解析边界<span><a class="mark" href="#jsmimetype" id="jsmimetype">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>mime</code> 不做文件扩展名推断; 传入 <code>png</code> 不等同于 <code>image/png</code>.</li>
+<li>参数解析使用 <code>;</code> 分隔, 并按 <code>=</code> 拆分键值. 当前实现期望单个参数片段最多只有一个 <code>=</code>.</li>
+<li><code>null</code> / <code>undefined</code> 会在转字符串阶段失败; 空白字符串会被底层 <code>MimeType</code> 拒绝.</li>
+<li>底层 <code>MimeType</code> 不是严格 MIME 语法校验器. 例如 <code>mime(&#39;jpg&#39;)</code> 这类无 <code>/</code> 的字符串仍可能被接受, 此时 <code>type</code> 来自输入, <code>subtype</code> 可能为 <code>*</code>.</li>
+<li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>
+</ul>
+</div><h2>示例<span><a class="mark" href="#jsmimetype_1" id="jsmimetype_1">#</a></span></h2>
+<pre><code class="lang-js">let m = mime(&#39;application/json; charset=utf-8; version=1; flag&#39;);
+console.log(m.type); // application
+console.log(m.subtype); // json
+console.log(m.parameters.charset); // utf-8
+console.log(m.parameters.flag); // undefined
+</code></pre>
+<!-- [end-include:jsMimeType.md] -->
 <!-- [start-include:nanoid.md] -->
 <h1>NanoID<span><a class="mark" href="#nanoid_nanoid" id="nanoid_nanoid">#</a></span></h1>
 <p><code>nanoid</code> 模块用于生成短字符串 ID.</p>
@@ -18422,8 +19738,8 @@ console.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB
 <p><strong><code>6.7.0</code></strong></p>
 <ul>
 <li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 文件路径, 不可为空</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>
 <h2>[m] zipFile<span><a class="mark" href="#zip_m_zipfile" id="zip_m_zipfile">#</a></span></h2>
@@ -18433,8 +19749,8 @@ console.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB
 <ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>
 <pre><code class="lang-js">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);
@@ -18447,8 +19763,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目录路径</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>
 <h2>[m] zipFiles<span><a class="mark" href="#zip_m_zipfiles" id="zip_m_zipfiles">#</a></span></h2>
@@ -18458,8 +19774,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> } - 文件路径列表</li>
 <li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>
 <ul>
@@ -18474,8 +19790,8 @@ zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
 <ul>
 <li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#all_zipnativeobject">ZipNativeObject</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
 </ul>
 <p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>
 <pre><code class="lang-js">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);
@@ -18510,17 +19826,17 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html">net.lingala.zip4j.model.ZipParameters</a></span> }</li>
 </ul>
-</div><p>由 <a href="#all_zipoptions">ZipOptions</a> 构造出的压缩参数.</p>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的压缩参数.</p>
 <h2>[p] unzipParameters<span><a class="mark" href="#zip_p_unzipparameters" id="zip_p_unzipparameters">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html">net.lingala.zip4j.model.UnzipParameters</a></span> }</li>
 </ul>
-</div><p>由 <a href="#all_zipoptions">ZipOptions</a> 构造出的解压参数.</p>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的解压参数.</p>
 <h2>[m] addFile<span><a class="mark" href="#zip_m_addfile" id="zip_m_addfile">#</a></span></h2>
 <h3>addFile(filePath, options?)<span><a class="mark" href="#zip_addfile_filepath_options" id="zip_addfile_filepath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加文件到当前 ZIP.</p>
@@ -18528,7 +19844,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>addFiles(filePathList, options?)<span><a class="mark" href="#zip_addfiles_filepathlist_options" id="zip_addfiles_filepathlist_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>
@@ -18536,7 +19852,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>addFolder(filePath, options?)<span><a class="mark" href="#zip_addfolder_filepath_options" id="zip_addfolder_filepath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>添加文件夹.</p>
@@ -18544,7 +19860,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <h3>extractAll(destPath, options?)<span><a class="mark" href="#zip_extractall_destpath_options" id="zip_extractall_destpath_options">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
 </div><p>解压全部文件.</p>
@@ -18553,7 +19869,7 @@ zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; 
 <div class="signature"><ul>
 <li><strong>zipFilePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 内部文件路径</li>
 <li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
-<li><strong>[ options ]</strong> { <span class="type"><a href="#all_zipoptions">ZipOptions</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
 <li><strong>[ newFileName ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压后的新文件名</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
@@ -18662,7 +19978,340 @@ console.log(z.isEncrypted());
 console.log(z.getFileHeaders().length);
 </code></pre>
 <!-- [end-include:zip.md] -->
-<!-- [start-include:media.md] -->
+<!-- [start-include:zipOptionsType.md] -->
+<h1>ZipOptions<span><a class="mark" href="#zipoptionstype_zipoptions" id="zipoptionstype_zipoptions">#</a></span></h1>
+<p>ZipOptions 是 <code>zip</code> 模块的压缩 / 解压选项对象, 会被转换为 Zip4j 的 <code>ZipParameters</code> 和 <code>UnzipParameters</code>.</p>
+<p>源码依据:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt</code></li>
+</ul>
+<p>常见相关方法或属性:</p>
+<ul>
+<li><a href="zip.html#zip_m_open">zip.open</a>(zipPath, <strong>options</strong>)</li>
+<li><a href="zip.html#zip_m_zipfile">zip.zipFile</a>(filePath, destZipPath, <strong>options</strong>)</li>
+<li><a href="zip.html#zip_m_zipdir">zip.zipDir</a>(filePath, destZipPath, <strong>options</strong>)</li>
+<li><a href="zip.html#zip_m_zipfiles">zip.zipFiles</a>(filePathList, destZipPath, <strong>options</strong>)</li>
+<li><a href="zip.html#zip_m_unzip">zip.unzip</a>(zipPath, destPath, <strong>options</strong>)</li>
+<li><a href="zipNativeObjectType.html#zipnativeobjecttype_m_addfile">ZipNativeObject.addFile</a>(filePath, <strong>options</strong>)</li>
+<li><a href="zipNativeObjectType.html#zipnativeobjecttype_m_extractall">ZipNativeObject.extractAll</a>(destPath, <strong>options</strong>)</li>
+</ul>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">ZipOptions</p>
+
+<hr>
+<h2>压缩选项<span><a class="mark" href="#zipoptionstype" id="zipoptionstype">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>password</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 密码. 设置后会调用 <code>zipFile.setPassword(...)</code>, 并自动将 <code>encryptFiles</code> 设为 <code>true</code>.</li>
+<li><strong>aesKeyStrength</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>256</code>. 数字支持 <code>128</code> / <code>192</code> / <code>256</code>; 字符串支持 <code>128</code> / <code>192</code> / <code>256</code> 或 Zip4j 枚举名.</li>
+<li><strong>aesVersion</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>2</code>. 支持 <code>1</code> / <code>2</code> 或 <code>ONE</code> / <code>TWO</code>.</li>
+<li><strong>compressionLevel</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>NORMAL</code>. 数字按 Zip4j <code>CompressionLevel.level</code> 匹配; 字符串可使用去掉 <code>DEFLATE_LEVEL_</code> 前缀后的枚举名.</li>
+<li><strong>compressionMethod</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>DEFLATE</code>. 数字按 Zip4j <code>CompressionMethod.code</code> 匹配; 字符串可使用去掉 <code>COMP_</code> 前缀后的枚举名.</li>
+<li><strong>encryptionMethod</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>AES</code>. 数字支持 <code>-1</code> = <code>NONE</code>, <code>0</code> = <code>ZIP_STANDARD</code>, <code>1</code> = <code>ZIP_STANDARD_VARIANT_STRONG</code>, <code>99</code> = <code>AES</code>.</li>
+<li><strong>defaultFolderPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>entryCRC</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>entrySize</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>excludeFileFilter</strong> { <a href="dataTypes.html#datatypes_function">function</a> | <code>ExcludeFileFilter</code> } - 返回 <code>true</code> 时排除文件.</li>
+<li><strong>fileComment</strong> / <strong>comment</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>fileNameInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>isIncludeRootFolder</strong> / <strong>includeRootFolder</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isOverrideExistingFilesInZip</strong> / <strong>overrideExistingFilesInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isReadHiddenFiles</strong> / <strong>readHiddenFiles</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isReadHiddenFolders</strong> / <strong>readHiddenFolders</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isUnixMode</strong> / <strong>unixMode</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isWriteExtendedLocalFileHeader</strong> / <strong>writeExtendedLocalFileHeader</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>lastModifiedFileTime</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>rootFolderNameInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>symbolicLinkAction</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>INCLUDE_LINKED_FILE_ONLY</code>, 字符串必须能匹配 Zip4j <code>SymbolicLinkAction</code> 枚举.</li>
+<li><strong>isEncryptFiles</strong> / <strong>encryptFiles</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><h2>解压选项<span><a class="mark" href="#zipoptionstype_1" id="zipoptionstype_1">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>password</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压加密 ZIP 时使用.</li>
+<li><strong>isExtractSymbolicLinks</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 当前源码读取此项, 默认 <code>true</code>; 但没有写回 <code>UnzipParameters</code>, 行为以 Zip4j 默认值为准.</li>
+</ul>
+</div><h2>异常与边界<span><a class="mark" href="#zipoptionstype_2" id="zipoptionstype_2">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>options</code> 必须是 JavaScript 对象; <code>null</code> / <code>undefined</code> 会按空对象处理.</li>
+<li><code>excludeFileFilter</code> 只能是 Zip4j <code>ExcludeFileFilter</code> 或 JavaScript 函数; 其他值会抛出参数异常.</li>
+<li><code>aesKeyStrength</code>, <code>compressionLevel</code>, <code>compressionMethod</code>, <code>encryptionMethod</code>, <code>symbolicLinkAction</code> 等枚举字段传入非法值时会抛出异常.</li>
+<li><code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持. 传入这些选项会抛出异常.</li>
+</ul>
+</div><h2>示例<span><a class="mark" href="#zipoptionstype_3" id="zipoptionstype_3">#</a></span></h2>
+<pre><code class="lang-js">let z = zip.zipFiles([
+    &#39;./logs/a.txt&#39;,
+    &#39;./logs/b.txt&#39;,
+], &#39;./logs.zip&#39;, {
+    password: &#39;secret&#39;,
+    compressionLevel: &#39;MAXIMUM&#39;,
+    aesKeyStrength: 256,
+    includeRootFolder: false,
+});
+
+console.log(z.isEncrypted());
+</code></pre>
+<!-- [end-include:zipOptionsType.md] -->
+<!-- [start-include:zip.md] -->
+<h1>Zip<span><a class="mark" href="#zip_zip_2" id="zip_zip_2">#</a></span></h1>
+<p><code>zip</code> 模块用于创建、读取、解压和修改 ZIP 文件. 底层使用 Zip4j.</p>
+<blockquote>
+<p>源码依据: <code>runtime/api/augment/zip/Zip.kt</code>, <code>runtime/api/augment/zip/ZipNativeObject.kt</code>.</p>
+</blockquote>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">zip</p>
+
+<hr>
+<h2>[@] zip<span><a class="mark" href="#zip_zip_3" id="zip_zip_3">#</a></span></h2>
+<h3>zip(zipPath)<span><a class="mark" href="#zip_zip_zippath_1" id="zip_zip_zippath_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p><code>zip(zipPath)</code> 与 <a href="#all_m_open">zip.open(zipPath)</a> 等价.</p>
+<h2>[m] open<span><a class="mark" href="#zip_m_open_1" id="zip_m_open_1">#</a></span></h2>
+<h3>open(zipPath, options?)<span><a class="mark" href="#zip_open_zippath_options_1" id="zip_open_zippath_options_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 文件路径, 不可为空</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
+</ul>
+<p>打开或创建一个 ZIP 操作对象. 路径会经过 AutoJs6 运行时路径解析.</p>
+<h2>[m] zipFile<span><a class="mark" href="#zip_m_zipfile_1" id="zip_m_zipfile_1">#</a></span></h2>
+<h3>zipFile(filePath, destZipPath, options?)<span><a class="mark" href="#zip_zipfile_filepath_destzippath_options_1" id="zip_zipfile_filepath_destzippath_options_1">#</a></span></h3>
+<h3>zipFile(filePath, options)<span><a class="mark" href="#zip_zipfile_filepath_options_1" id="zip_zipfile_filepath_options_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
+</ul>
+<p>将单个文件加入 ZIP. 当前源码要求参数长度为 <code>2..3</code>; 第二个参数为对象时会被识别为 <code>options</code>, 目标 ZIP 默认使用源文件名去掉扩展名后追加 <code>.zip</code>.</p>
+<pre><code class="lang-js">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);
+zip.zipFile(&#39;./logs/a.txt&#39;, { password: &#39;secret&#39; });
+</code></pre>
+<h2>[m] zipDir<span><a class="mark" href="#zip_m_zipdir_1" id="zip_m_zipdir_1">#</a></span></h2>
+<h3>zipDir(filePath, destZipPath, options?)<span><a class="mark" href="#zip_zipdir_filepath_destzippath_options_1" id="zip_zipdir_filepath_destzippath_options_1">#</a></span></h3>
+<h3>zipDir(filePath, options)<span><a class="mark" href="#zip_zipdir_filepath_options_1" id="zip_zipdir_filepath_options_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目录路径</li>
+<li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
+</ul>
+<p>将目录创建为 ZIP. 内部调用 <code>ZipFile.createSplitZipFileFromFolder(file, zipParameters, false, -1)</code>.</p>
+<h2>[m] zipFiles<span><a class="mark" href="#zip_m_zipfiles_1" id="zip_m_zipfiles_1">#</a></span></h2>
+<h3>zipFiles(filePathList, destZipPath, options?)<span><a class="mark" href="#zip_zipfiles_filepathlist_destzippath_options_1" id="zip_zipfiles_filepathlist_destzippath_options_1">#</a></span></h3>
+<h3>zipFiles(filePathList, options)<span><a class="mark" href="#zip_zipfiles_filepathlist_options_1" id="zip_zipfiles_filepathlist_options_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> } - 文件路径列表</li>
+<li><strong>destZipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标 ZIP 路径</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
+</ul>
+<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在. 省略目标路径时:</p>
+<ul>
+<li>仅一个文件: 使用该文件名去掉扩展名后追加 <code>.zip</code></li>
+<li>多个文件且来自同一目录: 使用该目录名追加 <code>.zip</code></li>
+<li>其他情况: 使用 <code>yyyyMMdd-HHmmss-XXXX.zip</code> 随机名</li>
+</ul>
+<h2>[m] unzip<span><a class="mark" href="#zip_m_unzip_1" id="zip_m_unzip_1">#</a></span></h2>
+<h3>unzip(zipPath, destPath, options?)<span><a class="mark" href="#zip_unzip_zippath_destpath_options_1" id="zip_unzip_zippath_destpath_options_1">#</a></span></h3>
+<h3>unzip(zipPath, options)<span><a class="mark" href="#zip_unzip_zippath_options_1" id="zip_unzip_zippath_options_1">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>zipPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="zipNativeObjectType.html">ZipNativeObject</a></span> }</li>
+</ul>
+<p>解压 ZIP 到目标目录. 第二个参数为对象时会被识别为 <code>options</code>, <code>destPath</code> 按空字符串解析.</p>
+<pre><code class="lang-js">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);
+zip.unzip(&#39;./secret.zip&#39;, &#39;./out&#39;, { password: &#39;secret&#39; });
+</code></pre>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">ZipNativeObject</p>
+
+<hr>
+<p><code>ZipNativeObject</code> 是每次 <code>zip.open</code> / <code>zipFile</code> / <code>zipDir</code> / <code>zipFiles</code> / <code>unzip</code> 返回的操作对象. 构造失败或操作失败时, 内部会尝试关闭底层 <code>ZipFile</code> 后再抛出异常.</p>
+<h2>[p] name<span><a class="mark" href="#zip_p_name_1" id="zip_p_name_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>创建对象的操作名, 如 <code>open</code> / <code>zipFile</code> / <code>unzip</code>.</p>
+<h2>[p] path<span><a class="mark" href="#zip_p_path_1" id="zip_p_path_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>ZIP 文件的运行时解析路径.</p>
+<h2>[p] zipFile<span><a class="mark" href="#zip_p_zipfile_1" id="zip_p_zipfile_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html">net.lingala.zip4j.ZipFile</a></span> }</li>
+</ul>
+</div><p>底层 Zip4j 对象.</p>
+<h2>[p] options<span><a class="mark" href="#zip_p_options_1" id="zip_p_options_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+</div><p>原始选项对象.</p>
+<h2>[p] zipParameters<span><a class="mark" href="#zip_p_zipparameters_1" id="zip_p_zipparameters_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/ZipParameters.html">net.lingala.zip4j.model.ZipParameters</a></span> }</li>
+</ul>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的压缩参数.</p>
+<h2>[p] unzipParameters<span><a class="mark" href="#zip_p_unzipparameters_1" id="zip_p_unzipparameters_1">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/UnzipParameters.html">net.lingala.zip4j.model.UnzipParameters</a></span> }</li>
+</ul>
+</div><p>由 <a href="zipOptionsType.html">ZipOptions</a> 构造出的解压参数.</p>
+<h2>[m] addFile<span><a class="mark" href="#zip_m_addfile_1" id="zip_m_addfile_1">#</a></span></h2>
+<h3>addFile(filePath, options?)<span><a class="mark" href="#zip_addfile_filepath_options_1" id="zip_addfile_filepath_options_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>添加文件到当前 ZIP.</p>
+<h2>[m] addFiles<span><a class="mark" href="#zip_m_addfiles_1" id="zip_m_addfiles_1">#</a></span></h2>
+<h3>addFiles(filePathList, options?)<span><a class="mark" href="#zip_addfiles_filepathlist_options_1" id="zip_addfiles_filepathlist_options_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>filePathList</strong> { <span class="type"><a href="dataTypes.html#datatypes_iterable">Iterable</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>
+<h2>[m] addFolder<span><a class="mark" href="#zip_m_addfolder_1" id="zip_m_addfolder_1">#</a></span></h2>
+<h3>addFolder(filePath, options?)<span><a class="mark" href="#zip_addfolder_filepath_options_1" id="zip_addfolder_filepath_options_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>filePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>添加文件夹.</p>
+<h2>[m] extractAll<span><a class="mark" href="#zip_m_extractall_1" id="zip_m_extractall_1">#</a></span></h2>
+<h3>extractAll(destPath, options?)<span><a class="mark" href="#zip_extractall_destpath_options_1" id="zip_extractall_destpath_options_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>解压全部文件.</p>
+<h2>[m] extractFile<span><a class="mark" href="#zip_m_extractfile_1" id="zip_m_extractfile_1">#</a></span></h2>
+<h3>extractFile(zipFilePath, destPath, options?, newFileName?)<span><a class="mark" href="#zip_extractfile_zipfilepath_destpath_options_newfilename_1" id="zip_extractfile_zipfilepath_destpath_options_newfilename_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>zipFilePath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 内部文件路径</li>
+<li><strong>destPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压目标目录</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="zipOptionsType.html">ZipOptions</a></span> }</li>
+<li><strong>[ newFileName ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压后的新文件名</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>解压指定文件.</p>
+<h2>[m] setPassword<span><a class="mark" href="#zip_m_setpassword_1" id="zip_m_setpassword_1">#</a></span></h2>
+<h3>setPassword(password)<span><a class="mark" href="#zip_setpassword_password_1" id="zip_setpassword_password_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>password</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>设置 ZIP 密码.</p>
+<h2>[m] getFileHeader<span><a class="mark" href="#zip_m_getfileheader_1" id="zip_m_getfileheader_1">#</a></span></h2>
+<h3>getFileHeader(fileName)<span><a class="mark" href="#zip_getfileheader_filename_1" id="zip_getfileheader_filename_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>fileName</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/model/FileHeader.html">net.lingala.zip4j.model.FileHeader</a></span> }</li>
+</ul>
+</div><p>返回指定文件头.</p>
+<h2>[m] getFileHeaders<span><a class="mark" href="#zip_m_getfileheaders_1" id="zip_m_getfileheaders_1">#</a></span></h2>
+<h3>getFileHeaders()<span><a class="mark" href="#zip_getfileheaders_1" id="zip_getfileheaders_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
+</ul>
+</div><p>返回全部文件头数组.</p>
+<h2>[m] isEncrypted<span><a class="mark" href="#zip_m_isencrypted_1" id="zip_m_isencrypted_1">#</a></span></h2>
+<h3>isEncrypted()<span><a class="mark" href="#zip_isencrypted_1" id="zip_isencrypted_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><p>返回 ZIP 是否加密.</p>
+<h2>[m] removeFile<span><a class="mark" href="#zip_m_removefile_1" id="zip_m_removefile_1">#</a></span></h2>
+<h3>removeFile(fileName)<span><a class="mark" href="#zip_removefile_filename_1" id="zip_removefile_filename_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>fileName</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+</div><p>移除指定文件.</p>
+<h2>[m] isValidZipFile<span><a class="mark" href="#zip_m_isvalidzipfile_1" id="zip_m_isvalidzipfile_1">#</a></span></h2>
+<h3>isValidZipFile()<span><a class="mark" href="#zip_isvalidzipfile_1" id="zip_isvalidzipfile_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><p>返回是否为有效 ZIP 文件.</p>
+<h2>[m] getPath<span><a class="mark" href="#zip_m_getpath_1" id="zip_m_getpath_1">#</a></span></h2>
+<h3>getPath()<span><a class="mark" href="#zip_getpath_1" id="zip_getpath_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>返回 ZIP 路径.</p>
+<h2>[m] getZipFile<span><a class="mark" href="#zip_m_getzipfile_1" id="zip_m_getzipfile_1">#</a></span></h2>
+<h3>getZipFile()<span><a class="mark" href="#zip_getzipfile_1" id="zip_getzipfile_1">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html">net.lingala.zip4j.ZipFile</a></span> }</li>
+</ul>
+</div><p>返回底层 Zip4j 对象.</p>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">ZipOptions</p>
+
+<hr>
+<p><code>ZipOptions</code> 会被转换为 Zip4j 的 <code>ZipParameters</code> 和 <code>UnzipParameters</code>. 选项对象必须是 JavaScript 对象.</p>
+<h2>压缩选项<span><a class="mark" href="#zip_3" id="zip_3">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>password</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - ZIP 密码. 设置后会调用 <code>zipFile.setPassword(...)</code>, 并自动将 <code>encryptFiles</code> 设为 <code>true</code>.</li>
+<li><strong>aesKeyStrength</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>256</code>. 数字支持 <code>128</code> / <code>192</code> / <code>256</code>; 字符串支持 <code>128</code> / <code>192</code> / <code>256</code> 或 Zip4j 枚举名.</li>
+<li><strong>aesVersion</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>2</code>. 支持 <code>1</code> / <code>2</code> 或 <code>ONE</code> / <code>TWO</code>.</li>
+<li><strong>compressionLevel</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>NORMAL</code>. 数字按 Zip4j <code>CompressionLevel.level</code> 匹配; 字符串可使用去掉 <code>DEFLATE_LEVEL_</code> 前缀后的枚举名.</li>
+<li><strong>compressionMethod</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>DEFLATE</code>. 数字按 Zip4j <code>CompressionMethod.code</code> 匹配; 字符串可使用去掉 <code>COMP_</code> 前缀后的枚举名.</li>
+<li><strong>encryptionMethod</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>AES</code>. 数字支持 <code>-1</code> = <code>NONE</code>, <code>0</code> = <code>ZIP_STANDARD</code>, <code>1</code> = <code>ZIP_STANDARD_VARIANT_STRONG</code>, <code>99</code> = <code>AES</code>.</li>
+<li><strong>defaultFolderPath</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>entryCRC</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>entrySize</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>excludeFileFilter</strong> { <a href="dataTypes.html#datatypes_function">function</a> | <code>ExcludeFileFilter</code> } - 返回 <code>true</code> 时排除文件.</li>
+<li><strong>fileComment</strong> / <strong>comment</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>fileNameInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>isIncludeRootFolder</strong> / <strong>includeRootFolder</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isOverrideExistingFilesInZip</strong> / <strong>overrideExistingFilesInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isReadHiddenFiles</strong> / <strong>readHiddenFiles</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isReadHiddenFolders</strong> / <strong>readHiddenFolders</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isUnixMode</strong> / <strong>unixMode</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>isWriteExtendedLocalFileHeader</strong> / <strong>writeExtendedLocalFileHeader</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+<li><strong>lastModifiedFileTime</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+<li><strong>rootFolderNameInZip</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>symbolicLinkAction</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 默认 <code>INCLUDE_LINKED_FILE_ONLY</code>, 字符串必须能匹配 Zip4j <code>SymbolicLinkAction</code> 枚举.</li>
+<li><strong>isEncryptFiles</strong> / <strong>encryptFiles</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><h2>解压选项<span><a class="mark" href="#zip_4" id="zip_4">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>password</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 解压加密 ZIP 时使用.</li>
+<li><strong>isExtractSymbolicLinks</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 当前源码读取此项, 默认 <code>true</code>; 但没有写回 <code>UnzipParameters</code>, 行为以 Zip4j 默认值为准.</li>
+</ul>
+</div><blockquote>
+<p>注: <code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持. 传入这些选项会抛出异常.</p>
+</blockquote>
+<h2>示例<span><a class="mark" href="#zip_5" id="zip_5">#</a></span></h2>
+<pre><code class="lang-js">let z = zip.zipFiles([
+    &#39;./logs/a.txt&#39;,
+    &#39;./logs/b.txt&#39;,
+], &#39;./logs.zip&#39;, {
+    password: &#39;secret&#39;,
+    compressionLevel: &#39;MAXIMUM&#39;,
+    aesKeyStrength: 256,
+    includeRootFolder: false,
+});
+
+console.log(z.isEncrypted());
+console.log(z.getFileHeaders().length);
+</code></pre>
+<!-- [end-include:zip.md] -->
+<p>NativeObjectType
+<!-- [start-include:media.md] --></p>
 <h1>多媒体 (Media)<span><a class="mark" href="#media_media_1" id="media_media_1">#</a></span></h1>
 <hr>
 <p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
@@ -18744,6 +20393,88 @@ sleep(media.getMusicDuration() - 30 * 1000);
 </div><p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.
 <!-- [end-include:media.md] --></p>
 <p>info
+<!-- [start-include:media.md] --></p>
+<h1>多媒体 (Media)<span><a class="mark" href="#media_media_2" id="media_media_2">#</a></span></h1>
+<hr>
+<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
+<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+
+<hr>
+<p>media模块提供多媒体编程的支持. 目前仅支持音乐播放和媒体文件扫描. 后续会结合UI加入视频播放等功能.</p>
+<p>需要注意是, 使用该模块播放音乐时是在后台异步播放的, 在脚本结束后会自动结束播放, 因此可能需要插入诸如<code>sleep()</code>的语句来使脚本保持运行. 例如：</p>
+<pre><code>//播放音乐
+media.playMusic(&quot;/sdcard/1.mp3&quot;);
+//让音乐播放完
+sleep(media.getMusicDuration());
+</code></pre><h2>media.scanFile(path)<span><a class="mark" href="#media_media_scanfile_path_2" id="media_media_scanfile_path_2">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 媒体文件路径</li>
+</ul>
+</div><p>扫描路径path的媒体文件, 将它加入媒体库中；或者如果该文件以及被删除, 则通知媒体库移除该文件.</p>
+<p>媒体库包括相册、音乐库等, 因此该函数可以用于把某个图片文件加入相册.</p>
+<pre><code>//请求截图
+requestScreenCapture(false);
+//截图
+var im = captureScreen();
+var path = &quot;/sdcard/screenshot.png&quot;;
+//保存图片
+im.saveTo(path);
+//把图片加入相册
+media.scanFile(path);
+</code></pre><h2>media.playMusic(path[, volume, looping])<span><a class="mark" href="#media_media_playmusic_path_volume_looping_2" id="media_media_playmusic_path_volume_looping_2">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 音乐文件路径</li>
+<li><code>volume</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 播放音量, 为0~1的浮点数, 默认为1</li>
+<li><code>looping</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">boolean</a> } 是否循环播放, 如果looping为<code>true</code>则循环播放, 默认为<code>false</code></li>
+</ul>
+</div><p>播放音乐文件path. 该函数不会显示任何音乐播放界面. 如果文件不存在或者文件不是受支持的音乐格式, 则抛出<code>UncheckedIOException</code>异常.</p>
+<pre><code>//播放音乐
+media.playMusic(&quot;/sdcard/1.mp3&quot;);
+//让音乐播放完
+sleep(media.getMusicDuration());
+</code></pre><p>如果要循环播放音乐, 则使用looping参数：</p>
+<pre><code>
+</code></pre><p>//传递第三个参数为true以循环播放音乐
+media.playMusic(&quot;/sdcard/1.mp3&quot;, 1, true);
+//等待三次播放的时间
+sleep(media.getMusicDuration() * 3);</p>
+<pre><code>
+</code></pre><p>如果要使用音乐播放器播放音乐, 调用<code>app.viewFile(path)</code>函数.</p>
+<h2>media.musicSeekTo(msec)<span><a class="mark" href="#media_media_musicseekto_msec_2" id="media_media_musicseekto_msec_2">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>msec</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 毫秒数, 表示音乐进度</li>
+</ul>
+</div><p>把当前播放进度调整到时间msec的位置. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>
+<p>例如, 要把音乐调到1分钟的位置, 为<code>media.musicSeekTo(60 * 1000)</code>.</p>
+<pre><code>//播放音乐
+media.playMusic(&quot;/sdcard/1.mp3&quot;);
+//调整到30秒的位置
+media.musicSeekTo(30 * 1000);
+//等待音乐播放完成
+sleep(media.getMusicDuration() - 30 * 1000);
+</code></pre><h2>media.pauseMusic()<span><a class="mark" href="#media_media_pausemusic_2" id="media_media_pausemusic_2">#</a></span></h2>
+<p>暂停音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>
+<h2>media.resumeMusic()<span><a class="mark" href="#media_media_resumemusic_2" id="media_media_resumemusic_2">#</a></span></h2>
+<p>继续音乐播放. 如果当前没有播放过音乐, 则调用该函数没有任何效果.</p>
+<h2>media.stopMusic()<span><a class="mark" href="#media_media_stopmusic_2" id="media_media_stopmusic_2">#</a></span></h2>
+<p>停止音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>
+<h2>media.isMusicPlaying()<span><a class="mark" href="#media_media_ismusicplaying_2" id="media_media_ismusicplaying_2">#</a></span></h2>
+<div class="signature"><ul>
+<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type" class="type">boolean</a> }</li>
+</ul>
+</div><p>返回当前是否正在播放音乐.</p>
+<h2>media.getMusicDuration()<span><a class="mark" href="#media_media_getmusicduration_2" id="media_media_getmusicduration_2">#</a></span></h2>
+<div class="signature"><ul>
+<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
+</ul>
+</div><p>返回当前音乐的时长. 单位毫秒.</p>
+<h2>media.getMusicCurrentPosition()<span><a class="mark" href="#media_media_getmusiccurrentposition_2" id="media_media_getmusiccurrentposition_2">#</a></span></h2>
+<div class="signature"><ul>
+<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
+</ul>
+</div><p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.
+<!-- [end-include:media.md] --></p>
+<p>infoNativeObjectType
 <!-- [start-include:e4x.md] --></p>
 <h1>E4X<span><a class="mark" href="#media_e4x" id="media_e4x">#</a></span></h1>
 <blockquote>

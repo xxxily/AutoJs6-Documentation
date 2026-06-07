@@ -25,6 +25,8 @@
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
 <li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
 <li><a class="nav-documentationRoadmap" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
+<li><a class="nav-runtimeApiIndex" href="runtimeApiIndex.html">Runtime API Index - 运行时 API 索引</a></li>
+<li><a class="nav-permissionCapabilityMatrix" href="permissionCapabilityMatrix.html">Permission Capability Matrix - 权限能力矩阵</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -144,13 +146,18 @@
 <li><a class="nav-cryptoKeyType" href="cryptoKeyType.html">CryptoKey</a></li>
 <li><a class="nav-cryptoKeyPairType" href="cryptoKeyPairType.html">CryptoKeyPair</a></li>
 <li><a class="nav-consoleBuildOptionsType" href="consoleBuildOptionsType.html">ConsoleBuildOptions</a></li>
+<li><a class="nav-cursorWrapperType" href="cursorWrapperType.html">CursorWrapper</a></li>
+<li><a class="nav-databaseType" href="databaseType.html">Database</a></li>
 <li><a class="nav-httpRequestBuilderOptionsType" href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></li>
 <li><a class="nav-httpRequestHeadersType" href="httpRequestHeadersType.html">HttpRequestHeaders</a></li>
 <li><a class="nav-httpResponseBodyType" href="httpResponseBodyType.html">HttpResponseBody</a></li>
 <li><a class="nav-httpResponseHeadersType" href="httpResponseHeadersType.html">HttpResponseHeaders</a></li>
 <li><a class="nav-httpResponseType" href="httpResponseType.html">HttpResponse</a></li>
+<li><a class="nav-httpSaveResultType" href="httpSaveResultType.html">HttpSaveResult</a></li>
 <li><a class="nav-injectableWebClientType" href="injectableWebClientType.html">InjectableWebClient</a></li>
 <li><a class="nav-injectableWebViewType" href="injectableWebViewType.html">InjectableWebView</a></li>
+<li><a class="nav-jsMimeType" href="jsMimeType.html">JsMime</a></li>
+<li><a class="nav-mediainfoNativeObjectType" href="mediainfoNativeObjectType.html">MediainfoNativeObject</a></li>
 <li><a class="nav-noticeOptionsType" href="noticeOptionsType.html">NoticeOptions</a></li>
 <li><a class="nav-noticeChannelOptionsType" href="noticeChannelOptionsType.html">NoticeChannelOptions</a></li>
 <li><a class="nav-noticePresetConfigurationType" href="noticePresetConfigurationType.html">NoticePresetConfiguration</a></li>
@@ -162,6 +169,8 @@
 <li><a class="nav-opencvRectType" href="opencvRectType.html">OpenCVRect</a></li>
 <li><a class="nav-opencvSizeType" href="opencvSizeType.html">OpenCVSize</a></li>
 <li><a class="nav-openCCConversionType" href="openCCConversionType.html">OpenCCConversion</a></li>
+<li><a class="nav-zipNativeObjectType" href="zipNativeObjectType.html">ZipNativeObject</a></li>
+<li><a class="nav-zipOptionsType" href="zipOptionsType.html">ZipOptions</a></li>
 </ul>
 <div class="line"></div>
 
@@ -364,7 +373,7 @@
 </ul>
 </li>
 <li>}}</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_database">Database</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="databaseType.html">Database</a></span> }</li>
 </ul>
 <p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>
 <pre><code class="lang-js">let db = sqlite.open(&#39;./data/demo.db&#39;, {
@@ -410,32 +419,32 @@ db.close();
 <div class="signature"><ul>
 <li><strong>sql</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>selectionArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><p>执行原始查询并返回包装后的游标.</p>
 <h3>rawQuery(sql, selectionArgs, cancellationSignal)<span><a class="mark" href="#sqlite_rawquery_sql_selectionargs_cancellationsignal" id="sqlite_rawquery_sql_selectionargs_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>cancellationSignal</strong> { <span class="type"><a href="https://developer.android.com/reference/android/os/CancellationSignal">android.os.CancellationSignal</a></span> }</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><h2>[m] rawQueryWithFactory<span><a class="mark" href="#sqlite_m_rawquerywithfactory" id="sqlite_m_rawquerywithfactory">#</a></span></h2>
 <h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">#</a></span></h3>
 <h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">#</a></span></h3>
-<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href="#sqlite_cursorwrapper">CursorWrapper</a>.</p>
+<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href="cursorWrapperType.html">CursorWrapper</a>.</p>
 <h2>[m] query<span><a class="mark" href="#sqlite_m_query" id="sqlite_m_query">#</a></span></h2>
 <h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby">#</a></span></h3>
 <h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><p>查询表并返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>
 <h2>[m] queryWithFactory<span><a class="mark" href="#sqlite_m_querywithfactory" id="sqlite_m_querywithfactory">#</a></span></h2>
 <h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
 <h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
 <div class="signature"><ul>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="cursorWrapperType.html">CursorWrapper</a></span> }</li>
 </ul>
 </div><h2>[m] insert<span><a class="mark" href="#sqlite_m_insert" id="sqlite_m_insert">#</a></span></h2>
 <h3>insert(table, values)<span><a class="mark" href="#sqlite_insert_table_values" id="sqlite_insert_table_values">#</a></span></h3>
