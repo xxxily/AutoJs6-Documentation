@@ -216,16 +216,8 @@
 <li><span class="stability_undefined"><a href="#pinyin_compact_arr">compact(arr)</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_normal">[p] STYLE_NORMAL</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_tone">[p] STYLE_TONE</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_tone2">[p] STYLE_TONE2</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_to3ne">[p] STYLE_TO3NE</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_initials">[p] STYLE_INITIALS</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_style_first_letter">[p] STYLE_FIRST_LETTER</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_mode_normal">[p] MODE_NORMAL</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_mode_surname">[p] MODE_SURNAME</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_mode_place_name">[p] MODE_PLACE_NAME</a></span></li>
-<li><span class="stability_undefined"><a href="#pinyin_p_mode_placename">[p] MODE_PLACENAME</a></span></li>
+<li><span class="stability_undefined"><a href="#pinyin_style">style</a></span></li>
+<li><span class="stability_undefined"><a href="#pinyin_mode">mode</a></span></li>
 </ul>
 </li>
 </ul>
@@ -234,9 +226,9 @@
 
         <div id="apicontent">
             <h1>Pinyin - 汉语拼音<span><a class="mark" href="#pinyin_pinyin" id="pinyin_pinyin">#</a></span></h1>
-<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持多音字、分词、姓氏模式和多种输出风格.</p>
+<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持分词、姓氏模式、多音字和多种输出风格.</p>
 <blockquote>
-<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>.</p>
+<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>, <code>runtime/api/augment/pinyin/Util.kt</code>.</p>
 </blockquote>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">pinyin</p>
@@ -252,9 +244,9 @@
 <ul>
 <li><strong>hans</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 待转换字符串</li>
 <li><strong>[ options ]</strong> {{<ul>
-<li><strong>style</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 输出风格, 默认 <code>STYLE_TONE</code></li>
-<li><strong>mode</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>
-<li><strong>segment</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否启用分词, 默认 <code>false</code></li>
+<li><strong>style</strong> { <a href="dataTypes.html#datatypes_number">number</a> | <a href="dataTypes.html#datatypes_string">string</a> | <code>PinyinStyle</code> } - 输出风格, 默认 <code>STYLE_TONE</code></li>
+<li><strong>mode</strong> { <a href="dataTypes.html#datatypes_number">number</a> | <a href="dataTypes.html#datatypes_string">string</a> | <code>PinyinMode</code> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>
+<li><strong>segment</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否启用 Jieba 分词, 默认 <code>false</code></li>
 <li><strong>heteronym</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否启用多音字, 默认 <code>false</code></li>
 <li><strong>group</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否组合词组结果, 默认 <code>false</code></li>
 </ul>
@@ -262,11 +254,21 @@
 <li>}}</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
 </ul>
-<p>返回二维数组. 每个汉字或词组对应一个拼音候选数组. 返回数组额外带有 <code>compact()</code> 方法.</p>
+<p>返回二维数组. 每个汉字、词组或连续非汉字片段对应一个拼音候选数组. 返回数组额外绑定只读不可枚举的 <code>compact()</code> 方法; 该方法会对各组候选做笛卡尔组合, 返回二维组合结果.</p>
 <pre><code class="lang-js">console.log(pinyin.convert(&#39;重庆&#39;));
 console.log(pinyin.convert(&#39;重庆&#39;, { heteronym: true }));
-console.log(pinyin.convert(&#39;重庆&#39;, { segment: true, group: true }).compact());
+console.log(pinyin.convert(&#39;朝阳东升&#39;, { segment: true, heteronym: true }).compact());
 </code></pre>
+<p>转换流程:</p>
+<ul>
+<li><code>hans</code> 会先转为字符串; 空字符串返回空数组.</li>
+<li><code>options</code> 不是 JavaScript 对象时会按空对象处理.</li>
+<li><code>segment: true</code> 时使用 Jieba <code>cutSmall(hans, 4)</code> 分词; 否则按连续汉字/非汉字分组.</li>
+<li>非汉字片段会原样保留为单项数组.</li>
+<li>词组优先查 <code>PhrasesDict</code>; 查不到时退回单字转换.</li>
+<li><code>heteronym: true</code> 时返回多音字候选; 单字分支会去重, 默认只取第一个候选.</li>
+<li><code>group: true</code> 只影响普通转换分支, 会把一个词组内各字候选拼接成一组候选字符串; <code>false</code> 时按字/词组拆成多组.</li>
+</ul>
 <h2>[m] simple<span><a class="mark" href="#pinyin_m_simple" id="pinyin_m_simple">#</a></span></h2>
 <h3>simple(str, enableNumericTone?, enableSegment?)<span><a class="mark" href="#pinyin_simple_str_enablenumerictone_enablesegment" id="pinyin_simple_str_enablenumerictone_enablesegment">#</a></span></h3>
 <p><strong><code>6.6.0</code></strong></p>
@@ -276,7 +278,7 @@ console.log(pinyin.convert(&#39;重庆&#39;, { segment: true, group: true }).com
 <li><strong>[ enableSegment = <code>false</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 </ul>
-<p>返回拼接后的简化拼音字符串.</p>
+<p>返回拼接后的简化拼音字符串. <code>enableNumericTone</code> 为 <code>true</code> 时使用 <code>STYLE_TONE2</code>, 否则使用 <code>STYLE_NORMAL</code>; <code>enableSegment</code> 对应 <code>segment</code> 选项.</p>
 <pre><code class="lang-js">console.log(pinyin.simple(&#39;中文&#39;)); // zhongwen
 console.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2
 </code></pre>
@@ -287,7 +289,7 @@ console.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2
 <li><strong>codePoint</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
 </ul>
-<p>按 Unicode code point 查询单字拼音.</p>
+<p>按 Unicode code point 查询单字拼音. 返回字典中的原始拼音字符串; 不存在时返回 <code>null</code>.</p>
 <h2>[m] fromPhrase<span><a class="mark" href="#pinyin_m_fromphrase" id="pinyin_m_fromphrase">#</a></span></h2>
 <h3>fromPhrase(phrase)<span><a class="mark" href="#pinyin_fromphrase_phrase" id="pinyin_fromphrase_phrase">#</a></span></h3>
 <p><strong><code>6.6.0</code></strong></p>
@@ -295,39 +297,110 @@ console.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2
 <li><strong>phrase</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
 </ul>
-<p>查询词组拼音.</p>
+<p>查询词组拼音字典, 返回按 <code>OrderIndex ASC</code> 排列的二维数组. 未命中时返回空数组.</p>
 <h2>[m] compare<span><a class="mark" href="#pinyin_m_compare" id="pinyin_m_compare">#</a></span></h2>
 <h3>compare(a, b)<span><a class="mark" href="#pinyin_compare_a_b" id="pinyin_compare_a_b">#</a></span></h3>
 <p><strong><code>6.6.0</code></strong></p>
-<p>当前源码中此方法为占位实现, 返回空字符串. 知识库回答中不应将其描述为可用排序函数.</p>
+<p>当前脚本入口源码是占位实现, 参数数量为 <code>1..2</code>, 返回空字符串. <code>PinyinCore.compare(...)</code> 内部存在排序逻辑, 但没有被该入口调用; 知识库回答中不应将 <code>pinyin.compare()</code> 描述为可用排序函数.</p>
 <h2>[m] compact<span><a class="mark" href="#pinyin_m_compact" id="pinyin_m_compact">#</a></span></h2>
 <h3>compact(arr)<span><a class="mark" href="#pinyin_compact_arr" id="pinyin_compact_arr">#</a></span></h3>
 <p><strong><code>6.6.0</code></strong></p>
-<p>当前源码中此方法为占位实现, 返回空字符串. <code>convert()</code> 返回值上绑定的 <code>compact()</code> 方法由运行时另行绑定.</p>
+<p>当前脚本入口源码是占位实现, 参数数量为 <code>1..2</code>, 返回空字符串. <a href="#pinyin_m_convert">convert</a> 返回值上绑定的 <code>compact()</code> 方法由 <code>Util.compact</code> 另行绑定, 两者不是同一个实现.</p>
 <hr>
-<p style="font: bold 2em sans-serif; color: #FF7043">常量</p>
+<p style="font: bold 2em sans-serif; color: #FF7043">选项与常量</p>
 
 <hr>
-<h2>[p] STYLE_NORMAL<span><a class="mark" href="#pinyin_p_style_normal" id="pinyin_p_style_normal">#</a></span></h2>
-<p>普通风格, 不带声调.</p>
-<h2>[p] STYLE_TONE<span><a class="mark" href="#pinyin_p_style_tone" id="pinyin_p_style_tone">#</a></span></h2>
-<p>标准风格, 声调在韵母上. 这是默认风格.</p>
-<h2>[p] STYLE_TONE2<span><a class="mark" href="#pinyin_p_style_tone2" id="pinyin_p_style_tone2">#</a></span></h2>
-<p>数字形式标记声调.</p>
-<h2>[p] STYLE_TO3NE<span><a class="mark" href="#pinyin_p_style_to3ne" id="pinyin_p_style_to3ne">#</a></span></h2>
-<p>数字方式, 声母后加声调.</p>
-<h2>[p] STYLE_INITIALS<span><a class="mark" href="#pinyin_p_style_initials" id="pinyin_p_style_initials">#</a></span></h2>
-<p>仅保留声母.</p>
-<h2>[p] STYLE_FIRST_LETTER<span><a class="mark" href="#pinyin_p_style_first_letter" id="pinyin_p_style_first_letter">#</a></span></h2>
-<p>仅保留首字母.</p>
-<h2>[p] MODE_NORMAL<span><a class="mark" href="#pinyin_p_mode_normal" id="pinyin_p_mode_normal">#</a></span></h2>
-<p>普通模式.</p>
-<h2>[p] MODE_SURNAME<span><a class="mark" href="#pinyin_p_mode_surname" id="pinyin_p_mode_surname">#</a></span></h2>
-<p>姓氏模式.</p>
-<h2>[p] MODE_PLACE_NAME<span><a class="mark" href="#pinyin_p_mode_place_name" id="pinyin_p_mode_place_name">#</a></span></h2>
-<p>地名模式.</p>
-<h2>[p] MODE_PLACENAME<span><a class="mark" href="#pinyin_p_mode_placename" id="pinyin_p_mode_placename">#</a></span></h2>
-<p>地名模式兼容别名.</p>
+<h2>style<span><a class="mark" href="#pinyin_style" id="pinyin_style">#</a></span></h2>
+<p><code>style</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>TONE</code> / <code>TONE2</code> 等枚举名, 不是 <code>STYLE_TONE</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid style constant</code> 或 <code>Invalid style name</code>.</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>字符串</th>
+<th>数值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STYLE_NORMAL</code></td>
+<td><code>NORMAL</code></td>
+<td><code>0</code></td>
+<td>普通风格, 去掉声调</td>
+</tr>
+<tr>
+<td><code>STYLE_TONE</code></td>
+<td><code>TONE</code></td>
+<td><code>1</code></td>
+<td>标准风格, 声调在韵母上; 默认值</td>
+</tr>
+<tr>
+<td><code>STYLE_TONE2</code></td>
+<td><code>TONE2</code></td>
+<td><code>2</code></td>
+<td>数字声调放在拼音末尾, 如 <code>zhong1</code></td>
+</tr>
+<tr>
+<td><code>STYLE_INITIALS</code></td>
+<td><code>INITIALS</code></td>
+<td><code>3</code></td>
+<td>仅保留声母</td>
+</tr>
+<tr>
+<td><code>STYLE_FIRST_LETTER</code></td>
+<td><code>FIRST_LETTER</code></td>
+<td><code>4</code></td>
+<td>仅保留首字母</td>
+</tr>
+<tr>
+<td><code>STYLE_TO3NE</code></td>
+<td><code>TO3NE</code></td>
+<td><code>5</code></td>
+<td>将声调数字嵌入声母之后的形式</td>
+</tr>
+</tbody>
+</table>
+<h2>mode<span><a class="mark" href="#pinyin_mode" id="pinyin_mode">#</a></span></h2>
+<p><code>mode</code> 支持传入常量对象、数值或枚举名字符串. 字符串应使用 <code>NORMAL</code> / <code>SURNAME</code> / <code>PLACE_NAME</code> / <code>PLACENAME</code>, 不是 <code>MODE_SURNAME</code> 这种常量属性名. 非空非法值会抛出 <code>Invalid mode constant</code> 或 <code>Invalid mode name</code>.</p>
+<table>
+<thead>
+<tr>
+<th>常量</th>
+<th>字符串</th>
+<th>数值</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MODE_NORMAL</code></td>
+<td><code>NORMAL</code></td>
+<td><code>0</code></td>
+<td>普通模式; 默认值</td>
+</tr>
+<tr>
+<td><code>MODE_SURNAME</code></td>
+<td><code>SURNAME</code></td>
+<td><code>1</code></td>
+<td>姓氏/复姓优先模式</td>
+</tr>
+<tr>
+<td><code>MODE_PLACE_NAME</code></td>
+<td><code>PLACE_NAME</code></td>
+<td><code>2</code></td>
+<td>地名模式常量</td>
+</tr>
+<tr>
+<td><code>MODE_PLACENAME</code></td>
+<td><code>PLACENAME</code></td>
+<td><code>2</code></td>
+<td>地名模式兼容别名</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意: 当前 <code>convertRhino</code> 只对 <code>MODE_SURNAME</code> 做特殊分支. <code>MODE_PLACE_NAME</code> / <code>MODE_PLACENAME</code> 已暴露为常量, 但没有独立地名转换逻辑, 行为落回普通转换分支.</p>
+</blockquote>
 
         </div>
     </div>

@@ -287,16 +287,16 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <h2>仍需优先补齐<span><a class="mark" href="#documentationroadmap_2" id="documentationroadmap_2">#</a></span></h2>
 <h3>P0: 本轮新增基础页的完整化<span><a class="mark" href="#documentationroadmap_p0" id="documentationroadmap_p0">#</a></span></h3>
 <div class="signature"><ul>
-<li>[ ] <a href="sqlite.html">SQLite</a>: 拆分或补全 <code>Database</code> 类型页, 校对 <code>insert</code>, <code>update</code>, <code>delete</code>, <code>transaction</code>, <code>rawQuery</code>, <code>query</code> 的完整签名、异常与示例.</li>
-<li>[ ] <a href="sqlite.html">SQLite</a>: 拆分或补全 <code>CursorWrapper</code> 类型页, 校对游标生命周期、自动关闭行为和字段类型映射.</li>
-<li>[ ] <a href="zip.html">Zip</a>: 补全 <code>ZipOptions</code>, <code>ZipNativeObject</code> 类型页, 校对 Zip4j 选项枚举、密码、加密、符号链接、覆盖写入行为.</li>
-<li>[ ] <a href="mediainfo.html">MediaInfo</a>: 补全 <code>MediainfoNativeObject</code> 动态属性、流信息字段、关闭释放行为和异常条件.</li>
-<li>[ ] <a href="mime.html">MIME</a>: 补全 <code>JsMime</code> 返回结构、扩展名/类型推断边界、无效 MIME 字符串处理.</li>
-<li>[ ] <a href="http.html">HTTP</a>: 继续校对 <code>request</code>, <code>buildRequest</code>, <code>post</code>, <code>postJson</code>, <code>postMultipart</code> 的旧文档内容, 移除过时说法.</li>
-<li>[ ] <a href="http.html">HTTP</a>: 将 <code>HttpSaveResult</code> 拆为独立类型页或补充完整字段说明.</li>
-<li>[ ] <a href="pinyin.html">Pinyin</a>: 对照 <code>PinyinCore.kt</code> 补齐全部选项、格式枚举、多音字行为和异常条件.</li>
-<li>[ ] <a href="pinyin4j.html">Pinyin4j</a>: 对照实现补齐兼容 API、格式参数与返回结构.</li>
-<li>[ ] <a href="cvt.html">Cvt</a> / <a href="fmt.html">Fmt</a>: 补充字节单位转换边界、大小写、空格、非法输入和四舍五入规则.</li>
+<li>[x] <a href="sqlite.html">SQLite</a>: 已在现有页面补全 <code>Database</code> 主要方法, 校对 <code>insert</code>, <code>update</code>, <code>delete</code>, <code>transaction</code>, <code>rawQuery</code>, <code>query</code> 的完整签名、异常与示例.</li>
+<li>[x] <a href="sqlite.html">SQLite</a>: 已在现有页面补全 <code>CursorWrapper</code>, 校对游标生命周期、自动关闭行为和字段类型映射.</li>
+<li>[x] <a href="zip.html">Zip</a>: 已在现有页面补全 <code>ZipOptions</code>, <code>ZipNativeObject</code>, 校对 Zip4j 选项枚举、密码、加密、符号链接、覆盖写入行为.</li>
+<li>[x] <a href="mediainfo.html">MediaInfo</a>: 已补全 <code>MediainfoNativeObject</code> 动态属性、固定 stream 函数、字段解析、关闭释放边界和异常条件.</li>
+<li>[x] <a href="mime.html">MIME</a>: 已补全 <code>JsMime</code> 返回结构、扩展名推断边界、宽松 MIME 字符串处理与异常条件.</li>
+<li>[x] <a href="http.html">HTTP</a>: 已校对 <code>request</code>, <code>buildRequest</code>, <code>post</code>, <code>postJson</code>, <code>postMultipart</code>, 移除旧 Auto.js 4.x 过时说法.</li>
+<li>[x] <a href="http.html">HTTP</a>: 已在 <a href="httpResponseBodyType.html">HttpResponseBody</a> 补充 <code>HttpSaveResult</code> 完整字段、成功/失败 code 与关闭行为.</li>
+<li>[x] <a href="pinyin.html">Pinyin</a>: 已对照 <code>PinyinCore.kt</code> 补齐选项、格式枚举、多音字、分词、姓氏模式和占位方法边界.</li>
+<li>[x] <a href="pinyin4j.html">Pinyin4j</a>: 已对照实现补齐兼容 API、格式参数、默认值、别名、返回结构和错误边界.</li>
+<li>[x] <a href="cvt.html">Cvt</a> / <a href="fmt.html">Fmt</a>: 已补充字节单位转换边界、大小写、空格、非法输入、<code>AUTO</code> 和 <code>HALF_UP</code> 四舍五入规则.</li>
 </ul>
 </div><h3>P1: 高价值既有页面源码校对<span><a class="mark" href="#documentationroadmap_p1" id="documentationroadmap_p1">#</a></span></h3>
 <div class="signature"><ul>
@@ -348,33 +348,33 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 </tr>
 <tr>
 <td><a href="cvt.html">Cvt</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补齐边界与错误条件</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="fmt.html">Fmt</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补齐格式化细节</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="sqlite.html">SQLite</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>拆分/补全类型页</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 独立类型页</td>
 </tr>
 <tr>
 <td><a href="zip.html">Zip</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补全选项和 Zip4j 行为</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 独立类型页</td>
 </tr>
 <tr>
 <td><a href="mediainfo.html">MediaInfo</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补全动态字段</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 独立类型页</td>
 </tr>
 <tr>
 <td><a href="mime.html">MIME</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补全解析结构</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 独立类型页</td>
 </tr>
 <tr>
 <td><a href="nanoid.html">NanoID</a></td>
@@ -388,28 +388,33 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 </tr>
 <tr>
 <td><a href="pinyin.html">Pinyin</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补全格式选项</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="pinyin4j.html">Pinyin4j</a></td>
-<td><code>[x]</code> 基础覆盖</td>
-<td>补全兼容 API</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="http.html">HTTP</a></td>
-<td><code>[x]</code> 已补充 6.7.0 高频能力</td>
-<td>继续清理旧内容</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></td>
-<td><code>[x]</code> 已补充关键选项</td>
-<td>校对全部 builder 方法</td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
+</tr>
+<tr>
+<td><a href="httpResponseType.html">HttpResponse</a></td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="httpResponseBodyType.html">HttpResponseBody</a></td>
-<td><code>[x]</code> 已补充关键方法</td>
-<td>补全 <code>HttpSaveResult</code></td>
+<td><code>[x]</code> P0 源码校对完成</td>
+<td>P2 独立 <code>HttpSaveResult</code> 类型页</td>
 </tr>
 <tr>
 <td><a href="global.html">Global</a></td>
@@ -497,7 +502,7 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <h2>残留风险<span><a class="mark" href="#documentationroadmap_4" id="documentationroadmap_4">#</a></span></h2>
 <div class="signature"><ul>
 <li>[ ] <code>generator</code> 仍依赖 marked <code>0.3.19</code>; 安全版本 marked <code>4.0.10</code> 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.</li>
-<li>[ ] 当前新增页面多数为 &quot;基础覆盖&quot;, 适合回答模块入口和常用能力, 但还不足以支撑所有边界问题.</li>
+<li>[ ] P0 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.</li>
 <li>[ ] 仍有大量旧页面来自 Auto.js 4.x 文档, 后续必须逐页与 AutoJs6 源码核对.</li>
 </ul>
 </div>

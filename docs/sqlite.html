@@ -203,10 +203,24 @@
 </li>
 <li><span class="stability_undefined"><a href="#sqlite_m_rawquery">[m] rawQuery</a></span><ul>
 <li><span class="stability_undefined"><a href="#sqlite_rawquery_sql_selectionargs">rawQuery(sql, selectionArgs)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_rawquery_sql_selectionargs_cancellationsignal">rawQuery(sql, selectionArgs, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_rawquerywithfactory">[m] rawQueryWithFactory</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#sqlite_m_query">[m] query</a></span><ul>
-<li><span class="stability_undefined"><a href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit?)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby">query(table, columns, selection, selectionArgs, groupBy, having, orderBy)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_querywithfactory">[m] queryWithFactory</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)</a></span></li>
+<li><span class="stability_undefined"><a href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#sqlite_m_insert">[m] insert</a></span><ul>
@@ -214,8 +228,28 @@
 <li><span class="stability_undefined"><a href="#sqlite_insert_table_nullcolumnhack_values">insert(table, nullColumnHack, values)</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#sqlite_m_insertorthrow">[m] insertOrThrow</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_insertorthrow_table_nullcolumnhack_values">insertOrThrow(table, nullColumnHack, values)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_insertwithonconflict">[m] insertWithOnConflict</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm">insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_replace">[m] replace</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_replace_table_nullcolumnhack_initialvalues">replace(table, nullColumnHack, initialValues)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_replaceorthrow">[m] replaceOrThrow</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_replaceorthrow_table_nullcolumnhack_initialvalues">replaceOrThrow(table, nullColumnHack, initialValues)</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#sqlite_m_update">[m] update</a></span><ul>
 <li><span class="stability_undefined"><a href="#sqlite_update_table_values_whereclause_whereargs">update(table, values, whereClause, whereArgs)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_updatewithonconflict">[m] updateWithOnConflict</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm">updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#sqlite_m_delete">[m] delete</a></span><ul>
@@ -226,10 +260,47 @@
 <li><span class="stability_undefined"><a href="#sqlite_transaction_transactioncallback_exclusive">transaction(transactionCallback, exclusive?)</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#sqlite_m_begintransaction">[m] beginTransaction</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_begintransaction">beginTransaction()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_begintransactionnonexclusive">[m] beginTransactionNonExclusive</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_begintransactionnonexclusive">beginTransactionNonExclusive()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_begintransactionwithlistener">[m] beginTransactionWithListener</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_begintransactionwithlistener_listener">beginTransactionWithListener(listener)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_begintransactionwithlistenernonexclusive">[m] beginTransactionWithListenerNonExclusive</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_begintransactionwithlistenernonexclusive_listener">beginTransactionWithListenerNonExclusive(listener)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_endtransaction">[m] endTransaction</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_endtransaction">endTransaction()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_settransactionsuccessful">[m] setTransactionSuccessful</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_settransactionsuccessful">setTransactionSuccessful()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_intransaction">[m] inTransaction</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_intransaction">inTransaction()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_compilestatement">[m] compileStatement</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_compilestatement_sql">compileStatement(sql)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#sqlite_m_validatesql">[m] validateSql</a></span><ul>
+<li><span class="stability_undefined"><a href="#sqlite_validatesql_sql_cancellationsignal">validateSql(sql, cancellationSignal)</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#sqlite_m_close">[m] close</a></span><ul>
 <li><span class="stability_undefined"><a href="#sqlite_close">close()</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#sqlite_m">[m] 状态与配置方法</a></span></li>
 <li><span class="stability_undefined"><a href="#sqlite_m_get">[m] get</a></span><ul>
 <li><span class="stability_undefined"><a href="#sqlite_get_index">get(index)</a></span></li>
 </ul>
@@ -264,7 +335,7 @@
             <h1>SQLite<span><a class="mark" href="#sqlite_sqlite" id="sqlite_sqlite">#</a></span></h1>
 <p><code>sqlite</code> 模块用于在脚本中打开和操作 SQLite 数据库文件.</p>
 <blockquote>
-<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>.</p>
+<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>, <code>core/database/Transaction.kt</code>, <code>core/database/TransactionCallback.java</code>.</p>
 </blockquote>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">sqlite</p>
@@ -295,7 +366,7 @@
 <li>}}</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_database">Database</a></span> }</li>
 </ul>
-<p>打开 SQLite 数据库. 路径会经过 AutoJs6 运行时文件路径解析.</p>
+<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>
 <pre><code class="lang-js">let db = sqlite.open(&#39;./data/demo.db&#39;, {
     version: 1,
 });
@@ -310,6 +381,16 @@ db.close();
 <p style="font: bold 2em sans-serif; color: #FF7043">Database</p>
 
 <hr>
+<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>
+<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>
+<ul>
+<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>
+<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>
+<li><code>boolean</code></li>
+<li><code>string</code></li>
+<li><code>byte[]</code></li>
+</ul>
+<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>
 <h2>[m] execSQL<span><a class="mark" href="#sqlite_m_execsql" id="sqlite_m_execsql">#</a></span></h2>
 <h3>execSQL(sql)<span><a class="mark" href="#sqlite_execsql_sql" id="sqlite_execsql_sql">#</a></span></h3>
 <div class="signature"><ul>
@@ -323,7 +404,8 @@ db.close();
 <li><strong>bindArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
-</div><h2>[m] rawQuery<span><a class="mark" href="#sqlite_m_rawquery" id="sqlite_m_rawquery">#</a></span></h2>
+</div><p>使用绑定参数执行 SQL.</p>
+<h2>[m] rawQuery<span><a class="mark" href="#sqlite_m_rawquery" id="sqlite_m_rawquery">#</a></span></h2>
 <h3>rawQuery(sql, selectionArgs)<span><a class="mark" href="#sqlite_rawquery_sql_selectionargs" id="sqlite_rawquery_sql_selectionargs">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>sql</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
@@ -331,59 +413,200 @@ db.close();
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
 </ul>
 </div><p>执行原始查询并返回包装后的游标.</p>
+<h3>rawQuery(sql, selectionArgs, cancellationSignal)<span><a class="mark" href="#sqlite_rawquery_sql_selectionargs_cancellationsignal" id="sqlite_rawquery_sql_selectionargs_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>cancellationSignal</strong> { <span class="type"><a href="https://developer.android.com/reference/android/os/CancellationSignal">android.os.CancellationSignal</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+</ul>
+</div><h2>[m] rawQueryWithFactory<span><a class="mark" href="#sqlite_m_rawquerywithfactory" id="sqlite_m_rawquerywithfactory">#</a></span></h2>
+<h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable">#</a></span></h3>
+<h3>rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)<span><a class="mark" href="#sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal" id="sqlite_rawquerywithfactory_cursorfactory_sql_selectionargs_edittable_cancellationsignal">#</a></span></h3>
+<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href="#sqlite_cursorwrapper">CursorWrapper</a>.</p>
 <h2>[m] query<span><a class="mark" href="#sqlite_m_query" id="sqlite_m_query">#</a></span></h2>
-<h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit?)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
-<p>返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>
-<h2>[m] insert<span><a class="mark" href="#sqlite_m_insert" id="sqlite_m_insert">#</a></span></h2>
+<h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby">#</a></span></h3>
+<h3>query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_query_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+</ul>
+</div><p>查询表并返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>
+<h2>[m] queryWithFactory<span><a class="mark" href="#sqlite_m_querywithfactory" id="sqlite_m_querywithfactory">#</a></span></h2>
+<h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit">#</a></span></h3>
+<h3>queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)<span><a class="mark" href="#sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal" id="sqlite_querywithfactory_cursorfactory_distinct_table_columns_selection_selectionargs_groupby_having_orderby_limit_cancellationsignal">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#sqlite_cursorwrapper">CursorWrapper</a></span> }</li>
+</ul>
+</div><h2>[m] insert<span><a class="mark" href="#sqlite_m_insert" id="sqlite_m_insert">#</a></span></h2>
 <h3>insert(table, values)<span><a class="mark" href="#sqlite_insert_table_values" id="sqlite_insert_table_values">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 <li><strong>values</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
 </ul>
-</div><p>插入一行数据. <code>values</code> 支持 <code>null</code> / <code>number</code> / <code>boolean</code> / <code>string</code> / <code>byte[]</code>; 其他类型会抛出异常.</p>
+</div><p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>
 <h3>insert(table, nullColumnHack, values)<span><a class="mark" href="#sqlite_insert_table_nullcolumnhack_values" id="sqlite_insert_table_nullcolumnhack_values">#</a></span></h3>
-<h2>[m] update<span><a class="mark" href="#sqlite_m_update" id="sqlite_m_update">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>nullColumnHack</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] insertOrThrow<span><a class="mark" href="#sqlite_m_insertorthrow" id="sqlite_m_insertorthrow">#</a></span></h2>
+<h3>insertOrThrow(table, nullColumnHack, values)<span><a class="mark" href="#sqlite_insertorthrow_table_nullcolumnhack_values" id="sqlite_insertorthrow_table_nullcolumnhack_values">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] insertWithOnConflict<span><a class="mark" href="#sqlite_m_insertwithonconflict" id="sqlite_m_insertwithonconflict">#</a></span></h2>
+<h3>insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)<span><a class="mark" href="#sqlite_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm" id="sqlite_insertwithonconflict_table_nullcolumnhack_initialvalues_conflictalgorithm">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>conflictAlgorithm</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - Android <code>SQLiteDatabase.CONFLICT_*</code> 常量值</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] replace<span><a class="mark" href="#sqlite_m_replace" id="sqlite_m_replace">#</a></span></h2>
+<h3>replace(table, nullColumnHack, initialValues)<span><a class="mark" href="#sqlite_replace_table_nullcolumnhack_initialvalues" id="sqlite_replace_table_nullcolumnhack_initialvalues">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] replaceOrThrow<span><a class="mark" href="#sqlite_m_replaceorthrow" id="sqlite_m_replaceorthrow">#</a></span></h2>
+<h3>replaceOrThrow(table, nullColumnHack, initialValues)<span><a class="mark" href="#sqlite_replaceorthrow_table_nullcolumnhack_initialvalues" id="sqlite_replaceorthrow_table_nullcolumnhack_initialvalues">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] update<span><a class="mark" href="#sqlite_m_update" id="sqlite_m_update">#</a></span></h2>
 <h3>update(table, values, whereClause, whereArgs)<span><a class="mark" href="#sqlite_update_table_values_whereclause_whereargs" id="sqlite_update_table_values_whereclause_whereargs">#</a></span></h3>
-<h2>[m] delete<span><a class="mark" href="#sqlite_m_delete" id="sqlite_m_delete">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>values</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+<li><strong>whereClause</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><strong>whereArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 受影响行数</li>
+</ul>
+</div><h2>[m] updateWithOnConflict<span><a class="mark" href="#sqlite_m_updatewithonconflict" id="sqlite_m_updatewithonconflict">#</a></span></h2>
+<h3>updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)<span><a class="mark" href="#sqlite_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm" id="sqlite_updatewithonconflict_table_values_whereclause_whereargs_conflictalgorithm">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
+</ul>
+</div><h2>[m] delete<span><a class="mark" href="#sqlite_m_delete" id="sqlite_m_delete">#</a></span></h2>
 <h3>delete(table, whereClause, whereArgs)<span><a class="mark" href="#sqlite_delete_table_whereclause_whereargs" id="sqlite_delete_table_whereclause_whereargs">#</a></span></h3>
-<h2>[m] transaction<span><a class="mark" href="#sqlite_m_transaction" id="sqlite_m_transaction">#</a></span></h2>
+<div class="signature"><ul>
+<li><strong>table</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>whereClause</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><strong>whereArgs</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a>[]</span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 删除行数</li>
+</ul>
+</div><h2>[m] transaction<span><a class="mark" href="#sqlite_m_transaction" id="sqlite_m_transaction">#</a></span></h2>
 <h3>transaction(transactionCallback, exclusive?)<span><a class="mark" href="#sqlite_transaction_transactioncallback_exclusive" id="sqlite_transaction_transactioncallback_exclusive">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>transactionCallback</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
 <li><strong>[ exclusive = <code>true</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="eventEmitterType.html">EventEmitter</a></span> }</li>
 </ul>
-</div><p>执行事务并返回事件发射器. 事务过程中可能触发 <code>begin</code> / <code>commit</code> / <code>rollback</code> / <code>end</code> / <code>error</code> 事件.</p>
+</div><p>同步执行事务并返回事件发射器. <code>transactionCallback</code> 会收到 <code>Transaction</code> 对象; 正常执行后内部调用 <code>transaction.succeed()</code>, 最终调用 <code>transaction.end()</code>.</p>
+<p>事务事件:</p>
+<ul>
+<li><code>begin</code> - 事务开始</li>
+<li><code>commit</code> - 事务成功提交</li>
+<li><code>rollback</code> - 事务回滚</li>
+<li><code>end</code> - 事务结束</li>
+<li><code>error</code> - 回调抛出异常时触发</li>
+</ul>
+<pre><code class="lang-js">let events = db.transaction(function (tx) {
+    tx.database.insert(&#39;user&#39;, { name: &#39;Bob&#39; });
+});
+events.on(&#39;commit&#39;, function () {
+    console.log(&#39;committed&#39;);
+});
+</code></pre>
+<h2>[m] beginTransaction<span><a class="mark" href="#sqlite_m_begintransaction" id="sqlite_m_begintransaction">#</a></span></h2>
+<h3>beginTransaction()<span><a class="mark" href="#sqlite_begintransaction" id="sqlite_begintransaction">#</a></span></h3>
+<h2>[m] beginTransactionNonExclusive<span><a class="mark" href="#sqlite_m_begintransactionnonexclusive" id="sqlite_m_begintransactionnonexclusive">#</a></span></h2>
+<h3>beginTransactionNonExclusive()<span><a class="mark" href="#sqlite_begintransactionnonexclusive" id="sqlite_begintransactionnonexclusive">#</a></span></h3>
+<h2>[m] beginTransactionWithListener<span><a class="mark" href="#sqlite_m_begintransactionwithlistener" id="sqlite_m_begintransactionwithlistener">#</a></span></h2>
+<h3>beginTransactionWithListener(listener)<span><a class="mark" href="#sqlite_begintransactionwithlistener_listener" id="sqlite_begintransactionwithlistener_listener">#</a></span></h3>
+<h2>[m] beginTransactionWithListenerNonExclusive<span><a class="mark" href="#sqlite_m_begintransactionwithlistenernonexclusive" id="sqlite_m_begintransactionwithlistenernonexclusive">#</a></span></h2>
+<h3>beginTransactionWithListenerNonExclusive(listener)<span><a class="mark" href="#sqlite_begintransactionwithlistenernonexclusive_listener" id="sqlite_begintransactionwithlistenernonexclusive_listener">#</a></span></h3>
+<h2>[m] endTransaction<span><a class="mark" href="#sqlite_m_endtransaction" id="sqlite_m_endtransaction">#</a></span></h2>
+<h3>endTransaction()<span><a class="mark" href="#sqlite_endtransaction" id="sqlite_endtransaction">#</a></span></h3>
+<h2>[m] setTransactionSuccessful<span><a class="mark" href="#sqlite_m_settransactionsuccessful" id="sqlite_m_settransactionsuccessful">#</a></span></h2>
+<h3>setTransactionSuccessful()<span><a class="mark" href="#sqlite_settransactionsuccessful" id="sqlite_settransactionsuccessful">#</a></span></h3>
+<h2>[m] inTransaction<span><a class="mark" href="#sqlite_m_intransaction" id="sqlite_m_intransaction">#</a></span></h2>
+<h3>inTransaction()<span><a class="mark" href="#sqlite_intransaction" id="sqlite_intransaction">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div><h2>[m] compileStatement<span><a class="mark" href="#sqlite_m_compilestatement" id="sqlite_m_compilestatement">#</a></span></h2>
+<h3>compileStatement(sql)<span><a class="mark" href="#sqlite_compilestatement_sql" id="sqlite_compilestatement_sql">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteStatement">android.database.sqlite.SQLiteStatement</a></span> }</li>
+</ul>
+</div><h2>[m] validateSql<span><a class="mark" href="#sqlite_m_validatesql" id="sqlite_m_validatesql">#</a></span></h2>
+<h3>validateSql(sql, cancellationSignal)<span><a class="mark" href="#sqlite_validatesql_sql_cancellationsignal" id="sqlite_validatesql_sql_cancellationsignal">#</a></span></h3>
 <h2>[m] close<span><a class="mark" href="#sqlite_m_close" id="sqlite_m_close">#</a></span></h2>
 <h3>close()<span><a class="mark" href="#sqlite_close" id="sqlite_close">#</a></span></h3>
-<p>关闭数据库连接.</p>
+<p>关闭底层数据库连接, 并从运行时 <code>closeableManager</code> 中移除.</p>
+<h2>[m] 状态与配置方法<span><a class="mark" href="#sqlite_m" id="sqlite_m">#</a></span></h2>
+<p>当前 <code>Database</code> 还暴露以下 Android <code>SQLiteDatabase</code> 代理方法:</p>
+<ul>
+<li><code>acquireReference()</code> / <code>releaseReference()</code></li>
+<li><code>disableWriteAheadLogging()</code> / <code>enableWriteAheadLogging()</code> / <code>isWriteAheadLoggingEnabled()</code></li>
+<li><code>getAttachedDbs()</code> / <code>getMaximumSize()</code> / <code>getPageSize()</code> / <code>getPath()</code> / <code>getVersion()</code></li>
+<li><code>isDatabaseIntegrityOk()</code> / <code>isDbLockedByCurrentThread()</code> / <code>isOpen()</code> / <code>isReadOnly()</code></li>
+<li><code>needUpgrade(newVersion)</code></li>
+<li><code>setForeignKeyConstraintsEnabled(enable)</code> / <code>setLocale(locale)</code> / <code>setMaxSqlCacheSize(cacheSize)</code></li>
+<li><code>setMaximumSize(numBytes)</code> / <code>setPageSize(numBytes)</code> / <code>setVersion(version)</code></li>
+<li><code>yieldIfContendedSafely()</code> / <code>yieldIfContendedSafely(sleepAfterYieldDelay)</code></li>
+</ul>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">CursorWrapper</p>
 
 <hr>
+<p><code>CursorWrapper</code> 委托了 Android <code>Cursor</code> 的全部能力, 并额外提供更适合脚本使用的读取方法. 查询返回游标后, 调用方应主动 <code>close()</code>; <code>single()</code> 与默认的 <code>all()</code> 会自动关闭游标.</p>
+<p>字段类型映射:</p>
+<ul>
+<li><code>FIELD_TYPE_NULL</code> -&gt; <code>null</code></li>
+<li><code>FIELD_TYPE_INTEGER</code> -&gt; <code>Long</code></li>
+<li><code>FIELD_TYPE_FLOAT</code> -&gt; <code>Double</code></li>
+<li><code>FIELD_TYPE_STRING</code> -&gt; <code>String</code></li>
+<li><code>FIELD_TYPE_BLOB</code> -&gt; <code>byte[]</code></li>
+</ul>
 <h2>[m] get<span><a class="mark" href="#sqlite_m_get" id="sqlite_m_get">#</a></span></h2>
 <h3>get(index)<span><a class="mark" href="#sqlite_get_index" id="sqlite_get_index">#</a></span></h3>
-<p>按列索引读取当前行字段.</p>
+<div class="signature"><ul>
+<li><strong>index</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 列索引</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
+</ul>
+</div><p>按列索引读取当前行字段.</p>
 <h2>[m] getByColumn<span><a class="mark" href="#sqlite_m_getbycolumn" id="sqlite_m_getbycolumn">#</a></span></h2>
 <h3>getByColumn(column)<span><a class="mark" href="#sqlite_getbycolumn_column" id="sqlite_getbycolumn_column">#</a></span></h3>
-<p>按列名读取当前行字段.</p>
+<div class="signature"><ul>
+<li><strong>column</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 列名</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
+</ul>
+</div><p>按列名读取当前行字段. 列不存在时会由 <code>getColumnIndexOrThrow</code> 抛出异常.</p>
 <h2>[m] pick<span><a class="mark" href="#sqlite_m_pick" id="sqlite_m_pick">#</a></span></h2>
 <h3>pick()<span><a class="mark" href="#sqlite_pick" id="sqlite_pick">#</a></span></h3>
-<p>将当前行转换为对象.</p>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+</div><p>将当前行转换为对象, 键为列名.</p>
 <h2>[m] next<span><a class="mark" href="#sqlite_m_next" id="sqlite_m_next">#</a></span></h2>
 <h3>next()<span><a class="mark" href="#sqlite_next" id="sqlite_next">#</a></span></h3>
-<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>.</p>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>. 此方法不会自动关闭游标.</p>
 <h2>[m] single<span><a class="mark" href="#sqlite_m_single" id="sqlite_m_single">#</a></span></h2>
 <h3>single()<span><a class="mark" href="#sqlite_single" id="sqlite_single">#</a></span></h3>
-<p>返回第一条记录并关闭游标.</p>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>返回第一条记录并关闭游标.</p>
 <h2>[m] all<span><a class="mark" href="#sqlite_m_all" id="sqlite_m_all">#</a></span></h2>
 <h3>all(close?)<span><a class="mark" href="#sqlite_all_close" id="sqlite_all_close">#</a></span></h3>
 <div class="signature"><ul>
 <li><strong>[ close = <code>true</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_array">array</a></span> }</li>
 </ul>
-</div><p>读取全部行. 默认读取后关闭游标.</p>
+</div><p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>
 
         </div>
     </div>

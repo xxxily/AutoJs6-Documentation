@@ -67,16 +67,16 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 
 ### P0: 本轮新增基础页的完整化
 
-- [ ] [SQLite](sqlite): 拆分或补全 `Database` 类型页, 校对 `insert`, `update`, `delete`, `transaction`, `rawQuery`, `query` 的完整签名、异常与示例.
-- [ ] [SQLite](sqlite): 拆分或补全 `CursorWrapper` 类型页, 校对游标生命周期、自动关闭行为和字段类型映射.
-- [ ] [Zip](zip): 补全 `ZipOptions`, `ZipNativeObject` 类型页, 校对 Zip4j 选项枚举、密码、加密、符号链接、覆盖写入行为.
-- [ ] [MediaInfo](mediainfo): 补全 `MediainfoNativeObject` 动态属性、流信息字段、关闭释放行为和异常条件.
-- [ ] [MIME](mime): 补全 `JsMime` 返回结构、扩展名/类型推断边界、无效 MIME 字符串处理.
-- [ ] [HTTP](http): 继续校对 `request`, `buildRequest`, `post`, `postJson`, `postMultipart` 的旧文档内容, 移除过时说法.
-- [ ] [HTTP](http): 将 `HttpSaveResult` 拆为独立类型页或补充完整字段说明.
-- [ ] [Pinyin](pinyin): 对照 `PinyinCore.kt` 补齐全部选项、格式枚举、多音字行为和异常条件.
-- [ ] [Pinyin4j](pinyin4j): 对照实现补齐兼容 API、格式参数与返回结构.
-- [ ] [Cvt](cvt) / [Fmt](fmt): 补充字节单位转换边界、大小写、空格、非法输入和四舍五入规则.
+- [x] [SQLite](sqlite): 已在现有页面补全 `Database` 主要方法, 校对 `insert`, `update`, `delete`, `transaction`, `rawQuery`, `query` 的完整签名、异常与示例.
+- [x] [SQLite](sqlite): 已在现有页面补全 `CursorWrapper`, 校对游标生命周期、自动关闭行为和字段类型映射.
+- [x] [Zip](zip): 已在现有页面补全 `ZipOptions`, `ZipNativeObject`, 校对 Zip4j 选项枚举、密码、加密、符号链接、覆盖写入行为.
+- [x] [MediaInfo](mediainfo): 已补全 `MediainfoNativeObject` 动态属性、固定 stream 函数、字段解析、关闭释放边界和异常条件.
+- [x] [MIME](mime): 已补全 `JsMime` 返回结构、扩展名推断边界、宽松 MIME 字符串处理与异常条件.
+- [x] [HTTP](http): 已校对 `request`, `buildRequest`, `post`, `postJson`, `postMultipart`, 移除旧 Auto.js 4.x 过时说法.
+- [x] [HTTP](http): 已在 [HttpResponseBody](httpResponseBodyType) 补充 `HttpSaveResult` 完整字段、成功/失败 code 与关闭行为.
+- [x] [Pinyin](pinyin): 已对照 `PinyinCore.kt` 补齐选项、格式枚举、多音字、分词、姓氏模式和占位方法边界.
+- [x] [Pinyin4j](pinyin4j): 已对照实现补齐兼容 API、格式参数、默认值、别名、返回结构和错误边界.
+- [x] [Cvt](cvt) / [Fmt](fmt): 已补充字节单位转换边界、大小写、空格、非法输入、`AUTO` 和 `HALF_UP` 四舍五入规则.
 
 ### P1: 高价值既有页面源码校对
 
@@ -113,19 +113,20 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 |------|----------|--------|
 | [Documentation Audit](documentationAudit) | `[x]` 已新增 | 后续版本变更时更新基准 |
 | [Documentation Roadmap](documentationRoadmap) | `[x]` 已新增 | 每轮更新后同步勾选状态 |
-| [Cvt](cvt) | `[x]` 基础覆盖 | 补齐边界与错误条件 |
-| [Fmt](fmt) | `[x]` 基础覆盖 | 补齐格式化细节 |
-| [SQLite](sqlite) | `[x]` 基础覆盖 | 拆分/补全类型页 |
-| [Zip](zip) | `[x]` 基础覆盖 | 补全选项和 Zip4j 行为 |
-| [MediaInfo](mediainfo) | `[x]` 基础覆盖 | 补全动态字段 |
-| [MIME](mime) | `[x]` 基础覆盖 | 补全解析结构 |
+| [Cvt](cvt) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [Fmt](fmt) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [SQLite](sqlite) | `[x]` P0 源码校对完成 | P2 独立类型页 |
+| [Zip](zip) | `[x]` P0 源码校对完成 | P2 独立类型页 |
+| [MediaInfo](mediainfo) | `[x]` P0 源码校对完成 | P2 独立类型页 |
+| [MIME](mime) | `[x]` P0 源码校对完成 | P2 独立类型页 |
 | [NanoID](nanoid) | `[x]` 基础覆盖 | 增加随机源与参数边界说明 |
 | [Sysprops](sysprops) | `[x]` 基础覆盖 | 增加权限与过滤说明 |
-| [Pinyin](pinyin) | `[x]` 基础覆盖 | 补全格式选项 |
-| [Pinyin4j](pinyin4j) | `[x]` 基础覆盖 | 补全兼容 API |
-| [HTTP](http) | `[x]` 已补充 6.7.0 高频能力 | 继续清理旧内容 |
-| [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) | `[x]` 已补充关键选项 | 校对全部 builder 方法 |
-| [HttpResponseBody](httpResponseBodyType) | `[x]` 已补充关键方法 | 补全 `HttpSaveResult` |
+| [Pinyin](pinyin) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [Pinyin4j](pinyin4j) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [HTTP](http) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [HttpResponse](httpResponseType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
+| [HttpResponseBody](httpResponseBodyType) | `[x]` P0 源码校对完成 | P2 独立 `HttpSaveResult` 类型页 |
 | [Global](global) | `[ ]` 待源码校对 | P1 |
 | [Automator](automator) | `[ ]` 待源码校对 | P1 |
 | [UiSelector](uiSelectorType) | `[ ]` 待源码校对 | P1 |
@@ -148,5 +149,5 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 ## 残留风险
 
 - [ ] `generator` 仍依赖 marked `0.3.19`; 安全版本 marked `4.0.10` 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.
-- [ ] 当前新增页面多数为 "基础覆盖", 适合回答模块入口和常用能力, 但还不足以支撑所有边界问题.
+- [ ] P0 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.
 - [ ] 仍有大量旧页面来自 Auto.js 4.x 文档, 后续必须逐页与 AutoJs6 源码核对.

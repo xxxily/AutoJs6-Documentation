@@ -28,7 +28,7 @@
                   "params": []
                 }
               ],
-              "desc": "<p>读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 <code>cacheBody</code> 且内容大小不超过阈值, 结果会被缓存以支持重复读取.</p>\n"
+              "desc": "<p>读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 <code>cacheBody</code> 且内容大小未知或不超过阈值, 结果会被缓存以支持重复读取. 未缓存且响应体已关闭时再次读取会抛出 <code>Response body already closed</code>.</p>\n"
             }
           ],
           "type": "module",
@@ -56,7 +56,7 @@
                   "params": []
                 }
               ],
-              "desc": "<p>读取响应体字节数组. 读取完整内容后会自动关闭响应体.</p>\n"
+              "desc": "<p>读取响应体字节数组. 读取完整内容后会自动关闭响应体. 缓存规则与 <a href=\"#m-string\">string</a> 一致.</p>\n"
             }
           ],
           "type": "module",
@@ -84,11 +84,18 @@
                   "params": []
                 }
               ],
-              "desc": "<p>读取响应体字符串并使用 <code>JSON.parse</code> 解析.</p>\n"
+              "desc": "<p>读取响应体字符串并使用 <code>JSON.parse</code> 解析. 解析失败时抛出 <code>Failed to parse JSON. Body string may be not in JSON format</code>.</p>\n"
             }
           ],
           "type": "module",
           "displayName": "[m] json"
+        },
+        {
+          "textRaw": "[p] contentType",
+          "name": "[p]_contenttype",
+          "desc": "<ul>\n<li>{ <a href=\"https://square.github.io/okhttp/5.x/okhttp/okhttp3/-media-type/\">okhttp3.MediaType</a> | null }</li>\n</ul>\n<p>响应体内容类型, 来自底层 OkHttp <code>ResponseBody.contentType()</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] contentType"
         },
         {
           "textRaw": "[m] stream",
@@ -117,7 +124,7 @@
               "textRaw": "saveToFile(path, bufferSize?)",
               "type": "method",
               "name": "saveToFile",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>path</strong> { <a href=\"dataTypes#string\">string</a> } - 保存目标文件路径, 不可为目录</li>\n<li><strong>[ bufferSize = <code>8192</code> ]</strong> { <a href=\"dataTypes#number\">number</a> } - 缓冲区大小</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#httpsaveresult\">HttpSaveResult</a> }</li>\n</ul>\n<p>将响应体直接保存到文件, 避免把大响应整体加载到内存.</p>\n<pre><code class=\"lang-js\">let res = http.get(&#39;https://example.com/file.zip&#39;);\nlet saved = res.body.saveToFile(&#39;./file.zip&#39;);\nconsole.log(saved.success, saved.bytesCopied);\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>path</strong> { <a href=\"dataTypes#string\">string</a> } - 保存目标文件路径, 不可为目录</li>\n<li><strong>[ bufferSize = <code>8192</code> ]</strong> { <a href=\"dataTypes#number\">number</a> } - 缓冲区大小</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#httpsaveresult\">HttpSaveResult</a> }</li>\n</ul>\n<p>将响应体直接保存到文件, 避免把大响应整体加载到内存. <code>bufferSize</code> 小于等于 <code>0</code> 时使用默认值 <code>8192</code>. <code>path</code> 指向目录或以 <code>/</code> 结尾时会直接抛出异常. 复制过程中失败不会抛出, 而是返回失败的 <a href=\"#httpsaveresult\">HttpSaveResult</a>. 无论成功或失败, 最终都会关闭输入流、输出流和响应体.</p>\n<pre><code class=\"lang-js\">let res = http.get(&#39;https://example.com/file.zip&#39;);\nlet saved = res.body.saveToFile(&#39;./file.zip&#39;);\nconsole.log(saved.success, saved.bytesCopied);\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -153,6 +160,13 @@
           ],
           "type": "module",
           "displayName": "[m] close"
+        },
+        {
+          "textRaw": "[p] code",
+          "name": "[p]_code",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#number\">number</a> } - <code>0</code> 表示成功</li>\n</ul>\n<p>成功为 <code>0</code>; 通用失败为 <code>-1</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] code"
         },
         {
           "textRaw": "[p] error",

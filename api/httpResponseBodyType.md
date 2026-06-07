@@ -16,7 +16,7 @@ HttpResponseBody 是 `http` 模块响应对象的 `body` 字段类型.
 
 - <ins>**returns**</ins> { [string](dataTypes#string) }
 
-读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 `cacheBody` 且内容大小不超过阈值, 结果会被缓存以支持重复读取.
+读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 `cacheBody` 且内容大小未知或不超过阈值, 结果会被缓存以支持重复读取. 未缓存且响应体已关闭时再次读取会抛出 `Response body already closed`.
 
 ## [m] bytes
 
@@ -24,7 +24,7 @@ HttpResponseBody 是 `http` 模块响应对象的 `body` 字段类型.
 
 - <ins>**returns**</ins> { [ByteArray](dataTypes#bytearray) }
 
-读取响应体字节数组. 读取完整内容后会自动关闭响应体.
+读取响应体字节数组. 读取完整内容后会自动关闭响应体. 缓存规则与 [string](#m-string) 一致.
 
 ## [m] json
 
@@ -32,7 +32,13 @@ HttpResponseBody 是 `http` 模块响应对象的 `body` 字段类型.
 
 - <ins>**returns**</ins> { * }
 
-读取响应体字符串并使用 `JSON.parse` 解析.
+读取响应体字符串并使用 `JSON.parse` 解析. 解析失败时抛出 `Failed to parse JSON. Body string may be not in JSON format`.
+
+## [p] contentType
+
+- { [okhttp3.MediaType](https://square.github.io/okhttp/5.x/okhttp/okhttp3/-media-type/) | null }
+
+响应体内容类型, 来自底层 OkHttp `ResponseBody.contentType()`.
 
 ## [m] stream
 
@@ -54,7 +60,7 @@ HttpResponseBody 是 `http` 模块响应对象的 `body` 字段类型.
 - **[ bufferSize = `8192` ]** { [number](dataTypes#number) } - 缓冲区大小
 - <ins>**returns**</ins> { [HttpSaveResult](#httpsaveresult) }
 
-将响应体直接保存到文件, 避免把大响应整体加载到内存.
+将响应体直接保存到文件, 避免把大响应整体加载到内存. `bufferSize` 小于等于 `0` 时使用默认值 `8192`. `path` 指向目录或以 `/` 结尾时会直接抛出异常. 复制过程中失败不会抛出, 而是返回失败的 [HttpSaveResult](#httpsaveresult). 无论成功或失败, 最终都会关闭输入流、输出流和响应体.
 
 ```js
 let res = http.get('https://example.com/file.zip');
@@ -81,6 +87,8 @@ console.log(saved.success, saved.bytesCopied);
 ## [p] code
 
 - { [number](dataTypes#number) } - `0` 表示成功
+
+成功为 `0`; 通用失败为 `-1`.
 
 ## [p] path
 

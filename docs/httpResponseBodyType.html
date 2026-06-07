@@ -200,6 +200,7 @@
 <li><span class="stability_undefined"><a href="#httpresponsebodytype_json">json()</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_contenttype">[p] contentType</a></span></li>
 <li><span class="stability_undefined"><a href="#httpresponsebodytype_m_stream">[m] stream</a></span><ul>
 <li><span class="stability_undefined"><a href="#httpresponsebodytype_stream">stream()</a></span></li>
 </ul>
@@ -242,19 +243,24 @@
 <div class="signature"><ul>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 </ul>
-</div><p>读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 <code>cacheBody</code> 且内容大小不超过阈值, 结果会被缓存以支持重复读取.</p>
+</div><p>读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 <code>cacheBody</code> 且内容大小未知或不超过阈值, 结果会被缓存以支持重复读取. 未缓存且响应体已关闭时再次读取会抛出 <code>Response body already closed</code>.</p>
 <h2>[m] bytes<span><a class="mark" href="#httpresponsebodytype_m_bytes" id="httpresponsebodytype_m_bytes">#</a></span></h2>
 <h3>bytes()<span><a class="mark" href="#httpresponsebodytype_bytes" id="httpresponsebodytype_bytes">#</a></span></h3>
 <div class="signature"><ul>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_bytearray">ByteArray</a></span> }</li>
 </ul>
-</div><p>读取响应体字节数组. 读取完整内容后会自动关闭响应体.</p>
+</div><p>读取响应体字节数组. 读取完整内容后会自动关闭响应体. 缓存规则与 <a href="#httpresponsebodytype_m_string">string</a> 一致.</p>
 <h2>[m] json<span><a class="mark" href="#httpresponsebodytype_m_json" id="httpresponsebodytype_m_json">#</a></span></h2>
 <h3>json()<span><a class="mark" href="#httpresponsebodytype_json" id="httpresponsebodytype_json">#</a></span></h3>
 <div class="signature"><ul>
 <li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
 </ul>
-</div><p>读取响应体字符串并使用 <code>JSON.parse</code> 解析.</p>
+</div><p>读取响应体字符串并使用 <code>JSON.parse</code> 解析. 解析失败时抛出 <code>Failed to parse JSON. Body string may be not in JSON format</code>.</p>
+<h2>[p] contentType<span><a class="mark" href="#httpresponsebodytype_p_contenttype" id="httpresponsebodytype_p_contenttype">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="https://square.github.io/okhttp/5.x/okhttp/okhttp3/-media-type/">okhttp3.MediaType</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
+</ul>
+</div><p>响应体内容类型, 来自底层 OkHttp <code>ResponseBody.contentType()</code>.</p>
 <h2>[m] stream<span><a class="mark" href="#httpresponsebodytype_m_stream" id="httpresponsebodytype_m_stream">#</a></span></h2>
 <h3>stream()<span><a class="mark" href="#httpresponsebodytype_stream" id="httpresponsebodytype_stream">#</a></span></h3>
 <p><strong><code>6.7.0</code></strong></p>
@@ -270,7 +276,7 @@
 <li><strong>[ bufferSize = <code>8192</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 缓冲区大小</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="#httpresponsebodytype_httpsaveresult">HttpSaveResult</a></span> }</li>
 </ul>
-<p>将响应体直接保存到文件, 避免把大响应整体加载到内存.</p>
+<p>将响应体直接保存到文件, 避免把大响应整体加载到内存. <code>bufferSize</code> 小于等于 <code>0</code> 时使用默认值 <code>8192</code>. <code>path</code> 指向目录或以 <code>/</code> 结尾时会直接抛出异常. 复制过程中失败不会抛出, 而是返回失败的 <a href="#httpresponsebodytype_httpsaveresult">HttpSaveResult</a>. 无论成功或失败, 最终都会关闭输入流、输出流和响应体.</p>
 <pre><code class="lang-js">let res = http.get(&#39;https://example.com/file.zip&#39;);
 let saved = res.body.saveToFile(&#39;./file.zip&#39;);
 console.log(saved.success, saved.bytesCopied);
@@ -290,7 +296,8 @@ console.log(saved.success, saved.bytesCopied);
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - <code>0</code> 表示成功</li>
 </ul>
-</div><h2>[p] path<span><a class="mark" href="#httpresponsebodytype_p_path" id="httpresponsebodytype_p_path">#</a></span></h2>
+</div><p>成功为 <code>0</code>; 通用失败为 <code>-1</code>.</p>
+<h2>[p] path<span><a class="mark" href="#httpresponsebodytype_p_path" id="httpresponsebodytype_p_path">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> } - 目标路径</li>
 </ul>

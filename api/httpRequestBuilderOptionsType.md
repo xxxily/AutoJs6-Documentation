@@ -33,9 +33,13 @@ HttpRequestBuilderOptions 是一个构建 HTTP 请求时用于传递构建选项
 
 - { [string](dataTypes#string) } - HTTP 方法, 如 `GET` / `POST` / `PUT` / `DELETE` / `HEAD`
 
+裸 [http.request](http#m-request) 和 [http.buildRequest](http#m-buildRequest) 没有默认方法, 必须显式提供 `method`. `get` / `post` / `postJson` / `postMultipart` / `put` / `delete` 等便捷方法会自动写入.
+
 ## [p?] headers
 
 - { [HttpRequestHeaders](httpRequestHeadersType) } - 请求标头
+
+`headers` 必须是 JavaScript 对象. 值为数组时会逐项调用 OkHttp `Request.Builder.header`, 因此同名请求头会被后一次覆盖, 不是追加.
 
 ## [p?] contentType
 
@@ -43,11 +47,15 @@ HttpRequestBuilderOptions 是一个构建 HTTP 请求时用于传递构建选项
 
 ## [p?] body
 
-- { * } - 请求体
+- { [okhttp3.RequestBody](https://square.github.io/okhttp/5.x/okhttp/okhttp3/-request-body/) | [string](dataTypes#string) | [function](dataTypes#function) } - 请求体
+
+请求体只支持 OkHttp `RequestBody`、字符串、或 `function(sink)` 形式的写入函数. 函数参数是 Okio `BufferedSink`. 源码没有数组或字节数组分支.
 
 ## [p?] files
 
 - { [object](dataTypes#object) } - multipart 文件映射
+
+仅当 `body` 不存在时用于构建 multipart 请求. 值支持 `string` / `number` 普通字段、`[fileName, path]`、`[fileName, mimeType, path]` 或 `PFileInterface`.
 
 ## [p?] maxRetries
 
@@ -83,7 +91,7 @@ HttpRequestBuilderOptions 是一个构建 HTTP 请求时用于传递构建选项
 
 - { [object](dataTypes#object) } - OkHttpClient.Builder 配置
 
-键名会按反射方式映射到 `okhttp3.OkHttpClient.Builder` 的一参或两参方法. 示例:
+键名会按反射方式映射到 `okhttp3.OkHttpClient.Builder` 的一参或两参方法. 0 参数 Builder 方法不允许通过此方式调用; 值为长度为 `2` 的列表时会优先尝试二参方法.
 
 ```js
 http.get('https://example.com', {

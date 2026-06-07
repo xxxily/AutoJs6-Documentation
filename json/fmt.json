@@ -14,7 +14,7 @@
               "textRaw": "bytes(source, options?)",
               "type": "method",
               "name": "bytes",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>useIecIdentifier</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否输出 <code>KiB</code> / <code>MiB</code> 等 IEC 标识</li>\n<li><strong>useSpace</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 数值与单位之间是否保留空格, 默认 <code>true</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>trimTrailingZero</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否去除尾随零, 默认 <code>false</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将字节数据格式化为字符串.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes(1024)); // 1.00 KB\nconsole.log(fmt.bytes(1536, { fractionDigits: 1 })); // 1.5 KB\nconsole.log(fmt.bytes(1024, { useIecIdentifier: true })); // 1.00 KiB\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位, 默认 <code>B</code></li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>useIecIdentifier</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 非严格模式下是否输出 <code>KiB</code> / <code>MiB</code> 等 IEC 标识</li>\n<li><strong>useSpace</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 数值与单位之间是否保留空格, 默认 <code>true</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>trimTrailingZero</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否去除尾随零, 默认 <code>false</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 默认 <code>1024</code>, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将字节数据格式化为字符串.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes(1024)); // 1.00 KB\nconsole.log(fmt.bytes(1536, { fractionDigits: 1 })); // 1.5 KB\nconsole.log(fmt.bytes(1024, { useIecIdentifier: true })); // 1.00 KiB\nconsole.log(fmt.bytes(1024, { useSpace: false })); // 1.00KB\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -87,7 +87,7 @@
               "textRaw": "bytes.strict(source, options?)",
               "type": "method",
               "name": "strict",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式格式化. 严格模式区分 SI 与 IEC 单位, 并默认使用 IEC 单位标识.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes.strict(1000, &#39;KB&#39;)); // 1.00 KB\nconsole.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB\n</code></pre>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式格式化. 严格模式区分 SI 与 IEC 单位:</p>\n<ul>\n<li><code>KB</code> / <code>MB</code> / <code>GB</code> 等使用 <code>1000</code> 进位.</li>\n<li><code>KiB</code> / <code>MiB</code> / <code>GiB</code> 等使用 <code>1024</code> 进位.</li>\n<li>默认输出 IEC 标识, 但目标单位是 <code>KB</code> / <code>MB</code> 这类 SI 单位时会输出对应 SI 后缀.</li>\n</ul>\n<p>在严格模式中, <code>options.strict</code> 和 <code>useIecIdentifier</code> 必须为空; 如果传入会抛出异常.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes.strict(1000, &#39;KB&#39;)); // 1.00 KB\nconsole.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -111,7 +111,7 @@
               "textRaw": "bytes.loose(source, options?)",
               "type": "method",
               "name": "loose",
-              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式格式化. 宽松模式以 <code>1024</code> 为默认换算基数, 并允许使用更宽松的单位写法.</p>\n",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式格式化. 宽松模式会将 <code>KiB</code> / <code>MiB</code> 等 IEC 标识规范化为普通单位文本, 并始终以 <code>1024</code> 为换算基数. 在宽松模式中, <code>options.strict</code> 必须为空.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -128,14 +128,19 @@
           ]
         },
         {
+          "textRaw": "格式化规则",
+          "name": "格式化规则",
+          "desc": "<ul>\n<li>支持前缀: <code>K</code> / <code>M</code> / <code>G</code> / <code>T</code> / <code>P</code> / <code>E</code> / <code>Z</code> / <code>Y</code> / <code>R</code> / <code>Q</code>.</li>\n<li><code>source</code> 为字符串时, 格式必须匹配 <code>数字 + 可选空格 + 可选英文字母单位</code>, 如 <code>1.5 MB</code>; 不接受负数、指数、<code>.5</code> 或逗号格式.</li>\n<li><code>source</code> 不能为负数, 也不能是 <code>NaN</code>.</li>\n<li><code>fromUnit</code> 同时出现在字符串和参数中时, 两者必须一致, 否则抛出 <code>Ambiguous &quot;fromUnit&quot; values</code>.</li>\n<li><code>fractionDigits</code> 会转为整数, 必须大于等于 <code>0</code>.</li>\n<li><code>autoCarryThreshold</code> 会转为长整数, 必须大于 <code>0</code>, 且只能在 <code>toUnit</code> 为 <code>AUTO</code> 时设置.</li>\n<li>格式化使用 <code>BigDecimal.setScale(fractionDigits, RoundingMode.HALF_UP)</code>.</li>\n<li><code>trimTrailingZero: true</code> 会移除小数部分末尾的 <code>0</code>, 并在小数部分为空时移除小数点.</li>\n<li><code>useSpace</code> 只控制数值与单位之间的空格, 默认 <code>true</code>.</li>\n<li>非严格模式下 <code>useIecIdentifier: true</code> 会输出 <code>KiB</code> / <code>MiB</code>; 默认输出 <code>KB</code> / <code>MB</code>.</li>\n<li>严格模式下 <code>useIecIdentifier</code> 不允许显式传入, 后缀由 <code>toUnit</code> 和基数自动决定.</li>\n<li><code>AUTO</code> 选择单位时使用整数幂比较; 非严格模式固定按 <code>1024</code>, 严格模式按来源单位对应基数.</li>\n</ul>\n"
+        },
+        {
           "textRaw": "[p] bytes.UNITS",
           "name": "UNITS",
-          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>支持的单位前缀.</p>\n"
         },
         {
           "textRaw": "[p] bytes.AUTO",
           "name": "AUTO",
-          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>自动选择目标单位.</p>\n"
         },
         {
           "textRaw": "[p] bytes.IEC_DIV",

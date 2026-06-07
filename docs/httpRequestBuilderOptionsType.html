@@ -234,23 +234,27 @@
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - HTTP 方法, 如 <code>GET</code> / <code>POST</code> / <code>PUT</code> / <code>DELETE</code> / <code>HEAD</code></li>
 </ul>
-</div><h2>[p?] headers<span><a class="mark" href="#httprequestbuilderoptionstype_p_headers" id="httprequestbuilderoptionstype_p_headers">#</a></span></h2>
+</div><p>裸 <a href="http.html#http_m_request">http.request</a> 和 <a href="http.html#http_m_buildRequest">http.buildRequest</a> 没有默认方法, 必须显式提供 <code>method</code>. <code>get</code> / <code>post</code> / <code>postJson</code> / <code>postMultipart</code> / <code>put</code> / <code>delete</code> 等便捷方法会自动写入.</p>
+<h2>[p?] headers<span><a class="mark" href="#httprequestbuilderoptionstype_p_headers" id="httprequestbuilderoptionstype_p_headers">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="httpRequestHeadersType.html">HttpRequestHeaders</a></span> } - 请求标头</li>
 </ul>
-</div><h2>[p?] contentType<span><a class="mark" href="#httprequestbuilderoptionstype_p_contenttype" id="httprequestbuilderoptionstype_p_contenttype">#</a></span></h2>
+</div><p><code>headers</code> 必须是 JavaScript 对象. 值为数组时会逐项调用 OkHttp <code>Request.Builder.header</code>, 因此同名请求头会被后一次覆盖, 不是追加.</p>
+<h2>[p?] contentType<span><a class="mark" href="#httprequestbuilderoptionstype_p_contenttype" id="httprequestbuilderoptionstype_p_contenttype">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 请求体内容类型</li>
 </ul>
 </div><h2>[p?] body<span><a class="mark" href="#httprequestbuilderoptionstype_p_body" id="httprequestbuilderoptionstype_p_body">#</a></span></h2>
 <div class="signature"><ul>
-<li>{ <span class="type">*</span> } - 请求体</li>
+<li>{ <span class="type"><a href="https://square.github.io/okhttp/5.x/okhttp/okhttp3/-request-body/">okhttp3.RequestBody</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> } - 请求体</li>
 </ul>
-</div><h2>[p?] files<span><a class="mark" href="#httprequestbuilderoptionstype_p_files" id="httprequestbuilderoptionstype_p_files">#</a></span></h2>
+</div><p>请求体只支持 OkHttp <code>RequestBody</code>、字符串、或 <code>function(sink)</code> 形式的写入函数. 函数参数是 Okio <code>BufferedSink</code>. 源码没有数组或字节数组分支.</p>
+<h2>[p?] files<span><a class="mark" href="#httprequestbuilderoptionstype_p_files" id="httprequestbuilderoptionstype_p_files">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> } - multipart 文件映射</li>
 </ul>
-</div><h2>[p?] maxRetries<span><a class="mark" href="#httprequestbuilderoptionstype_p_maxretries" id="httprequestbuilderoptionstype_p_maxretries">#</a></span></h2>
+</div><p>仅当 <code>body</code> 不存在时用于构建 multipart 请求. 值支持 <code>string</code> / <code>number</code> 普通字段、<code>[fileName, path]</code>、<code>[fileName, mimeType, path]</code> 或 <code>PFileInterface</code>.</p>
+<h2>[p?] maxRetries<span><a class="mark" href="#httprequestbuilderoptionstype_p_maxretries" id="httprequestbuilderoptionstype_p_maxretries">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - OkHttp 最大重试次数</li>
 </ul>
@@ -279,7 +283,7 @@
 <ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> } - OkHttpClient.Builder 配置</li>
 </ul>
-<p>键名会按反射方式映射到 <code>okhttp3.OkHttpClient.Builder</code> 的一参或两参方法. 示例:</p>
+<p>键名会按反射方式映射到 <code>okhttp3.OkHttpClient.Builder</code> 的一参或两参方法. 0 参数 Builder 方法不允许通过此方式调用; 值为长度为 <code>2</code> 的列表时会优先尝试二参方法.</p>
 <pre><code class="lang-js">http.get(&#39;https://example.com&#39;, {
     client: {
         followRedirects: false,

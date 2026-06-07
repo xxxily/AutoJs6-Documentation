@@ -4,7 +4,7 @@
     {
       "textRaw": "SQLite",
       "name": "sqlite",
-      "desc": "<p><code>sqlite</code> 模块用于在脚本中打开和操作 SQLite 数据库文件.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sqlite</p>\n\n<hr>\n",
+      "desc": "<p><code>sqlite</code> 模块用于在脚本中打开和操作 SQLite 数据库文件.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>, <code>core/database/Transaction.kt</code>, <code>core/database/TransactionCallback.java</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sqlite</p>\n\n<hr>\n",
       "modules": [
         {
           "textRaw": "[@] sqlite",
@@ -43,7 +43,7 @@
               "textRaw": "open(databaseFilePath, options?, callback?)",
               "type": "method",
               "name": "open",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. 路径会经过 AutoJs6 运行时文件路径解析.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. <code>databaseFilePath</code> 会经过 AutoJs6 运行时路径解析; <code>options</code> 必须是 JavaScript 对象, <code>callback</code> 会被转换为 <code>DatabaseCallback</code>.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n<p><code>Database</code> 是对 Android <code>SQLiteDatabase</code> 的脚本侧包装. 当前实现继承 <code>SQLiteOpenHelper</code>, 内部持有一个 <code>SQLiteDatabase</code> 实例, 并注册到脚本运行时的 <code>closeableManager</code>, 脚本结束时可被统一关闭.</p>\n<p>写入对象会先转换为 <code>ContentValues</code>. 支持的值类型:</p>\n<ul>\n<li><code>null</code> / <code>undefined</code> - 写入 SQL <code>NULL</code></li>\n<li><code>number</code> - 整数值写入 <code>Long</code>, 非整数写入 <code>Double</code></li>\n<li><code>boolean</code></li>\n<li><code>string</code></li>\n<li><code>byte[]</code></li>\n</ul>\n<p>其他类型会抛出 <code>Unsupported data type for key: ...</code>.</p>\n",
               "signatures": [
                 {
                   "params": [
@@ -131,7 +131,8 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "desc": "<p>使用绑定参数执行 SQL.</p>\n"
             }
           ],
           "type": "module",
@@ -177,23 +178,142 @@
                 }
               ],
               "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            },
+            {
+              "textRaw": "rawQuery(sql, selectionArgs, cancellationSignal)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**cancellationSignal** { [android.os.CancellationSignal](https://developer.android.com/reference/android/os/CancellationSignal) } ",
+                      "name": "**cancellationSignal**",
+                      "type": " [android.os.CancellationSignal](https://developer.android.com/reference/android/os/CancellationSignal) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "type": "module",
           "displayName": "[m] rawQuery"
         },
         {
+          "textRaw": "[m] rawQueryWithFactory",
+          "name": "[m]_rawquerywithfactory",
+          "methods": [
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable, cancellationSignal)",
+              "type": "method",
+              "name": "rawQueryWithFactory",
+              "desc": "<p>参数含义与 Android <code>SQLiteDatabase.rawQueryWithFactory</code> 保持一致, 返回 <a href=\"#cursorwrapper\">CursorWrapper</a>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "editTable"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQueryWithFactory"
+        },
+        {
           "textRaw": "[m] query",
           "name": "[m]_query",
           "methods": [
             {
-              "textRaw": "query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit?)",
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
               "type": "method",
               "name": "query",
-              "desc": "<p>返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>\n",
               "signatures": [
                 {
                   "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    },
                     {
                       "name": "table"
                     },
@@ -216,7 +336,362 @@
                       "name": "orderBy"
                     },
                     {
-                      "name": "limit?"
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>\n"
+            },
+            {
+              "textRaw": "query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "query",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询表并返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] query"
+        },
+        {
+          "textRaw": "[m] queryWithFactory",
+          "name": "[m]_querywithfactory",
+          "methods": [
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)",
+              "type": "method",
+              "name": "queryWithFactory",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "cursorFactory"
+                    },
+                    {
+                      "name": "distinct"
+                    },
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit"
+                    },
+                    {
+                      "name": "cancellationSignal"
                     }
                   ]
                 }
@@ -224,7 +699,7 @@
             }
           ],
           "type": "module",
-          "displayName": "[m] query"
+          "displayName": "[m] queryWithFactory"
         },
         {
           "textRaw": "[m] insert",
@@ -265,13 +740,30 @@
                   ]
                 }
               ],
-              "desc": "<p>插入一行数据. <code>values</code> 支持 <code>null</code> / <code>number</code> / <code>boolean</code> / <code>string</code> / <code>byte[]</code>; 其他类型会抛出异常.</p>\n"
+              "desc": "<p>插入一行数据. <code>values</code> 会按上文规则转换为 <code>ContentValues</code>.</p>\n"
             },
             {
               "textRaw": "insert(table, nullColumnHack, values)",
               "type": "method",
               "name": "insert",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**nullColumnHack** { [string](dataTypes#string) | null } ",
+                      "name": "**nullColumnHack**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
                 {
                   "params": [
                     {
@@ -292,6 +784,187 @@
           "displayName": "[m] insert"
         },
         {
+          "textRaw": "[m] insertOrThrow",
+          "name": "[m]_insertorthrow",
+          "methods": [
+            {
+              "textRaw": "insertOrThrow(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insertOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertOrThrow"
+        },
+        {
+          "textRaw": "[m] insertWithOnConflict",
+          "name": "[m]_insertwithonconflict",
+          "methods": [
+            {
+              "textRaw": "insertWithOnConflict(table, nullColumnHack, initialValues, conflictAlgorithm)",
+              "type": "method",
+              "name": "insertWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**conflictAlgorithm** { [number](dataTypes#number) } - Android `SQLiteDatabase.CONFLICT_*` 常量值 ",
+                      "name": "**conflictAlgorithm**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "Android `SQLiteDatabase.CONFLICT_*` 常量值"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insertWithOnConflict"
+        },
+        {
+          "textRaw": "[m] replace",
+          "name": "[m]_replace",
+          "methods": [
+            {
+              "textRaw": "replace(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replace",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replace"
+        },
+        {
+          "textRaw": "[m] replaceOrThrow",
+          "name": "[m]_replaceorthrow",
+          "methods": [
+            {
+              "textRaw": "replaceOrThrow(table, nullColumnHack, initialValues)",
+              "type": "method",
+              "name": "replaceOrThrow",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "initialValues"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] replaceOrThrow"
+        },
+        {
           "textRaw": "[m] update",
           "name": "[m]_update",
           "methods": [
@@ -300,6 +973,36 @@
               "type": "method",
               "name": "update",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 受影响行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "受影响行数"
+                    }
+                  ]
+                },
                 {
                   "params": [
                     {
@@ -323,6 +1026,61 @@
           "displayName": "[m] update"
         },
         {
+          "textRaw": "[m] updateWithOnConflict",
+          "name": "[m]_updatewithonconflict",
+          "methods": [
+            {
+              "textRaw": "updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)",
+              "type": "method",
+              "name": "updateWithOnConflict",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    },
+                    {
+                      "name": "conflictAlgorithm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] updateWithOnConflict"
+        },
+        {
           "textRaw": "[m] delete",
           "name": "[m]_delete",
           "methods": [
@@ -331,6 +1089,31 @@
               "type": "method",
               "name": "delete",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**whereClause** { [string](dataTypes#string) | null } ",
+                      "name": "**whereClause**",
+                      "type": " [string](dataTypes#string) | null "
+                    },
+                    {
+                      "textRaw": "**whereArgs** { [string](dataTypes#string)[] | null } ",
+                      "name": "**whereArgs**",
+                      "type": " [string](dataTypes#string)[] | null "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } - 删除行数 ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "删除行数"
+                    }
+                  ]
+                },
                 {
                   "params": [
                     {
@@ -389,11 +1172,210 @@
                   ]
                 }
               ],
-              "desc": "<p>执行事务并返回事件发射器. 事务过程中可能触发 <code>begin</code> / <code>commit</code> / <code>rollback</code> / <code>end</code> / <code>error</code> 事件.</p>\n"
+              "desc": "<p>同步执行事务并返回事件发射器. <code>transactionCallback</code> 会收到 <code>Transaction</code> 对象; 正常执行后内部调用 <code>transaction.succeed()</code>, 最终调用 <code>transaction.end()</code>.</p>\n<p>事务事件:</p>\n<ul>\n<li><code>begin</code> - 事务开始</li>\n<li><code>commit</code> - 事务成功提交</li>\n<li><code>rollback</code> - 事务回滚</li>\n<li><code>end</code> - 事务结束</li>\n<li><code>error</code> - 回调抛出异常时触发</li>\n</ul>\n<pre><code class=\"lang-js\">let events = db.transaction(function (tx) {\n    tx.database.insert(&#39;user&#39;, { name: &#39;Bob&#39; });\n});\nevents.on(&#39;commit&#39;, function () {\n    console.log(&#39;committed&#39;);\n});\n</code></pre>\n"
             }
           ],
           "type": "module",
           "displayName": "[m] transaction"
+        },
+        {
+          "textRaw": "[m] beginTransaction",
+          "name": "[m]_begintransaction",
+          "methods": [
+            {
+              "textRaw": "beginTransaction()",
+              "type": "method",
+              "name": "beginTransaction",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] beginTransaction"
+        },
+        {
+          "textRaw": "[m] beginTransactionNonExclusive",
+          "name": "[m]_begintransactionnonexclusive",
+          "methods": [
+            {
+              "textRaw": "beginTransactionNonExclusive()",
+              "type": "method",
+              "name": "beginTransactionNonExclusive",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] beginTransactionNonExclusive"
+        },
+        {
+          "textRaw": "[m] beginTransactionWithListener",
+          "name": "[m]_begintransactionwithlistener",
+          "methods": [
+            {
+              "textRaw": "beginTransactionWithListener(listener)",
+              "type": "method",
+              "name": "beginTransactionWithListener",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "listener"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] beginTransactionWithListener"
+        },
+        {
+          "textRaw": "[m] beginTransactionWithListenerNonExclusive",
+          "name": "[m]_begintransactionwithlistenernonexclusive",
+          "methods": [
+            {
+              "textRaw": "beginTransactionWithListenerNonExclusive(listener)",
+              "type": "method",
+              "name": "beginTransactionWithListenerNonExclusive",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "listener"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] beginTransactionWithListenerNonExclusive"
+        },
+        {
+          "textRaw": "[m] endTransaction",
+          "name": "[m]_endtransaction",
+          "methods": [
+            {
+              "textRaw": "endTransaction()",
+              "type": "method",
+              "name": "endTransaction",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] endTransaction"
+        },
+        {
+          "textRaw": "[m] setTransactionSuccessful",
+          "name": "[m]_settransactionsuccessful",
+          "methods": [
+            {
+              "textRaw": "setTransactionSuccessful()",
+              "type": "method",
+              "name": "setTransactionSuccessful",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] setTransactionSuccessful"
+        },
+        {
+          "textRaw": "[m] inTransaction",
+          "name": "[m]_intransaction",
+          "methods": [
+            {
+              "textRaw": "inTransaction()",
+              "type": "method",
+              "name": "inTransaction",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [boolean](dataTypes#boolean) "
+                    }
+                  ]
+                },
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] inTransaction"
+        },
+        {
+          "textRaw": "[m] compileStatement",
+          "name": "[m]_compilestatement",
+          "methods": [
+            {
+              "textRaw": "compileStatement(sql)",
+              "type": "method",
+              "name": "compileStatement",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [android.database.sqlite.SQLiteStatement](https://developer.android.com/reference/android/database/sqlite/SQLiteStatement) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [android.database.sqlite.SQLiteStatement](https://developer.android.com/reference/android/database/sqlite/SQLiteStatement) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compileStatement"
+        },
+        {
+          "textRaw": "[m] validateSql",
+          "name": "[m]_validatesql",
+          "methods": [
+            {
+              "textRaw": "validateSql(sql, cancellationSignal)",
+              "type": "method",
+              "name": "validateSql",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "cancellationSignal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] validateSql"
         },
         {
           "textRaw": "[m] close",
@@ -403,7 +1385,7 @@
               "textRaw": "close()",
               "type": "method",
               "name": "close",
-              "desc": "<p>关闭数据库连接.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n",
+              "desc": "<p>关闭底层数据库连接, 并从运行时 <code>closeableManager</code> 中移除.</p>\n",
               "signatures": [
                 {
                   "params": []
@@ -415,6 +1397,13 @@
           "displayName": "[m] close"
         },
         {
+          "textRaw": "[m] 状态与配置方法",
+          "name": "[m]_状态与配置方法",
+          "desc": "<p>当前 <code>Database</code> 还暴露以下 Android <code>SQLiteDatabase</code> 代理方法:</p>\n<ul>\n<li><code>acquireReference()</code> / <code>releaseReference()</code></li>\n<li><code>disableWriteAheadLogging()</code> / <code>enableWriteAheadLogging()</code> / <code>isWriteAheadLoggingEnabled()</code></li>\n<li><code>getAttachedDbs()</code> / <code>getMaximumSize()</code> / <code>getPageSize()</code> / <code>getPath()</code> / <code>getVersion()</code></li>\n<li><code>isDatabaseIntegrityOk()</code> / <code>isDbLockedByCurrentThread()</code> / <code>isOpen()</code> / <code>isReadOnly()</code></li>\n<li><code>needUpgrade(newVersion)</code></li>\n<li><code>setForeignKeyConstraintsEnabled(enable)</code> / <code>setLocale(locale)</code> / <code>setMaxSqlCacheSize(cacheSize)</code></li>\n<li><code>setMaximumSize(numBytes)</code> / <code>setPageSize(numBytes)</code> / <code>setVersion(version)</code></li>\n<li><code>yieldIfContendedSafely()</code> / <code>yieldIfContendedSafely(sleepAfterYieldDelay)</code></li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n<p><code>CursorWrapper</code> 委托了 Android <code>Cursor</code> 的全部能力, 并额外提供更适合脚本使用的读取方法. 查询返回游标后, 调用方应主动 <code>close()</code>; <code>single()</code> 与默认的 <code>all()</code> 会自动关闭游标.</p>\n<p>字段类型映射:</p>\n<ul>\n<li><code>FIELD_TYPE_NULL</code> -&gt; <code>null</code></li>\n<li><code>FIELD_TYPE_INTEGER</code> -&gt; <code>Long</code></li>\n<li><code>FIELD_TYPE_FLOAT</code> -&gt; <code>Double</code></li>\n<li><code>FIELD_TYPE_STRING</code> -&gt; <code>String</code></li>\n<li><code>FIELD_TYPE_BLOB</code> -&gt; <code>byte[]</code></li>\n</ul>\n",
+          "type": "module",
+          "displayName": "[m] 状态与配置方法"
+        },
+        {
           "textRaw": "[m] get",
           "name": "[m]_get",
           "methods": [
@@ -422,8 +1411,22 @@
               "textRaw": "get(index)",
               "type": "method",
               "name": "get",
-              "desc": "<p>按列索引读取当前行字段.</p>\n",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**index** { [number](dataTypes#number) } - 列索引 ",
+                      "name": "**index**",
+                      "type": " [number](dataTypes#number) ",
+                      "desc": "列索引"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
                 {
                   "params": [
                     {
@@ -431,7 +1434,8 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "desc": "<p>按列索引读取当前行字段.</p>\n"
             }
           ],
           "type": "module",
@@ -445,8 +1449,22 @@
               "textRaw": "getByColumn(column)",
               "type": "method",
               "name": "getByColumn",
-              "desc": "<p>按列名读取当前行字段.</p>\n",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**column** { [string](dataTypes#string) } - 列名 ",
+                      "name": "**column**",
+                      "type": " [string](dataTypes#string) ",
+                      "desc": "列名"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { * } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " * "
+                    }
+                  ]
+                },
                 {
                   "params": [
                     {
@@ -454,7 +1472,8 @@
                     }
                   ]
                 }
-              ]
+              ],
+              "desc": "<p>按列名读取当前行字段. 列不存在时会由 <code>getColumnIndexOrThrow</code> 抛出异常.</p>\n"
             }
           ],
           "type": "module",
@@ -468,12 +1487,21 @@
               "textRaw": "pick()",
               "type": "method",
               "name": "pick",
-              "desc": "<p>将当前行转换为对象.</p>\n",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
                 {
                   "params": []
                 }
-              ]
+              ],
+              "desc": "<p>将当前行转换为对象, 键为列名.</p>\n"
             }
           ],
           "type": "module",
@@ -487,12 +1515,21 @@
               "textRaw": "next()",
               "type": "method",
               "name": "next",
-              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>.</p>\n",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
                 {
                   "params": []
                 }
-              ]
+              ],
+              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>. 此方法不会自动关闭游标.</p>\n"
             }
           ],
           "type": "module",
@@ -506,12 +1543,21 @@
               "textRaw": "single()",
               "type": "method",
               "name": "single",
-              "desc": "<p>返回第一条记录并关闭游标.</p>\n",
               "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) | null "
+                    }
+                  ]
+                },
                 {
                   "params": []
                 }
-              ]
+              ],
+              "desc": "<p>返回第一条记录并关闭游标.</p>\n"
             }
           ],
           "type": "module",
@@ -548,7 +1594,7 @@
                   ]
                 }
               ],
-              "desc": "<p>读取全部行. 默认读取后关闭游标.</p>\n"
+              "desc": "<p>从当前位置继续读取全部行. 默认读取后关闭游标; 传入 <code>false</code> 时保留游标打开状态.</p>\n"
             }
           ],
           "type": "module",

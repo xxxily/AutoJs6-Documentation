@@ -210,8 +210,28 @@
 <li><span class="stability_undefined"><a href="#mediainfo_audio_parameter">audio(parameter?)</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#mediainfo">其他流类型</a></span></li>
-<li><span class="stability_undefined"><a href="#mediainfo_1">动态属性</a></span></li>
+<li><span class="stability_undefined"><a href="#mediainfo_m_text">[m] text</a></span><ul>
+<li><span class="stability_undefined"><a href="#mediainfo_text_parameter">text(parameter?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#mediainfo_m_other">[m] other</a></span><ul>
+<li><span class="stability_undefined"><a href="#mediainfo_other_parameter">other(parameter?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#mediainfo_m_image">[m] image</a></span><ul>
+<li><span class="stability_undefined"><a href="#mediainfo_image_parameter">image(parameter?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#mediainfo_m_menu">[m] menu</a></span><ul>
+<li><span class="stability_undefined"><a href="#mediainfo_menu_parameter">menu(parameter?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#mediainfo_m_max">[m] max</a></span><ul>
+<li><span class="stability_undefined"><a href="#mediainfo_max_parameter">max(parameter?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#mediainfo">动态分组属性</a></span></li>
+<li><span class="stability_undefined"><a href="#mediainfo_1">异常与限制</a></span></li>
 </ul>
 </li>
 </ul>
@@ -220,9 +240,9 @@
 
         <div id="apicontent">
             <h1>MediaInfo - 媒体信息<span><a class="mark" href="#mediainfo_mediainfo" id="mediainfo_mediainfo">#</a></span></h1>
-<p><code>mediainfo</code> 模块用于读取媒体文件的元信息.</p>
+<p><code>mediainfo</code> 模块用于读取媒体文件的元信息. 当前实现基于 AutoJs6 内置的 <code>scriptRuntime.mediaInfo</code> 与 <code>org.mediainfo.android.MediaInfo</code>.</p>
 <blockquote>
-<p>源码依据: <code>runtime/api/augment/mediainfo/Mediainfo.kt</code>, <code>runtime/api/augment/mediainfo/MediainfoNativeObject.kt</code>.</p>
+<p>源码依据: <code>runtime/api/augment/mediainfo/Mediainfo.kt</code>, <code>runtime/api/augment/mediainfo/MediainfoNativeObject.kt</code>, <code>org/mediainfo/android/MediaInfo.kt</code>.</p>
 </blockquote>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">mediainfo</p>
@@ -231,7 +251,7 @@
 <h2>[@] mediainfo<span><a class="mark" href="#mediainfo_mediainfo_1" id="mediainfo_mediainfo_1">#</a></span></h2>
 <h3>mediainfo(path)<span><a class="mark" href="#mediainfo_mediainfo_path" id="mediainfo_mediainfo_path">#</a></span></h3>
 <p><strong><code>6.7.0</code></strong></p>
-<p><code>mediainfo(path)</code> 与 <a href="#mediainfo_m_read">mediainfo.read(path)</a> 等价.</p>
+<p><code>mediainfo(path)</code> 与 <a href="#mediainfo_m_read">mediainfo.read(path)</a> 等价. 只接受一个参数.</p>
 <h2>[m] read<span><a class="mark" href="#mediainfo_m_read" id="mediainfo_m_read">#</a></span></h2>
 <h3>read(path)<span><a class="mark" href="#mediainfo_read_path" id="mediainfo_read_path">#</a></span></h3>
 <p><strong><code>6.7.0</code></strong></p>
@@ -239,16 +259,18 @@
 <li><strong>path</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 媒体文件路径, 不可为空</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="#mediainfo_mediainfonativeobject">MediainfoNativeObject</a></span> }</li>
 </ul>
-<p>读取媒体文件信息.</p>
+<p>读取媒体文件信息并返回脚本侧对象. <code>path</code> 会先通过运行时文件模块解析为非空路径; <code>null</code> / <code>undefined</code> 或空白字符串会抛出异常.</p>
 <pre><code class="lang-js">let info = mediainfo.read(&#39;./video.mp4&#39;);
 console.log(info.inform);
-console.log(info.general(&#39;Format&#39;));
 console.log(info.video(&#39;Width&#39;));
+console.log(info.general(&#39;Format&#39;));
+console.log(info.video()); // 读取 Video 流默认文本
 </code></pre>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">MediainfoNativeObject</p>
 
 <hr>
+<p><code>MediainfoNativeObject</code> 会在构造时读取一次 MediaInfo 输出文本, 并把文本解析为可访问的对象属性. 当前对象没有显式 <code>close()</code> 方法; 底层读取由 <code>scriptRuntime.mediaInfo</code> 完成.</p>
 <h2>[p] path<span><a class="mark" href="#mediainfo_p_path" id="mediainfo_p_path">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
@@ -258,21 +280,66 @@ console.log(info.video(&#39;Width&#39;));
 <div class="signature"><ul>
 <li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 </ul>
-</div><p>MediaInfo 输出的原始文本.</p>
+</div><p>MediaInfo 输出的原始文本. 动态属性解析也来自这段文本.</p>
 <h2>[m] general<span><a class="mark" href="#mediainfo_m_general" id="mediainfo_m_general">#</a></span></h2>
 <h3>general(parameter?)<span><a class="mark" href="#mediainfo_general_parameter" id="mediainfo_general_parameter">#</a></span></h3>
-<p>读取 General 流信息. <code>parameter</code> 为空时返回该流的默认信息.</p>
+<div class="signature"><ul>
+<li><strong>[ parameter = <code>&quot;&quot;</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>读取 <code>GENERAL</code> 流第 <code>0</code> 个流的字段. <code>parameter</code> 为空时返回该流的默认信息.</p>
 <h2>[m] video<span><a class="mark" href="#mediainfo_m_video" id="mediainfo_m_video">#</a></span></h2>
 <h3>video(parameter?)<span><a class="mark" href="#mediainfo_video_parameter" id="mediainfo_video_parameter">#</a></span></h3>
-<p>读取 Video 流信息.</p>
+<div class="signature"><ul>
+<li><strong>[ parameter = <code>&quot;&quot;</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>读取 <code>VIDEO</code> 流第 <code>0</code> 个流的字段.</p>
 <h2>[m] audio<span><a class="mark" href="#mediainfo_m_audio" id="mediainfo_m_audio">#</a></span></h2>
 <h3>audio(parameter?)<span><a class="mark" href="#mediainfo_audio_parameter" id="mediainfo_audio_parameter">#</a></span></h3>
-<p>读取 Audio 流信息.</p>
-<h2>其他流类型<span><a class="mark" href="#mediainfo" id="mediainfo">#</a></span></h2>
-<p>模块会根据 <code>MediaInfo.StreamKind</code> 枚举动态创建同名小写函数, 因此除 <code>general</code> / <code>video</code> / <code>audio</code> 外, 还可能存在 <code>text</code> / <code>image</code> / <code>menu</code> 等函数, 具体取决于底层 MediaInfo 库.</p>
-<h2>动态属性<span><a class="mark" href="#mediainfo_1" id="mediainfo_1">#</a></span></h2>
-<p>模块会解析 <code>inform</code> 文本, 将各节转换为小写分组属性, 并将字段名称转换为 camelCase. 例如 <code>Overall bit rate</code> 可能被转换为 <code>overallBitRate</code>.</p>
-
+<div class="signature"><ul>
+<li><strong>[ parameter = <code>&quot;&quot;</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>读取 <code>AUDIO</code> 流第 <code>0</code> 个流的字段.</p>
+<h2>[m] text<span><a class="mark" href="#mediainfo_m_text" id="mediainfo_m_text">#</a></span></h2>
+<h3>text(parameter?)<span><a class="mark" href="#mediainfo_text_parameter" id="mediainfo_text_parameter">#</a></span></h3>
+<p>读取 <code>TEXT</code> 流第 <code>0</code> 个流的字段.</p>
+<h2>[m] other<span><a class="mark" href="#mediainfo_m_other" id="mediainfo_m_other">#</a></span></h2>
+<h3>other(parameter?)<span><a class="mark" href="#mediainfo_other_parameter" id="mediainfo_other_parameter">#</a></span></h3>
+<p>读取 <code>OTHER</code> 流第 <code>0</code> 个流的字段.</p>
+<h2>[m] image<span><a class="mark" href="#mediainfo_m_image" id="mediainfo_m_image">#</a></span></h2>
+<h3>image(parameter?)<span><a class="mark" href="#mediainfo_image_parameter" id="mediainfo_image_parameter">#</a></span></h3>
+<p>读取 <code>IMAGE</code> 流第 <code>0</code> 个流的字段.</p>
+<h2>[m] menu<span><a class="mark" href="#mediainfo_m_menu" id="mediainfo_m_menu">#</a></span></h2>
+<h3>menu(parameter?)<span><a class="mark" href="#mediainfo_menu_parameter" id="mediainfo_menu_parameter">#</a></span></h3>
+<p>读取 <code>MENU</code> 流第 <code>0</code> 个流的字段.</p>
+<h2>[m] max<span><a class="mark" href="#mediainfo_m_max" id="mediainfo_m_max">#</a></span></h2>
+<h3>max(parameter?)<span><a class="mark" href="#mediainfo_max_parameter" id="mediainfo_max_parameter">#</a></span></h3>
+<p>底层 <code>MediaInfo.StreamKind.MAX</code> 也会按枚举动态暴露为函数. 一般脚本不需要直接使用.</p>
+<h2>动态分组属性<span><a class="mark" href="#mediainfo" id="mediainfo">#</a></span></h2>
+<p><code>inform</code> 文本会按 section 解析为对象属性:</p>
+<ul>
+<li>section 标题会转为小写属性名, 例如 <code>General</code> -&gt; <code>info.general</code>.</li>
+<li>字段名会转为 camelCase, 非字母数字分隔符会被移除, 例如 <code>Overall bit rate</code> -&gt; <code>overallBitRate</code>.</li>
+<li>只解析包含冒号的行; 不含冒号的非空行会被视为新的 section.</li>
+<li>解析后的字段值均为字符串.</li>
+</ul>
+<pre><code class="lang-js">let info = mediainfo(&#39;./video.mp4&#39;);
+console.log(info.video(&#39;Width&#39;));
+console.log(info.video(&#39;Overall bit rate&#39;));
+</code></pre>
+<blockquote>
+<p>注意: 动态属性名可能与 <code>general()</code> / <code>video()</code> 等动态函数同名. 当前实现先定义函数, 再解析 <code>inform</code>; 如果同名属性已存在, 会复用该属性. 依赖完整媒体字段时, 建议优先使用 <code>info.video(&#39;Width&#39;)</code> 这类函数形式.</p>
+</blockquote>
+<h2>异常与限制<span><a class="mark" href="#mediainfo_1" id="mediainfo_1">#</a></span></h2>
+<div class="signature"><ul>
+<li><code>path</code> 不能为 <code>null</code> / <code>undefined</code> / 空白字符串.</li>
+<li>MediaInfo 原生库不可用时, 底层 <code>MediaInfo</code> 会抛出 <code>MediaInfo library is not available</code>.</li>
+<li>各 stream 函数固定读取第 <code>0</code> 个流; 当前脚本包装层没有暴露 stream index 参数.</li>
+<li>字段名称必须使用底层 MediaInfo 识别的参数名, 如 <code>Width</code> / <code>Format</code> / <code>Duration</code>.</li>
+</ul>
+</div>
         </div>
     </div>
 </div>

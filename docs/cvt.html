@@ -202,6 +202,7 @@
 <li><span class="stability_undefined"><a href="#cvt_bytes_loose_source_options">bytes.loose(source, options?)</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#cvt">单位与解析规则</a></span></li>
 <li><span class="stability_undefined"><a href="#cvt_p_bytes_units">[p] bytes.UNITS</a></span></li>
 <li><span class="stability_undefined"><a href="#cvt_p_bytes_auto">[p] bytes.AUTO</a></span></li>
 <li><span class="stability_undefined"><a href="#cvt_p_bytes_iec_div">[p] bytes.IEC_DIV</a></span></li>
@@ -214,7 +215,7 @@
 
         <div id="apicontent">
             <h1>Cvt - 单位转换<span><a class="mark" href="#cvt_cvt" id="cvt_cvt">#</a></span></h1>
-<p><code>cvt</code> 模块用于数据单位转换. 当前公开实现以字节单位转换为主.</p>
+<p><code>cvt</code> 模块用于数据单位转换. 当前公开实现以字节单位转换为主, 返回数值或 <code>BigDecimal</code>.</p>
 <blockquote>
 <p>源码依据: <code>runtime/api/augment/converter/Converter.kt</code>, <code>runtime/api/augment/converter/Bytes.kt</code>, <code>runtime/api/augment/converter/core/Bytes.kt</code>.</p>
 </blockquote>
@@ -228,17 +229,17 @@
 <ul>
 <li><strong>source</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 数值或带单位字符串</li>
 <li><strong>[ options ]</strong> {{<ul>
-<li><strong>fromUnit</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 来源单位</li>
+<li><strong>fromUnit</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 来源单位, 默认 <code>B</code></li>
 <li><strong>toUnit</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 目标单位, 默认 <code>AUTO</code></li>
 <li><strong>fractionDigits</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 小数位数, 默认 <code>2</code></li>
-<li><strong>autoCarryThreshold</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>
-<li><strong>strict</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否使用严格单位模式</li>
+<li><strong>autoCarryThreshold</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 自动进位阈值, 默认 <code>1024</code>, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>
+<li><strong>strict</strong> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否使用严格单位模式, 默认 <code>false</code></li>
 </ul>
 </li>
 <li>}}</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> | <span class="type"><a href="https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html">java.math.BigDecimal</a></span> }</li>
 </ul>
-<p>将字节数据转换为目标单位的数值.</p>
+<p>将字节数据转换为目标单位的数值. 结果在 JavaScript 安全整数范围内时返回 <code>number</code>, 否则保留为 <code>BigDecimal</code>.</p>
 <pre><code class="lang-js">console.log(cvt.bytes(1024, &#39;KB&#39;)); // 1
 console.log(cvt.bytes(&#39;1 MB&#39;, &#39;KB&#39;)); // 1024
 console.log(cvt.bytes(1536, { toUnit: &#39;KB&#39;, fractionDigits: 1 })); // 1.5
@@ -267,21 +268,35 @@ console.log(cvt.bytes(1536, { toUnit: &#39;KB&#39;, fractionDigits: 1 })); // 1.
 <ul>
 <li><code>KB</code> / <code>MB</code> / <code>GB</code> 等使用 <code>1000</code> 进位.</li>
 <li><code>KiB</code> / <code>MiB</code> / <code>GiB</code> 等使用 <code>1024</code> 进位.</li>
+<li><code>B</code> 表示字节.</li>
 </ul>
-<p>在严格模式中, <code>options.strict</code> 必须为空.</p>
+<p>在严格模式中, <code>options.strict</code> 必须为空; 如果传入会抛出异常.</p>
 <pre><code class="lang-js">console.log(cvt.bytes.strict(1000, &#39;KB&#39;)); // 1
 console.log(cvt.bytes.strict(1024, &#39;KiB&#39;)); // 1
 </code></pre>
 <h2>[m] bytes.loose<span><a class="mark" href="#cvt_m_bytes_loose" id="cvt_m_bytes_loose">#</a></span></h2>
 <h3>bytes.loose(source, options?)<span><a class="mark" href="#cvt_bytes_loose_source_options" id="cvt_bytes_loose_source_options">#</a></span></h3>
 <p><strong><code>6.7.0</code></strong></p>
-<p>宽松模式转换. 宽松模式会将 <code>KiB</code> 等 IEC 标识折算为普通单位文本, 并以 <code>1024</code> 为换算基数. 在宽松模式中, <code>options.strict</code> 必须为空.</p>
+<p>宽松模式转换. 宽松模式会将 <code>KiB</code> / <code>MiB</code> 等 IEC 标识规范化为普通单位文本, 并始终以 <code>1024</code> 为换算基数. 在宽松模式中, <code>options.strict</code> 必须为空.</p>
+<h2>单位与解析规则<span><a class="mark" href="#cvt" id="cvt">#</a></span></h2>
+<div class="signature"><ul>
+<li>支持前缀: <code>K</code> / <code>M</code> / <code>G</code> / <code>T</code> / <code>P</code> / <code>E</code> / <code>Z</code> / <code>Y</code> / <code>R</code> / <code>Q</code>.</li>
+<li><code>source</code> 为字符串时, 格式必须匹配 <code>数字 + 可选空格 + 可选英文字母单位</code>, 如 <code>1.5 MB</code>; 不接受负数、指数、<code>.5</code> 或逗号格式.</li>
+<li><code>source</code> 不能为负数, 也不能是 <code>NaN</code>.</li>
+<li><code>fromUnit</code> 同时出现在字符串和参数中时, 两者必须一致, 否则抛出 <code>Ambiguous &quot;fromUnit&quot; values</code>.</li>
+<li><code>fractionDigits</code> 会转为整数, 必须大于等于 <code>0</code>.</li>
+<li><code>autoCarryThreshold</code> 会转为长整数, 必须大于 <code>0</code>, 且只能在 <code>toUnit</code> 为 <code>AUTO</code> 时设置.</li>
+<li>非严格模式下单位不区分大小写, 且 <code>KiB</code> 会按 <code>KB</code> 处理.</li>
+<li>严格模式下会保留 <code>KiB</code> / <code>MiB</code> 这类 IEC 标识并选择对应基数.</li>
+<li><code>AUTO</code> 选择单位时使用整数幂比较; 非严格模式固定按 <code>1024</code>, 严格模式按来源单位对应基数.</li>
+</ul>
+</div><p>数值计算使用 <code>BigDecimal</code> 和 <code>RoundingMode.HALF_UP</code>. 非 <code>AUTO</code> 目标单位会按 <code>fractionDigits</code> 做除法舍入, 之后去除尾随零.</p>
 <h2>[p] bytes.UNITS<span><a class="mark" href="#cvt_p_bytes_units" id="cvt_p_bytes_units">#</a></span></h2>
 <p><strong><code>6.7.0</code></strong></p>
 <ul>
 <li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
 </ul>
-<p>支持的单位前缀, 依次表示 K/M/G/T/P/E/Z/Y/R/Q.</p>
+<p>支持的单位前缀.</p>
 <h2>[p] bytes.AUTO<span><a class="mark" href="#cvt_p_bytes_auto" id="cvt_p_bytes_auto">#</a></span></h2>
 <p><strong><code>6.7.0</code></strong></p>
 <ul>

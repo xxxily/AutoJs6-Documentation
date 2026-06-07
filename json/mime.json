@@ -4,7 +4,7 @@
     {
       "textRaw": "MIME",
       "name": "mime",
-      "desc": "<p><code>mime</code> 模块用于解析 MIME 类型字符串.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/mime/Mime.kt</code>, <code>runtime/api/augment/mime/JsMime.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">mime</p>\n\n<hr>\n",
+      "desc": "<p><code>mime</code> 模块用于解析 MIME 类型字符串, 返回一个包含主类型、子类型和参数的 <code>JsMime</code> 对象.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/mime/Mime.kt</code>, <code>runtime/api/augment/mime/JsMime.kt</code>, <code>runtime/api/Mime.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">mime</p>\n\n<hr>\n",
       "modules": [
         {
           "textRaw": "[@] mime",
@@ -14,7 +14,7 @@
               "textRaw": "mime(mimeStr)",
               "type": "method",
               "name": "mime",
-              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#jsmime\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#jsmime\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串. 入口只接受一个参数, 参数会通过 <code>coerceString</code> 转为字符串后交给 <code>eu.medsea.mimeutil.MimeType</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.mimeType); // text/html; charset=utf-8\nconsole.log(m.mimeTypeRefined); // text/html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
               "signatures": [
                 {
                   "params": [
@@ -53,23 +53,30 @@
         {
           "textRaw": "[p] mimeType",
           "name": "[p]_mimetype",
-          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>规范化后的 MIME 类型, 包含参数.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>由 <code>type/subtype</code> 和有效参数重新拼接出的 MIME 字符串. 参数顺序沿用原始字符串中 <code>;</code> 后的顺序.</p>\n",
           "type": "module",
           "displayName": "[p] mimeType"
         },
         {
           "textRaw": "[p] mimeTypeRefined",
           "name": "[p]_mimetyperefined",
-          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>仅包含主类型与子类型的 MIME 类型.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>仅包含主类型与子类型的 MIME 类型, 形如 <code>text/html</code>.</p>\n",
           "type": "module",
           "displayName": "[p] mimeTypeRefined"
         },
         {
           "textRaw": "[p] parameters",
           "name": "[p]_parameters",
-          "desc": "<ul>\n<li>{ <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>参数对象. 例如 <code>text/html; charset=utf-8</code> 的 <code>parameters.charset</code> 为 <code>utf-8</code>.</p>\n",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>参数对象. 当前实现只解析 <code>;</code> 后包含 <code>=</code> 的片段, 并按 <code>key=value</code> 放入对象; 不含 <code>=</code> 的片段只会保留在 <code>mimeType</code> 字符串里, 不会进入 <code>parameters</code>.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;application/json; charset=utf-8; version=1; flag&#39;);\nconsole.log(m.parameters.charset); // utf-8\nconsole.log(m.parameters.version); // 1\nconsole.log(m.parameters.flag); // undefined\n</code></pre>\n",
           "type": "module",
           "displayName": "[p] parameters"
+        },
+        {
+          "textRaw": "解析边界",
+          "name": "解析边界",
+          "desc": "<ul>\n<li><code>mime</code> 不做文件扩展名推断; 传入 <code>png</code> 不等同于 <code>image/png</code>.</li>\n<li>参数解析使用 <code>;</code> 分隔, 并按 <code>=</code> 拆分键值. 当前实现期望单个参数片段最多只有一个 <code>=</code>.</li>\n<li><code>null</code> / <code>undefined</code> 会在转字符串阶段失败; 空白字符串会被底层 <code>MimeType</code> 拒绝.</li>\n<li>底层 <code>MimeType</code> 不是严格 MIME 语法校验器. 例如 <code>mime(&#39;jpg&#39;)</code> 这类无 <code>/</code> 的字符串仍可能被接受, 此时 <code>type</code> 来自输入, <code>subtype</code> 可能为 <code>*</code>.</li>\n<li>需要按文件扩展名推断 MIME 时, 源码中的 <code>runtime/api/Mime.kt</code> 提供 <code>fromFile</code> / <code>fromFileOr</code> 等 Java/Kotlin 侧工具, 但这些不是当前 <code>mime(...)</code> 脚本入口的返回字段.</li>\n</ul>\n",
+          "type": "module",
+          "displayName": "解析边界"
         }
       ],
       "type": "module",
