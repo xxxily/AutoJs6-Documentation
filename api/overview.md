@@ -2,7 +2,7 @@
 
 ---
 
-[AutoJs6](http://project.autojs6.com): 安卓平台 JavaScript 自动化工具.
+[AutoJs6](https://github.com/xxxily/AutoJs6): 安卓平台 JavaScript 自动化工具.
 
 - 脚本语言: [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/)  
 - 脚本引擎: [Rhino](https://github.com/mozilla/rhino/)  

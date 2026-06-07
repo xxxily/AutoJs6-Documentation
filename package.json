@@ -1,0 +1,14 @@
+{
+  "name": "autojs6-documentation",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev api",
+    "build": "vitepress build api && node scripts/ensure-docs-assets.mjs",
+    "preview": "vitepress preview api"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}

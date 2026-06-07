@@ -1,6 +1,6 @@
-<img src="images/logo.png" width="136" height="136" alt="logo"/>
+<img src="/images/logo.png" width="136" height="136" alt="logo"/>
 
-# [AutoJs6](http://project.autojs6.com)
+# [AutoJs6](https://github.com/xxxily/AutoJs6)
 
 安卓平台 JavaScript 自动化工具
 

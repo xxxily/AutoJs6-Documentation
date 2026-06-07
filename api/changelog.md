@@ -4,27 +4,27 @@
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2026/06/07</p>
 
-- `新增` [文档覆盖审计](https://docs.autojs6.com/#/documentationAudit) 页面, 记录文档仓库 `1.1.8` 与 AutoJs6 上游 `6.7.0` 源码之间的差异基线
-- `新增` [文档更新推进清单](https://docs.autojs6.com/#/documentationRoadmap) 页面, 记录已完成、待更新和后续 agent 验收规则
-- `新增` [运行时 API 索引](https://docs.autojs6.com/#/runtimeApiIndex) 页面, 对照 `ScriptRuntime.kt` 记录所有运行时注入对象、`$` 别名、嵌套对象、源码路径和文档入口
-- `新增` [权限能力矩阵](https://docs.autojs6.com/#/permissionCapabilityMatrix) 页面, 集中记录无障碍、Root/Shizuku、悬浮窗、截屏、通知、系统设置、存储、网络、OCR 等敏感能力的权限与 Android 版本边界
+- `新增` [文档覆盖审计](https://docs.autojs6.com/documentationAudit) 页面, 记录文档仓库 `1.1.8` 与 AutoJs6 上游 `6.7.0` 源码之间的差异基线
+- `新增` [文档更新推进清单](https://docs.autojs6.com/documentationRoadmap) 页面, 记录已完成、待更新和后续 agent 验收规则
+- `新增` [运行时 API 索引](https://docs.autojs6.com/runtimeApiIndex) 页面, 对照 `ScriptRuntime.kt` 记录所有运行时注入对象、`$` 别名、嵌套对象、源码路径和文档入口
+- `新增` [权限能力矩阵](https://docs.autojs6.com/permissionCapabilityMatrix) 页面, 集中记录无障碍、Root/Shizuku、悬浮窗、截屏、通知、系统设置、存储、网络、OCR 等敏感能力的权限与 Android 版本边界
 - `新增` 机器可读运行时索引 `json/runtimeApiIndexData.json`, 为后续知识库构建提供模块、类型、权限与旧文档风险的结构化数据
-- `新增` [单位转换 (Cvt)](https://docs.autojs6.com/#/cvt) 文档, 覆盖 `cvt.bytes` / `cvt.bytes.strict` / `cvt.bytes.loose`
-- `新增` [数据格式化 (Fmt)](https://docs.autojs6.com/#/fmt) 文档, 覆盖 `fmt.bytes` / `fmt.bytes.strict` / `fmt.bytes.loose`
-- `新增` [SQLite](https://docs.autojs6.com/#/sqlite) 文档, 覆盖 `sqlite.open`、`Database` 与 `CursorWrapper` 基础能力
-- `新增` [Zip](https://docs.autojs6.com/#/zip) 文档, 覆盖 `zip.open` / `zipFile` / `zipDir` / `zipFiles` / `unzip` 及 `ZipNativeObject`
-- `新增` [MediaInfo](https://docs.autojs6.com/#/mediainfo) 文档, 覆盖 `mediainfo.read` 与动态媒体流信息读取
-- `新增` [MIME](https://docs.autojs6.com/#/mime) 文档, 覆盖 MIME 字符串解析结果
-- `新增` [NanoID](https://docs.autojs6.com/#/nanoid) 文档, 覆盖随机 ID 生成
-- `新增` [系统属性 (Sysprops)](https://docs.autojs6.com/#/sysprops) 文档, 覆盖系统属性读取及过滤
-- `新增` [汉语拼音 (Pinyin)](https://docs.autojs6.com/#/pinyin) 与 [Pinyin4j](https://docs.autojs6.com/#/pinyin4j) 文档
-- `新增` [ZipOptions](https://docs.autojs6.com/#/zipOptionsType), [ZipNativeObject](https://docs.autojs6.com/#/zipNativeObjectType), [Database](https://docs.autojs6.com/#/databaseType), [CursorWrapper](https://docs.autojs6.com/#/cursorWrapperType), [HttpSaveResult](https://docs.autojs6.com/#/httpSaveResultType), [JsMime](https://docs.autojs6.com/#/jsMimeType), [MediainfoNativeObject](https://docs.autojs6.com/#/mediainfoNativeObjectType) 独立类型页
-- `优化` [HTTP](https://docs.autojs6.com/#/http) 章节补充 `6.7.0` 新增异步请求、PUT/DELETE/HEAD、响应体保存及请求选项
-- `优化` [HttpRequestBuilderOptions](https://docs.autojs6.com/#/httpRequestBuilderOptionsType) 与 [HttpResponseBody](https://docs.autojs6.com/#/httpResponseBodyType) 类型说明
-- `优化` 完成 P1 高频 API 源码校对, 覆盖 [Global](https://docs.autojs6.com/#/global), [Automator](https://docs.autojs6.com/#/automator), [UiSelector](https://docs.autojs6.com/#/uiSelectorType), [UiObject](https://docs.autojs6.com/#/uiObjectType), [App](https://docs.autojs6.com/#/app), [AutoJs6](https://docs.autojs6.com/#/autojs), [Device](https://docs.autojs6.com/#/device), [Files](https://docs.autojs6.com/#/files), [Engines](https://docs.autojs6.com/#/engines), [Tasks](https://docs.autojs6.com/#/tasks), [UI](https://docs.autojs6.com/#/ui), [Floaty](https://docs.autojs6.com/#/floaty), [Web](https://docs.autojs6.com/#/web), [OCR](https://docs.autojs6.com/#/ocr), [Notice](https://docs.autojs6.com/#/notice), [Console](https://docs.autojs6.com/#/console)
-- `修复` [Global](https://docs.autojs6.com/#/global) 中 `cY()` 示例高度引用、`wait` UI 线程标签和 `species` 中源码不存在的条目
-- `修复` [Web](https://docs.autojs6.com/#/web) 与 [OCR](https://docs.autojs6.com/#/ocr) 中 Auto.js 4.x / 2023 年旧说明, 补充 Rapid OCR 与当前 WebSocket / WebView 行为
-- `修复` [Console](https://docs.autojs6.com/#/console) 中 `input` / `rawInput` 的废弃行为说明
+- `新增` [单位转换 (Cvt)](https://docs.autojs6.com/cvt) 文档, 覆盖 `cvt.bytes` / `cvt.bytes.strict` / `cvt.bytes.loose`
+- `新增` [数据格式化 (Fmt)](https://docs.autojs6.com/fmt) 文档, 覆盖 `fmt.bytes` / `fmt.bytes.strict` / `fmt.bytes.loose`
+- `新增` [SQLite](https://docs.autojs6.com/sqlite) 文档, 覆盖 `sqlite.open`、`Database` 与 `CursorWrapper` 基础能力
+- `新增` [Zip](https://docs.autojs6.com/zip) 文档, 覆盖 `zip.open` / `zipFile` / `zipDir` / `zipFiles` / `unzip` 及 `ZipNativeObject`
+- `新增` [MediaInfo](https://docs.autojs6.com/mediainfo) 文档, 覆盖 `mediainfo.read` 与动态媒体流信息读取
+- `新增` [MIME](https://docs.autojs6.com/mime) 文档, 覆盖 MIME 字符串解析结果
+- `新增` [NanoID](https://docs.autojs6.com/nanoid) 文档, 覆盖随机 ID 生成
+- `新增` [系统属性 (Sysprops)](https://docs.autojs6.com/sysprops) 文档, 覆盖系统属性读取及过滤
+- `新增` [汉语拼音 (Pinyin)](https://docs.autojs6.com/pinyin) 与 [Pinyin4j](https://docs.autojs6.com/pinyin4j) 文档
+- `新增` [ZipOptions](https://docs.autojs6.com/zipOptionsType), [ZipNativeObject](https://docs.autojs6.com/zipNativeObjectType), [Database](https://docs.autojs6.com/databaseType), [CursorWrapper](https://docs.autojs6.com/cursorWrapperType), [HttpSaveResult](https://docs.autojs6.com/httpSaveResultType), [JsMime](https://docs.autojs6.com/jsMimeType), [MediainfoNativeObject](https://docs.autojs6.com/mediainfoNativeObjectType) 独立类型页
+- `优化` [HTTP](https://docs.autojs6.com/http) 章节补充 `6.7.0` 新增异步请求、PUT/DELETE/HEAD、响应体保存及请求选项
+- `优化` [HttpRequestBuilderOptions](https://docs.autojs6.com/httpRequestBuilderOptionsType) 与 [HttpResponseBody](https://docs.autojs6.com/httpResponseBodyType) 类型说明
+- `优化` 完成 P1 高频 API 源码校对, 覆盖 [Global](https://docs.autojs6.com/global), [Automator](https://docs.autojs6.com/automator), [UiSelector](https://docs.autojs6.com/uiSelectorType), [UiObject](https://docs.autojs6.com/uiObjectType), [App](https://docs.autojs6.com/app), [AutoJs6](https://docs.autojs6.com/autojs), [Device](https://docs.autojs6.com/device), [Files](https://docs.autojs6.com/files), [Engines](https://docs.autojs6.com/engines), [Tasks](https://docs.autojs6.com/tasks), [UI](https://docs.autojs6.com/ui), [Floaty](https://docs.autojs6.com/floaty), [Web](https://docs.autojs6.com/web), [OCR](https://docs.autojs6.com/ocr), [Notice](https://docs.autojs6.com/notice), [Console](https://docs.autojs6.com/console)
+- `修复` [Global](https://docs.autojs6.com/global) 中 `cY()` 示例高度引用、`wait` UI 线程标签和 `species` 中源码不存在的条目
+- `修复` [Web](https://docs.autojs6.com/web) 与 [OCR](https://docs.autojs6.com/ocr) 中 Auto.js 4.x / 2023 年旧说明, 补充 Rapid OCR 与当前 WebSocket / WebView 行为
+- `修复` [Console](https://docs.autojs6.com/console) 中 `input` / `rawInput` 的废弃行为说明
 - `修复` P0 / P1 / P2 覆盖页面中的旧 Auto.js 4.x 行为残留, 并在运行时索引中标记仍应作为历史背景处理的旧章节
 - `优化` 更新侧边栏、静态页目录、全量文档和部署进度
 
@@ -32,60 +32,60 @@
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/12/01</p>
 
-- `新增` [中文转换 (OpenCC)](https://docs.autojs6.com/#/opencc) 文档
-- `新增` [OpenCCConversion](https://docs.autojs6.com/#/openCCConversionType) 类型
-- `新增` [选择器](https://docs.autojs6.com/#/uiSelectorType) 章节增加 [plus](https://docs.autojs6.com/#/uiObjectType?id=m-plus) / [append](https://docs.autojs6.com/#/uiObjectType?id=m-append) 条目
-- `新增` [控制台 (Console)](https://docs.autojs6.com/#/console) 章节增加 [setTouchable](https://docs.autojs6.com/#/console?id=m-settouchable) 条目
-- `新增` [ConsoleBuildOptions](https://docs.autojs6.com/#/consoleBuildOptionsType) 章节增加 [touchable](https://docs.autojs6.com/#/consoleBuildOptionsType?id=p-touchable) 条目
-- `优化` [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节增加 Paddle 工作模式使用提示
-- `优化` 完善 [Shizuku](https://docs.autojs6.com/#/shizuku) 章节
-- `优化` 完善 [选择器](https://docs.autojs6.com/#/uiSelectorType) 章节
+- `新增` [中文转换 (OpenCC)](https://docs.autojs6.com/opencc) 文档
+- `新增` [OpenCCConversion](https://docs.autojs6.com/openCCConversionType) 类型
+- `新增` [选择器](https://docs.autojs6.com/uiSelectorType) 章节增加 [plus](https://docs.autojs6.com/uiObjectType#m-plus) / [append](https://docs.autojs6.com/uiObjectType#m-append) 条目
+- `新增` [控制台 (Console)](https://docs.autojs6.com/console) 章节增加 [setTouchable](https://docs.autojs6.com/console#m-settouchable) 条目
+- `新增` [ConsoleBuildOptions](https://docs.autojs6.com/consoleBuildOptionsType) 章节增加 [touchable](https://docs.autojs6.com/consoleBuildOptionsType#p-touchable) 条目
+- `优化` [光学字符识别 (OCR)](https://docs.autojs6.com/ocr) 章节增加 Paddle 工作模式使用提示
+- `优化` 完善 [Shizuku](https://docs.autojs6.com/shizuku) 章节
+- `优化` 完善 [选择器](https://docs.autojs6.com/uiSelectorType) 章节
 
 ## v1.1.7
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/10/30</p>
 
-- `新增` [Shizuku](https://docs.autojs6.com/#/shizuku) 文档
-- `新增` [WebSocket](https://docs.autojs6.com/#/websocketType) 文档
-- `新增` [条码 (Barcode)](https://docs.autojs6.com/#/barcode) 文档
-- `新增` [二维码 (QR Code)](https://docs.autojs6.com/#/qrcode) 文档
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
-- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节
+- `新增` [Shizuku](https://docs.autojs6.com/shizuku) 文档
+- `新增` [WebSocket](https://docs.autojs6.com/webSocketType) 文档
+- `新增` [条码 (Barcode)](https://docs.autojs6.com/barcode) 文档
+- `新增` [二维码 (QR Code)](https://docs.autojs6.com/qrcode) 文档
+- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/color) 章节
+- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/ocr) 章节
 
 ## v1.1.6
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/07/21</p>
 
-- `优化` 完善 [控件节点](https://docs.autojs6.com/#/uiObjectType) 章节
+- `优化` 完善 [控件节点](https://docs.autojs6.com/uiObjectType) 章节
 
 ## v1.1.5
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/07/06</p>
 
-- `新增` [密文 (Crypto)](https://docs.autojs6.com/#/crypto) 文档
-- `新增` [CryptoCipherOptions](https://docs.autojs6.com/#/cryptoCipherOptionsType) / [CryptoKey](https://docs.autojs6.com/#/cryptoKeyType) / [CryptoKeyPair](https://docs.autojs6.com/#/cryptoKeyPairType) 等类型
-- `修复` floaty 模块 widht 拼写失误 _[`issue #1`](http://docs-project.autojs6.com/issues/1)_
-- `优化` 完善 [Base64](https://docs.autojs6.com/#/base64) 章节
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
+- `新增` [密文 (Crypto)](https://docs.autojs6.com/crypto) 文档
+- `新增` [CryptoCipherOptions](https://docs.autojs6.com/cryptoCipherOptionsType) / [CryptoKey](https://docs.autojs6.com/cryptoKeyType) / [CryptoKeyPair](https://docs.autojs6.com/cryptoKeyPairType) 等类型
+- `修复` floaty 模块 widht 拼写失误 _[`issue #1`](https://github.com/xxxily/AutoJs6-Documentation/issues/1)_
+- `优化` 完善 [Base64](https://docs.autojs6.com/base64) 章节
+- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/color) 章节
 
 ## v1.1.4
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/05/26</p>
 
-- `新增` [console.resetGlobalLogConfig](https://docs.autojs6.com/#/console?id=m-resetgloballogconfig) 文档
-- `新增` [web.newWebSocket](https://docs.autojs6.com/#/web?id=m-newwebsocket) 文档
-- `优化` 完善 [全能类型 (Omnipotent Types)](https://docs.autojs6.com/#/omniTypes) 章节
-- `优化` 完善 [安卓 API 级别 (Android API Level)](https://docs.autojs6.com/#/apiLevel) 章节
+- `新增` [console.resetGlobalLogConfig](https://docs.autojs6.com/console#m-resetgloballogconfig) 文档
+- `新增` [web.newWebSocket](https://docs.autojs6.com/web#m-newwebsocket) 文档
+- `优化` 完善 [全能类型 (Omnipotent Types)](https://docs.autojs6.com/omniTypes) 章节
+- `优化` 完善 [安卓 API 级别 (Android API Level)](https://docs.autojs6.com/apiLevel) 章节
 
 ## v1.1.3
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/04/29</p>
 
-- `新增` [颜色类 (Color)](https://docs.autojs6.com/#/colorType) 文档
-- `新增` [控制台 (Console)](https://docs.autojs6.com/#/console) 文档
-- `新增` [标准化 (Standardization)](https://docs.autojs6.com/#/s13n) 文档
-- `新增` [全能类型 (Omnipotent Types)](https://docs.autojs6.com/#/omniTypes) 文档
-- `新增` [NoticeBuilder](https://docs.autojs6.com/#/noticeBuilderType) / [NoticeChannelOptions](https://docs.autojs6.com/#/noticeChannelOptionsType) / [NoticeOptions](https://docs.autojs6.com/#/noticeOptionsType) 等类型
+- `新增` [颜色类 (Color)](https://docs.autojs6.com/colorType) 文档
+- `新增` [控制台 (Console)](https://docs.autojs6.com/console) 文档
+- `新增` [标准化 (Standardization)](https://docs.autojs6.com/s13n) 文档
+- `新增` [全能类型 (Omnipotent Types)](https://docs.autojs6.com/omniTypes) 文档
+- `新增` [NoticeBuilder](https://docs.autojs6.com/noticeBuilderType) / [NoticeChannelOptions](https://docs.autojs6.com/noticeChannelOptionsType) / [NoticeOptions](https://docs.autojs6.com/noticeOptionsType) 等类型
 - `新增` 示例代码区域增加 Copy 按钮以复制代码内容
 - `新增` 文档中的图片内容支持点击以全屏方式查看
 - `修复` 文档内容中部分图片资源丢失的问题
@@ -93,88 +93,88 @@
 - `优化` 压缩本地 JavaScript 文件以提升页面加载速度
 - `优化` 本地化字体文件避免网络条件不佳时影响页面加载速度
 - `优化` 部分表格内容强制禁用自动断行以提升阅读体验
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
-- `优化` 完善 [消息通知 (Notice)](https://docs.autojs6.com/#/notice) 章节
-- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节
+- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/color) 章节
+- `优化` 完善 [消息通知 (Notice)](https://docs.autojs6.com/notice) 章节
+- `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/ocr) 章节
 
 ## v1.1.2
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/03/21</p>
 
-- `新增` [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 文档
-- `新增` [消息通知 (Notice)](https://docs.autojs6.com/#/notice) 文档
-- `新增` [HttpRequestHeaders](https://docs.autojs6.com/#/httpRequestHeadersType) / [HttpResponseHeaders](https://docs.autojs6.com/#/httpResponseHeadersType) / [OpenCVRect](https://docs.autojs6.com/#/opencvRectType) 等类型
-- `新增` [通知渠道](https://docs.autojs6.com/#/glossaries?id=通知渠道) / [HTTP 标头](https://docs.autojs6.com/#/glossaries?id=HTTP-标头) / [MIME 类型](https://docs.autojs6.com/#/glossaries?id=MIME-类型) / [HTTP 请求方法](https://docs.autojs6.com/#/glossaries?id=HTTP-请求方法) 等术语
-- `新增` [颜色 (Color)](https://docs.autojs6.com/#/color) 章节增加 [toColorStateList](https://docs.autojs6.com/#/color?id=m-tocolorstatelist) 及 [setPaintColor](https://docs.autojs6.com/#/color?id=m-setpaintcolor) 条目
+- `新增` [光学字符识别 (OCR)](https://docs.autojs6.com/ocr) 文档
+- `新增` [消息通知 (Notice)](https://docs.autojs6.com/notice) 文档
+- `新增` [HttpRequestHeaders](https://docs.autojs6.com/httpRequestHeadersType) / [HttpResponseHeaders](https://docs.autojs6.com/httpResponseHeadersType) / [OpenCVRect](https://docs.autojs6.com/opencvRectType) 等类型
+- `新增` [通知渠道](https://docs.autojs6.com/glossaries#通知渠道) / [HTTP 标头](https://docs.autojs6.com/glossaries#HTTP-标头) / [MIME 类型](https://docs.autojs6.com/glossaries#MIME-类型) / [HTTP 请求方法](https://docs.autojs6.com/glossaries#HTTP-请求方法) 等术语
+- `新增` [颜色 (Color)](https://docs.autojs6.com/color) 章节增加 [toColorStateList](https://docs.autojs6.com/color#m-tocolorstatelist) 及 [setPaintColor](https://docs.autojs6.com/color#m-setpaintcolor) 条目
 - `修复` 文档更新日志条目中的链接无效的问题
-- `优化` 完善 [疑难解答 (Q & A)](https://docs.autojs6.com/#/qa) 章节
+- `优化` 完善 [疑难解答 (Q & A)](https://docs.autojs6.com/qa) 章节
 
 ## v1.1.1
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/03/02</p>
 
-- `新增` [Base64](https://docs.autojs6.com/#/base64) 文档
-- `新增` [活动 (Activity)](https://docs.autojs6.com/#/activity) 文档
-- `新增` [插件 (Plugins)](https://docs.autojs6.com/#/plugins) 文档
-- `新增` [存储 (Storages)](https://docs.autojs6.com/#/storages) 文档
-- `新增` [万维网 (Web)](https://docs.autojs6.com/#/web) 文档
-- `新增` [global.species](https://docs.autojs6.com/#/global?id=m-species) 文档
-- `新增` [术语](https://docs.autojs6.com/#/glossaries) 章节增加 [阈值](https://docs.autojs6.com/#/glossaries?id=阈值) / [注入](https://docs.autojs6.com/#/glossaries?id=注入) 等条目
-- `新增` [数据类型](https://docs.autojs6.com/#/dataTypes) 章节增加 [Storage](https://docs.autojs6.com/#/storageType) / [ColorDetectionAlgorithm](https://docs.autojs6.com/#/dataTypes?id=colordetectionalgorithm) / [InjectableWebView](https://docs.autojs6.com/#/injectableWebViewType) 等类型
+- `新增` [Base64](https://docs.autojs6.com/base64) 文档
+- `新增` [活动 (Activity)](https://docs.autojs6.com/activity) 文档
+- `新增` [插件 (Plugins)](https://docs.autojs6.com/plugins) 文档
+- `新增` [存储 (Storages)](https://docs.autojs6.com/storages) 文档
+- `新增` [万维网 (Web)](https://docs.autojs6.com/web) 文档
+- `新增` [global.species](https://docs.autojs6.com/global#m-species) 文档
+- `新增` [术语](https://docs.autojs6.com/glossaries) 章节增加 [阈值](https://docs.autojs6.com/glossaries#阈值) / [注入](https://docs.autojs6.com/glossaries#注入) 等条目
+- `新增` [数据类型](https://docs.autojs6.com/dataTypes) 章节增加 [Storage](https://docs.autojs6.com/storageType) / [ColorDetectionAlgorithm](https://docs.autojs6.com/dataTypes#colordetectionalgorithm) / [InjectableWebView](https://docs.autojs6.com/injectableWebViewType) 等类型
 - `修复` 示例代码中与美元符号 ($) 相关内容可能出现占位符替换失败的问题
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
+- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/color) 章节
 
 ## v1.1.0
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/01/21</p>
 
-- `新增` [AutoJs6 本体应用](https://docs.autojs6.com/#/autojs) 文档
-- `新增` [颜色列表 (Color Table)](https://docs.autojs6.com/#/colorTable) 文档
-- `新增` [版本工具类 (Version)](https://docs.autojs6.com/#/versionType) 文档
-- `新增` [数据类型](https://docs.autojs6.com/#/dataTypes) 章节增加 [RootMode](https://docs.autojs6.com/#/dataTypes?id=rootmode) / [ColorInt](https://docs.autojs6.com/#/dataTypes?id=colorint) / [IntRange](https://docs.autojs6.com/#/dataTypes?id=intrange) 等类型
-- `新增` [global.R](https://docs.autojs6.com/#/global?id=p-r) 文档
-- `新增` [Numberx.clampTo](https://docs.autojs6.com/#/numberx?id=m-clampto) / [Numberx.parseAny](https://docs.autojs6.com/#/numberx?id=m-parseany) 文档
-- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
+- `新增` [AutoJs6 本体应用](https://docs.autojs6.com/autojs) 文档
+- `新增` [颜色列表 (Color Table)](https://docs.autojs6.com/colorTable) 文档
+- `新增` [版本工具类 (Version)](https://docs.autojs6.com/versionType) 文档
+- `新增` [数据类型](https://docs.autojs6.com/dataTypes) 章节增加 [RootMode](https://docs.autojs6.com/dataTypes#rootmode) / [ColorInt](https://docs.autojs6.com/dataTypes#colorint) / [IntRange](https://docs.autojs6.com/dataTypes#intrange) 等类型
+- `新增` [global.R](https://docs.autojs6.com/global#p-r) 文档
+- `新增` [Numberx.clampTo](https://docs.autojs6.com/numberx#m-clampto) / [Numberx.parseAny](https://docs.autojs6.com/numberx#m-parseany) 文档
+- `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/color) 章节
 
 ## v1.0.6
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2022/12/18</p>
 
-- `新增` [版本工具类 (Version)](https://docs.autojs6.com/#/versionType) 文档
-- `新增` [global.existsAll](https://docs.autojs6.com/#/global?id=m-existsall) / [global.existsOne](https://docs.autojs6.com/#/global?id=m-existsone) 文档
+- `新增` [版本工具类 (Version)](https://docs.autojs6.com/versionType) 文档
+- `新增` [global.existsAll](https://docs.autojs6.com/global#m-existsall) / [global.existsOne](https://docs.autojs6.com/global#m-existsone) 文档
 
 ## v1.0.5
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2022/12/16</p>
 
-- `新增` [global.cX](https://docs.autojs6.com/#/global?id=m-cx) / [global.cY](https://docs.autojs6.com/#/global?id=m-cy) 等相关文档
+- `新增` [global.cX](https://docs.autojs6.com/global#m-cx) / [global.cY](https://docs.autojs6.com/global#m-cy) 等相关文档
 
 ## v1.0.4
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2022/12/04</p>
 
-- `新增` [global.exit(e)](https://docs.autojs6.com/#/global?id=exite) 文档
-- `新增` [Numberx.check](https://docs.autojs6.com/#/numberx?id=m-check) 文档
+- `新增` [global.exit(e)](https://docs.autojs6.com/global#exite) 文档
+- `新增` [Numberx.check](https://docs.autojs6.com/numberx#m-check) 文档
 
 ## v1.0.3
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2022/12/02</p>
 
 - `优化` App 文档去除右上角 Repo 区域防止遮挡文档内容
-- `优化` [选择器](https://docs.autojs6.com/#/uiSelectorType) 章节完善选择器行为相关内容
-- `优化` 完善 [UiSelector#paste](https://docs.autojs6.com/#/uiSelectorType?id=m-paste) 方法相关内容
+- `优化` [选择器](https://docs.autojs6.com/uiSelectorType) 章节完善选择器行为相关内容
+- `优化` 完善 [UiSelector#paste](https://docs.autojs6.com/uiSelectorType#m-paste) 方法相关内容
 
 ## v1.0.2
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2022/12/01</p>
 
 - `新增` 夜间模式主题适配
-- `新增` [E4X](https://docs.autojs6.com/#/e4x) / [术语](https://docs.autojs6.com/#/glossaries) / [异常](https://docs.autojs6.com/#/exceptions) / [数据类型](https://docs.autojs6.com/#/dataTypes) / [选择器](https://docs.autojs6.com/#/uiSelectorType) / [控件节点](https://docs.autojs6.com/#/uiObjectType) / [控件集合](https://docs.autojs6.com/#/uiObjectCollectionType) 等条目
+- `新增` [E4X](https://docs.autojs6.com/e4x) / [术语](https://docs.autojs6.com/glossaries) / [异常](https://docs.autojs6.com/exceptions) / [数据类型](https://docs.autojs6.com/dataTypes) / [选择器](https://docs.autojs6.com/uiSelectorType) / [控件节点](https://docs.autojs6.com/uiObjectType) / [控件集合](https://docs.autojs6.com/uiObjectCollectionType) 等条目
 - `修复` 章节标题可能显示不全的问题
 - `修复` 代码区域滑动时导致页面滑动的问题
 - `修复` App 文档无法跳转到其他章节的问题
 - `优化` 重新部署文档结构并统一样式 (暂未全部完成)
-- `优化` 完善 [脚本化 Java](https://docs.autojs6.com/#/scriptingJava) 章节
+- `优化` 完善 [脚本化 Java](https://docs.autojs6.com/scriptingJava) 章节
 - `优化` 支持 Java 等语言的语法高亮 (有限支持)
 - `优化` 去除章节标题的锚点标记
 - `优化` Web 文档封面适配夜间模式

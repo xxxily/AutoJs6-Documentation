@@ -92,8 +92,8 @@ AutoJs6 文档是在开源版本文档的基础上进行更新和修改的, 目�
 AutoJs6 的 OCR 特性是基于 [Google ML Kit](https://developers.google.com/ml-kit?hl=zh-cn) 的 [文字识别 API](https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn) 及 [Baidu PaddlePaddle](https://www.paddlepaddle.org.cn/) 的 [Paddle Lite](https://github.com/PaddlePaddle/Paddle-Lite) 实现的.
 
 > 注:   
-> AutoJs6 基于 MLKit 引擎的 [OCR 实现源码](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt) 参考自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [Auto.js](https://github.com/TonyJiangWJ/Auto.js) 项目.  
-> AutoJs6 基于 Paddle Lite 引擎的 [OCR 实现源码](http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt) 源自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [GitHub PR](http://pr.autojs6.com/120).
+> AutoJs6 基于 MLKit 引擎的 [OCR 实现源码](https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt) 参考自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [Auto.js](https://github.com/TonyJiangWJ/Auto.js) 项目.  
+> AutoJs6 基于 Paddle Lite 引擎的 [OCR 实现源码](https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt) 源自 [TonyJiangWJ](https://github.com/TonyJiangWJ) 的 [GitHub PR](https://github.com/xxxily/AutoJs6/pulls/120).
 
 > 参阅: [光学字符识别 (OCR)](ocr) 模块
 
@@ -278,7 +278,7 @@ function rotate(src, degrees, px, py) {
 如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.
 
 关于 <strong>应用文档</strong> 的反馈:  
-http://docs-issues.autojs6.com
+https://github.com/xxxily/AutoJs6-Documentation/issues
 
 关于 <strong>AutoJs6</strong> 的反馈:  
 http://issues.autojs6.com

@@ -14,7 +14,7 @@ AutoJs6 内置模块指脚本可全局使用的 JavaScript 模块.
 
 ### 查看内置模块源代码
 
-除 [直接查看开源代码](http://project.autojs6.com/tree/master/app/src/main/assets/modules) 外, 还可以将内置模块解压到本地存储后查看:  
+除 [直接查看开源代码](https://github.com/xxxily/AutoJs6/tree/master/app/src/main/assets/modules) 外, 还可以将内置模块解压到本地存储后查看:  
 下载 [AutoJs6 APK](http://download.autojs6.com) 并使用压缩软件将 APK 内的 `\assets\modules` 文件夹解压到本地.  
 模块通常以 `__%name%__.js` 格式命名, 其中 `%name%` 对应模块名.  
 可使用文本编辑器等软件查看模块源代码.
@@ -27,9 +27,9 @@ AutoJs6 内置模块指脚本可全局使用的 JavaScript 模块.
 > 因 `新生 APK` 包名发生变化, 需卸载已安装的 `开源 AutoJs6 APK` (下文作 `开源 APK`) 后再安装 `新生 APK`.  
 > 当 `开源 APK` 出现新版本时, 同样需卸载 `新生 APK` 才能安装新版本的 `开源 APK`.  
 > 此时, 修改或增加的内置模块将失效.  
-> 如欲将自己的代码整合到 `开源 APK` 中, 可向开源项目提交 [Pull Request (PR)](http://pr.autojs6.com).
+> 如欲将自己的代码整合到 `开源 APK` 中, 可向开源项目提交 [Pull Request (PR)](https://github.com/xxxily/AutoJs6/pulls).
 
-克隆 (Clone) [AutoJs6 源码](http://project.autojs6.com).  
+克隆 (Clone) [AutoJs6 源码](https://github.com/xxxily/AutoJs6).  
 使用 [Android Studio](https://developer.android.com/studio/archive) 打开并完成项目构建 (Build).  
 定位 `\app\src\main\assets\modules` 目录.
 

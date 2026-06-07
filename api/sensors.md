@@ -31,7 +31,7 @@ sensors.register("light").on("change", (event, light)=>{
     * `az` {number} z轴上的加速度, 单位m/s^2
       这里的x轴, y轴, z轴所属的坐标系统如下图(其中z轴垂直于设备屏幕表面):
 
-  !![axis_device](#images/axis_device.png)
+  > 坐标系统示意图待补充.
 
 * `orientation` 方向传感器, 参数`(event, azimuth, pitch, roll)`:
     * `event` [SensorEvent](#sensors_sensorevent) 传感器事件, 用于获取传感器数据变化时的所有信息

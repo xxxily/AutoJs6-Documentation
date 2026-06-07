@@ -727,7 +727,7 @@ activity.setContentView(web.newInjectableWebView('www.github.com'));
 activity.getWindow().getDecorView().getRootView().getHeight();
 ```
 
-因 ScriptExecuteActivity 继承了 android.app.Activity 等非常多的 Java 类, 因此 activity 获得了非常丰富的属性和方法, 详情参阅 [Android Docs](https://developer.android.com/reference/android/app/Activity) 及 [AutoJs6 源码](http://project.autojs6.com/blob/10960ddbee71f75ef80907ad5b6ab42f3e1bf31e/app/src/main/java/org/autojs/autojs/execution/ScriptExecuteActivity.java#L30).
+因 ScriptExecuteActivity 继承了 android.app.Activity 等非常多的 Java 类, 因此 activity 获得了非常丰富的属性和方法, 详情参阅 [Android Docs](https://developer.android.com/reference/android/app/Activity) 及 [AutoJs6 源码](https://github.com/xxxily/AutoJs6/blob/10960ddbee71f75ef80907ad5b6ab42f3e1bf31e/app/src/main/java/org/autojs/autojs/execution/ScriptExecuteActivity.java#L30).
 
 ## DetectCompass
 
@@ -1281,10 +1281,10 @@ AutoJs6 内置了几种不同的颜色检测算法, 这些算法通常作为参�
 计算两个 RGB 颜色各分量的差值:
 
 <picture>
-  <source srcset="images/rgb-difference-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="430px">
-    <source srcset="images/rgb-difference-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="215px">
-    <source srcset="images/rgb-difference-color-detection.png" media="(min-width: 1024px)" width="215px">
-    <img src="images/rgb-difference-color-detection.png" alt="rgb-difference-color-detection" width="430">
+  <source srcset="/images/rgb-difference-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="430px">
+    <source srcset="/images/rgb-difference-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="215px">
+    <source srcset="/images/rgb-difference-color-detection.png" media="(min-width: 1024px)" width="215px">
+    <img src="/images/rgb-difference-color-detection.png" alt="rgb-difference-color-detection" width="430">
 </picture>
 
 ### RGB 距离检测
@@ -1294,10 +1294,10 @@ AutoJs6 内置了几种不同的颜色检测算法, 这些算法通常作为参�
 计算 RGB 色彩空间中两点间距离:
 
 <picture>
-  <source srcset="images/rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="508px">
-    <source srcset="images/rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="254px">
-    <source srcset="images/rgb-distance-color-detection.png" media="(min-width: 1024px)" width="254px">
-    <img src="images/rgb-distance-color-detection.png" alt="rgb-distance-color-detection" width="508">
+  <source srcset="/images/rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="508px">
+    <source srcset="/images/rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="254px">
+    <source srcset="/images/rgb-distance-color-detection.png" media="(min-width: 1024px)" width="254px">
+    <img src="/images/rgb-distance-color-detection.png" alt="rgb-distance-color-detection" width="508">
 </picture>
 
 ### 加权 RGB 距离检测
@@ -1307,10 +1307,10 @@ AutoJs6 内置了几种不同的颜色检测算法, 这些算法通常作为参�
 带有权重的 RGB 距离检测 (Delta E):
 
 <picture>
-  <source srcset="images/weighted-rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="1070px">
-    <source srcset="images/weighted-rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="535px">
-    <source srcset="images/weighted-rgb-distance-color-detection.png" media="(min-width: 1024px)" width="535px">
-    <img src="images/weighted-rgb-distance-color-detection.png" alt="weighted-rgb-distance-color-detection" width="1070">
+  <source srcset="/images/weighted-rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="1070px">
+    <source srcset="/images/weighted-rgb-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="535px">
+    <source srcset="/images/weighted-rgb-distance-color-detection.png" media="(min-width: 1024px)" width="535px">
+    <img src="/images/weighted-rgb-distance-color-detection.png" alt="weighted-rgb-distance-color-detection" width="1070">
 </picture>
 
 > 参阅:   
@@ -1324,10 +1324,10 @@ AutoJs6 内置了几种不同的颜色检测算法, 这些算法通常作为参�
 HSV 色彩空间中 `H (hue)` 分量的距离检测:
 
 <picture>
-  <source srcset="images/h-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="821px">
-    <source srcset="images/h-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/h-distance-color-detection.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/h-distance-color-detection.png" alt="h-distance-color-detection" width="821">
+  <source srcset="/images/h-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="821px">
+    <source srcset="/images/h-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/h-distance-color-detection.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/h-distance-color-detection.png" alt="h-distance-color-detection" width="821">
 </picture>
 
 ### HS 距离检测
@@ -1337,10 +1337,10 @@ HSV 色彩空间中 `H (hue)` 分量的距离检测:
 HSV 色彩空间中 `H (hue)` 及 `S (saturation)` 的相关距离检测:
 
 <picture>
-  <source srcset="images/hs-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="695px">
-    <source srcset="images/hs-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="348px">
-    <source srcset="images/hs-distance-color-detection.png" media="(min-width: 1024px)" width="348px">
-    <img src="images/hs-distance-color-detection.png" alt="hs-distance-color-detection" width="695">
+  <source srcset="/images/hs-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="695px">
+    <source srcset="/images/hs-distance-color-detection-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="348px">
+    <source srcset="/images/hs-distance-color-detection.png" media="(min-width: 1024px)" width="348px">
+    <img src="/images/hs-distance-color-detection.png" alt="hs-distance-color-detection" width="695">
 </picture>
 
 ## Range

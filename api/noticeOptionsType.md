@@ -35,10 +35,10 @@ notice('New message', '', { title: 'Overridden title' });
 ```
 
 <picture>
-  <source srcset="images/autojs6-notification-title-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
-    <source srcset="images/autojs6-notification-title-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-title-sample.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-title-sample.png" alt="autojs6-notification-title-sample" width="760">
+  <source srcset="/images/autojs6-notification-title-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
+    <source srcset="/images/autojs6-notification-title-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-title-sample.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-title-sample.png" alt="autojs6-notification-title-sample" width="760">
 </picture>
 
 上述示例图片仅包含通知标题, 而没有通知内容.
@@ -67,10 +67,10 @@ notice('Some text', 'New message', { content: 'Overridden content' });
 ```
 
 <picture>
-  <source srcset="images/autojs6-notification-content-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
-    <source srcset="images/autojs6-notification-content-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-content-sample.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-content-sample.png" alt="autojs6-notification-content-sample" width="760">
+  <source srcset="/images/autojs6-notification-content-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
+    <source srcset="/images/autojs6-notification-content-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-content-sample.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-content-sample.png" alt="autojs6-notification-content-sample" width="760">
 </picture>
 
 上述示例图片同时包含了通知标题及通知内容.
@@ -91,10 +91,10 @@ notice({ content: content });
 ```
 
 <picture>
-  <source srcset="images/autojs6-notification-big-text-for-content-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
-    <source srcset="images/autojs6-notification-big-text-for-content-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-big-text-for-content.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-big-text-for-content.png" alt="autojs6-notification-big-text-for-content" width="760">
+  <source srcset="/images/autojs6-notification-big-text-for-content-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
+    <source srcset="/images/autojs6-notification-big-text-for-content-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-big-text-for-content.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-big-text-for-content.png" alt="autojs6-notification-big-text-for-content" width="760">
 </picture>
 
 示例图片中只能显示部分文本内容, 因为通知内容应秉持的简洁原则.
@@ -107,10 +107,10 @@ notice({ bigContent: content });
 ```
 
 <picture>
-  <source srcset="images/autojs6-notification-big-content-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
-    <source srcset="images/autojs6-notification-big-content-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-big-content-sample.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-big-content-sample.png" alt="autojs6-notification-big-text-for-big-content" width="760">
+  <source srcset="/images/autojs6-notification-big-content-sample-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
+    <source srcset="/images/autojs6-notification-big-content-sample-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-big-content-sample.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-big-content-sample.png" alt="autojs6-notification-big-text-for-big-content" width="760">
 </picture>
 
 示例图片中完整显示了长文本通知内容.
@@ -204,10 +204,10 @@ notice(title, `${sender}: ${moment}${event}`, {
 ```
 
 <picture>
-  <source srcset="images/autojs6-notification-append-script-name-on-title-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
-    <source srcset="images/autojs6-notification-append-script-name-on-title-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-append-script-name-on-title.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-append-script-name-on-title.png" alt="autojs6-notification-append-script-name-on-title" width="760">
+  <source srcset="/images/autojs6-notification-append-script-name-on-title-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="760px">
+    <source srcset="/images/autojs6-notification-append-script-name-on-title-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-append-script-name-on-title.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-append-script-name-on-title.png" alt="autojs6-notification-append-script-name-on-title" width="760">
 </picture>
 
 上述示例图片中的脚本文件全名为 `main.js`.

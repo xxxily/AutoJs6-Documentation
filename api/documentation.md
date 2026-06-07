@@ -4,7 +4,7 @@
 
 AutoJs6 文档, 包含模块 API 使用方法及用例.  
 项目复刻 (Fork) 自 [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/) (GitHub).  
-项目地址: [SuperMonster003/AutoJs6-Documentation](http://docs-project.autojs6.com) (GitHub).
+项目地址: [SuperMonster003/AutoJs6-Documentation](https://github.com/xxxily/AutoJs6-Documentation) (GitHub).
 
 ---
 
@@ -443,8 +443,8 @@ typeof foo.bar('hello', 3); // string
 
 ## 声明
 
-当前项目 (文档) 及 [AutoJs6](http://project.autojs6.com) (App) 均为二次开发.  
+当前项目 (文档) 及 [AutoJs6](https://github.com/xxxily/AutoJs6) (App) 均为二次开发.  
 相对于 [原始 App](https://github.com/hyb1996/Auto.js/), 二次开发的 App 中会增加或修改部分模块功能.  
 相对于 [原始文档](https://github.com/hyb1996/AutoJs-Docs/), 二次开发的文档将进行部分增删或重新编写.  
 开发者无法保证对 API 的完全理解及文档的无纰漏撰写.  
-如有任何不当之处, 欢迎提交 [Issue](http://docs-issues.autojs6.com) 或 [PR](http://docs-pr.autojs6.com).  
+如有任何不当之处, 欢迎提交 [Issue](https://github.com/xxxily/AutoJs6-Documentation/issues) 或 [PR](https://github.com/xxxily/AutoJs6-Documentation/pulls).  

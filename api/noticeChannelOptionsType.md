@@ -53,10 +53,10 @@ notice('message'); /* 在 ID 为内置固定值 "script_channel" 的渠道上发
 渠道名称不会出现在通知消息中, 而是出现在 AutoJs6 的通知设置中:
 
 <picture>
-  <source srcset="images/autojs6-notification-list-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="822px">
-    <source srcset="images/autojs6-notification-list-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-list.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-list.png" alt="autojs6-notification-list" width="822">
+  <source srcset="/images/autojs6-notification-list-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="822px">
+    <source srcset="/images/autojs6-notification-list-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-list.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-list.png" alt="autojs6-notification-list" width="822">
 </picture>
 
 上述示例图片中, [ "互联网", "脚本通知", "屏幕捕获器前台服务" ] 等作为渠道名称, 便于用户区分不同的通知渠道.
@@ -64,10 +64,10 @@ notice('message'); /* 在 ID 为内置固定值 "script_channel" 的渠道上发
 渠道 ID 是唯一的, 但渠道名称可能重复:
 
 <picture>
-  <source srcset="images/autojs6-notification-list-with-same-names-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="822px">
-    <source srcset="images/autojs6-notification-list-with-same-names-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-list-with-same-names.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-list-with-same-names.png" alt="autojs6-notification-list-with-same-names" width="822">
+  <source srcset="/images/autojs6-notification-list-with-same-names-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="822px">
+    <source srcset="/images/autojs6-notification-list-with-same-names-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-list-with-same-names.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-list-with-same-names.png" alt="autojs6-notification-list-with-same-names" width="822">
 </picture>
 
 上述示例图片中出现了名称相同的通知渠道 ("互联网"), 但它们拥有不同的渠道 ID.
@@ -88,10 +88,10 @@ notice.channel.create({ name: 'Network' });
 渠道描述不会出现在通知消息中, 而是出现在 AutoJs6 通知设置的渠道条目中:
 
 <picture>
-  <source srcset="images/autojs6-notification-item-details-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="801px">
-    <source srcset="images/autojs6-notification-item-details-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
-    <source srcset="images/autojs6-notification-item-details.png" media="(min-width: 1024px)" width="411px">
-    <img src="images/autojs6-notification-item-details.png" alt="autojs6-notification-item-details" width="801">
+  <source srcset="/images/autojs6-notification-item-details-dark.png" media="(prefers-color-scheme: dark) and (max-width: 1024px)" width="801px">
+    <source srcset="/images/autojs6-notification-item-details-dark.png" media="(prefers-color-scheme: dark) and (min-width: 1024px)" width="411px">
+    <source srcset="/images/autojs6-notification-item-details.png" media="(min-width: 1024px)" width="411px">
+    <img src="/images/autojs6-notification-item-details.png" alt="autojs6-notification-item-details" width="801">
 </picture>
 
 上述示例图片中, "所有来自互联网的文本消息" 作为渠道描述, 便于用户了解渠道用途.

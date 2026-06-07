@@ -8,7 +8,7 @@
 
 | 项目 | 基准 |
 |------|------|
-| 上游源码仓库 | [SuperMonster003/AutoJs6](http://project.autojs6.com) |
+| 上游源码仓库 | [SuperMonster003/AutoJs6](https://github.com/xxxily/AutoJs6) |
 | 源码基准提交 | `ed3eb10e88db5a8425fd94bdddefa4176e5e1c94` |
 | 源码基准版本 | `6.7.0` |
 | 文档仓库版本 | `1.2.0` |

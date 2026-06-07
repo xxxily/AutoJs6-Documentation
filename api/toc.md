@@ -147,5 +147,5 @@
 
 <div class="line"></div>
 
-* [GitHub - 应用项目地址](http://project.autojs6.com)
-* [GitHub - 文档项目地址](http://docs-project.autojs6.com)
+* [GitHub - 应用项目地址](https://github.com/xxxily/AutoJs6)
+* [GitHub - 文档项目地址](https://github.com/xxxily/AutoJs6-Documentation)
