@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\notice.md",
+  "source": "../api/notice.md",
   "modules": [
     {
       "textRaw": "消息通知 (Notice)",

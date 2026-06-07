@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\ocr.md",
+  "source": "../api/ocr.md",
   "modules": [
     {
       "textRaw": "光学字符识别 (OCR)",

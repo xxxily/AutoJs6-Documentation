@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\all.md",
+  "source": "../api/all.md",
   "desc": [
     {
       "type": "html",
@@ -14,6 +14,72 @@
       "desc": "<hr>\n<p><a href=\"http://project.autojs6.com\">AutoJs6</a>: 安卓平台 JavaScript 自动化工具.</p>\n<ul>\n<li>脚本语言: <a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">JavaScript</a>  </li>\n<li>脚本引擎: <a href=\"https://github.com/mozilla/rhino/\">Rhino</a>  </li>\n<li>支持特性: <a href=\"https://262.ecma-international.org/5.1/\">ES5</a> (全部), <a href=\"https://262.ecma-international.org/6.0/\">ES6</a> (部分)</li>\n</ul>\n<hr>\n<p>扩展阅读:</p>\n<ul>\n<li>了解 JavaScript<ul>\n<li><a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">MDN - JavaScript 基础</a></li>\n<li><a href=\"https://zh.javascript.info/\">JavaScript.info - JavaScript 教程</a></li>\n</ul>\n</li>\n<li>查看 Rhino 引擎兼容性列表<ul>\n<li><a href=\"https://mozilla.github.io/rhino/compat/engines.html\">Rhino ES2015 Support</a></li>\n</ul>\n</li>\n<li>使用 PC (个人计算机) 开发<ul>\n<li><a href=\"http://vscext-project.autojs6.com\">AutoJs6 VSCode Extension</a></li>\n</ul>\n</li>\n<li>使用 Node.js 开发<ul>\n<li><a href=\"https://pro.autojs.org/\">Auto.js Pro</a></li>\n</ul>\n</li>\n<li>使用 TypeScript 开发<ul>\n<li><a href=\"https://github.com/pboymt/autojs-dev/\">Auto.js DevTools</a></li>\n</ul>\n</li>\n</ul>\n<hr>\n<p>阅读文档:</p>\n<ul>\n<li>宽屏设备网页阅读<ul>\n<li>点击左侧边栏条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>移动设备网页阅读<ul>\n<li>点击左下方抽屉按钮 - 展开侧边栏并点击条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>AutoJs6 应用内阅读<ul>\n<li>点击首页 &quot;文档&quot; 标签 - 点击条目 - 阅读相关章节</li>\n<li>点击首页右上方 &quot;搜索&quot; 图标 - 在当前页面检索内容</li>\n<li>文档页面左上方的导航链接可实现页面跳转:<ul>\n<li>点击 &quot;索引&quot; - 跳转至章节索引页面</li>\n<li>点击 &quot;查看全部&quot; - 所有章节内容在同一页面列出</li>\n</ul>\n</li>\n<li>阅读文档时, &quot;文档&quot; 标签可作为快捷按钮使用:<ul>\n<li>点击 &quot;文档&quot; 标签 - 返回至当前页面顶部</li>\n<li>长按 &quot;文档&quot; 标签 - 跳转至章节索引页面</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>启动器快速启动阅读<ul>\n<li>AutoJs6 设置页面 - 启动器快捷方式 - 点击 &quot;文档&quot; 图标</li>\n<li>将 &quot;文档&quot; 快捷方式添加到启动器 (俗称 &quot;桌面&quot;)</li>\n<li>在启动器点击 &quot;文档&quot; 图标即可阅读文档</li>\n<li>部分高版本安卓系统支持长按 AutoJs6 应用图标直接激活快捷方式或拖放添加到启动器</li>\n</ul>\n</li>\n</ul>\n<blockquote>\n<p>注: 初次阅读文档或首次使用 AutoJs6 建议从 <a href=\"documentation\">关于文档</a> 开始.\n<!-- [end-include:overview.md] --></p>\n</blockquote>\n<!-- [start-include:documentation.md] -->\n",
       "type": "module",
       "displayName": "综述 (Overview)"
+    },
+    {
+      "textRaw": "Documentation Roadmap - 文档更新推进清单",
+      "name": "documentation_roadmap_-_文档更新推进清单",
+      "desc": "<p>本章节用于承接后续文档更新工作. 后续 agent 应按本清单逐步推进, 只有完成源码对照、文档更新、生成验证后, 才能将对应条目标记为 <code>[x]</code>.</p>\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "当前基准",
+          "name": "当前基准",
+          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>上游源码仓库</td>\n<td><a href=\"http://project.autojs6.com\">SuperMonster003/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库版本</td>\n<td><code>1.2.0</code></td>\n</tr>\n<tr>\n<td>推进清单创建日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>若后续上游 AutoJs6 出现新提交或新版本, 应先更新本基准, 再继续校对.</p>\n</blockquote>\n<hr>\n",
+          "type": "module",
+          "displayName": "当前基准"
+        },
+        {
+          "textRaw": "Agent 工作规则",
+          "name": "agent_工作规则",
+          "desc": "<ul>\n<li>[ ] 更新前先确认上游源码版本, 不要只按旧文档或记忆补写.</li>\n<li>[ ] 每个页面必须回链到具体源码路径, 至少包含模块入口、主要方法、参数、返回值、关键限制.</li>\n<li>[ ] 涉及运行时注入对象时, 必须对照 <code>ScriptRuntime.kt</code> 的 <code>augment(...)</code> 注册情况.</li>\n<li>[ ] 涉及类型或选项时, 必须对照实现类、NativeObject 包装类、数据转换逻辑.</li>\n<li>[ ] 修改 <code>api/*.md</code> 后, 同步更新 <code>api/toc.md</code>, <code>api/sidebar.md</code>, <code>api/all.md</code>, <code>api/progress.md</code> 和必要的 <code>api/changelog.md</code>.</li>\n<li>[ ] 每轮完成后重新生成 <code>docs/*.html</code> 与 <code>json/*.json</code>.</li>\n<li>[ ] 每轮完成后运行空白检查与关键内容检索, 并记录残留风险.</li>\n</ul>\n<p>验收命令参考:</p>\n<pre><code class=\"lang-sh\">cd ~/work/github/AutoJs6-Documentation/generator\nrtk proxy env AUTOJS6_VERSION=6.7.0 /tmp/autojs6-doc-generator-venv/bin/python auto-generate.py\ncd ..\nrtk proxy git diff --check\nrtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json\n</code></pre>\n<hr>\n",
+          "type": "module",
+          "displayName": "Agent 工作规则"
+        },
+        {
+          "textRaw": "本轮已完成",
+          "name": "本轮已完成",
+          "desc": "<ul>\n<li>[x] 确认旧文档偏旧: 文档 <code>1.1.8</code> 停留在 <code>2023/12/01</code>, 上游源码已到 <code>6.7.0</code>.</li>\n<li>[x] 新增 <a href=\"documentationAudit\">文档覆盖审计</a>, 记录旧文档与上游源码能力差异.</li>\n<li>[x] 新增 <a href=\"cvt\">Cvt - 单位转换</a> 基础页, 覆盖 <code>cvt.bytes</code> / <code>strict</code> / <code>loose</code>.</li>\n<li>[x] 新增 <a href=\"fmt\">Fmt - 数据格式化</a> 基础页, 覆盖 <code>fmt.bytes</code> / <code>strict</code> / <code>loose</code>.</li>\n<li>[x] 新增 <a href=\"sqlite\">SQLite</a> 基础页, 覆盖 <code>sqlite.open</code>, <code>Database</code>, <code>CursorWrapper</code> 的主要入口.</li>\n<li>[x] 新增 <a href=\"zip\">Zip</a> 基础页, 覆盖 <code>zip.open</code>, <code>zipFile</code>, <code>zipDir</code>, <code>zipFiles</code>, <code>unzip</code>, <code>ZipNativeObject</code>.</li>\n<li>[x] 新增 <a href=\"mediainfo\">MediaInfo - 媒体信息</a> 基础页, 覆盖 <code>mediainfo.read</code> 与动态媒体流信息读取.</li>\n<li>[x] 新增 <a href=\"mime\">MIME</a> 基础页, 覆盖 MIME 字符串解析结果.</li>\n<li>[x] 新增 <a href=\"nanoid\">NanoID</a> 基础页, 覆盖随机 ID 生成能力.</li>\n<li>[x] 新增 <a href=\"sysprops\">Sysprops - 系统属性</a> 基础页, 覆盖系统属性读取与过滤.</li>\n<li>[x] 新增 <a href=\"pinyin\">Pinyin - 汉语拼音</a> 基础页, 覆盖主要拼音转换入口.</li>\n<li>[x] 新增 <a href=\"pinyin4j\">Pinyin4j - 汉语拼音</a> 基础页, 覆盖 Pinyin4j 兼容入口.</li>\n<li>[x] 更新 <a href=\"http\">HTTP</a>, 补充 <code>6.7.0</code> 异步请求、<code>HEAD</code> / <code>PUT</code> / <code>DELETE</code>, 响应体流式保存与请求选项.</li>\n<li>[x] 更新 <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a>, 补充 <code>method</code>, <code>body</code>, <code>files</code>, <code>client</code>, <code>cacheBody</code>, <code>bodyCacheThresholdBytes</code>, <code>insecure</code> 等选项.</li>\n<li>[x] 更新 <a href=\"httpResponseBodyType\">HttpResponseBody</a>, 补充 <code>stream</code>, <code>saveToFile</code>, <code>close</code>, <code>HttpSaveResult</code>.</li>\n<li>[x] 更新导航、全量文档、部署进度、更新日志和静态 HTML / JSON 输出.</li>\n<li>[x] 修复生成器版本来源与失败检查, 避免硬编码本地 Windows 路径和吞掉 Node 生成失败.</li>\n<li>[x] 将 <code>js-yaml</code> 升级到 <code>3.14.2</code>, 消除对应生成器依赖风险.</li>\n</ul>\n<hr>\n",
+          "type": "module",
+          "displayName": "本轮已完成"
+        },
+        {
+          "textRaw": "仍需优先补齐",
+          "name": "仍需优先补齐",
+          "modules": [
+            {
+              "textRaw": "P1: 高价值既有页面源码校对",
+              "name": "P1: 高价值既有页面源码校对",
+              "desc": "<ul>\n<li>[ ] <a href=\"global\">Global - 全局对象</a>: 对照全局函数、全局类、legacy 兼容项.</li>\n<li>[ ] <a href=\"automator\">Automator - 自动化</a>: 对照自动化动作、RootAutomator、无障碍桥接限制.</li>\n<li>[ ] <a href=\"uiSelectorType\">UiSelector - 选择器</a>: 对照选择器方法、过滤条件、链式调用和兼容别名.</li>\n<li>[ ] <a href=\"uiObjectType\">UiObject - 控件节点</a>: 对照控件属性、动作、查找方法和回收/刷新行为.</li>\n<li>[ ] <a href=\"app\">App - 通用应用</a>: 对照 Intent、启动、卸载、应用信息、权限相关方法.</li>\n<li>[ ] <a href=\"autojs\">AutoJs6 - 本体应用</a>: 对照版本、构建信息、项目/脚本入口能力.</li>\n<li>[ ] <a href=\"device\">Device - 设备</a>: 对照设备信息、亮度、音量、电池、屏幕、剪贴板能力.</li>\n<li>[ ] <a href=\"files\">File - 文件</a>: 对照路径解析、读写、移动复制、递归、编码和权限边界.</li>\n<li>[ ] <a href=\"engines\">Engine - 引擎</a>: 对照脚本执行、引擎枚举、停止、事件与隔离行为.</li>\n<li>[ ] <a href=\"tasks\">Task - 任务</a>: 对照定时任务、广播/Intent、持久化与 Android 版本限制.</li>\n<li>[ ] <a href=\"ui\">UI - 用户界面</a>: 对照 UI DSL、组件、事件、线程要求和生命周期.</li>\n<li>[ ] <a href=\"floaty\">Floaty - 悬浮窗</a>: 对照权限、窗口类型、坐标、关闭与 Android 版本限制.</li>\n<li>[ ] <a href=\"web\">Web - 万维网</a>: 对照 WebView 注入、WebSocket、客户端配置.</li>\n<li>[ ] <a href=\"ocr\">OCR - 光学字符识别</a>: 对照 MLKit / Paddle / Rapid OCR 能力、选项与模型限制.</li>\n<li>[ ] <a href=\"notice\">Notice - 消息通知</a>: 对照通知渠道、构建器、权限和 Android 版本差异.</li>\n<li>[ ] <a href=\"console\">Console - 控制台</a>: 对照日志、格式化、计时、悬浮控制台和构建选项.</li>\n</ul>\n",
+              "type": "module",
+              "displayName": "P2: 类型页与知识库结构化"
+            },
+            {
+              "textRaw": "P2: 类型页与知识库结构化",
+              "name": "p2:_类型页与知识库结构化",
+              "desc": "<ul>\n<li>[ ] 为高频类型补齐独立页面: <code>ZipOptions</code>, <code>ZipNativeObject</code>, <code>Database</code>, <code>CursorWrapper</code>, <code>HttpSaveResult</code>, <code>JsMime</code>, <code>MediainfoNativeObject</code>.</li>\n<li>[ ] 为所有运行时注入模块建立机器可读索引: 模块名、版本、源码路径、方法名、参数、返回值、示例.</li>\n<li>[ ] 为所有页面补充 &quot;源码依据&quot; 小节, 便于知识库回答时回链权威来源.</li>\n<li>[ ] 为权限敏感能力补充 Android 版本、权限、Shizuku/Root/无障碍依赖.</li>\n<li>[ ] 清理旧 Auto.js 4.x 文档残留, 标记 AutoJs6 中已删除、替换或行为变化的 API.</li>\n</ul>\n<hr>\n",
+              "type": "module",
+              "displayName": "P2: 类型页与知识库结构化"
+            }
+          ],
+          "type": "module",
+          "displayName": "仍需优先补齐"
+        },
+        {
+          "textRaw": "覆盖矩阵",
+          "name": "覆盖矩阵",
+          "desc": "<table>\n<thead>\n<tr>\n<th>页面</th>\n<th>当前状态</th>\n<th>下一步</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"documentationAudit\">Documentation Audit</a></td>\n<td><code>[x]</code> 已新增</td>\n<td>后续版本变更时更新基准</td>\n</tr>\n<tr>\n<td><a href=\"documentationRoadmap\">Documentation Roadmap</a></td>\n<td><code>[x]</code> 已新增</td>\n<td>每轮更新后同步勾选状态</td>\n</tr>\n<tr>\n<td><a href=\"cvt\">Cvt</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补齐边界与错误条件</td>\n</tr>\n<tr>\n<td><a href=\"fmt\">Fmt</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补齐格式化细节</td>\n</tr>\n<tr>\n<td><a href=\"sqlite\">SQLite</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>拆分/补全类型页</td>\n</tr>\n<tr>\n<td><a href=\"zip\">Zip</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补全选项和 Zip4j 行为</td>\n</tr>\n<tr>\n<td><a href=\"mediainfo\">MediaInfo</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补全动态字段</td>\n</tr>\n<tr>\n<td><a href=\"mime\">MIME</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补全解析结构</td>\n</tr>\n<tr>\n<td><a href=\"nanoid\">NanoID</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>增加随机源与参数边界说明</td>\n</tr>\n<tr>\n<td><a href=\"sysprops\">Sysprops</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>增加权限与过滤说明</td>\n</tr>\n<tr>\n<td><a href=\"pinyin\">Pinyin</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补全格式选项</td>\n</tr>\n<tr>\n<td><a href=\"pinyin4j\">Pinyin4j</a></td>\n<td><code>[x]</code> 基础覆盖</td>\n<td>补全兼容 API</td>\n</tr>\n<tr>\n<td><a href=\"http\">HTTP</a></td>\n<td><code>[x]</code> 已补充 6.7.0 高频能力</td>\n<td>继续清理旧内容</td>\n</tr>\n<tr>\n<td><a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a></td>\n<td><code>[x]</code> 已补充关键选项</td>\n<td>校对全部 builder 方法</td>\n</tr>\n<tr>\n<td><a href=\"httpResponseBodyType\">HttpResponseBody</a></td>\n<td><code>[x]</code> 已补充关键方法</td>\n<td>补全 <code>HttpSaveResult</code></td>\n</tr>\n<tr>\n<td><a href=\"global\">Global</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"automator\">Automator</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"uiSelectorType\">UiSelector</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"uiObjectType\">UiObject</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"app\">App</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"autojs\">AutoJs6</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"device\">Device</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"files\">Files</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"engines\">Engines</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"tasks\">Tasks</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"ui\">UI</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"floaty\">Floaty</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"web\">Web</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"ocr\">OCR</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"notice\">Notice</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n<tr>\n<td><a href=\"console\">Console</a></td>\n<td><code>[ ]</code> 待源码校对</td>\n<td>P1</td>\n</tr>\n</tbody>\n</table>\n<hr>\n",
+          "type": "module",
+          "displayName": "覆盖矩阵"
+        },
+        {
+          "textRaw": "残留风险",
+          "name": "残留风险",
+          "desc": "<ul>\n<li>[ ] <code>generator</code> 仍依赖 marked <code>0.3.19</code>; 安全版本 marked <code>4.0.10</code> 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.</li>\n<li>[ ] 当前新增页面多数为 &quot;基础覆盖&quot;, 适合回答模块入口和常用能力, 但还不足以支撑所有边界问题.</li>\n<li>[ ] 仍有大量旧页面来自 Auto.js 4.x 文档, 后续必须逐页与 AutoJs6 源码核对.</li>\n</ul>\n<!-- [end-include:documentationRoadmap.md] -->\n<!-- [start-include:qa.md] -->\n",
+          "type": "module",
+          "displayName": "残留风险"
+        }
+      ],
+      "type": "module",
+      "displayName": "Documentation Roadmap - 文档更新推进清单"
     },
     {
       "textRaw": "疑难解答 (Q & A)",
@@ -14221,7 +14287,7 @@
             {
               "textRaw": "列表文件",
               "name": "列表文件",
-              "desc": "<pre><code>ls filepath\n</code></pre><p>例如:</p>\n<pre><code>log(shell(&quot;ls /system/bin&quot;).result);\n</code></pre><!-- [end-include:shell.md] -->\n<!-- [start-include:media.md] -->\n",
+              "desc": "<pre><code>ls filepath\n</code></pre><p>例如:</p>\n<pre><code>log(shell(&quot;ls /system/bin&quot;).result);\n</code></pre><!-- [end-include:shell.md] -->\n<!-- [start-include:shizuku.md] -->\n",
               "type": "module",
               "displayName": "列表文件"
             }
@@ -14232,6 +14298,54 @@
       ],
       "type": "module",
       "displayName": "附录: shell命令简介"
+    },
+    {
+      "textRaw": "Shizuku",
+      "name": "shizuku",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 30, 2023.</p>\n\n<hr>\n<p>通过 <a href=\"https://shizuku.rikka.app/introduction/\">Shizuku</a> 可以获得 ADB 特权并使用系统 API.</p>\n<p>使用 Shizuku 需满足以下全部条件</p>\n<ul>\n<li>设备已安装 <a href=\"https://github.com/RikkaApps/Shizuku/releases\">Shizuku 应用</a> (版本不低于 <code>11</code>)</li>\n<li>Shizuku 服务已启动 (参阅 <a href=\"https://shizuku.rikka.app/guide/setup/#start-shizuku\">Shizuku 用户手册</a>)</li>\n<li>AutoJs6 首页抽屉开启 Shizuku 权限开关</li>\n</ul>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">shizuku</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] shizuku",
+          "name": "[@]_shizuku",
+          "desc": "<p>shizuku 可作为全局对象使用:</p>\n<pre><code class=\"lang-js\">typeof shizuku; // &quot;function&quot;\ntypeof shizuku.execCommand; // &quot;function&quot;\n</code></pre>\n",
+          "methods": [
+            {
+              "textRaw": "shizuku(cmd)",
+              "type": "method",
+              "name": "shizuku",
+              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload 1/2</code></strong></p>\n<ul>\n<li><strong>cmd</strong> { <a href=\"dataTypes#string\">string</a> } - 待执行命令</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"shellResultType\">ShellResult</a> } - Shell 结果</li>\n</ul>\n<p>使用 Shizuku 执行命令.</p>\n<pre><code class=\"lang-js\">/* 模拟返回键. */\nshizuku(&#39;input keyevent 4&#39;);\nshizuku(`input keyevent ${KeyEvent.KEYCODE_BACK}`); /* 同上. */\n\n/* 模拟电源键. */\nshizuku(&#39;input keyevent 26&#39;);\nshizuku(`input keyevent ${KeyEvent.KEYCODE_POWER}`); /* 同上. */\n\n/* 点击屏幕坐标 (100, 120). */\nshizuku(&quot;input tap 100 120&quot;);\n\n/* 授予 AutoJs6 &quot;修改安全设置&quot; 权限. */\nshizuku(&#39;pm grant org.autojs.autojs6 android.permission.WRITE_SECURE_SETTINGS&#39;);\n\n/* 授予 AutoJs6 &quot;投影媒体&quot; 权限. */\nshizuku(&#39;appops set org.autojs.autojs6 PROJECT_MEDIA allow&#39;);\n\n/* 启用 AutoJs6 &quot;无障碍服务&quot;. */\nshizuku(&#39;settings put secure enabled_accessibility_services org.autojs.autojs6/org.autojs.autojs.core.accessibility.AccessibilityServiceUsher&#39;);\n\n/* 获取当前时间. */\nconsole.log(shizuku(&#39;date&#39;).result.trim());\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "cmd"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "shizuku(cmdList)",
+              "type": "method",
+              "name": "shizuku",
+              "desc": "<p><strong><code>6.4.0</code></strong> <strong><code>Overload 2/2</code></strong></p>\n<ul>\n<li><strong>cmdList</strong> { <a href=\"dataTypes#string\">string</a><a href=\"dataTypes#array\">[]</a> } - 待执行的多行命令</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"shellResultType\">ShellResult</a> } - Shell 结果</li>\n</ul>\n<p>使用 Shizuku 一次性执行多行命令, 每行命令对应 <code>cmdList</code> 数组中的一个元素.</p>\n<pre><code class=\"lang-js\">shizuku([ &#39;cmd-a&#39;, &#39;cmd-b&#39;, &#39;cmd-c&#39; ]);\nshizuku(&#39;cmd-a\\ncmd-b\\ncmd-c&#39;); /* 同上. */\n</code></pre>\n<!-- [end-include:shizuku.md] -->\n<!-- [start-include:media.md] -->\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "cmdList"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] shizuku"
+        }
+      ],
+      "type": "module",
+      "displayName": "Shizuku"
     },
     {
       "textRaw": "多媒体 (Media)",
@@ -19022,8 +19136,15 @@
     {
       "textRaw": "HTTP",
       "name": "http",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Mar 21, 2023.</p>\n\n<hr>\n<p>http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.</p>\n<blockquote>\n<p>注: 与 <a href=\"web\">web</a> 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">http</p>\n\n<hr>\n",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Mar 21, 2023.</p>\n\n<hr>\n<p>http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.</p>\n<blockquote>\n<p>注: 与 <a href=\"web\">web</a> 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.</p>\n</blockquote>\n",
       "modules": [
+        {
+          "textRaw": "`6.7.0` 速查",
+          "name": "`6.7.0`_速查",
+          "desc": "<p>AutoJs6 <code>6.7.0</code> 的 HTTP 模块已经覆盖同步请求、回调请求和异步请求三类用法.</p>\n<p>新增或已确认的高频能力:</p>\n<ul>\n<li><code>http.requestAsync</code> / <code>http.getAsync</code> / <code>http.headAsync</code> / <code>http.postAsync</code> / <code>http.postJsonAsync</code> / <code>http.postMultipartAsync</code> / <code>http.putAsync</code> / <code>http.deleteAsync</code> / <code>http.delAsync</code>.</li>\n<li><code>http.head</code> / <code>http.put</code> / <code>http.delete</code> / <code>http.del</code>.</li>\n<li><code>options.cacheBody</code> 与 <code>options.bodyCacheThresholdBytes</code>, 用于控制响应体重复读取缓存.</li>\n<li><code>options.insecure</code> / <code>options.isInsecure</code>, 用于跳过 TLS 证书和主机名校验.</li>\n<li><code>options.client</code>, 用于通过 OkHttpClient.Builder 的一参或两参方法配置客户端.</li>\n<li><code>response.body.stream()</code> / <code>response.body.saveToFile(path, bufferSize?)</code> / <code>response.body.close()</code>.</li>\n</ul>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/http/Http.kt</code>, <code>RequestBuilder.kt</code>, <code>ResponseBodyNativeObject.kt</code>, <code>HttpSaveResult.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">http</p>\n\n<hr>\n",
+          "type": "module",
+          "displayName": "`6.7.0` 速查"
+        },
         {
           "textRaw": "[m] get",
           "name": "[m]_get",
@@ -19065,7 +19186,7 @@
               "textRaw": "get(url, options, callback)",
               "type": "method",
               "name": "get",
-              "desc": "<p><strong><code>Overload 3/3</code></strong> <strong><code>Async</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址 (默认使用 HTTP 协议)</li>\n<li><strong>options</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的构建选项</li>\n<li><strong>callback</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的响应回调</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"httpResponseType\">HttpResponse</a> } - 请求的响应实例</li>\n</ul>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址</li>\n<li><code>options</code> {Object} 请求选项. 参见[http.request()][].</li>\n<li><code>callback</code> {Function} 回调函数, 可选, 其参数是一个[Response][]对象. 如果不加回调函数, 则该请求将阻塞、同步地执行.</li>\n</ul>\n<p>对地址url进行一次HTTP GET 请求. 如果没有回调函数, 则在请求完成或失败时返回此次请求的响应(参见[Response][]).</p>\n<p>最简单GET请求如下:</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;);\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>采用回调形式的GET请求如下：</p>\n<pre><code>console.show();\nhttp.get(&quot;www.baidu.com&quot;, {}, function(res, err){\n    if(err){\n        console.error(err);\n        return;\n    }\n    log(&quot;code = &quot; + res.statusCode);\n    log(&quot;html = &quot; + res.body.string());\n});\n</code></pre><p>如果要增加HTTP头部信息, 则在options参数中添加, 例如：</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;, {\n    headers: {\n        &#39;Accept-Language&#39;: &#39;zh-cn,zh;q=0.5&#39;,\n        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11&#39;\n    }\n});\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>一个请求天气并解析返回的天气JSON结果的例子如下：</p>\n<pre><code>var city = &quot;广州&quot;;\nvar res = http.get(&quot;http://www.sojson.com/open/api/weather/json.shtml?city=&quot; + city);\nif(res.statusCode != 200){\n    toast(&quot;请求失败: &quot; + res.statusCode + &quot; &quot; + res.statusMessage);\n}else{\n    var weather = res.body.json();\n    log(weather);\n    toast(util.format(&quot;温度: %s 湿度: %s 空气质量: %s&quot;, weather.data.wendu,\n        weather.data.shidu, weather.quality));\n}\n</code></pre>",
+              "desc": "<p><strong><code>Overload 3/3</code></strong> <strong><code>Async</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址 (默认使用 HTTP 协议)</li>\n<li><strong>options</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的构建选项</li>\n<li><strong>callback</strong> { <a href=\"dataTypes#function\">function</a> } - 请求的响应回调</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#void\">void</a> } - 回调模式下不直接返回响应实例</li>\n</ul>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址</li>\n<li><code>options</code> {Object} 请求选项. 参见[http.request()][].</li>\n<li><code>callback</code> {Function} 回调函数, 可选, 其参数是一个[Response][]对象. 如果不加回调函数, 则该请求将阻塞、同步地执行.</li>\n</ul>\n<p>对地址url进行一次HTTP GET 请求. 如果没有回调函数, 则在请求完成或失败时返回此次请求的响应(参见[Response][]).</p>\n<p>最简单GET请求如下:</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;);\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>采用回调形式的GET请求如下：</p>\n<pre><code>console.show();\nhttp.get(&quot;www.baidu.com&quot;, {}, function(res, err){\n    if(err){\n        console.error(err);\n        return;\n    }\n    log(&quot;code = &quot; + res.statusCode);\n    log(&quot;html = &quot; + res.body.string());\n});\n</code></pre><p>如果要增加HTTP头部信息, 则在options参数中添加, 例如：</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;, {\n    headers: {\n        &#39;Accept-Language&#39;: &#39;zh-cn,zh;q=0.5&#39;,\n        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11&#39;\n    }\n});\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>一个请求天气并解析返回的天气JSON结果的例子如下：</p>\n<pre><code>var city = &quot;广州&quot;;\nvar res = http.get(&quot;http://www.sojson.com/open/api/weather/json.shtml?city=&quot; + city);\nif(res.statusCode != 200){\n    toast(&quot;请求失败: &quot; + res.statusCode + &quot; &quot; + res.statusMessage);\n}else{\n    var weather = res.body.json();\n    log(weather);\n    toast(util.format(&quot;温度: %s 湿度: %s 空气质量: %s&quot;, weather.data.wendu,\n        weather.data.shidu, weather.quality));\n}\n</code></pre>",
               "signatures": [
                 {
                   "params": [
@@ -19085,6 +19206,250 @@
           ],
           "type": "module",
           "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] requestAsync",
+          "name": "[m]_requestasync",
+          "methods": [
+            {
+              "textRaw": "requestAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "requestAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>在后台线程执行 HTTP 请求, 并返回 AutoJs6 运行时的异步操作对象. 如果提供回调, 回调会在 UI 线程收到 <code>response</code> 或 <code>error</code>.</p>\n<pre><code class=\"lang-js\">http.getAsync(&#39;https://example.com&#39;, { cacheBody: true }, function (res, err) {\n    if (err) {\n        console.error(err);\n        return;\n    }\n    console.log(res.statusCode);\n    console.log(res.body.string());\n});\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] requestAsync"
+        },
+        {
+          "textRaw": "[m] getAsync",
+          "name": "[m]_getasync",
+          "methods": [
+            {
+              "textRaw": "getAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "getAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 GET 请求. 参数与 <a href=\"#m-get\">get</a> 类似.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getAsync"
+        },
+        {
+          "textRaw": "[m] head",
+          "name": "[m]_head",
+          "methods": [
+            {
+              "textRaw": "head(url, options?, callback?)",
+              "type": "method",
+              "name": "head",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>发送 HEAD 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] head"
+        },
+        {
+          "textRaw": "[m] headAsync",
+          "name": "[m]_headasync",
+          "methods": [
+            {
+              "textRaw": "headAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "headAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 HEAD 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] headAsync"
+        },
+        {
+          "textRaw": "[m] put",
+          "name": "[m]_put",
+          "methods": [
+            {
+              "textRaw": "put(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "put",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"httpResponseType\">HttpResponse</a> | <a href=\"dataTypes#void\">void</a> }</li>\n</ul>\n<p>发送 PUT 请求. 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>; 当 <code>contentType</code> 为 <code>application/json</code> 时会使用 <code>JSON.stringify(data)</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] put"
+        },
+        {
+          "textRaw": "[m] putAsync",
+          "name": "[m]_putasync",
+          "methods": [
+            {
+              "textRaw": "putAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "putAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 PUT 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] putAsync"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "delete",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>发送 DELETE 请求. <code>del</code> 是此方法的别名.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] deleteAsync",
+          "name": "[m]_deleteasync",
+          "methods": [
+            {
+              "textRaw": "deleteAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "deleteAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 DELETE 请求. <code>delAsync</code> 是此方法的别名.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] deleteAsync"
         },
         {
           "textRaw": "[m] post",
@@ -19147,6 +19512,38 @@
           "displayName": "[m] post"
         },
         {
+          "textRaw": "[m] postAsync",
+          "name": "[m]_postasync",
+          "methods": [
+            {
+              "textRaw": "postAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "postAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 POST 请求. <code>data</code> 的处理方式与 <a href=\"#m-post\">post</a> 一致, 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postAsync"
+        },
+        {
           "textRaw": "[m] postJson",
           "name": "[m]_postjson",
           "methods": [
@@ -19205,6 +19602,38 @@
           ],
           "type": "module",
           "displayName": "[m] postJson"
+        },
+        {
+          "textRaw": "[m] postJsonAsync",
+          "name": "[m]_postjsonasync",
+          "methods": [
+            {
+              "textRaw": "postJsonAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "postJsonAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 JSON POST 请求. 内部会设置 <code>contentType</code> 为 <code>application/json</code>, 并通过 <code>JSON.stringify(data)</code> 构造请求体.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postJsonAsync"
         },
         {
           "textRaw": "[m] postMultipart",
@@ -19267,6 +19696,38 @@
           "displayName": "[m] postMultipart"
         },
         {
+          "textRaw": "[m] postMultipartAsync",
+          "name": "[m]_postmultipartasync",
+          "methods": [
+            {
+              "textRaw": "postMultipartAsync(url, files, options?, callback?)",
+              "type": "method",
+              "name": "postMultipartAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>files</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 multipart/form-data 请求. <code>files</code> 参数格式与 <a href=\"#m-postmultipart\">postMultipart</a> 一致.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "files"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postMultipartAsync"
+        },
+        {
           "textRaw": "[m] request",
           "name": "[m]_request",
           "methods": [
@@ -19325,7 +19786,7 @@
               "textRaw": "buildRequest(url, options)",
               "type": "method",
               "name": "buildRequest",
-              "desc": "<p>... ...\n<!-- [end-include:http.md] --></p>\n<!-- [start-include:base64.md] -->\n",
+              "desc": "<p>... ...</p>\n<!-- [end-include:http.md] -->\n<!-- [start-include:base64.md] -->\n",
               "signatures": [
                 {
                   "params": [
@@ -19726,7 +20187,7 @@
             {
               "textRaw": "[c] (publicKeyData, privateKeyData, options?)",
               "name": "[c]_(publickeydata,_privatekeydata,_options?)",
-              "desc": "<p><strong><code>6.3.2</code></strong> <strong><code>Overload [1-2]/2</code></strong></p>\n<ul>\n<li><strong>publicKeyData</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#jsbytearray\">JsByteArray</a> | <a href=\"dataTypes#bytearray\">ByteArray</a> } - 用于生成公钥的数据</li>\n<li><strong>privateKeyData</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#jsbytearray\">JsByteArray</a> | <a href=\"dataTypes#bytearray\">ByteArray</a> } - 用于生成私钥的数据</li>\n<li><strong>[ options ]</strong> { <a href=\"cryptoCipherOptionsType\">CryptoCipherOptions</a> } - 选项参数</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"cryptoKeyPairType\">CryptoKeyPair</a> }</li>\n</ul>\n<p>生成一个固定密钥对.</p>\n<p>如需生成一个随机密钥对, 可使用 <a href=\"#m-generatekeypair\">crypto.generateKeyPair</a>.</p>\n<p>关于密钥对的实例方法属性及相关示例, 参阅 <a href=\"cryptoKeyPairType\">CryptoKeyPair</a> 类型章节.</p>\n<p>使用 <code>crypto.KeyPair</code> 构造函数可以很方便地复制密钥对数据:</p>\n<pre><code class=\"lang-js\">let keyPair = crypto.generateKeyPair(&#39;RSA&#39;);\n\nconsole.log(keyPair);\n\nlet copiedKeyPairA = new crypto.KeyPair(\n    base64.encode(keyPair.publicKey.data),\n    base64.encode(keyPair.privateKey.data),\n    { input: &#39;base64&#39; },\n);\n\nconsole.log(copiedKeyPairA);\n\nlet copiedKeyPairB = new crypto.KeyPair(\n    keyPair.publicKey.data,\n    keyPair.privateKey.data,\n    { input: &#39;bytes&#39; },\n);\n\nconsole.log(copiedKeyPairB);\n\nlet copiedKeyPairC = new crypto.KeyPair(\n    Crypto.toHex(keyPair.publicKey.data),\n    Crypto.toHex(keyPair.privateKey.data),\n    { input: &quot;hex&quot; },\n);\n\nconsole.log(copiedKeyPairC);\n</code></pre>\n<!-- [end-include:crypto.md] -->\n<!-- [start-include:opencc.md] -->\n",
+              "desc": "<p><strong><code>6.3.2</code></strong> <strong><code>Overload [1-2]/2</code></strong></p>\n<ul>\n<li><strong>publicKeyData</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#jsbytearray\">JsByteArray</a> | <a href=\"dataTypes#bytearray\">ByteArray</a> } - 用于生成公钥的数据</li>\n<li><strong>privateKeyData</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#jsbytearray\">JsByteArray</a> | <a href=\"dataTypes#bytearray\">ByteArray</a> } - 用于生成私钥的数据</li>\n<li><strong>[ options ]</strong> { <a href=\"cryptoCipherOptionsType\">CryptoCipherOptions</a> } - 选项参数</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"cryptoKeyPairType\">CryptoKeyPair</a> }</li>\n</ul>\n<p>生成一个固定密钥对.</p>\n<p>如需生成一个随机密钥对, 可使用 <a href=\"#m-generatekeypair\">crypto.generateKeyPair</a>.</p>\n<p>关于密钥对的实例方法属性及相关示例, 参阅 <a href=\"cryptoKeyPairType\">CryptoKeyPair</a> 类型章节.</p>\n<p>使用 <code>crypto.KeyPair</code> 构造函数可以很方便地复制密钥对数据:</p>\n<pre><code class=\"lang-js\">let keyPair = crypto.generateKeyPair(&#39;RSA&#39;);\n\nconsole.log(keyPair);\n\nlet copiedKeyPairA = new crypto.KeyPair(\n    base64.encode(keyPair.publicKey.data),\n    base64.encode(keyPair.privateKey.data),\n    { input: &#39;base64&#39; },\n);\n\nconsole.log(copiedKeyPairA);\n\nlet copiedKeyPairB = new crypto.KeyPair(\n    keyPair.publicKey.data,\n    keyPair.privateKey.data,\n    { input: &#39;bytes&#39; },\n);\n\nconsole.log(copiedKeyPairB);\n\nlet copiedKeyPairC = new crypto.KeyPair(\n    Crypto.toHex(keyPair.publicKey.data),\n    Crypto.toHex(keyPair.privateKey.data),\n    { input: &quot;hex&quot; },\n);\n\nconsole.log(copiedKeyPairC);\n</code></pre>\n<!-- [end-include:crypto.md] -->\n<!-- [start-include:sqlite.md] -->\n",
               "type": "module",
               "displayName": "[c] (publicKeyData, privateKeyData, options?)"
             }
@@ -19737,6 +20198,1396 @@
       ],
       "type": "module",
       "displayName": "密文 (Crypto)"
+    },
+    {
+      "textRaw": "SQLite",
+      "name": "sqlite",
+      "desc": "<p><code>sqlite</code> 模块用于在脚本中打开和操作 SQLite 数据库文件.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sqlite</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] sqlite",
+          "name": "[@]_sqlite",
+          "methods": [
+            {
+              "textRaw": "sqlite(databaseFilePath, options?, callback?)",
+              "type": "method",
+              "name": "sqlite",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>sqlite(...)</code> 与 <a href=\"#m-open\">sqlite.open(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "databaseFilePath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] sqlite"
+        },
+        {
+          "textRaw": "[m] open",
+          "name": "[m]_open",
+          "methods": [
+            {
+              "textRaw": "open(databaseFilePath, options?, callback?)",
+              "type": "method",
+              "name": "open",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. 路径会经过 AutoJs6 运行时文件路径解析.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "databaseFilePath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] open"
+        },
+        {
+          "textRaw": "[m] execSQL",
+          "name": "[m]_execsql",
+          "methods": [
+            {
+              "textRaw": "execSQL(sql)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            },
+            {
+              "textRaw": "execSQL(sql, bindArgs)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] execSQL"
+        },
+        {
+          "textRaw": "[m] rawQuery",
+          "name": "[m]_rawquery",
+          "methods": [
+            {
+              "textRaw": "rawQuery(sql, selectionArgs)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQuery"
+        },
+        {
+          "textRaw": "[m] query",
+          "name": "[m]_query",
+          "methods": [
+            {
+              "textRaw": "query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit?)",
+              "type": "method",
+              "name": "query",
+              "desc": "<p>返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] query"
+        },
+        {
+          "textRaw": "[m] insert",
+          "name": "[m]_insert",
+          "methods": [
+            {
+              "textRaw": "insert(table, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 支持 <code>null</code> / <code>number</code> / <code>boolean</code> / <code>string</code> / <code>byte[]</code>; 其他类型会抛出异常.</p>\n"
+            },
+            {
+              "textRaw": "insert(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insert"
+        },
+        {
+          "textRaw": "[m] update",
+          "name": "[m]_update",
+          "methods": [
+            {
+              "textRaw": "update(table, values, whereClause, whereArgs)",
+              "type": "method",
+              "name": "update",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] update"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(table, whereClause, whereArgs)",
+              "type": "method",
+              "name": "delete",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] transaction",
+          "name": "[m]_transaction",
+          "methods": [
+            {
+              "textRaw": "transaction(transactionCallback, exclusive?)",
+              "type": "method",
+              "name": "transaction",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**transactionCallback** { [function](dataTypes#function) } ",
+                      "name": "**transactionCallback**",
+                      "type": " [function](dataTypes#function) "
+                    },
+                    {
+                      "textRaw": "**[ exclusive = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "exclusive = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [EventEmitter](eventEmitterType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [EventEmitter](eventEmitterType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "transactionCallback"
+                    },
+                    {
+                      "name": "exclusive?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行事务并返回事件发射器. 事务过程中可能触发 <code>begin</code> / <code>commit</code> / <code>rollback</code> / <code>end</code> / <code>error</code> 事件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] transaction"
+        },
+        {
+          "textRaw": "[m] close",
+          "name": "[m]_close",
+          "methods": [
+            {
+              "textRaw": "close()",
+              "type": "method",
+              "name": "close",
+              "desc": "<p>关闭数据库连接.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] close"
+        },
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(index)",
+              "type": "method",
+              "name": "get",
+              "desc": "<p>按列索引读取当前行字段.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "index"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getByColumn",
+          "name": "[m]_getbycolumn",
+          "methods": [
+            {
+              "textRaw": "getByColumn(column)",
+              "type": "method",
+              "name": "getByColumn",
+              "desc": "<p>按列名读取当前行字段.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "column"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getByColumn"
+        },
+        {
+          "textRaw": "[m] pick",
+          "name": "[m]_pick",
+          "methods": [
+            {
+              "textRaw": "pick()",
+              "type": "method",
+              "name": "pick",
+              "desc": "<p>将当前行转换为对象.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] pick"
+        },
+        {
+          "textRaw": "[m] next",
+          "name": "[m]_next",
+          "methods": [
+            {
+              "textRaw": "next()",
+              "type": "method",
+              "name": "next",
+              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] next"
+        },
+        {
+          "textRaw": "[m] single",
+          "name": "[m]_single",
+          "methods": [
+            {
+              "textRaw": "single()",
+              "type": "method",
+              "name": "single",
+              "desc": "<p>返回第一条记录并关闭游标.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] single"
+        },
+        {
+          "textRaw": "[m] all",
+          "name": "[m]_all",
+          "methods": [
+            {
+              "textRaw": "all(close?)",
+              "type": "method",
+              "name": "all",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ close = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "close = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [array](dataTypes#array) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [array](dataTypes#array) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "close?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>读取全部行. 默认读取后关闭游标.</p>\n<!-- [end-include:sqlite.md] -->\n<!-- [start-include:mime.md] -->\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] all"
+        }
+      ],
+      "type": "module",
+      "displayName": "SQLite"
+    },
+    {
+      "textRaw": "MIME",
+      "name": "mime",
+      "desc": "<p><code>mime</code> 模块用于解析 MIME 类型字符串.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/mime/Mime.kt</code>, <code>runtime/api/augment/mime/JsMime.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">mime</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] mime",
+          "name": "[@]_mime",
+          "methods": [
+            {
+              "textRaw": "mime(mimeStr)",
+              "type": "method",
+              "name": "mime",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>mimeStr</strong> { <a href=\"dataTypes#string\">string</a> } - MIME 类型字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#jsmime\">JsMime</a> }</li>\n</ul>\n<p>解析 MIME 字符串.</p>\n<pre><code class=\"lang-js\">let m = mime(&#39;text/html; charset=utf-8&#39;);\nconsole.log(m.type); // text\nconsole.log(m.subtype); // html\nconsole.log(m.parameters.charset); // utf-8\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">JsMime</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "mimeStr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] mime"
+        },
+        {
+          "textRaw": "[p] raw",
+          "name": "[p]_raw",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>原始 MIME 字符串.</p>\n",
+          "type": "module",
+          "displayName": "[p] raw"
+        },
+        {
+          "textRaw": "[p] type",
+          "name": "[p]_type",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>主类型, 如 <code>text</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] type"
+        },
+        {
+          "textRaw": "[p] subtype",
+          "name": "[p]_subtype",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>子类型, 如 <code>html</code>.</p>\n",
+          "type": "module",
+          "displayName": "[p] subtype"
+        },
+        {
+          "textRaw": "[p] mimeType",
+          "name": "[p]_mimetype",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>规范化后的 MIME 类型, 包含参数.</p>\n",
+          "type": "module",
+          "displayName": "[p] mimeType"
+        },
+        {
+          "textRaw": "[p] mimeTypeRefined",
+          "name": "[p]_mimetyperefined",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>仅包含主类型与子类型的 MIME 类型.</p>\n",
+          "type": "module",
+          "displayName": "[p] mimeTypeRefined"
+        },
+        {
+          "textRaw": "[p] parameters",
+          "name": "[p]_parameters",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>参数对象. 例如 <code>text/html; charset=utf-8</code> 的 <code>parameters.charset</code> 为 <code>utf-8</code>.</p>\n<!-- [end-include:mime.md] -->\n<!-- [start-include:nanoid.md] -->\n",
+          "type": "module",
+          "displayName": "[p] parameters"
+        }
+      ],
+      "type": "module",
+      "displayName": "MIME"
+    },
+    {
+      "textRaw": "NanoID",
+      "name": "nanoid",
+      "desc": "<p><code>nanoid</code> 模块用于生成短字符串 ID.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/nanoid/NanoID.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">nanoid</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] nanoid",
+          "name": "[@]_nanoid",
+          "methods": [
+            {
+              "textRaw": "nanoid(size?)",
+              "type": "method",
+              "name": "nanoid",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>[ size = <code>21</code> ]</strong> { <a href=\"dataTypes#number\">number</a> } - ID 长度</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>生成指定长度的随机字符串 ID. 随机源为 <code>java.security.SecureRandom</code>.</p>\n<pre><code class=\"lang-js\">console.log(nanoid()); // 默认 21 位\nconsole.log(nanoid(10)); // 10 位\n</code></pre>\n<p>当前字符表来自源码中的 <code>urlAlphabet</code> 常量, 由 64 个 URL 友好字符组成.</p>\n<!-- [end-include:nanoid.md] -->\n<!-- [start-include:sysprops.md] -->\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "size?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] nanoid"
+        }
+      ],
+      "type": "module",
+      "displayName": "NanoID"
+    },
+    {
+      "textRaw": "Sysprops - 系统属性",
+      "name": "sysprops_-_系统属性",
+      "desc": "<p><code>sysprops</code> 模块用于读取 Android 系统属性.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sysprops/Sysprops.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sysprops</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(propName, defaultValue?)",
+              "type": "method",
+              "name": "get",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>读取字符串系统属性.</p>\n<pre><code class=\"lang-js\">console.log(sysprops.get(&#39;ro.product.model&#39;));\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getInt",
+          "name": "[m]_getint",
+          "methods": [
+            {
+              "textRaw": "getInt(propName, defaultValue?)",
+              "type": "method",
+              "name": "getInt",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>读取整数系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getInt"
+        },
+        {
+          "textRaw": "[m] getBoolean",
+          "name": "[m]_getboolean",
+          "methods": [
+            {
+              "textRaw": "getBoolean(propName, defaultValue?)",
+              "type": "method",
+              "name": "getBoolean",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>读取布尔系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getBoolean"
+        },
+        {
+          "textRaw": "[m] getAll",
+          "name": "[m]_getall",
+          "methods": [
+            {
+              "textRaw": "getAll()",
+              "type": "method",
+              "name": "getAll",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>读取全部可访问系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "getAll(keyFilter)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**keyFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**keyFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "keyFilter"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按属性名过滤.</p>\n"
+            },
+            {
+              "textRaw": "getAll(keyFilter, valueFilter)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**keyFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**keyFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "**valueFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**valueFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "keyFilter"
+                    },
+                    {
+                      "name": "valueFilter"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按属性名和属性值过滤.</p>\n"
+            },
+            {
+              "textRaw": "getAll(options)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**options** {{ ",
+                      "options": [
+                        {
+                          "textRaw": "**key** / **keys** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                          "name": "**key**",
+                          "desc": "/ **keys** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) }"
+                        },
+                        {
+                          "textRaw": "**value** / **values** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                          "name": "**value**",
+                          "desc": "/ **values** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) }"
+                        }
+                      ],
+                      "name": "**options**",
+                      "desc": "{{"
+                    },
+                    {
+                      "textRaw": "}} ",
+                      "name": "}}"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>过滤器为字符串时使用包含匹配; 过滤器为正则时使用正则匹配.</p>\n<!-- [end-include:sysprops.md] -->\n<!-- [start-include:pinyin.md] -->\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getAll"
+        }
+      ],
+      "type": "module",
+      "displayName": "Sysprops - 系统属性"
+    },
+    {
+      "textRaw": "Pinyin - 汉语拼音",
+      "name": "pinyin_-_汉语拼音",
+      "desc": "<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持多音字、分词、姓氏模式和多种输出风格.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] pinyin",
+          "name": "[@]_pinyin",
+          "methods": [
+            {
+              "textRaw": "pinyin(hans, options?)",
+              "type": "method",
+              "name": "pinyin",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin(...)</code> 与 <a href=\"#m-convert\">pinyin.convert(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] pinyin"
+        },
+        {
+          "textRaw": "[m] convert",
+          "name": "[m]_convert",
+          "methods": [
+            {
+              "textRaw": "convert(hans, options?)",
+              "type": "method",
+              "name": "convert",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>hans</strong> { <a href=\"dataTypes#string\">string</a> } - 待转换字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>style</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 输出风格, 默认 <code>STYLE_TONE</code></li>\n<li><strong>mode</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>\n<li><strong>segment</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用分词, 默认 <code>false</code></li>\n<li><strong>heteronym</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用多音字, 默认 <code>false</code></li>\n<li><strong>group</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否组合词组结果, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>返回二维数组. 每个汉字或词组对应一个拼音候选数组. 返回数组额外带有 <code>compact()</code> 方法.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.convert(&#39;重庆&#39;));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { heteronym: true }));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { segment: true, group: true }).compact());\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] convert"
+        },
+        {
+          "textRaw": "[m] simple",
+          "name": "[m]_simple",
+          "methods": [
+            {
+              "textRaw": "simple(str, enableNumericTone?, enableSegment?)",
+              "type": "method",
+              "name": "simple",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ enableNumericTone = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>[ enableSegment = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>返回拼接后的简化拼音字符串.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.simple(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "enableNumericTone?"
+                    },
+                    {
+                      "name": "enableSegment?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] simple"
+        },
+        {
+          "textRaw": "[m] fromCodePoint",
+          "name": "[m]_fromcodepoint",
+          "methods": [
+            {
+              "textRaw": "fromCodePoint(codePoint)",
+              "type": "method",
+              "name": "fromCodePoint",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>codePoint</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>按 Unicode code point 查询单字拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "codePoint"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromCodePoint"
+        },
+        {
+          "textRaw": "[m] fromPhrase",
+          "name": "[m]_fromphrase",
+          "methods": [
+            {
+              "textRaw": "fromPhrase(phrase)",
+              "type": "method",
+              "name": "fromPhrase",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>phrase</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>查询词组拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "phrase"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromPhrase"
+        },
+        {
+          "textRaw": "[m] compare",
+          "name": "[m]_compare",
+          "methods": [
+            {
+              "textRaw": "compare(a, b)",
+              "type": "method",
+              "name": "compare",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. 知识库回答中不应将其描述为可用排序函数.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "a"
+                    },
+                    {
+                      "name": "b"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compare"
+        },
+        {
+          "textRaw": "[m] compact",
+          "name": "[m]_compact",
+          "methods": [
+            {
+              "textRaw": "compact(arr)",
+              "type": "method",
+              "name": "compact",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. <code>convert()</code> 返回值上绑定的 <code>compact()</code> 方法由运行时另行绑定.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">常量</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "arr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compact"
+        },
+        {
+          "textRaw": "[p] STYLE_NORMAL",
+          "name": "[p]_style_normal",
+          "desc": "<p>普通风格, 不带声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_NORMAL"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE",
+          "name": "[p]_style_tone",
+          "desc": "<p>标准风格, 声调在韵母上. 这是默认风格.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE2",
+          "name": "[p]_style_tone2",
+          "desc": "<p>数字形式标记声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE2"
+        },
+        {
+          "textRaw": "[p] STYLE_TO3NE",
+          "name": "[p]_style_to3ne",
+          "desc": "<p>数字方式, 声母后加声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TO3NE"
+        },
+        {
+          "textRaw": "[p] STYLE_INITIALS",
+          "name": "[p]_style_initials",
+          "desc": "<p>仅保留声母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_INITIALS"
+        },
+        {
+          "textRaw": "[p] STYLE_FIRST_LETTER",
+          "name": "[p]_style_first_letter",
+          "desc": "<p>仅保留首字母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_FIRST_LETTER"
+        },
+        {
+          "textRaw": "[p] MODE_NORMAL",
+          "name": "[p]_mode_normal",
+          "desc": "<p>普通模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_NORMAL"
+        },
+        {
+          "textRaw": "[p] MODE_SURNAME",
+          "name": "[p]_mode_surname",
+          "desc": "<p>姓氏模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_SURNAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACE_NAME",
+          "name": "[p]_mode_place_name",
+          "desc": "<p>地名模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACE_NAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACENAME",
+          "name": "[p]_mode_placename",
+          "desc": "<p>地名模式兼容别名.</p>\n<!-- [end-include:pinyin.md] -->\n<!-- [start-include:pinyin.md] -->\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACENAME"
+        }
+      ],
+      "type": "module",
+      "displayName": "Pinyin - 汉语拼音"
+    },
+    {
+      "textRaw": "Pinyin - 汉语拼音",
+      "name": "pinyin_-_汉语拼音",
+      "desc": "<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持多音字、分词、姓氏模式和多种输出风格.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] pinyin",
+          "name": "[@]_pinyin",
+          "methods": [
+            {
+              "textRaw": "pinyin(hans, options?)",
+              "type": "method",
+              "name": "pinyin",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin(...)</code> 与 <a href=\"#m-convert\">pinyin.convert(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] pinyin"
+        },
+        {
+          "textRaw": "[m] convert",
+          "name": "[m]_convert",
+          "methods": [
+            {
+              "textRaw": "convert(hans, options?)",
+              "type": "method",
+              "name": "convert",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>hans</strong> { <a href=\"dataTypes#string\">string</a> } - 待转换字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>style</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 输出风格, 默认 <code>STYLE_TONE</code></li>\n<li><strong>mode</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>\n<li><strong>segment</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用分词, 默认 <code>false</code></li>\n<li><strong>heteronym</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用多音字, 默认 <code>false</code></li>\n<li><strong>group</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否组合词组结果, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>返回二维数组. 每个汉字或词组对应一个拼音候选数组. 返回数组额外带有 <code>compact()</code> 方法.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.convert(&#39;重庆&#39;));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { heteronym: true }));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { segment: true, group: true }).compact());\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] convert"
+        },
+        {
+          "textRaw": "[m] simple",
+          "name": "[m]_simple",
+          "methods": [
+            {
+              "textRaw": "simple(str, enableNumericTone?, enableSegment?)",
+              "type": "method",
+              "name": "simple",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ enableNumericTone = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>[ enableSegment = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>返回拼接后的简化拼音字符串.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.simple(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "enableNumericTone?"
+                    },
+                    {
+                      "name": "enableSegment?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] simple"
+        },
+        {
+          "textRaw": "[m] fromCodePoint",
+          "name": "[m]_fromcodepoint",
+          "methods": [
+            {
+              "textRaw": "fromCodePoint(codePoint)",
+              "type": "method",
+              "name": "fromCodePoint",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>codePoint</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>按 Unicode code point 查询单字拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "codePoint"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromCodePoint"
+        },
+        {
+          "textRaw": "[m] fromPhrase",
+          "name": "[m]_fromphrase",
+          "methods": [
+            {
+              "textRaw": "fromPhrase(phrase)",
+              "type": "method",
+              "name": "fromPhrase",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>phrase</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>查询词组拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "phrase"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromPhrase"
+        },
+        {
+          "textRaw": "[m] compare",
+          "name": "[m]_compare",
+          "methods": [
+            {
+              "textRaw": "compare(a, b)",
+              "type": "method",
+              "name": "compare",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. 知识库回答中不应将其描述为可用排序函数.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "a"
+                    },
+                    {
+                      "name": "b"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compare"
+        },
+        {
+          "textRaw": "[m] compact",
+          "name": "[m]_compact",
+          "methods": [
+            {
+              "textRaw": "compact(arr)",
+              "type": "method",
+              "name": "compact",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. <code>convert()</code> 返回值上绑定的 <code>compact()</code> 方法由运行时另行绑定.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">常量</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "arr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compact"
+        },
+        {
+          "textRaw": "[p] STYLE_NORMAL",
+          "name": "[p]_style_normal",
+          "desc": "<p>普通风格, 不带声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_NORMAL"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE",
+          "name": "[p]_style_tone",
+          "desc": "<p>标准风格, 声调在韵母上. 这是默认风格.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE2",
+          "name": "[p]_style_tone2",
+          "desc": "<p>数字形式标记声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE2"
+        },
+        {
+          "textRaw": "[p] STYLE_TO3NE",
+          "name": "[p]_style_to3ne",
+          "desc": "<p>数字方式, 声母后加声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TO3NE"
+        },
+        {
+          "textRaw": "[p] STYLE_INITIALS",
+          "name": "[p]_style_initials",
+          "desc": "<p>仅保留声母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_INITIALS"
+        },
+        {
+          "textRaw": "[p] STYLE_FIRST_LETTER",
+          "name": "[p]_style_first_letter",
+          "desc": "<p>仅保留首字母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_FIRST_LETTER"
+        },
+        {
+          "textRaw": "[p] MODE_NORMAL",
+          "name": "[p]_mode_normal",
+          "desc": "<p>普通模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_NORMAL"
+        },
+        {
+          "textRaw": "[p] MODE_SURNAME",
+          "name": "[p]_mode_surname",
+          "desc": "<p>姓氏模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_SURNAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACE_NAME",
+          "name": "[p]_mode_place_name",
+          "desc": "<p>地名模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACE_NAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACENAME",
+          "name": "[p]_mode_placename",
+          "desc": "<p>地名模式兼容别名.</p>\n<!-- [end-include:pinyin.md] -->\n<p>4j\n<!-- [start-include:opencc.md] --></p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACENAME"
+        }
+      ],
+      "type": "module",
+      "displayName": "Pinyin - 汉语拼音"
     },
     {
       "textRaw": "OpenCC",
@@ -20493,9 +22344,1079 @@
     {
       "textRaw": "国际化 (Internationalization)",
       "name": "国际化_(internationalization)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<!-- [end-include:i18n.md] -->\n<!-- [start-include:e4x.md] -->\n",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<!-- [end-include:i18n.md] -->\n<!-- [start-include:s13n.md] -->\n",
       "type": "module",
       "displayName": "国际化 (Internationalization)"
+    },
+    {
+      "textRaw": "标准化 (Standardization)",
+      "name": "标准化_(standardization)",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Apr 9, 2023.</p>\n\n<hr>\n<p>s13n 模块用于将多种不同类型的数据统一转换为标准类型.</p>\n<p>例如在 AutoJs6 中, 一个颜色参数通常可接受 [ <a href=\"dataTypes#colorhex\">ColorHex</a> / <a href=\"dataTypes#colorint\">ColorInt</a> / <a href=\"dataTypes#colorname\">ColorName</a> / <a href=\"colorType\">Color</a> / <a href=\"dataTypes#themecolor\">ThemeColor</a> ] 等多种类型:</p>\n<pre><code class=\"lang-js\">console.setBackgroundColor(&#39;orange&#39;);\nconsole.setBackgroundColor(&#39;#663399&#39;);\nconsole.setBackgroundColor(autojs.themeColor);\nconsole.setBackgroundColor(Color(&#39;blue&#39;).setAlpha(0.75));\n</code></pre>\n<p>上述这些颜色设置方式均有效.<br>但安卓 API 中涉及颜色的参数往往只接受 <code>ColorInt</code> 类型:</p>\n<pre><code class=\"lang-js\">activity.window.setStatusBarColor(&#39;orange&#39;); /* 抛出异常. */\nactivity.window.setStatusBarColor(Color(&#39;orange&#39;)); /* 抛出异常. */\nactivity.window.setStatusBarColor(Color(&#39;orange&#39;).toInt()); /* 正常. */\nactivity.window.setStatusBarColor(colors.toInt(&#39;orange&#39;)); /* 效果同上. */\n</code></pre>\n<p>上述示例的颜色参数只能使用 <code>ColorInt</code>, 对应 JavaScript 的 <code>number</code> 类型.</p>\n<p>s13n 模块对颜色参数统一转换为 <code>ColorInt</code>:</p>\n<pre><code class=\"lang-js\">s13n.color(&#39;red&#39;); /* 相当于 colors.toInt(&#39;red&#39;) . */\n</code></pre>\n<p>因此对于上述设置通知栏颜色的示例, 使用 s13n 模块即可不必关心参数原本的类型:</p>\n<pre><code class=\"lang-js\">activity.window.setStatusBarColor(s13n.color(&#39;orange&#39;)); /* 正常. */\nactivity.window.setStatusBarColor(s13n.color(Color(&#39;orange&#39;))); /* 正常. */\nactivity.window.setStatusBarColor(s13n.color(Color(&#39;orange&#39;).toInt())); /* 正常. */\nactivity.window.setStatusBarColor(s13n.color(Color(&#39;orange&#39;).toHex())); /* 正常. */\n</code></pre>\n<p>不过对于 AutoJs6 内置模块 (colors, device, images 等), 传参时无需使用 s13n 进行标准化.<br>因为在模块内部的实现代码中, 已经借助 s13n 进行了标准化操作.<br>例如以下代码片段是 <code>console.setBackgroundColor</code> 的内部实现代码:</p>\n<pre><code class=\"lang-js\">function setBackgroundColor(c) {\n    return runtime.console.setBackgroundColor(s13n.color(c));\n}\n</code></pre>\n<p>上述示例可以看出, s13n 模块对参数 <code>c</code> 进行了颜色标准化操作.</p>\n<p>下表列出了 s13n 模块中不同方法接受类型与输出类型:</p>\n<table>\n<thead>\n<tr>\n<th>方法名称</th>\n<th>描述</th>\n<th>接受类型</th>\n<th>输出类型</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><a href=\"#m-color\">color</a></td>\n<td>颜色</td>\n<td><a href=\"omniTypes#omnicolor\">OmniColor</a></td>\n<td><a href=\"dataTypes#colorint\">ColorInt</a></td>\n</tr>\n</tbody>\n</table>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">s13n</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] color",
+          "name": "[m]_color",
+          "methods": [
+            {
+              "textRaw": "color(o)",
+              "type": "method",
+              "name": "color",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**o** { [OmniColor](omniTypes#omnicolor) } ",
+                      "name": "**o**",
+                      "type": " [OmniColor](omniTypes#omnicolor) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [ColorInt](dataTypes#colorint) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [ColorInt](dataTypes#colorint) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "o"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>将颜色参数 <code>o</code> 标准化为 <a href=\"dataTypes#colorint\">ColorInt</a>.</p>\n<pre><code class=\"lang-js\">s13n.color(&#39;red&#39;) === s13n.color(&#39;#F00&#39;); // true\ns13n.color(&#39;#FB663399&#39;) === s13n.color(0xFB663399); // true\n</code></pre>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] color"
+        },
+        {
+          "textRaw": "[m] throwable",
+          "name": "[m]_throwable",
+          "methods": [
+            {
+              "textRaw": "throwable(o)",
+              "type": "method",
+              "name": "throwable",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**o** { [OmniThrowable](omniTypes#omnithrowable) } ",
+                      "name": "**o**",
+                      "type": " [OmniThrowable](omniTypes#omnithrowable) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [java.lang.Throwable](exceptions#java) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [java.lang.Throwable](exceptions#java) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "o"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>将可抛异常参数 <code>o</code> 标准化为 <a href=\"exceptions#java\">java.lang.Throwable</a> 类型.</p>\n<pre><code class=\"lang-js\">let a = s13n.throwable(&#39;error message&#39;);\nlet b = s13n.throwable(Error(&#39;error message&#39;));\nlet c = (/* @IIFE */ () =&gt; {\n    try {\n        nothing++;\n    } catch (e) {\n        return s13n.throwable(e.rhinoException);\n    }\n})();\n\n[ a, b, c ].every(o =&gt; o instanceof java.lang.Throwable); // true\n</code></pre>\n<!-- [end-include:s13n.md] -->\n<!-- [start-include:cvt.md] -->\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] throwable"
+        }
+      ],
+      "type": "module",
+      "displayName": "标准化 (Standardization)"
+    },
+    {
+      "textRaw": "Cvt - 单位转换",
+      "name": "cvt_-_单位转换",
+      "desc": "<p><code>cvt</code> 模块用于数据单位转换. 当前公开实现以字节单位转换为主.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/converter/Converter.kt</code>, <code>runtime/api/augment/converter/Bytes.kt</code>, <code>runtime/api/augment/converter/core/Bytes.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">cvt</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] bytes",
+          "name": "[m]_bytes",
+          "methods": [
+            {
+              "textRaw": "bytes(source, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n<p>将字节数据转换为目标单位的数值.</p>\n<pre><code class=\"lang-js\">console.log(cvt.bytes(1024, &#39;KB&#39;)); // 1\nconsole.log(cvt.bytes(&#39;1 MB&#39;, &#39;KB&#39;)); // 1024\nconsole.log(cvt.bytes(1536, { toUnit: &#39;KB&#39;, fractionDigits: 1 })); // 1.5\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, fromUnit, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "fromUnit"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] bytes"
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "[m] bytes.strict",
+          "name": "strict",
+          "methods": [
+            {
+              "textRaw": "bytes.strict(source, options?)",
+              "type": "method",
+              "name": "strict",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式转换. 严格模式区分 SI 与 IEC 单位:</p>\n<ul>\n<li><code>KB</code> / <code>MB</code> / <code>GB</code> 等使用 <code>1000</code> 进位.</li>\n<li><code>KiB</code> / <code>MiB</code> / <code>GiB</code> 等使用 <code>1024</code> 进位.</li>\n</ul>\n<p>在严格模式中, <code>options.strict</code> 必须为空.</p>\n<pre><code class=\"lang-js\">console.log(cvt.bytes.strict(1000, &#39;KB&#39;)); // 1\nconsole.log(cvt.bytes.strict(1024, &#39;KiB&#39;)); // 1\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[m] bytes.loose",
+          "name": "loose",
+          "methods": [
+            {
+              "textRaw": "bytes.loose(source, options?)",
+              "type": "method",
+              "name": "loose",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式转换. 宽松模式会将 <code>KiB</code> 等 IEC 标识折算为普通单位文本, 并以 <code>1024</code> 为换算基数. 在宽松模式中, <code>options.strict</code> 必须为空.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[p] bytes.UNITS",
+          "name": "UNITS",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>支持的单位前缀, 依次表示 K/M/G/T/P/E/Z/Y/R/Q.</p>\n"
+        },
+        {
+          "textRaw": "[p] bytes.AUTO",
+          "name": "AUTO",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>自动选择目标单位.</p>\n"
+        },
+        {
+          "textRaw": "[p] bytes.IEC_DIV",
+          "name": "IEC_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1024</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.SI_DIV",
+          "name": "SI_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1000</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<!-- [end-include:cvt.md] -->\n<!-- [start-include:fmt.md] -->\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "Cvt - 单位转换"
+    },
+    {
+      "textRaw": "Fmt - 数据格式化",
+      "name": "fmt_-_数据格式化",
+      "desc": "<p><code>fmt</code> 模块用于将数据格式化为适合阅读的字符串. 当前公开实现以字节大小格式化为主.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/formatter/Formatter.kt</code>, <code>runtime/api/augment/formatter/Bytes.kt</code>, <code>runtime/api/augment/converter/core/Bytes.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">fmt</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] bytes",
+          "name": "[m]_bytes",
+          "methods": [
+            {
+              "textRaw": "bytes(source, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>useIecIdentifier</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否输出 <code>KiB</code> / <code>MiB</code> 等 IEC 标识</li>\n<li><strong>useSpace</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 数值与单位之间是否保留空格, 默认 <code>true</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>trimTrailingZero</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否去除尾随零, 默认 <code>false</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将字节数据格式化为字符串.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes(1024)); // 1.00 KB\nconsole.log(fmt.bytes(1536, { fractionDigits: 1 })); // 1.5 KB\nconsole.log(fmt.bytes(1024, { useIecIdentifier: true })); // 1.00 KiB\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, fromUnit, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "fromUnit"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] bytes"
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "[m] bytes.strict",
+          "name": "strict",
+          "methods": [
+            {
+              "textRaw": "bytes.strict(source, options?)",
+              "type": "method",
+              "name": "strict",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式格式化. 严格模式区分 SI 与 IEC 单位, 并默认使用 IEC 单位标识.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes.strict(1000, &#39;KB&#39;)); // 1.00 KB\nconsole.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[m] bytes.loose",
+          "name": "loose",
+          "methods": [
+            {
+              "textRaw": "bytes.loose(source, options?)",
+              "type": "method",
+              "name": "loose",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式格式化. 宽松模式以 <code>1024</code> 为默认换算基数, 并允许使用更宽松的单位写法.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[p] bytes.UNITS",
+          "name": "UNITS",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.AUTO",
+          "name": "AUTO",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.IEC_DIV",
+          "name": "IEC_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1024</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.SI_DIV",
+          "name": "SI_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1000</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<!-- [end-include:fmt.md] -->\n<!-- [start-include:zip.md] -->\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "Fmt - 数据格式化"
+    },
+    {
+      "textRaw": "Zip",
+      "name": "zip",
+      "desc": "<p><code>zip</code> 模块用于创建、读取、解压和修改 ZIP 文件. 底层使用 Zip4j.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/zip/Zip.kt</code>, <code>runtime/api/augment/zip/ZipNativeObject.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">zip</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] zip",
+          "name": "[@]_zip",
+          "methods": [
+            {
+              "textRaw": "zip(zipPath)",
+              "type": "method",
+              "name": "zip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p><code>zip(zipPath)</code> 与 <a href=\"#m-open\">zip.open(zipPath)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] zip"
+        },
+        {
+          "textRaw": "[m] open",
+          "name": "[m]_open",
+          "methods": [
+            {
+              "textRaw": "open(zipPath, options?)",
+              "type": "method",
+              "name": "open",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] open"
+        },
+        {
+          "textRaw": "[m] zipFile",
+          "name": "[m]_zipfile",
+          "methods": [
+            {
+              "textRaw": "zipFile(filePath, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipFile",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ destZipPath ]</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径; 省略时使用源文件名</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFile"
+        },
+        {
+          "textRaw": "[m] zipDir",
+          "name": "[m]_zipdir",
+          "methods": [
+            {
+              "textRaw": "zipDir(filePath, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipDir",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>将目录加入 ZIP.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipDir"
+        },
+        {
+          "textRaw": "[m] zipFiles",
+          "name": "[m]_zipfiles",
+          "methods": [
+            {
+              "textRaw": "zipFiles(filePathList, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipFiles",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>[ destZipPath ]</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFiles"
+        },
+        {
+          "textRaw": "[m] unzip",
+          "name": "[m]_unzip",
+          "methods": [
+            {
+              "textRaw": "unzip(zipPath, destPath?, options?)",
+              "type": "method",
+              "name": "unzip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>解压 ZIP 到目标目录.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "destPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] unzip"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>ZIP 文件的运行时解析路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] zipFile",
+          "name": "[p]_zipfile",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html\">net.lingala.zip4j.ZipFile</a> }</li>\n</ul>\n<p>底层 Zip4j 对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] zipFile"
+        },
+        {
+          "textRaw": "[m] addFile",
+          "name": "[m]_addfile",
+          "methods": [
+            {
+              "textRaw": "addFile(filePath, options?)",
+              "type": "method",
+              "name": "addFile",
+              "desc": "<p>添加文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFile"
+        },
+        {
+          "textRaw": "[m] addFiles",
+          "name": "[m]_addfiles",
+          "methods": [
+            {
+              "textRaw": "addFiles(filePathList, options?)",
+              "type": "method",
+              "name": "addFiles",
+              "desc": "<p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFiles"
+        },
+        {
+          "textRaw": "[m] addFolder",
+          "name": "[m]_addfolder",
+          "methods": [
+            {
+              "textRaw": "addFolder(filePath, options?)",
+              "type": "method",
+              "name": "addFolder",
+              "desc": "<p>添加文件夹.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFolder"
+        },
+        {
+          "textRaw": "[m] extractAll",
+          "name": "[m]_extractall",
+          "methods": [
+            {
+              "textRaw": "extractAll(destPath, options?)",
+              "type": "method",
+              "name": "extractAll",
+              "desc": "<p>解压全部文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractAll"
+        },
+        {
+          "textRaw": "[m] extractFile",
+          "name": "[m]_extractfile",
+          "methods": [
+            {
+              "textRaw": "extractFile(zipFilePath, destPath, options?, newFileName?)",
+              "type": "method",
+              "name": "extractFile",
+              "desc": "<p>解压指定文件. <code>newFileName</code> 可用于指定解压后的新名称.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipFilePath"
+                    },
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "newFileName?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractFile"
+        },
+        {
+          "textRaw": "[m] setPassword",
+          "name": "[m]_setpassword",
+          "methods": [
+            {
+              "textRaw": "setPassword(password)",
+              "type": "method",
+              "name": "setPassword",
+              "desc": "<p>设置 ZIP 密码.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "password"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] setPassword"
+        },
+        {
+          "textRaw": "[m] getFileHeader",
+          "name": "[m]_getfileheader",
+          "methods": [
+            {
+              "textRaw": "getFileHeader(fileName)",
+              "type": "method",
+              "name": "getFileHeader",
+              "desc": "<p>返回指定文件头.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeader"
+        },
+        {
+          "textRaw": "[m] getFileHeaders",
+          "name": "[m]_getfileheaders",
+          "methods": [
+            {
+              "textRaw": "getFileHeaders()",
+              "type": "method",
+              "name": "getFileHeaders",
+              "desc": "<p>返回全部文件头数组.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeaders"
+        },
+        {
+          "textRaw": "[m] isEncrypted",
+          "name": "[m]_isencrypted",
+          "methods": [
+            {
+              "textRaw": "isEncrypted()",
+              "type": "method",
+              "name": "isEncrypted",
+              "desc": "<p>返回 ZIP 是否加密.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isEncrypted"
+        },
+        {
+          "textRaw": "[m] removeFile",
+          "name": "[m]_removefile",
+          "methods": [
+            {
+              "textRaw": "removeFile(fileName)",
+              "type": "method",
+              "name": "removeFile",
+              "desc": "<p>移除指定文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeFile"
+        },
+        {
+          "textRaw": "[m] isValidZipFile",
+          "name": "[m]_isvalidzipfile",
+          "methods": [
+            {
+              "textRaw": "isValidZipFile()",
+              "type": "method",
+              "name": "isValidZipFile",
+              "desc": "<p>返回是否为有效 ZIP 文件.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isValidZipFile"
+        },
+        {
+          "textRaw": "[m] getPath",
+          "name": "[m]_getpath",
+          "methods": [
+            {
+              "textRaw": "getPath()",
+              "type": "method",
+              "name": "getPath",
+              "desc": "<p>返回 ZIP 路径.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getPath"
+        },
+        {
+          "textRaw": "[m] getZipFile",
+          "name": "[m]_getzipfile",
+          "methods": [
+            {
+              "textRaw": "getZipFile()",
+              "type": "method",
+              "name": "getZipFile",
+              "desc": "<p>返回底层 Zip4j 对象.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipOptions</p>\n\n<hr>\n<p>常用选项:</p>\n<ul>\n<li><strong>password</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 密码. 压缩时会自动启用加密.</li>\n<li><strong>aesKeyStrength</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - AES 强度, 支持 <code>128</code> / <code>192</code> / <code>256</code>.</li>\n<li><strong>aesVersion</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - AES 版本.</li>\n<li><strong>compressionLevel</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 压缩等级.</li>\n<li><strong>compressionMethod</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 压缩方式.</li>\n<li><strong>encryptionMethod</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 加密方式.</li>\n<li><strong>defaultFolderPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>entryCRC</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>entrySize</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>excludeFileFilter</strong> { <a href=\"dataTypes#function\">function</a> } - 返回 <code>true</code> 时排除文件.</li>\n<li><strong>fileComment</strong> / <strong>comment</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fileNameInZip</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>includeRootFolder</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>overrideExistingFilesInZip</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>readHiddenFiles</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>readHiddenFolders</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>unixMode</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>writeExtendedLocalFileHeader</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>lastModifiedFileTime</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>rootFolderNameInZip</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>symbolicLinkAction</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>解压选项:</p>\n<ul>\n<li><strong>password</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>isExtractSymbolicLinks</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<blockquote>\n<p>注: <code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持.</p>\n</blockquote>\n<!-- [end-include:zip.md] -->\n<!-- [start-include:media.md] -->\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getZipFile"
+        }
+      ],
+      "type": "module",
+      "displayName": "Zip"
+    },
+    {
+      "textRaw": "多媒体 (Media)",
+      "name": "多媒体_(media)",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n<p>media模块提供多媒体编程的支持. 目前仅支持音乐播放和媒体文件扫描. 后续会结合UI加入视频播放等功能.</p>\n<p>需要注意是, 使用该模块播放音乐时是在后台异步播放的, 在脚本结束后会自动结束播放, 因此可能需要插入诸如<code>sleep()</code>的语句来使脚本保持运行. 例如：</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//让音乐播放完\nsleep(media.getMusicDuration());\n</code></pre>",
+      "methods": [
+        {
+          "textRaw": "media.scanFile(path)",
+          "type": "method",
+          "name": "scanFile",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`path` {string} 媒体文件路径 ",
+                  "name": "path",
+                  "type": "string",
+                  "desc": "媒体文件路径"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "path"
+                }
+              ]
+            }
+          ],
+          "desc": "<p>扫描路径path的媒体文件, 将它加入媒体库中；或者如果该文件以及被删除, 则通知媒体库移除该文件.</p>\n<p>媒体库包括相册、音乐库等, 因此该函数可以用于把某个图片文件加入相册.</p>\n<pre><code>//请求截图\nrequestScreenCapture(false);\n//截图\nvar im = captureScreen();\nvar path = &quot;/sdcard/screenshot.png&quot;;\n//保存图片\nim.saveTo(path);\n//把图片加入相册\nmedia.scanFile(path);\n</code></pre>"
+        },
+        {
+          "textRaw": "media.playMusic(path[, volume, looping])",
+          "type": "method",
+          "name": "playMusic",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`path` {string} 音乐文件路径 ",
+                  "name": "path",
+                  "type": "string",
+                  "desc": "音乐文件路径"
+                },
+                {
+                  "textRaw": "`volume` {number} 播放音量, 为0~1的浮点数, 默认为1 ",
+                  "name": "volume",
+                  "type": "number",
+                  "desc": "播放音量, 为0~1的浮点数, 默认为1",
+                  "optional": true
+                },
+                {
+                  "textRaw": "`looping` {boolean} 是否循环播放, 如果looping为`true`则循环播放, 默认为`false` ",
+                  "name": "looping",
+                  "type": "boolean",
+                  "desc": "是否循环播放, 如果looping为`true`则循环播放, 默认为`false`",
+                  "optional": true
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "volume",
+                  "optional": true
+                },
+                {
+                  "name": "looping",
+                  "optional": true
+                }
+              ]
+            }
+          ],
+          "desc": "<p>播放音乐文件path. 该函数不会显示任何音乐播放界面. 如果文件不存在或者文件不是受支持的音乐格式, 则抛出<code>UncheckedIOException</code>异常.</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//让音乐播放完\nsleep(media.getMusicDuration());\n</code></pre><p>如果要循环播放音乐, 则使用looping参数：</p>\n<pre><code>\n</code></pre><p>//传递第三个参数为true以循环播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;, 1, true);\n//等待三次播放的时间\nsleep(media.getMusicDuration() * 3);</p>\n<pre><code>\n</code></pre><p>如果要使用音乐播放器播放音乐, 调用<code>app.viewFile(path)</code>函数.</p>\n"
+        },
+        {
+          "textRaw": "media.musicSeekTo(msec)",
+          "type": "method",
+          "name": "musicSeekTo",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "`msec` {number} 毫秒数, 表示音乐进度 ",
+                  "name": "msec",
+                  "type": "number",
+                  "desc": "毫秒数, 表示音乐进度"
+                }
+              ]
+            },
+            {
+              "params": [
+                {
+                  "name": "msec"
+                }
+              ]
+            }
+          ],
+          "desc": "<p>把当前播放进度调整到时间msec的位置. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n<p>例如, 要把音乐调到1分钟的位置, 为<code>media.musicSeekTo(60 * 1000)</code>.</p>\n<pre><code>//播放音乐\nmedia.playMusic(&quot;/sdcard/1.mp3&quot;);\n//调整到30秒的位置\nmedia.musicSeekTo(30 * 1000);\n//等待音乐播放完成\nsleep(media.getMusicDuration() - 30 * 1000);\n</code></pre>"
+        },
+        {
+          "textRaw": "media.pauseMusic()",
+          "type": "method",
+          "name": "pauseMusic",
+          "desc": "<p>暂停音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.resumeMusic()",
+          "type": "method",
+          "name": "resumeMusic",
+          "desc": "<p>继续音乐播放. 如果当前没有播放过音乐, 则调用该函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.stopMusic()",
+          "type": "method",
+          "name": "stopMusic",
+          "desc": "<p>停止音乐播放. 如果当前没有在播放音乐, 则调用函数没有任何效果.</p>\n",
+          "signatures": [
+            {
+              "params": []
+            }
+          ]
+        },
+        {
+          "textRaw": "media.isMusicPlaying()",
+          "type": "method",
+          "name": "isMusicPlaying",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {boolean} ",
+                  "name": "返回",
+                  "type": "boolean"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前是否正在播放音乐.</p>\n"
+        },
+        {
+          "textRaw": "media.getMusicDuration()",
+          "type": "method",
+          "name": "getMusicDuration",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {number} ",
+                  "name": "返回",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前音乐的时长. 单位毫秒.</p>\n"
+        },
+        {
+          "textRaw": "media.getMusicCurrentPosition()",
+          "type": "method",
+          "name": "getMusicCurrentPosition",
+          "signatures": [
+            {
+              "params": [
+                {
+                  "textRaw": "返回 {number} ",
+                  "name": "返回",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "params": []
+            }
+          ],
+          "desc": "<p>返回当前音乐的播放进度(已经播放的时间), 单位毫秒.\n<!-- [end-include:media.md] --></p>\n<p>info\n<!-- [start-include:e4x.md] --></p>\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "多媒体 (Media)"
     },
     {
       "textRaw": "E4X",
@@ -21029,7 +23950,536 @@
         {
           "textRaw": "声明",
           "name": "声明",
-          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<!-- [start-include:qa.md] -->\n",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<!-- [start-include:documentation.md] -->\n",
+          "type": "misc",
+          "displayName": "声明"
+        }
+      ]
+    },
+    {
+      "textRaw": "关于文档 (About)",
+      "name": "关于文档 (About)",
+      "type": "misc",
+      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"http://docs-project.autojs6.com\">SuperMonster003/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
+      "miscs": [
+        {
+          "textRaw": "文档阅读示例",
+          "name": "文档阅读示例",
+          "modules": [
+            {
+              "textRaw": "基础",
+              "name": "基础",
+              "properties": [
+                {
+                  "textRaw": "device.height",
+                  "name": "height",
+                  "desc": "<p>device 表示全局对象 (这里同时也是一个模块).<br>&quot;.height&quot; 表示访问 device 对象的 height 成员变量.<br>如 console.log(device.height) 表示在控制台打印当前设备的高度数值.</p>\n"
+                }
+              ],
+              "methods": [
+                {
+                  "textRaw": "colors.rgb(red, green, blue)",
+                  "type": "method",
+                  "name": "rgb",
+                  "desc": "<p>colors 与 device 类似, 表示全局对象.<br>&quot;rgb&quot; 表示方法名称, &quot;.rgb()&quot; 表示调用 colors 的 rgb 方法, 括号内的 red 等表示方法参数.<br>如 console.log(colors.rgb(255, 128, 64)) 表示在控制台打印一个 RGB 分别为 255, 128 和 64 的颜色数值.</p>\n<blockquote>\n<p>注: 绝大多数情况, 文档不对 &quot;<a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/Function/\">函数</a>&quot; 与 &quot;<a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/Method/\">方法</a>&quot; 做明确区分.</p>\n</blockquote>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "red"
+                        },
+                        {
+                          "name": "green"
+                        },
+                        {
+                          "name": "blue"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "module",
+              "displayName": "基础"
+            },
+            {
+              "textRaw": "临时作用域对象",
+              "name": "临时作用域对象",
+              "desc": "<p>通常每个章节都以某个对象作为主题.</p>\n<p>例如上述 <code>colors.rgb(red, green, blue)</code> 位于 <a href=\"color\">Color - 颜色</a> 这个章节.<br>其中 colors 称为此章节的 &quot;临时作用域对象&quot;,<br>它可能是一个对象, 函数, 甚至 &quot;类&quot;, 在文档中使用 <strong><code>橙色粗体</code></strong> 表示.</p>\n<p>列举其后续的相关方法及属性时, 将不再重复书写对象本身:</p>\n<p style=\"font: bold 1em sans-serif; color: #FF7043\">colors</p>\n\n<p>[m] rgb</p>\n<p>rgb(red, green, blue)</p>\n<p>... ...</p>\n<p>上述 <code>rgb</code> 表示 <code>colors.rgb</code>.</p>\n",
+              "type": "module",
+              "displayName": "临时作用域对象"
+            },
+            {
+              "textRaw": "参数类型",
+              "name": "参数类型",
+              "methods": [
+                {
+                  "textRaw": "colors.rgb(red, green, blue)",
+                  "type": "method",
+                  "name": "rgb",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "textRaw": "**red** { [number](dataTypes#number) } ",
+                          "name": "**red**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "**green** { [number](dataTypes#number) } ",
+                          "name": "**green**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "**blue** { [number](dataTypes#number) } ",
+                          "name": "**blue**",
+                          "type": " [number](dataTypes#number) "
+                        }
+                      ]
+                    },
+                    {
+                      "params": [
+                        {
+                          "name": "red"
+                        },
+                        {
+                          "name": "green"
+                        },
+                        {
+                          "name": "blue"
+                        }
+                      ]
+                    }
+                  ],
+                  "desc": "<p>参数后的 &quot;{}&quot; 内包含其类型.<br>上述示例表示需要传入三个 <a href=\"dataTypes#number\">number</a> 类型的参数.<br>如 colors.rgb(255, 128, 64) 合法, 而 colors.rgb(&quot;abc&quot;, 128, 64) 将可能导致非预期结果或出现异常.</p>\n<blockquote>\n<p>注: 点击类型对应的超链接 (如有) 可跳转至类型详情页面.</p>\n</blockquote>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "参数类型"
+            },
+            {
+              "textRaw": "返回值类型",
+              "name": "返回值类型",
+              "methods": [
+                {
+                  "textRaw": "colors.rgb(red, green, blue)",
+                  "type": "method",
+                  "name": "rgb",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "textRaw": "**red** { [number](dataTypes#number) } ",
+                          "name": "**red**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "**green** { [number](dataTypes#number) } ",
+                          "name": "**green**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "**blue** { [number](dataTypes#number) } ",
+                          "name": "**blue**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                          "name": "<ins>**returns**</ins>",
+                          "type": " [number](dataTypes#number) "
+                        }
+                      ]
+                    },
+                    {
+                      "params": [
+                        {
+                          "name": "red"
+                        },
+                        {
+                          "name": "green"
+                        },
+                        {
+                          "name": "blue"
+                        }
+                      ]
+                    }
+                  ],
+                  "desc": "<p>returns 后的 &quot;{}&quot; 内包含返回值类型.<br>上述示例表示 colors.rgb 方法调用后将返回 <a href=\"dataTypes#number\">number</a> 类型数据.</p>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "返回值类型"
+            },
+            {
+              "textRaw": "属性类型",
+              "name": "属性类型",
+              "properties": [
+                {
+                  "textRaw": "`RED` { [number](dataTypes#number) } ",
+                  "type": " [number](dataTypes#number) ",
+                  "name": "RED",
+                  "desc": "<p>属性类型包裹在一对花括号中.<br>上述示例表示 colors 的 RED 属性是 <a href=\"dataTypes#number\">number</a> 类型数据.</p>\n<p>对象字面量形式的类型则用一对双花括号表示:</p>\n<ul>\n<li><strong>properties</strong> {{ name: <a href=\"dataTypes#string\">string</a>; age: <a href=\"dataTypes#number\">number</a> }}</li>\n</ul>\n<p>多行形式:</p>\n<ul>\n<li><strong>properties</strong> {{<ul>\n<li>name: <a href=\"dataTypes#string\">string</a>;</li>\n<li>age: <a href=\"dataTypes#number\">number</a>;</li>\n<li>laugh(decibel?: <a href=\"dataTypes#number\">number</a>);</li>\n</ul>\n</li>\n<li>}}</li>\n</ul>\n<p>一个符合上述示例期望的变量:</p>\n<pre><code class=\"lang-js\">let o = { name: &quot;David&quot;, age: 13 };\n</code></pre>\n<p>可存取的属性在读取时如果有非 undefined 默认值, 则以一对方括号表示:</p>\n<ul>\n<li>[ <code>1200</code> ] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>上述示例表示一个默认值为 1200 的可存取属性.</p>\n<p>以一对双方括号表示常量:</p>\n<ul>\n<li>[[ 0.5 ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>上述示例表示一个值为 0.5 的常量属性.</p>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "属性类型"
+            },
+            {
+              "textRaw": "方法签名",
+              "name": "方法签名",
+              "desc": "<p>形如上述 <a href=\"#返回值类型\">返回值类型</a> 小节的示例,<br>包含 [ 方法名称 + 参数类型 + 返回值类型 ] 的标志符, 称为 &quot;方法签名&quot;.</p>\n<blockquote>\n<p>注: 上述 &quot;方法签名&quot; 定义只用于辅助读者对文档的理解, 并不保证名词解释的合理性.</p>\n</blockquote>\n",
+              "type": "module",
+              "displayName": "方法签名"
+            },
+            {
+              "textRaw": "方法描述",
+              "name": "方法描述",
+              "methods": [
+                {
+                  "textRaw": "colors.rgb(red, green, blue)",
+                  "type": "method",
+                  "name": "rgb",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "textRaw": "__red__ - R (红色) 通道数值  [ A ] ",
+                          "name": "__red__",
+                          "desc": "R (红色) 通道数值  [ A ]"
+                        },
+                        {
+                          "textRaw": "__green__ - G (绿色) 通道数值  [ A ] ",
+                          "name": "__green__",
+                          "desc": "G (绿色) 通道数值  [ A ]"
+                        },
+                        {
+                          "textRaw": "__blue__ - B (蓝色) 通道数值  [ A ] ",
+                          "name": "__blue__",
+                          "desc": "B (蓝色) 通道数值  [ A ]"
+                        },
+                        {
+                          "textRaw": "__@return__ - 颜色数值  [ B ] ",
+                          "name": "__@return__",
+                          "desc": "颜色数值  [ B ]"
+                        }
+                      ]
+                    },
+                    {
+                      "params": [
+                        {
+                          "name": "red"
+                        },
+                        {
+                          "name": "green"
+                        },
+                        {
+                          "name": "blue"
+                        }
+                      ]
+                    }
+                  ],
+                  "desc": "<p>获取 R/G/B 通道组合后的颜色数值. [ C ]</p>\n<pre><code class=\"lang-js\">[ D ]\ncolors.rgb(255, 128, 64); // -32704\ncolors.rgb(255, 128, 64) === 0xFFFF8040 - Math.pow(2, 32); // true\ncolors.rgb(255, 128, 64) === colors.toInt(&quot;#FFFF8040&quot;); // true\ncolors.rgb(255, 128, 64) === colors.toInt(&quot;#FF8040&quot;); // true\n</code></pre>\n<p>上述示例包含的字母标注含义:</p>\n<ul>\n<li>[ A ] - 参数描述</li>\n<li>[ B ] - 方法返回值描述</li>\n<li>[ C ] - 方法描述</li>\n<li>[ D ] - 方法使用示例</li>\n</ul>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "方法描述"
+            },
+            {
+              "textRaw": "可变参数",
+              "name": "可变参数",
+              "methods": [
+                {
+                  "textRaw": "files.join(parent, ...child)",
+                  "type": "method",
+                  "name": "join",
+                  "desc": "<p>上述示例的 child 参数是 &quot;可变参数&quot;, 也称为 &quot;可变长参数&quot; 或 &quot;变长参数&quot;.<br>可变参数可传入任意个 (包括 0 个) 参数:</p>\n<pre><code class=\"lang-js\">let p = files.getSdcardPath();\nfiles.join(p); /* 0 个可变参数 */\nfiles.join(p, &#39;a&#39;); /* 1 个可变参数 */\nfiles.join(p, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;); /* 4 个可变参数 */\n</code></pre>\n<p>文档采用 JSDoc 标准标注可变参数, 需额外注意 JSDoc 的尾数组标识代表容器, 用于容纳展开后的参数:</p>\n<pre><code class=\"lang-js\">/**\n * @param {number} x\n * @param {number} y\n * @param {...number[]} others\n */\nfunction sum(x, y, others) {\n    /* ... */\n}\n</code></pre>\n<p>上述示例 others 参数为可变参数, 其中 &quot;...number[]&quot; 代表 others 期望的参数类型为 number, 而非 number[], 最后的 &quot;[]&quot; 代表 &quot;...&quot; 的容器, &quot;...&quot; 与 &quot;[]&quot; 是配对出现的.</p>\n<pre><code class=\"lang-js\">/**\n * @param {number} x\n * @param {number} y\n * @param {...number[][]} others\n */\nfunction sum(x, y, others) {\n    /* ... */\n}\n</code></pre>\n<p>上述示例 others 期望的参数类型为 number[], 而非 number[][], 同样最后的 &quot;[]&quot; 代表 &quot;...&quot; 的容器.</p>\n<pre><code class=\"lang-js\">/**\n * @param {number} x\n * @param {number} y\n * @param {...number} others\n */\nfunction sum(x, y, others) {\n    /* ... */\n}\n</code></pre>\n<p>上述示例 others 的参数类型标识方法 &quot;...number&quot; 也是合法的, 它其实是 &quot;...number[]&quot; 的省略形式.<br>文档为了避免歧义, 将全部采用完整写法.</p>\n<p>作为强调, &quot;...(SomeType)[]&quot; 这样的可变参数表示方法, 需要把 &quot;...&quot; 和 &quot;[]&quot; 视为一个整体, 中间部分才是期望的参数类型.</p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "parent"
+                        },
+                        {
+                          "name": "...child"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "module",
+              "displayName": "可变参数"
+            },
+            {
+              "textRaw": "可选参数",
+              "name": "可选参数",
+              "methods": [
+                {
+                  "textRaw": "device.vibrate(text, delay?)",
+                  "type": "method",
+                  "name": "vibrate",
+                  "desc": "<p>上述示例的 delay 参数是可选的 (以 &quot;?&quot; 标注).<br>因此以下调用方式均被支持:</p>\n<pre><code class=\"lang-js\">device.vibrate(&quot;hello&quot;, 2e3); /* 两秒钟延迟. */\ndevice.vibrate(&quot;hello&quot;); /* 无延迟. */\n</code></pre>\n<p>可选参数描述时会以 &quot;[]&quot; 标注:</p>\n<ul>\n<li><strong>[ delay ]</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>如果可选参数包含默认值, 则会以 &quot;=&quot; 标注:</p>\n<ul>\n<li><strong>[ delay = 0 ]</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>详见下述 <a href=\"#参数默认值\">参数默认值</a></p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "text"
+                        },
+                        {
+                          "name": "delay?"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "module",
+              "displayName": "可选参数"
+            },
+            {
+              "textRaw": "参数默认值",
+              "name": "参数默认值",
+              "methods": [
+                {
+                  "textRaw": "device.vibrate(text, delay?)",
+                  "type": "method",
+                  "name": "vibrate",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "textRaw": "**text** { [string](dataTypes#string) } - 需转换为摩斯码的文本 ",
+                          "name": "**text**",
+                          "type": " [string](dataTypes#string) ",
+                          "desc": "需转换为摩斯码的文本"
+                        },
+                        {
+                          "textRaw": "**[ delay = 0 ]** { [number](dataTypes#number) } - 振动延迟 ",
+                          "name": "**[",
+                          "desc": "delay = 0 ]** { [number](dataTypes#number) } - 振动延迟"
+                        },
+                        {
+                          "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                          "name": "<ins>**returns**</ins>",
+                          "type": " [void](dataTypes#void) "
+                        }
+                      ]
+                    },
+                    {
+                      "params": [
+                        {
+                          "name": "text"
+                        },
+                        {
+                          "name": "delay?"
+                        }
+                      ]
+                    }
+                  ],
+                  "desc": "<p>上述示例的 delay 参数是可选的 (以 &quot;?&quot; 标注) 且包含默认值 (以 &quot;=&quot; 标注).<br>因此以下两种调用方式等效:</p>\n<pre><code class=\"lang-js\">device.vibrate(&quot;hello&quot;);\ndevice.vibrate(&quot;hello&quot;, 0);\n</code></pre>\n<blockquote>\n<p>注: 上述示例的方法签名 (含默认值标注) 在 TypeScript 中并不合法, 此类签名仅限在文档中使用.</p>\n<p>注: 以 &quot;=&quot; 标注的参数一定是可选的, 此时参数的 &quot;?&quot; 标注可能被省略, 尤其在重载签名拆写的情况下.<br>详情参阅下文的 &quot;方法重载&quot;.</p>\n</blockquote>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "参数默认值"
+            },
+            {
+              "textRaw": "方法重载",
+              "name": "方法重载",
+              "desc": "<p><strong><code>Overload 1/17</code></strong></p>\n",
+              "methods": [
+                {
+                  "textRaw": "pickup(selector, compass, resultType)",
+                  "type": "method",
+                  "name": "pickup",
+                  "desc": "<p><strong><code>Overload 2/17</code></strong></p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "selector"
+                        },
+                        {
+                          "name": "compass"
+                        },
+                        {
+                          "name": "resultType"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "textRaw": "pickup(selector, compass)",
+                  "type": "method",
+                  "name": "pickup",
+                  "desc": "<p><strong><code>Overload 3/17</code></strong></p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "selector"
+                        },
+                        {
+                          "name": "compass"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "textRaw": "pickup(selector, resultType)",
+                  "type": "method",
+                  "name": "pickup",
+                  "desc": "<p>... ...</p>\n<p><strong><code>Overload 16/17</code></strong></p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "selector"
+                        },
+                        {
+                          "name": "resultType"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "textRaw": "pickup(root, selector)",
+                  "type": "method",
+                  "name": "pickup",
+                  "desc": "<p><strong><code>Overload 17/17</code></strong></p>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "root"
+                        },
+                        {
+                          "name": "selector"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "textRaw": "pickup()",
+                  "type": "method",
+                  "name": "pickup",
+                  "desc": "<p>包含 &quot;Overload m/n&quot; 标签的方法, 表示重载方法的序数及总量.<br>如 &quot;Overload 2/3&quot; 表示当前方法签名描述第 2 个重载方法, 总计 3 个,<br>而 &quot;Overload 5-6/17&quot; 表示当前方法签名涵盖第 5 及 第 6 个重载方法, 总计 17 个.</p>\n<p>重载方法可被简化:</p>\n<pre><code class=\"lang-text\">/* 拆写. */\ndevice.vibrate(text)\ndevice.vibrate(text, delay)\n\n/* 合写 (简化). */\ndevice.vibrate(text, delay?)\n\n/* 可选参数通常会标注默认值. */\ndevice.vibrate(text, delay?)\n· [ delay = 0 ] { number }\n\n/* 即使没有 &quot;?&quot; 标注 (针对拆写). */\ndevice.vibrate(text, delay)\n· [ delay = 0 ] { number }\n</code></pre>\n<p>多数情况下, 文档采用拆写的方式描述重载方法.</p>\n",
+                  "signatures": [
+                    {
+                      "params": []
+                    }
+                  ]
+                }
+              ],
+              "type": "module",
+              "displayName": "方法重载"
+            },
+            {
+              "textRaw": "方法全局化",
+              "name": "方法全局化",
+              "desc": "<p><strong><code>Global</code></strong></p>\n",
+              "methods": [
+                {
+                  "textRaw": "images.requestScreenCapture(landscape)",
+                  "type": "method",
+                  "name": "requestScreenCapture",
+                  "desc": "<p>包含 &quot;Global&quot; 标签的方法, 表示支持全局化使用, 可省略模块对象调用.<br>因此以下两种调用方式等效:</p>\n<pre><code class=\"lang-js\">images.requestScreenCapture(false);\nrequestScreenCapture(false);\n</code></pre>\n",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "name": "landscape"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "type": "module",
+              "displayName": "方法全局化"
+            },
+            {
+              "textRaw": "方法标签",
+              "name": "方法标签",
+              "desc": "<p>用于简便表示方法的特性:</p>\n<ul>\n<li><code>Global</code>: <a href=\"#方法全局化\">方法全局化</a> (可省略模块对象直接调用).</li>\n<li><code>Overload 2/3</code>: <a href=\"#方法重载\">方法重载</a> [ 第 2 个, 共 3 个 ].</li>\n<li><code>Non-UI</code>: 方法不能在 UI 模式下调用.</li>\n<li><code>6.2.0</code>: 方法对 AutoJs6 的版本要求 [ 不低于 6.2.0 ].</li>\n<li><code>[6.2.0]</code>: 与原同名方法相比, 方法的功能, 结果, 签名或使用方式发生变更的起始版本.</li>\n<li><code>API&gt;=29</code>: 方法对 <a href=\"apiLevel\">API 级别</a> 的要求 [ 不低于 29 ], 当不满足时不抛出异常.</li>\n<li><code>API&gt;=29!</code>: 方法对 <a href=\"apiLevel\">API 级别</a> 的要求 [ 不低于 29 ], 当不满足时将抛出异常.</li>\n<li><code>A11Y</code>: 方法依赖无障碍服务.</li>\n<li><code>A11Y?</code>: 方法可能会依赖无障碍服务.</li>\n<li><code>Async</code>: 异步执行的方法.</li>\n<li><code>Async?</code>: 可能异步执行的方法 (通过参数控制).</li>\n<li><code>Getter</code>: 仅取值属性, 即使用 Getter 定义的对象属性.</li>\n<li><code>Setter</code>: 仅存值属性, 即使用 Setter 定义的对象属性.</li>\n<li><code>Getter/Setter</code>: 可存值且可取值属性, 即同时使用 Setter 及 Getter 定义的对象属性.</li>\n<li><code>Enum</code>: 枚举类.</li>\n<li><code>CONSTANT</code>: 常量.</li>\n<li><code>READONLY</code>: 只读属性或方法.</li>\n<li><code>DEPRECATED</code>: 已弃用的属性或方法. 表示不推荐使用, 通常会有替代属性或替代方法.</li>\n<li><code>ABANDONED</code>: 已废弃的属性或方法. 表示不再提供功能支持, 使用后功能将无效.</li>\n<li><code>xProto</code>: 针对原型的内置对象扩展.</li>\n<li><code>xObject</code>: 针对对象的内置对象扩展.</li>\n<li><code>xAlias</code>: 内置对象扩展时使用不同的方法或属性名称 (别名).</li>\n</ul>\n",
+              "type": "module",
+              "displayName": "方法标签"
+            },
+            {
+              "textRaw": "对象标签",
+              "name": "对象标签",
+              "desc": "<p>用于简便表示对象的属性:</p>\n<ul>\n<li>[m]: 普通对象方法或类静态成员方法.<ul>\n<li>例如在 <code>images</code> 作为 <a href=\"#临时作用域对象\">临时作用域对象</a> 时:</li>\n<li><code>[m] captureScreen</code> 代表 <code>images.captureScreen</code> 方法.</li>\n</ul>\n</li>\n<li>[m+]: 具有扩展属性的对象方法.<ul>\n<li>如 auto 本身是一个方法 (或称函数), waitFor 是 auto 的一个扩展方法.</li>\n<li>以下两种调用方式均可用: <code>auto()</code> 及 <code>auto.waitFor()</code>.</li>\n</ul>\n</li>\n<li>[p]: 普通对象属性或类静态成员属性或接口变量属性.<ul>\n<li>例如在 <code>device</code> 作为 <a href=\"#临时作用域对象\">临时作用域对象</a> 时:</li>\n<li><code>[p] height</code> 代表 <code>device.height</code> 属性, 而非方法.</li>\n<li>此标签对 [ Getter / Setter / &quot;类&quot; 属性 / 对象属性 / 方法扩展属性 ] 等不作区分.</li>\n</ul>\n</li>\n<li>[p+]: 具有扩展属性的对象属性.<ul>\n<li>如 autojs 是一个对象, version 是 autojs 的扩展属性,</li>\n<li>支持 <code>autojs.version.xxx</code> 这样的访问方式,</li>\n<li>因此 version 属性将被标记为 <code>[p+]</code>.</li>\n</ul>\n</li>\n<li>[I]: Java 接口.</li>\n<li>[C]: Java 类或 JavaScript 构造函数.</li>\n<li>[c]: Java 类的构造方法.</li>\n<li>[m!]: 抽象方法 (针对接口及抽象类).</li>\n<li>[m=]: 包含默认实现的抽象方法 (针对接口).</li>\n<li>[m#]: 类的实例成员方法.<ul>\n<li>类的静态成员方法用 [m] 标签标记.</li>\n<li>例如对于类 <code>B</code>, 它有一个实例 <code>b</code> (可能通过 <code>new B()</code> 等方式获得),</li>\n<li><code>[m#] foo</code> 和 <code>[m] bar</code> 的调用方式分别为</li>\n<li><code>b.foo()</code> 和 <code>B.bar()</code>.</li>\n</ul>\n</li>\n<li>[p#]: 类的实例成员属性.<ul>\n<li>类的静态成员属性依然用 [p] 标签标记.</li>\n<li>例如对于类 <code>F</code>, 它有一个实例 <code>f</code> (可能通过 <code>new F()</code> 等方式获得),</li>\n<li><code>[p#] foo</code> 和 <code>[p] bar</code> 的调用方式分别为</li>\n<li><code>f.foo</code> 和 <code>F.bar</code>.</li>\n</ul>\n</li>\n<li>[@]: 代表 <a href=\"#临时作用域对象\">临时作用域对象</a> 自身.<ul>\n<li>例如在同一个章节中<ul>\n<li><code>[@] apple</code> [1]</li>\n<li><code>apple(c)</code> [2]</li>\n<li><code>[m] getColor</code> [3]</li>\n<li><code>getColor()</code> [4]</li>\n<li><code>[@] banana</code> [5]</li>\n<li><code>[m] banana</code> [6]</li>\n<li><code>banana(x)</code> [7]</li>\n<li><code>banana(x, y)</code> [8]</li>\n</ul>\n</li>\n<li>这个章节有两个 <a href=\"#临时作用域对象\">临时作用域对象</a>, apple 和 banana, 对应 <code>[1]</code> 和 <code>[5]</code>.</li>\n<li><code>[2]</code> 代表 apple 自身可被调用, 且调用方式为 <code>apple(c)</code>, 其中 &quot;c&quot; 为参数.</li>\n<li><code>[3]</code> 代表 apple 的一个方法, 名称为 &quot;getColor&quot;,</li>\n<li>由 <code>[4]</code> 得知, 其调用方式为 <code>apple.getColor()</code>.</li>\n<li>注意 <code>[6]</code> 与 <code>[2]</code> 不同:</li>\n<li><code>[6]</code> 代表 banana 的一个方法, 名称为 &quot;banana&quot;,</li>\n<li>由 <code>[7]</code> 和 <code>[8]</code> 得知, 其调用方式有两种,</li>\n<li><code>banana.banana(x)</code> 和 <code>banana.banana(x, y)</code>.</li>\n</ul>\n</li>\n</ul>\n",
+              "type": "module",
+              "displayName": "对象标签"
+            },
+            {
+              "textRaw": "成员访问",
+              "name": "成员访问",
+              "desc": "<p>成员访问用 &quot;.&quot; 表示调用关系, 包括 &quot;类&quot; 静态成员访问, 对象成员访问等.<br>而实例成员访问则需要 &quot;类&quot; 的实例才能访问, 用 &quot;#&quot; 表示调用关系.<br>例如 JavaScript 的 Number 本身是一个 &quot;类&quot;, 可用的成员访问方式如下:</p>\n<pre><code class=\"lang-js\">Number(2); /* 作为普通函数使用, 无成员访问. */\nNumber.EPSILON; /* &quot;类&quot; 静态成员访问, 用 &quot;Number.EPSILON&quot; 标识, 标签为 &quot;[p]&quot;. */\nnew Number(2); /* 创建 &quot;类&quot; 实例, 无成员访问. */\nnew Number(2).toFixed(0); /* 实例成员访问, 用 &quot;Number#toFixed(number)&quot; 标识, 标签为 &quot;[m#]&quot;. */\n</code></pre>\n<p>实例成员访问示例:</p>\n<p style=\"font: bold 1em sans-serif; color: #FF7043\">UiObject</p>\n\n<p>[m#] bounds()</p>\n<pre><code class=\"lang-js\">/* 正确访问示例 */\n\nlet w = pickup(/.+/); /* w 是 UiObject 的实例. */\nif (w !== null) {\n    console.log(w.bounds()); /* 访问 UiObject 实例的 bounds 方法. */\n}\n\n/* 错误访问示例 */\n\nimportClass(org.autojs.autojs.core.automator.UiObject);\nconsole.log(UiObject.bounds()); /* 访问的是类 UiObject 的静态方法 bounds. */\n</code></pre>\n",
+              "type": "module",
+              "displayName": "成员访问"
+            },
+            {
+              "textRaw": "模板参数",
+              "name": "模板参数",
+              "methods": [
+                {
+                  "textRaw": "foo.bar(a, b)",
+                  "type": "method",
+                  "name": "bar",
+                  "signatures": [
+                    {
+                      "params": [
+                        {
+                          "textRaw": "**a** { [T](dataTypes#generic) } ",
+                          "name": "**a**",
+                          "type": " [T](dataTypes#generic) "
+                        },
+                        {
+                          "textRaw": "**b** { [number](dataTypes#number) } ",
+                          "name": "**b**",
+                          "type": " [number](dataTypes#number) "
+                        },
+                        {
+                          "textRaw": "<ins>**returns**</ins> { [T](dataTypes#generic) } ",
+                          "name": "<ins>**returns**</ins>",
+                          "type": " [T](dataTypes#generic) "
+                        },
+                        {
+                          "textRaw": "<ins>**template**</ins> { [T](dataTypes#generic) } ",
+                          "name": "<ins>**template**</ins>",
+                          "type": " [T](dataTypes#generic) "
+                        }
+                      ]
+                    },
+                    {
+                      "params": [
+                        {
+                          "name": "a"
+                        },
+                        {
+                          "name": "b"
+                        }
+                      ]
+                    }
+                  ],
+                  "desc": "<p>template 标签指示了一个模板参数 <code>T</code>, 这个参数可以代表任意一个类型, 如 <code>string</code>.</p>\n<p>示例 <code>foo.bar(a, b)</code> 中, 返回值与参数 <code>a</code> 的类型均为 <code>T</code>, 因此两者的类型相同.</p>\n<p>例如当参数 <code>a</code> 传入 <code>string</code> 类型时, 返回值也为 <code>string</code> 类型:</p>\n<pre><code class=\"lang-js\">typeof foo.bar(&#39;hello&#39;, 3); // string\n</code></pre>\n<blockquote>\n<p>参阅: <a href=\"dataTypes#generic\">泛型</a></p>\n</blockquote>\n"
+                }
+              ],
+              "type": "module",
+              "displayName": "模板参数"
+            }
+          ],
+          "type": "misc",
+          "displayName": "文档阅读示例"
+        },
+        {
+          "textRaw": "声明",
+          "name": "声明",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<p>Audit\n<!-- [start-include:documentationRoadmap.md] --></p>\n",
           "type": "misc",
           "displayName": "声明"
         }

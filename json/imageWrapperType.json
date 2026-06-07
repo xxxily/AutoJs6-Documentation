@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\imageWrapperType.md",
+  "source": "../api/imageWrapperType.md",
   "modules": [
     {
       "textRaw": "包装图像类 (ImageWrapper)",

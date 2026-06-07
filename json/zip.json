@@ -1,0 +1,493 @@
+{
+  "source": "../api/zip.md",
+  "modules": [
+    {
+      "textRaw": "Zip",
+      "name": "zip",
+      "desc": "<p><code>zip</code> 模块用于创建、读取、解压和修改 ZIP 文件. 底层使用 Zip4j.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/zip/Zip.kt</code>, <code>runtime/api/augment/zip/ZipNativeObject.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">zip</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] zip",
+          "name": "[@]_zip",
+          "methods": [
+            {
+              "textRaw": "zip(zipPath)",
+              "type": "method",
+              "name": "zip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p><code>zip(zipPath)</code> 与 <a href=\"#m-open\">zip.open(zipPath)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] zip"
+        },
+        {
+          "textRaw": "[m] open",
+          "name": "[m]_open",
+          "methods": [
+            {
+              "textRaw": "open(zipPath, options?)",
+              "type": "method",
+              "name": "open",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>zipPath</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>打开或创建一个 ZIP 操作对象.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] open"
+        },
+        {
+          "textRaw": "[m] zipFile",
+          "name": "[m]_zipfile",
+          "methods": [
+            {
+              "textRaw": "zipFile(filePath, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipFile",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ destZipPath ]</strong> { <a href=\"dataTypes#string\">string</a> } - 目标 ZIP 路径; 省略时使用源文件名</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>将单个文件加入 ZIP.</p>\n<pre><code class=\"lang-js\">zip.zipFile(&#39;./logs/a.txt&#39;, &#39;./logs.zip&#39;);\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFile"
+        },
+        {
+          "textRaw": "[m] zipDir",
+          "name": "[m]_zipdir",
+          "methods": [
+            {
+              "textRaw": "zipDir(filePath, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipDir",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>将目录加入 ZIP.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipDir"
+        },
+        {
+          "textRaw": "[m] zipFiles",
+          "name": "[m]_zipfiles",
+          "methods": [
+            {
+              "textRaw": "zipFiles(filePathList, destZipPath?, options?)",
+              "type": "method",
+              "name": "zipFiles",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>filePathList</strong> { <a href=\"dataTypes#iterable\">Iterable</a> } - 文件路径列表</li>\n<li><strong>[ destZipPath ]</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"#zipoptions\">ZipOptions</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#zipnativeobject\">ZipNativeObject</a> }</li>\n</ul>\n<p>批量压缩文件. <code>filePathList</code> 必须可迭代, 且每个文件必须存在.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "destZipPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] zipFiles"
+        },
+        {
+          "textRaw": "[m] unzip",
+          "name": "[m]_unzip",
+          "methods": [
+            {
+              "textRaw": "unzip(zipPath, destPath?, options?)",
+              "type": "method",
+              "name": "unzip",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>解压 ZIP 到目标目录.</p>\n<pre><code class=\"lang-js\">zip.unzip(&#39;./logs.zip&#39;, &#39;./logs&#39;);\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipNativeObject</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipPath"
+                    },
+                    {
+                      "name": "destPath?"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] unzip"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>ZIP 文件的运行时解析路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] zipFile",
+          "name": "[p]_zipfile",
+          "desc": "<ul>\n<li>{ <a href=\"https://javadoc.io/doc/net.lingala.zip4j/zip4j/latest/net/lingala/zip4j/ZipFile.html\">net.lingala.zip4j.ZipFile</a> }</li>\n</ul>\n<p>底层 Zip4j 对象.</p>\n",
+          "type": "module",
+          "displayName": "[p] zipFile"
+        },
+        {
+          "textRaw": "[m] addFile",
+          "name": "[m]_addfile",
+          "methods": [
+            {
+              "textRaw": "addFile(filePath, options?)",
+              "type": "method",
+              "name": "addFile",
+              "desc": "<p>添加文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFile"
+        },
+        {
+          "textRaw": "[m] addFiles",
+          "name": "[m]_addfiles",
+          "methods": [
+            {
+              "textRaw": "addFiles(filePathList, options?)",
+              "type": "method",
+              "name": "addFiles",
+              "desc": "<p>添加多个文件. <code>filePathList</code> 必须可迭代.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePathList"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFiles"
+        },
+        {
+          "textRaw": "[m] addFolder",
+          "name": "[m]_addfolder",
+          "methods": [
+            {
+              "textRaw": "addFolder(filePath, options?)",
+              "type": "method",
+              "name": "addFolder",
+              "desc": "<p>添加文件夹.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "filePath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addFolder"
+        },
+        {
+          "textRaw": "[m] extractAll",
+          "name": "[m]_extractall",
+          "methods": [
+            {
+              "textRaw": "extractAll(destPath, options?)",
+              "type": "method",
+              "name": "extractAll",
+              "desc": "<p>解压全部文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractAll"
+        },
+        {
+          "textRaw": "[m] extractFile",
+          "name": "[m]_extractfile",
+          "methods": [
+            {
+              "textRaw": "extractFile(zipFilePath, destPath, options?, newFileName?)",
+              "type": "method",
+              "name": "extractFile",
+              "desc": "<p>解压指定文件. <code>newFileName</code> 可用于指定解压后的新名称.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "zipFilePath"
+                    },
+                    {
+                      "name": "destPath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "newFileName?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] extractFile"
+        },
+        {
+          "textRaw": "[m] setPassword",
+          "name": "[m]_setpassword",
+          "methods": [
+            {
+              "textRaw": "setPassword(password)",
+              "type": "method",
+              "name": "setPassword",
+              "desc": "<p>设置 ZIP 密码.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "password"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] setPassword"
+        },
+        {
+          "textRaw": "[m] getFileHeader",
+          "name": "[m]_getfileheader",
+          "methods": [
+            {
+              "textRaw": "getFileHeader(fileName)",
+              "type": "method",
+              "name": "getFileHeader",
+              "desc": "<p>返回指定文件头.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeader"
+        },
+        {
+          "textRaw": "[m] getFileHeaders",
+          "name": "[m]_getfileheaders",
+          "methods": [
+            {
+              "textRaw": "getFileHeaders()",
+              "type": "method",
+              "name": "getFileHeaders",
+              "desc": "<p>返回全部文件头数组.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getFileHeaders"
+        },
+        {
+          "textRaw": "[m] isEncrypted",
+          "name": "[m]_isencrypted",
+          "methods": [
+            {
+              "textRaw": "isEncrypted()",
+              "type": "method",
+              "name": "isEncrypted",
+              "desc": "<p>返回 ZIP 是否加密.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isEncrypted"
+        },
+        {
+          "textRaw": "[m] removeFile",
+          "name": "[m]_removefile",
+          "methods": [
+            {
+              "textRaw": "removeFile(fileName)",
+              "type": "method",
+              "name": "removeFile",
+              "desc": "<p>移除指定文件.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "fileName"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeFile"
+        },
+        {
+          "textRaw": "[m] isValidZipFile",
+          "name": "[m]_isvalidzipfile",
+          "methods": [
+            {
+              "textRaw": "isValidZipFile()",
+              "type": "method",
+              "name": "isValidZipFile",
+              "desc": "<p>返回是否为有效 ZIP 文件.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] isValidZipFile"
+        },
+        {
+          "textRaw": "[m] getPath",
+          "name": "[m]_getpath",
+          "methods": [
+            {
+              "textRaw": "getPath()",
+              "type": "method",
+              "name": "getPath",
+              "desc": "<p>返回 ZIP 路径.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getPath"
+        },
+        {
+          "textRaw": "[m] getZipFile",
+          "name": "[m]_getzipfile",
+          "methods": [
+            {
+              "textRaw": "getZipFile()",
+              "type": "method",
+              "name": "getZipFile",
+              "desc": "<p>返回底层 Zip4j 对象.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">ZipOptions</p>\n\n<hr>\n<p>常用选项:</p>\n<ul>\n<li><strong>password</strong> { <a href=\"dataTypes#string\">string</a> } - ZIP 密码. 压缩时会自动启用加密.</li>\n<li><strong>aesKeyStrength</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - AES 强度, 支持 <code>128</code> / <code>192</code> / <code>256</code>.</li>\n<li><strong>aesVersion</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - AES 版本.</li>\n<li><strong>compressionLevel</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 压缩等级.</li>\n<li><strong>compressionMethod</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 压缩方式.</li>\n<li><strong>encryptionMethod</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 加密方式.</li>\n<li><strong>defaultFolderPath</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>entryCRC</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>entrySize</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>excludeFileFilter</strong> { <a href=\"dataTypes#function\">function</a> } - 返回 <code>true</code> 时排除文件.</li>\n<li><strong>fileComment</strong> / <strong>comment</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fileNameInZip</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>includeRootFolder</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>overrideExistingFilesInZip</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>readHiddenFiles</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>readHiddenFolders</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>unixMode</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>writeExtendedLocalFileHeader</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>lastModifiedFileTime</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><strong>rootFolderNameInZip</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>symbolicLinkAction</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>解压选项:</p>\n<ul>\n<li><strong>password</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>isExtractSymbolicLinks</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<blockquote>\n<p>注: <code>ignoreDateTimeAttributes</code> / <code>isIgnoreDateTimeAttributes</code> 在当前 Zip4j 2.x 实现中不再支持.</p>\n</blockquote>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getZipFile"
+        }
+      ],
+      "type": "module",
+      "displayName": "Zip"
+    }
+  ]
+}

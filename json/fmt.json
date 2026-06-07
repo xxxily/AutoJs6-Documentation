@@ -1,0 +1,155 @@
+{
+  "source": "../api/fmt.md",
+  "modules": [
+    {
+      "textRaw": "Fmt - 数据格式化",
+      "name": "fmt_-_数据格式化",
+      "desc": "<p><code>fmt</code> 模块用于将数据格式化为适合阅读的字符串. 当前公开实现以字节大小格式化为主.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/formatter/Formatter.kt</code>, <code>runtime/api/augment/formatter/Bytes.kt</code>, <code>runtime/api/augment/converter/core/Bytes.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">fmt</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] bytes",
+          "name": "[m]_bytes",
+          "methods": [
+            {
+              "textRaw": "bytes(source, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>useIecIdentifier</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否输出 <code>KiB</code> / <code>MiB</code> 等 IEC 标识</li>\n<li><strong>useSpace</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 数值与单位之间是否保留空格, 默认 <code>true</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>trimTrailingZero</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否去除尾随零, 默认 <code>false</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将字节数据格式化为字符串.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes(1024)); // 1.00 KB\nconsole.log(fmt.bytes(1536, { fractionDigits: 1 })); // 1.5 KB\nconsole.log(fmt.bytes(1024, { useIecIdentifier: true })); // 1.00 KiB\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, fromUnit, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "fromUnit"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] bytes"
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "[m] bytes.strict",
+          "name": "strict",
+          "methods": [
+            {
+              "textRaw": "bytes.strict(source, options?)",
+              "type": "method",
+              "name": "strict",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式格式化. 严格模式区分 SI 与 IEC 单位, 并默认使用 IEC 单位标识.</p>\n<pre><code class=\"lang-js\">console.log(fmt.bytes.strict(1000, &#39;KB&#39;)); // 1.00 KB\nconsole.log(fmt.bytes.strict(1024, &#39;KiB&#39;)); // 1.00 KiB\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[m] bytes.loose",
+          "name": "loose",
+          "methods": [
+            {
+              "textRaw": "bytes.loose(source, options?)",
+              "type": "method",
+              "name": "loose",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式格式化. 宽松模式以 <code>1024</code> 为默认换算基数, 并允许使用更宽松的单位写法.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[p] bytes.UNITS",
+          "name": "UNITS",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.AUTO",
+          "name": "AUTO",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.IEC_DIV",
+          "name": "IEC_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1024</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.SI_DIV",
+          "name": "SI_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1000</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "Fmt - 数据格式化"
+    }
+  ]
+}

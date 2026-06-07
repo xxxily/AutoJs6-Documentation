@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\storageType.md",
+  "source": "../api/storageType.md",
   "modules": [
     {
       "textRaw": "Storage (存储类)",

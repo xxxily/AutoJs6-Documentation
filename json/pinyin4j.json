@@ -1,0 +1,126 @@
+{
+  "source": "../api/pinyin4j.md",
+  "modules": [
+    {
+      "textRaw": "Pinyin4j - 汉语拼音",
+      "name": "pinyin4j_-_汉语拼音",
+      "desc": "<p><code>pinyin4j</code> 模块是对 pinyin4j 库的轻量封装, 用于将汉字转换为拼音字符串.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin4j/Pinyin4j.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin4j</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] pinyin4j",
+          "name": "[@]_pinyin4j",
+          "methods": [
+            {
+              "textRaw": "pinyin4j(str, options?)",
+              "type": "method",
+              "name": "pinyin4j",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin4j(...)</code> 与 <a href=\"#m-of\">pinyin4j.of(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] pinyin4j"
+        },
+        {
+          "textRaw": "[m] of",
+          "name": "[m]_of",
+          "methods": [
+            {
+              "textRaw": "of(str, options?)",
+              "type": "method",
+              "name": "of",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>separator</strong> / <strong>sep</strong> { <a href=\"dataTypes#string\">string</a> } - 分隔符, 默认空字符串</li>\n<li><strong>case</strong> / <strong>caseType</strong> { <a href=\"dataTypes#string\">string</a> } - <code>LOWERCASE</code> / <code>UPPERCASE</code> 及其别名</li>\n<li><strong>tone</strong> / <strong>toneType</strong> { <a href=\"dataTypes#string\">string</a> } - <code>WITHOUT_TONE</code> / <code>WITH_TONE_NUMBER</code> / <code>WITH_TONE_MARK</code> 及其别名</li>\n<li><strong>v</strong> / <strong>vChar</strong> / <strong>vCharType</strong> { <a href=\"dataTypes#string\">string</a> } - <code>WITH_V</code> / <code>WITH_U_AND_COLON</code> / <code>WITH_U_UNICODE</code> 及其别名</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<pre><code class=\"lang-js\">console.log(pinyin4j.of(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin4j.of(&#39;中文&#39;, { sep: &#39; &#39;, tone: &#39;WITH_TONE_NUMBER&#39; }));\nconsole.log(pinyin4j.of(&#39;中文&#39;, { tone: &#39;WITH_TONE_MARK&#39; }));\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "of(str, separator)",
+              "type": "method",
+              "name": "of",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**str** { [string](dataTypes#string) } ",
+                      "name": "**str**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**separator** { [string](dataTypes#string) } ",
+                      "name": "**separator**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [string](dataTypes#string) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [string](dataTypes#string) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "separator"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>第二个参数为字符串时, 会作为分隔符使用.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] of"
+        },
+        {
+          "textRaw": "[m] as",
+          "name": "[m]_as",
+          "methods": [
+            {
+              "textRaw": "as(str)",
+              "type": "method",
+              "name": "as",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> } - 带数字声调的拼音字符串</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>将 <code>zhong1</code> / <code>lü4</code> / <code>nv3</code> 等数字声调写法转换为声调符号写法.</p>\n<pre><code class=\"lang-js\">console.log(pinyin4j.as(&#39;zhong1wen2&#39;)); // zhōngwén\nconsole.log(pinyin4j.as(&#39;nv3&#39;)); // nǚ\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] as"
+        }
+      ],
+      "type": "module",
+      "displayName": "Pinyin4j - 汉语拼音"
+    }
+  ]
+}

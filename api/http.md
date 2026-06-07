@@ -11,6 +11,21 @@ http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.
 
 > 注: 与 [web](web) 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.
 
+## `6.7.0` 速查
+
+AutoJs6 `6.7.0` 的 HTTP 模块已经覆盖同步请求、回调请求和异步请求三类用法.
+
+新增或已确认的高频能力:
+
+- `http.requestAsync` / `http.getAsync` / `http.headAsync` / `http.postAsync` / `http.postJsonAsync` / `http.postMultipartAsync` / `http.putAsync` / `http.deleteAsync` / `http.delAsync`.
+- `http.head` / `http.put` / `http.delete` / `http.del`.
+- `options.cacheBody` 与 `options.bodyCacheThresholdBytes`, 用于控制响应体重复读取缓存.
+- `options.insecure` / `options.isInsecure`, 用于跳过 TLS 证书和主机名校验.
+- `options.client`, 用于通过 OkHttpClient.Builder 的一参或两参方法配置客户端.
+- `response.body.stream()` / `response.body.saveToFile(path, bufferSize?)` / `response.body.close()`.
+
+> 源码依据: `runtime/api/augment/http/Http.kt`, `RequestBuilder.kt`, `ResponseBodyNativeObject.kt`, `HttpSaveResult.kt`.
+
 ---
 
 <p style="font: bold 2em sans-serif; color: #FF7043">http</p>
@@ -49,8 +64,8 @@ if (response.statusCode === 200) {
 
 - **url** { [string](dataTypes#string) } - 请求的 URL 地址 (默认使用 HTTP 协议)
 - **options** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - 请求的构建选项
-- **callback** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) } - 请求的响应回调
-- <ins>**returns**</ins> { [HttpResponse](httpResponseType) } - 请求的响应实例
+- **callback** { [function](dataTypes#function) } - 请求的响应回调
+- <ins>**returns**</ins> { [void](dataTypes#void) } - 回调模式下不直接返回响应实例
 
 
 - **url** { [string](dataTypes#string) } - 请求的 URL 地址
@@ -112,6 +127,92 @@ if(res.statusCode != 200){
 }
 ```
 
+## [m] requestAsync
+
+### requestAsync(url, options?, callback?)
+
+**`6.7.0`**
+
+- **url** { [string](dataTypes#string) }
+- **[ options ]** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) }
+- **[ callback ]** { [function](dataTypes#function) }
+- <ins>**returns**</ins> { [object](dataTypes#object) }
+
+在后台线程执行 HTTP 请求, 并返回 AutoJs6 运行时的异步操作对象. 如果提供回调, 回调会在 UI 线程收到 `response` 或 `error`.
+
+```js
+http.getAsync('https://example.com', { cacheBody: true }, function (res, err) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(res.statusCode);
+    console.log(res.body.string());
+});
+```
+
+## [m] getAsync
+
+### getAsync(url, options?, callback?)
+
+**`6.7.0`**
+
+异步 GET 请求. 参数与 [get](#m-get) 类似.
+
+## [m] head
+
+### head(url, options?, callback?)
+
+**`6.7.0`**
+
+发送 HEAD 请求.
+
+## [m] headAsync
+
+### headAsync(url, options?, callback?)
+
+**`6.7.0`**
+
+异步 HEAD 请求.
+
+## [m] put
+
+### put(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+- **url** { [string](dataTypes#string) }
+- **[ data ]** { [string](dataTypes#string) | [object](dataTypes#object) | * }
+- **[ options ]** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) }
+- **[ callback ]** { [function](dataTypes#function) }
+- <ins>**returns**</ins> { [HttpResponse](httpResponseType) | [void](dataTypes#void) }
+
+发送 PUT 请求. 默认 `contentType` 为 `application/x-www-form-urlencoded`; 当 `contentType` 为 `application/json` 时会使用 `JSON.stringify(data)`.
+
+## [m] putAsync
+
+### putAsync(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+异步 PUT 请求.
+
+## [m] delete
+
+### delete(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+发送 DELETE 请求. `del` 是此方法的别名.
+
+## [m] deleteAsync
+
+### deleteAsync(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+异步 DELETE 请求. `delAsync` 是此方法的别名.
+
 ## [m] post
 
 ### post(url, data, options?, callback?)
@@ -143,6 +244,20 @@ if(html.contains("页面跳转中")){
 }
 ```
 
+## [m] postAsync
+
+### postAsync(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+- **url** { [string](dataTypes#string) }
+- **[ data ]** { [string](dataTypes#string) | [object](dataTypes#object) | * }
+- **[ options ]** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) }
+- **[ callback ]** { [function](dataTypes#function) }
+- <ins>**returns**</ins> { [object](dataTypes#object) }
+
+异步 POST 请求. `data` 的处理方式与 [post](#m-post) 一致, 默认 `contentType` 为 `application/x-www-form-urlencoded`.
+
 ## [m] postJson
 
 ### postJson(url, data?, options?, callback?)
@@ -167,6 +282,20 @@ r = http.postJson(url, {
 });
 toastLog(r.body.string());
 ```
+
+## [m] postJsonAsync
+
+### postJsonAsync(url, data?, options?, callback?)
+
+**`6.7.0`**
+
+- **url** { [string](dataTypes#string) }
+- **[ data ]** { [object](dataTypes#object) | * }
+- **[ options ]** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) }
+- **[ callback ]** { [function](dataTypes#function) }
+- <ins>**returns**</ins> { [object](dataTypes#object) }
+
+异步 JSON POST 请求. 内部会设置 `contentType` 为 `application/json`, 并通过 `JSON.stringify(data)` 构造请求体.
 
 ## [m] postMultipart
 
@@ -220,6 +349,20 @@ var res = http.postMultipart(url, {
 });
 log(res.body.string());
 ```
+
+## [m] postMultipartAsync
+
+### postMultipartAsync(url, files, options?, callback?)
+
+**`6.7.0`**
+
+- **url** { [string](dataTypes#string) }
+- **files** { [object](dataTypes#object) }
+- **[ options ]** { [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) }
+- **[ callback ]** { [function](dataTypes#function) }
+- <ins>**returns**</ins> { [object](dataTypes#object) }
+
+异步 multipart/form-data 请求. `files` 参数格式与 [postMultipart](#m-postmultipart) 一致.
 
 ## [m] request
 

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\mimeTypeGlossary.md",
+  "source": "../api/mimeTypeGlossary.md",
   "modules": [
     {
       "textRaw": "MIME Type (MIME 类型)",

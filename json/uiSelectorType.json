@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\uiSelectorType.md",
+  "source": "../api/uiSelectorType.md",
   "modules": [
     {
       "textRaw": "选择器 (UiSelector)",

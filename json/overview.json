@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\overview.md",
+  "source": "../api/overview.md",
   "modules": [
     {
       "textRaw": "综述 (Overview)",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\noticePresetConfigurationType.md",
+  "source": "../api/noticePresetConfigurationType.md",
   "modules": [
     {
       "textRaw": "NoticePresetConfiguration",

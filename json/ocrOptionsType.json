@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\ocrOptionsType.md",
+  "source": "../api/ocrOptionsType.md",
   "modules": [
     {
       "textRaw": "OcrOptions",

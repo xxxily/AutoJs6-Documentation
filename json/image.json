@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\image.md",
+  "source": "../api/image.md",
   "modules": [
     {
       "textRaw": "图像 (Images)",

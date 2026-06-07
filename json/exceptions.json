@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\exceptions.md",
+  "source": "../api/exceptions.md",
   "modules": [
     {
       "textRaw": "异常 (Exceptions)",

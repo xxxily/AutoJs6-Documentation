@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\colorType.md",
+  "source": "../api/colorType.md",
   "modules": [
     {
       "textRaw": "Color (颜色类)",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\plugins.md",
+  "source": "../api/plugins.md",
   "modules": [
     {
       "textRaw": "插件 (Plugins)",

@@ -1,0 +1,49 @@
+{
+  "source": "../api/documentationAudit.md",
+  "modules": [
+    {
+      "textRaw": "文档覆盖审计 (Documentation Audit)",
+      "name": "文档覆盖审计_(documentation_audit)",
+      "desc": "<p>本章节用于记录文档仓库与 AutoJs6 上游源码之间的覆盖关系, 便于后续构建面向 AI 问答的知识库时判断资料可信度.</p>\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "审计基准",
+          "name": "审计基准",
+          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>应用源码仓库</td>\n<td><a href=\"http://project.autojs6.com\">SuperMonster003/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库旧版本</td>\n<td><code>1.1.8</code></td>\n</tr>\n<tr>\n<td>旧文档最近更新</td>\n<td><code>2023/12/01</code></td>\n</tr>\n<tr>\n<td>审计日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<p>结论: <code>1.1.8</code> 版本文档已明显落后于 AutoJs6 <code>6.7.0</code> 的实际能力. 主要证据包括:</p>\n<ul>\n<li>上游 <code>README.md</code> 的发行历史已经包含 <code>v6.7.0</code>, 并声明 <code>cvt</code> / <code>fmt</code> / <code>zip</code> / <code>mediainfo</code> 等模块.</li>\n<li>上游 <code>ScriptRuntime.kt</code> 已将 <code>mime</code> / <code>sysprops</code> / <code>sqlite</code> / <code>zip</code> / <code>nanoid</code> / <code>pinyin</code> / <code>pinyin4j</code> / <code>mediainfo</code> 等对象注入脚本运行时.</li>\n<li>旧文档导航与全量文档中缺少上述多个模块页面, 且 <code>http</code> 等既有页面未覆盖 <code>6.7.0</code> 新增的异步请求、PUT/DELETE/HEAD、响应体流式保存和请求选项.</li>\n</ul>\n<hr>\n",
+          "type": "module",
+          "displayName": "审计基准"
+        },
+        {
+          "textRaw": "覆盖状态",
+          "name": "覆盖状态",
+          "desc": "<table>\n<thead>\n<tr>\n<th>模块或能力</th>\n<th>源码状态</th>\n<th>文档状态</th>\n<th>本次处理</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>cvt</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>fmt</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>sqlite</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>zip</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>mediainfo</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>mime</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>nanoid</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>sysprops</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>pinyin</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>pinyin4j</code></td>\n<td>已注入运行时</td>\n<td>缺页</td>\n<td>新增基础页</td>\n</tr>\n<tr>\n<td><code>http</code></td>\n<td>已有新能力</td>\n<td>页面过旧</td>\n<td>补充 <code>6.7.0</code> 速查</td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>注: &quot;基础页&quot; 表示已经补齐模块入口、主要方法、核心参数和源码证据, 可用于知识库回答基础事实问题. 仍建议后续为每个模块继续补充完整类型页、错误条件和更多示例.</p>\n</blockquote>\n<hr>\n",
+          "type": "module",
+          "displayName": "覆盖状态"
+        },
+        {
+          "textRaw": "源码证据",
+          "name": "源码证据",
+          "desc": "<p>主要源码路径:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/converter/Converter.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/converter/Bytes.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/formatter/Formatter.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/formatter/Bytes.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/sqlite/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/SQLite.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/database/Database.java</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/Zip.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/zip/ZipNativeObject.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo/Mediainfo.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mediainfo/MediainfoNativeObject.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/Mime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/mime/JsMime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/nanoid/NanoID.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/sysprops/Sysprops.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin/Pinyin.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin/PinyinCore.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/pinyin4j/Pinyin4j.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/Http.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/RequestBuilder.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/http/ResponseBodyNativeObject.kt</code></li>\n</ul>\n<hr>\n",
+          "type": "module",
+          "displayName": "源码证据"
+        },
+        {
+          "textRaw": "知识库建议",
+          "name": "知识库建议",
+          "desc": "<p>建议将知识库按以下层级拆分:</p>\n<ol>\n<li>项目总览与版本边界: 项目定位、Android/API 版本、Rhino 版本、构建环境、上游提交.</li>\n<li>脚本运行时对象: 全局函数、运行时注入模块、模块别名和版本新增时间.</li>\n<li>核心自动化能力: 无障碍、选择器、控件、自动化动作、Root/Shizuku.</li>\n<li>文件与媒体能力: 文件、SQLite、Zip、MediaInfo、图片、OCR、Barcode/QR Code.</li>\n<li>网络能力: HTTP、Web、WebSocket、响应体处理、TLS/客户端配置.</li>\n<li>UI 与交互能力: UI、Floaty、Dialog、Console、Toast、Notice.</li>\n<li>工程能力: 模块加载、插件、打包 APK、VSCode 扩展、Tasker.</li>\n<li>兼容性和限制: 权限、Android 版本、读写路径、线程/协程、异步结果.</li>\n</ol>\n<hr>\n",
+          "type": "module",
+          "displayName": "知识库建议"
+        },
+        {
+          "textRaw": "后续优先级",
+          "name": "后续优先级",
+          "desc": "<ul>\n<li>为新增基础页补充完整类型页: <code>ZipOptions</code>, <code>ZipNativeObject</code>, <code>Database</code>, <code>CursorWrapper</code>, <code>HttpSaveResult</code>, <code>JsMime</code>, <code>MediainfoNativeObject</code>.</li>\n<li>继续同步 <code>v6.6.0</code> 到 <code>v6.7.0</code> 的新增 API 到既有页面, 尤其是 <code>autojs</code> / <code>app</code> / <code>device</code> / <code>ui</code> / <code>engines</code> / <code>http</code> / <code>ocr</code>.</li>\n<li>将源码方法签名自动抽取为机器可读索引, 让知识库回答可以回链到具体源码路径.</li>\n</ul>\n",
+          "type": "module",
+          "displayName": "后续优先级"
+        }
+      ],
+      "type": "module",
+      "displayName": "文档覆盖审计 (Documentation Audit)"
+    }
+  ]
+}

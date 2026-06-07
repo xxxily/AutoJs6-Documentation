@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\timers.md",
+  "source": "../api/timers.md",
   "modules": [
     {
       "textRaw": "定时器 (Timers)",

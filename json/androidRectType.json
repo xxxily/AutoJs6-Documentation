@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\androidRectType.md",
+  "source": "../api/androidRectType.md",
   "modules": [
     {
       "textRaw": "AndroidRect",

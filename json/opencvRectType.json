@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\opencvRectType.md",
+  "source": "../api/opencvRectType.md",
   "modules": [
     {
       "textRaw": "OpenCVRect",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\httpResponseHeadersType.md",
+  "source": "../api/httpResponseHeadersType.md",
   "modules": [
     {
       "textRaw": "HttpResponseHeaders",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\i18n.md",
+  "source": "../api/i18n.md",
   "modules": [
     {
       "textRaw": "国际化 (Internationalization)",

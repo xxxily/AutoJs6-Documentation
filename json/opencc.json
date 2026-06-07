@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\opencc.md",
+  "source": "../api/opencc.md",
   "modules": [
     {
       "textRaw": "OpenCC",

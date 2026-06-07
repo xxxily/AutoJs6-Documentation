@@ -63,6 +63,17 @@
 
 [comment]: <> "Version history only shows last 3 versions"
 
+## v1.2.0
+
+<p style="font: bold 0.8em sans-serif; color: #888888">2026/06/07</p>
+
+- `新增` [文档覆盖审计](https://docs.autojs6.com/#/documentationAudit) 页面, 记录文档与 AutoJs6 `6.7.0` 源码能力的差异基线
+- `新增` [文档更新推进清单](https://docs.autojs6.com/#/documentationRoadmap) 页面, 记录已完成、待更新和后续 agent 验收规则
+- `新增` [单位转换 (Cvt)](https://docs.autojs6.com/#/cvt) / [数据格式化 (Fmt)](https://docs.autojs6.com/#/fmt) / [SQLite](https://docs.autojs6.com/#/sqlite) / [Zip](https://docs.autojs6.com/#/zip) / [MediaInfo](https://docs.autojs6.com/#/mediainfo) 基础文档
+- `新增` [MIME](https://docs.autojs6.com/#/mime) / [NanoID](https://docs.autojs6.com/#/nanoid) / [系统属性 (Sysprops)](https://docs.autojs6.com/#/sysprops) / [汉语拼音 (Pinyin)](https://docs.autojs6.com/#/pinyin) / [Pinyin4j](https://docs.autojs6.com/#/pinyin4j) 基础文档
+- `优化` [HTTP](https://docs.autojs6.com/#/http) 章节补充 `6.7.0` 异步请求、PUT/DELETE/HEAD、响应体流式保存、请求缓存及不安全 TLS 选项说明
+- `优化` 更新文档导航、全量文档与部署进度, 为后续知识库整理提供覆盖矩阵
+
 ## v1.1.8
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/12/01</p>
@@ -86,12 +97,6 @@
 - `新增` [二维码 (QR Code)](https://docs.autojs6.com/#/qrcode) 文档
 - `优化` 完善 [颜色 (Color)](https://docs.autojs6.com/#/color) 章节
 - `优化` 完善 [光学字符识别 (OCR)](https://docs.autojs6.com/#/ocr) 章节
-
-## v1.1.6
-
-<p style="font: bold 0.8em sans-serif; color: #888888">2023/07/21</p>
-
-- `优化` 完善 [控件节点](https://docs.autojs6.com/#/uiObjectType) 章节
 
 ##### 更多版本历史可参阅
 

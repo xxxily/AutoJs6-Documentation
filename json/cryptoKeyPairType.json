@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\cryptoKeyPairType.md",
+  "source": "../api/cryptoKeyPairType.md",
   "modules": [
     {
       "textRaw": "CryptoKeyPair",

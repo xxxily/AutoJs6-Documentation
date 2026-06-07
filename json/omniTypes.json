@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\omniTypes.md",
+  "source": "../api/omniTypes.md",
   "modules": [
     {
       "textRaw": "全能类型 (Omnipotent Types)",

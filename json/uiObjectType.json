@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\uiObjectType.md",
+  "source": "../api/uiObjectType.md",
   "modules": [
     {
       "textRaw": "控件节点 (UiObject)",

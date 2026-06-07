@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\s13n.md",
+  "source": "../api/s13n.md",
   "modules": [
     {
       "textRaw": "标准化 (Standardization)",

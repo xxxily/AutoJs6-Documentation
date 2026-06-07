@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\okhttp3HttpUrlType.md",
+  "source": "../api/okhttp3HttpUrlType.md",
   "modules": [
     {
       "textRaw": "Okhttp3HttpUrl",

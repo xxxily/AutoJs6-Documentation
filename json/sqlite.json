@@ -1,0 +1,562 @@
+{
+  "source": "../api/sqlite.md",
+  "modules": [
+    {
+      "textRaw": "SQLite",
+      "name": "sqlite",
+      "desc": "<p><code>sqlite</code> 模块用于在脚本中打开和操作 SQLite 数据库文件.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sqlite/SQLite.kt</code>, <code>runtime/api/SQLite.kt</code>, <code>core/database/Database.java</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sqlite</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] sqlite",
+          "name": "[@]_sqlite",
+          "methods": [
+            {
+              "textRaw": "sqlite(databaseFilePath, options?, callback?)",
+              "type": "method",
+              "name": "sqlite",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>sqlite(...)</code> 与 <a href=\"#m-open\">sqlite.open(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "databaseFilePath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] sqlite"
+        },
+        {
+          "textRaw": "[m] open",
+          "name": "[m]_open",
+          "methods": [
+            {
+              "textRaw": "open(databaseFilePath, options?, callback?)",
+              "type": "method",
+              "name": "open",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>databaseFilePath</strong> { <a href=\"dataTypes#string\">string</a> } - 数据库文件路径, 不可为空</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>version</strong> { <a href=\"dataTypes#number\">number</a> } - 数据库版本, 默认 <code>1</code></li>\n<li><strong>readOnly</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否以只读方式打开, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><strong>[ callback ]</strong> {{<ul>\n<li><strong>onCreate(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onOpen(database)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onUpgrade(database, oldVersion, newVersion)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><strong>onCorruption(db)</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#database\">Database</a> }</li>\n</ul>\n<p>打开 SQLite 数据库. 路径会经过 AutoJs6 运行时文件路径解析.</p>\n<pre><code class=\"lang-js\">let db = sqlite.open(&#39;./data/demo.db&#39;, {\n    version: 1,\n});\n\ndb.execSQL(&#39;CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name TEXT)&#39;);\ndb.insert(&#39;user&#39;, { name: &#39;Alice&#39; });\nlet row = db.rawQuery(&#39;SELECT * FROM user WHERE name = ?&#39;, [ &#39;Alice&#39; ]).single();\nconsole.log(row.name);\ndb.close();\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">Database</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "databaseFilePath"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] open"
+        },
+        {
+          "textRaw": "[m] execSQL",
+          "name": "[m]_execsql",
+          "methods": [
+            {
+              "textRaw": "execSQL(sql)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行不返回结果集的 SQL.</p>\n"
+            },
+            {
+              "textRaw": "execSQL(sql, bindArgs)",
+              "type": "method",
+              "name": "execSQL",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**bindArgs** { [array](dataTypes#array) } ",
+                      "name": "**bindArgs**",
+                      "type": " [array](dataTypes#array) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [void](dataTypes#void) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [void](dataTypes#void) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "bindArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] execSQL"
+        },
+        {
+          "textRaw": "[m] rawQuery",
+          "name": "[m]_rawquery",
+          "methods": [
+            {
+              "textRaw": "rawQuery(sql, selectionArgs)",
+              "type": "method",
+              "name": "rawQuery",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**sql** { [string](dataTypes#string) } ",
+                      "name": "**sql**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**selectionArgs** { [string](dataTypes#string)[] } ",
+                      "name": "**selectionArgs**",
+                      "type": " [string](dataTypes#string)[] "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [CursorWrapper](#cursorwrapper) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [CursorWrapper](#cursorwrapper) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "sql"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行原始查询并返回包装后的游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] rawQuery"
+        },
+        {
+          "textRaw": "[m] query",
+          "name": "[m]_query",
+          "methods": [
+            {
+              "textRaw": "query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit?)",
+              "type": "method",
+              "name": "query",
+              "desc": "<p>返回包装后的游标. 参数含义与 Android <code>SQLiteDatabase.query</code> 保持一致.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "columns"
+                    },
+                    {
+                      "name": "selection"
+                    },
+                    {
+                      "name": "selectionArgs"
+                    },
+                    {
+                      "name": "groupBy"
+                    },
+                    {
+                      "name": "having"
+                    },
+                    {
+                      "name": "orderBy"
+                    },
+                    {
+                      "name": "limit?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] query"
+        },
+        {
+          "textRaw": "[m] insert",
+          "name": "[m]_insert",
+          "methods": [
+            {
+              "textRaw": "insert(table, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**table** { [string](dataTypes#string) } ",
+                      "name": "**table**",
+                      "type": " [string](dataTypes#string) "
+                    },
+                    {
+                      "textRaw": "**values** { [object](dataTypes#object) } ",
+                      "name": "**values**",
+                      "type": " [object](dataTypes#object) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [number](dataTypes#number) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [number](dataTypes#number) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>插入一行数据. <code>values</code> 支持 <code>null</code> / <code>number</code> / <code>boolean</code> / <code>string</code> / <code>byte[]</code>; 其他类型会抛出异常.</p>\n"
+            },
+            {
+              "textRaw": "insert(table, nullColumnHack, values)",
+              "type": "method",
+              "name": "insert",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "nullColumnHack"
+                    },
+                    {
+                      "name": "values"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] insert"
+        },
+        {
+          "textRaw": "[m] update",
+          "name": "[m]_update",
+          "methods": [
+            {
+              "textRaw": "update(table, values, whereClause, whereArgs)",
+              "type": "method",
+              "name": "update",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "values"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] update"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(table, whereClause, whereArgs)",
+              "type": "method",
+              "name": "delete",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "table"
+                    },
+                    {
+                      "name": "whereClause"
+                    },
+                    {
+                      "name": "whereArgs"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] transaction",
+          "name": "[m]_transaction",
+          "methods": [
+            {
+              "textRaw": "transaction(transactionCallback, exclusive?)",
+              "type": "method",
+              "name": "transaction",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**transactionCallback** { [function](dataTypes#function) } ",
+                      "name": "**transactionCallback**",
+                      "type": " [function](dataTypes#function) "
+                    },
+                    {
+                      "textRaw": "**[ exclusive = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "exclusive = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [EventEmitter](eventEmitterType) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [EventEmitter](eventEmitterType) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "transactionCallback"
+                    },
+                    {
+                      "name": "exclusive?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>执行事务并返回事件发射器. 事务过程中可能触发 <code>begin</code> / <code>commit</code> / <code>rollback</code> / <code>end</code> / <code>error</code> 事件.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] transaction"
+        },
+        {
+          "textRaw": "[m] close",
+          "name": "[m]_close",
+          "methods": [
+            {
+              "textRaw": "close()",
+              "type": "method",
+              "name": "close",
+              "desc": "<p>关闭数据库连接.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">CursorWrapper</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] close"
+        },
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(index)",
+              "type": "method",
+              "name": "get",
+              "desc": "<p>按列索引读取当前行字段.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "index"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getByColumn",
+          "name": "[m]_getbycolumn",
+          "methods": [
+            {
+              "textRaw": "getByColumn(column)",
+              "type": "method",
+              "name": "getByColumn",
+              "desc": "<p>按列名读取当前行字段.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "column"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getByColumn"
+        },
+        {
+          "textRaw": "[m] pick",
+          "name": "[m]_pick",
+          "methods": [
+            {
+              "textRaw": "pick()",
+              "type": "method",
+              "name": "pick",
+              "desc": "<p>将当前行转换为对象.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] pick"
+        },
+        {
+          "textRaw": "[m] next",
+          "name": "[m]_next",
+          "methods": [
+            {
+              "textRaw": "next()",
+              "type": "method",
+              "name": "next",
+              "desc": "<p>移动到下一行并返回对象; 无下一行时返回 <code>null</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] next"
+        },
+        {
+          "textRaw": "[m] single",
+          "name": "[m]_single",
+          "methods": [
+            {
+              "textRaw": "single()",
+              "type": "method",
+              "name": "single",
+              "desc": "<p>返回第一条记录并关闭游标.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] single"
+        },
+        {
+          "textRaw": "[m] all",
+          "name": "[m]_all",
+          "methods": [
+            {
+              "textRaw": "all(close?)",
+              "type": "method",
+              "name": "all",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ close = `true` ]** { [boolean](dataTypes#boolean) } ",
+                      "name": "**[",
+                      "desc": "close = `true` ]** { [boolean](dataTypes#boolean) }"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [array](dataTypes#array) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [array](dataTypes#array) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "close?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>读取全部行. 默认读取后关闭游标.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] all"
+        }
+      ],
+      "type": "module",
+      "displayName": "SQLite"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\floaty.md",
+  "source": "../api/floaty.md",
   "modules": [
     {
       "textRaw": "悬浮窗 (Floaty)",

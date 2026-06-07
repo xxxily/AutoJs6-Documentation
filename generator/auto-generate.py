@@ -1,5 +1,6 @@
 import os
 import os.path
+import subprocess
 import sys
 
 import importlib.util
@@ -7,7 +8,13 @@ import importlib.util
 jproperties_spec = importlib.util.find_spec('jproperties')
 
 if jproperties_spec is None:
-    os.system('pip install jproperties')
+    try:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'jproperties'])
+    except subprocess.CalledProcessError as e:
+        sys.exit(
+            'Failed to install jproperties automatically. '
+            'Run this generator in a Python virtual environment and install jproperties first.'
+        )
 
 from jproperties import Properties
 
@@ -16,10 +23,15 @@ out_dir = os.path.join('..', 'docs')
 json_out_dir = os.path.join('..', 'json')
 template = os.path.join('..', 'template.html')
 
-version_file_path = 'D:/idea-projects/AutoJs6/version.properties'
-version_fallback = '6.x'
+version_file_candidates = [
+    os.environ.get('AUTOJS6_VERSION_PROPERTIES'),
+    os.path.join('..', 'version.properties'),
+    'D:/idea-projects/AutoJs6/version.properties',
+]
+version_fallback = os.environ.get('AUTOJS6_VERSION', '6.x')
+version_file_path = next((path for path in version_file_candidates if path and os.path.exists(path)), None)
 
-if os.path.exists(version_file_path):
+if version_file_path:
     configs = Properties()
     with open(version_file_path, 'rb') as config_file:
         configs.load(config_file)
@@ -29,8 +41,15 @@ else:
 
 
 def process(in_file, out_file, fmt='html'):
-    os.system('node generate.js --template={0} --out={1} --node-version={2} {3} --format={4}'
-              .format(template, out_file, version, in_file, fmt))
+    subprocess.check_call([
+        'node',
+        'generate.js',
+        f'--template={template}',
+        f'--out={out_file}',
+        f'--node-version={version}',
+        in_file,
+        f'--format={fmt}',
+    ])
 
 
 def process_all():

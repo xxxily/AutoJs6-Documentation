@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\appType.md",
+  "source": "../api/appType.md",
   "modules": [
     {
       "textRaw": "应用枚举类 (App)",

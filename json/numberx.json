@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\numberx.md",
+  "source": "../api/numberx.md",
   "modules": [
     {
       "textRaw": "Numberx (Number 扩展)",

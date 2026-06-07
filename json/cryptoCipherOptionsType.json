@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\cryptoCipherOptionsType.md",
+  "source": "../api/cryptoCipherOptionsType.md",
   "modules": [
     {
       "textRaw": "CryptoCipherOptions",

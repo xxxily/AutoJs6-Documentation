@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\continuation.md",
+  "source": "../api/continuation.md",
   "modules": [
     {
       "textRaw": "协程 (Continuation)",

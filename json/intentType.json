@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\intentType.md",
+  "source": "../api/intentType.md",
   "modules": [
     {
       "textRaw": "意图 (Intent)",

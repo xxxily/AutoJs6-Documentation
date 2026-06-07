@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\colorTable.md",
+  "source": "../api/colorTable.md",
   "modules": [
     {
       "textRaw": "颜色列表 (Color Table)",

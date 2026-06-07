@@ -50,12 +50,22 @@
 |                [Canvas - 画布](canvas)                |          |
 |                   [UI - 用户界面](ui)                   |          |
 |                  [Web - 万维网](web)                   | &gt; 80% |
-|                    [HTTP](http)                     | &lt; 5%  |
+|                    [HTTP](http)                     | &gt; 20% |
 |                  [Base64](base64)                   |    √     |
 |                [Crypto - 密文](crypto)                |    √     |
+|                  [SQLite](sqlite)                  | &gt; 20% |
+|                   [MIME](mime)                    | &gt; 50% |
+|                  [NanoID](nanoid)                  |    √     |
+|             [Sysprops - 系统属性](sysprops)             | &gt; 50% |
+|              [Pinyin - 汉语拼音](pinyin)               | &gt; 30% |
+|             [Pinyin4j - 汉语拼音](pinyin4j)            | &gt; 50% |
 |               [OpenCC - 中文转换](opencc)               |    √     |
 |         [Internationalization - 国际化](i18n)          |          |
 |            [Standardization - 标准化](s13n)            |          |
+|             [Cvt - 单位转换](cvt)                  | &gt; 50% |
+|             [Fmt - 数据格式化](fmt)                 | &gt; 50% |
+|                    [Zip](zip)                     | &gt; 25% |
+|          [MediaInfo - 媒体信息](mediainfo)            | &gt; 40% |
 |                     [E4X](e4x)                      |    √     |
 |            [Glossaries - 术语](glossaries)            |    √     |
 |            [Exceptions - 异常](exceptions)            |    √     |

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\dataTypes.md",
+  "source": "../api/dataTypes.md",
   "modules": [
     {
       "textRaw": "数据类型 (Data Types)",

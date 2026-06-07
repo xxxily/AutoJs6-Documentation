@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HTTP | AutoJs6 文档 - 6.5.0</title>
+    <title>HTTP | AutoJs6 文档 - 6.7.0</title>
     <link rel="stylesheet" href="assets/fonts.css">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sh.css">
@@ -23,6 +23,8 @@
         <ul>
 <li><a class="nav-overview" href="overview.html">Overview - 综述</a></li>
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
+<li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
+<li><a class="nav-documentationRoadmap" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -72,9 +74,19 @@
 <li><a class="nav-http active" href="http.html">HTTP</a></li>
 <li><a class="nav-base64" href="base64.html">Base64</a></li>
 <li><a class="nav-crypto" href="crypto.html">Crypto - 密文</a></li>
+<li><a class="nav-sqlite" href="sqlite.html">SQLite</a></li>
+<li><a class="nav-mime" href="mime.html">MIME</a></li>
+<li><a class="nav-nanoid" href="nanoid.html">NanoID</a></li>
+<li><a class="nav-sysprops" href="sysprops.html">Sysprops - 系统属性</a></li>
+<li><a class="nav-pinyin" href="pinyin.html">Pinyin - 汉语拼音</a></li>
+<li><a class="nav-pinyin4j" href="pinyin4j.html">Pinyin4j - 汉语拼音</a></li>
 <li><a class="nav-opencc" href="opencc.html">OpenCC - 中文转换</a></li>
 <li><a class="nav-i18n" href="i18n.html">Internationalization - 国际化</a></li>
 <li><a class="nav-s13n" href="s13n.html">Standardization - 标准化</a></li>
+<li><a class="nav-cvt" href="cvt.html">Cvt - 单位转换</a></li>
+<li><a class="nav-fmt" href="fmt.html">Fmt - 数据格式化</a></li>
+<li><a class="nav-zip" href="zip.html">Zip</a></li>
+<li><a class="nav-mediainfo" href="mediainfo.html">MediaInfo - 媒体信息</a></li>
 <li><a class="nav-e4x" href="e4x.html">E4X</a></li>
 </ul>
 <div class="line"></div>
@@ -162,7 +174,7 @@
 
     <div id="column1" data-id="http" class="interior">
         <header>
-            <h1>AutoJs6 文档 - 6.5.0</h1>
+            <h1>AutoJs6 文档 - 6.7.0</h1>
             <div id="gtoc">
                 <p class="index">
                     <a href="index.html" name="toc">索引</a> |
@@ -176,22 +188,67 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#http_http">HTTP</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_6_7_0"><code>6.7.0</code> 速查</a></span></li>
 <li><span class="stability_undefined"><a href="#http_m_get">[m] get</a></span><ul>
 <li><span class="stability_undefined"><a href="#http_get_url">get(url)</a></span></li>
 <li><span class="stability_undefined"><a href="#http_get_url_options">get(url, options)</a></span></li>
 <li><span class="stability_undefined"><a href="#http_get_url_options_callback">get(url, options, callback)</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#http_m_requestasync">[m] requestAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_requestasync_url_options_callback">requestAsync(url, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_getasync">[m] getAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_getasync_url_options_callback">getAsync(url, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_head">[m] head</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_head_url_options_callback">head(url, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_headasync">[m] headAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_headasync_url_options_callback">headAsync(url, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_put">[m] put</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_put_url_data_options_callback">put(url, data?, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_putasync">[m] putAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_putasync_url_data_options_callback">putAsync(url, data?, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_delete">[m] delete</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_delete_url_data_options_callback">delete(url, data?, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_deleteasync">[m] deleteAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_deleteasync_url_data_options_callback">deleteAsync(url, data?, options?, callback?)</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#http_m_post">[m] post</a></span><ul>
 <li><span class="stability_undefined"><a href="#http_post_url_data_options_callback">post(url, data, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_postasync">[m] postAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_postasync_url_data_options_callback">postAsync(url, data?, options?, callback?)</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#http_m_postjson">[m] postJson</a></span><ul>
 <li><span class="stability_undefined"><a href="#http_postjson_url_data_options_callback">postJson(url, data?, options?, callback?)</a></span></li>
 </ul>
 </li>
+<li><span class="stability_undefined"><a href="#http_m_postjsonasync">[m] postJsonAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_postjsonasync_url_data_options_callback">postJsonAsync(url, data?, options?, callback?)</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#http_m_postmultipart">[m] postMultipart</a></span><ul>
 <li><span class="stability_undefined"><a href="#http_postmultipart_url_files_options_callback">postMultipart(url, files, options?, callback?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#http_m_postmultipartasync">[m] postMultipartAsync</a></span><ul>
+<li><span class="stability_undefined"><a href="#http_postmultipartasync_url_files_options_callback">postMultipartAsync(url, files, options?, callback?)</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#http_m_request">[m] request</a></span><ul>
@@ -218,6 +275,20 @@
 <p>http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.</p>
 <blockquote>
 <p>注: 与 <a href="web.html">web</a> 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.</p>
+</blockquote>
+<h2><code>6.7.0</code> 速查<span><a class="mark" href="#http_6_7_0" id="http_6_7_0">#</a></span></h2>
+<p>AutoJs6 <code>6.7.0</code> 的 HTTP 模块已经覆盖同步请求、回调请求和异步请求三类用法.</p>
+<p>新增或已确认的高频能力:</p>
+<ul>
+<li><code>http.requestAsync</code> / <code>http.getAsync</code> / <code>http.headAsync</code> / <code>http.postAsync</code> / <code>http.postJsonAsync</code> / <code>http.postMultipartAsync</code> / <code>http.putAsync</code> / <code>http.deleteAsync</code> / <code>http.delAsync</code>.</li>
+<li><code>http.head</code> / <code>http.put</code> / <code>http.delete</code> / <code>http.del</code>.</li>
+<li><code>options.cacheBody</code> 与 <code>options.bodyCacheThresholdBytes</code>, 用于控制响应体重复读取缓存.</li>
+<li><code>options.insecure</code> / <code>options.isInsecure</code>, 用于跳过 TLS 证书和主机名校验.</li>
+<li><code>options.client</code>, 用于通过 OkHttpClient.Builder 的一参或两参方法配置客户端.</li>
+<li><code>response.body.stream()</code> / <code>response.body.saveToFile(path, bufferSize?)</code> / <code>response.body.close()</code>.</li>
+</ul>
+<blockquote>
+<p>源码依据: <code>runtime/api/augment/http/Http.kt</code>, <code>RequestBuilder.kt</code>, <code>ResponseBodyNativeObject.kt</code>, <code>HttpSaveResult.kt</code>.</p>
 </blockquote>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">http</p>
@@ -249,8 +320,8 @@ if (response.statusCode === 200) {
 <ul>
 <li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 请求的 URL 地址 (默认使用 HTTP 协议)</li>
 <li><strong>options</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> } - 请求的构建选项</li>
-<li><strong>callback</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> } - 请求的响应回调</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="httpResponseType.html">HttpResponse</a></span> } - 请求的响应实例</li>
+<li><strong>callback</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> } - 请求的响应回调</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> } - 回调模式下不直接返回响应实例</li>
 </ul>
 <ul>
 <li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 请求的 URL 地址</li>
@@ -294,7 +365,61 @@ if(res.statusCode != 200){
     toast(util.format(&quot;温度: %s 湿度: %s 空气质量: %s&quot;, weather.data.wendu,
         weather.data.shidu, weather.quality));
 }
-</code></pre><h2>[m] post<span><a class="mark" href="#http_m_post" id="http_m_post">#</a></span></h2>
+</code></pre><h2>[m] requestAsync<span><a class="mark" href="#http_m_requestasync" id="http_m_requestasync">#</a></span></h2>
+<h3>requestAsync(url, options?, callback?)<span><a class="mark" href="#http_requestasync_url_options_callback" id="http_requestasync_url_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> }</li>
+<li><strong>[ callback ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+<p>在后台线程执行 HTTP 请求, 并返回 AutoJs6 运行时的异步操作对象. 如果提供回调, 回调会在 UI 线程收到 <code>response</code> 或 <code>error</code>.</p>
+<pre><code class="lang-js">http.getAsync(&#39;https://example.com&#39;, { cacheBody: true }, function (res, err) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    console.log(res.statusCode);
+    console.log(res.body.string());
+});
+</code></pre>
+<h2>[m] getAsync<span><a class="mark" href="#http_m_getasync" id="http_m_getasync">#</a></span></h2>
+<h3>getAsync(url, options?, callback?)<span><a class="mark" href="#http_getasync_url_options_callback" id="http_getasync_url_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>异步 GET 请求. 参数与 <a href="#http_m_get">get</a> 类似.</p>
+<h2>[m] head<span><a class="mark" href="#http_m_head" id="http_m_head">#</a></span></h2>
+<h3>head(url, options?, callback?)<span><a class="mark" href="#http_head_url_options_callback" id="http_head_url_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>发送 HEAD 请求.</p>
+<h2>[m] headAsync<span><a class="mark" href="#http_m_headasync" id="http_m_headasync">#</a></span></h2>
+<h3>headAsync(url, options?, callback?)<span><a class="mark" href="#http_headasync_url_options_callback" id="http_headasync_url_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>异步 HEAD 请求.</p>
+<h2>[m] put<span><a class="mark" href="#http_m_put" id="http_m_put">#</a></span></h2>
+<h3>put(url, data?, options?, callback?)<span><a class="mark" href="#http_put_url_data_options_callback" id="http_put_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ data ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <span class="type">*</span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> }</li>
+<li><strong>[ callback ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="httpResponseType.html">HttpResponse</a></span> | <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+<p>发送 PUT 请求. 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>; 当 <code>contentType</code> 为 <code>application/json</code> 时会使用 <code>JSON.stringify(data)</code>.</p>
+<h2>[m] putAsync<span><a class="mark" href="#http_m_putasync" id="http_m_putasync">#</a></span></h2>
+<h3>putAsync(url, data?, options?, callback?)<span><a class="mark" href="#http_putasync_url_data_options_callback" id="http_putasync_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>异步 PUT 请求.</p>
+<h2>[m] delete<span><a class="mark" href="#http_m_delete" id="http_m_delete">#</a></span></h2>
+<h3>delete(url, data?, options?, callback?)<span><a class="mark" href="#http_delete_url_data_options_callback" id="http_delete_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>发送 DELETE 请求. <code>del</code> 是此方法的别名.</p>
+<h2>[m] deleteAsync<span><a class="mark" href="#http_m_deleteasync" id="http_m_deleteasync">#</a></span></h2>
+<h3>deleteAsync(url, data?, options?, callback?)<span><a class="mark" href="#http_deleteasync_url_data_options_callback" id="http_deleteasync_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<p>异步 DELETE 请求. <code>delAsync</code> 是此方法的别名.</p>
+<h2>[m] post<span><a class="mark" href="#http_m_post" id="http_m_post">#</a></span></h2>
 <h3>post(url, data, options?, callback?)<span><a class="mark" href="#http_post_url_data_options_callback" id="http_post_url_data_options_callback">#</a></span></h3>
 <div class="signature"><ul>
 <li><code>url</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 请求的URL地址, 需要以&quot;http://&quot;或&quot;https://&quot;开头. 如果url没有以&quot;http://&quot;开头, 则默认为&quot;http://&quot;.</li>
@@ -318,7 +443,18 @@ if(html.contains(&quot;页面跳转中&quot;)){
 }else{
     toast(&quot;登录失败&quot;);
 }
-</code></pre><h2>[m] postJson<span><a class="mark" href="#http_m_postjson" id="http_m_postjson">#</a></span></h2>
+</code></pre><h2>[m] postAsync<span><a class="mark" href="#http_m_postasync" id="http_m_postasync">#</a></span></h2>
+<h3>postAsync(url, data?, options?, callback?)<span><a class="mark" href="#http_postasync_url_data_options_callback" id="http_postasync_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ data ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <span class="type">*</span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> }</li>
+<li><strong>[ callback ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+<p>异步 POST 请求. <code>data</code> 的处理方式与 <a href="#http_m_post">post</a> 一致, 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>.</p>
+<h2>[m] postJson<span><a class="mark" href="#http_m_postjson" id="http_m_postjson">#</a></span></h2>
 <h3>postJson(url, data?, options?, callback?)<span><a class="mark" href="#http_postjson_url_data_options_callback" id="http_postjson_url_data_options_callback">#</a></span></h3>
 <div class="signature"><ul>
 <li><code>url</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 请求的URL地址, 需要以&quot;http://&quot;或&quot;https://&quot;开头. 如果url没有以&quot;http://&quot;开头, 则默认为&quot;http://&quot;.</li>
@@ -336,7 +472,18 @@ r = http.postJson(url, {
     userid: &quot;1&quot;,
 });
 toastLog(r.body.string());
-</code></pre><h2>[m] postMultipart<span><a class="mark" href="#http_m_postmultipart" id="http_m_postmultipart">#</a></span></h2>
+</code></pre><h2>[m] postJsonAsync<span><a class="mark" href="#http_m_postjsonasync" id="http_m_postjsonasync">#</a></span></h2>
+<h3>postJsonAsync(url, data?, options?, callback?)<span><a class="mark" href="#http_postjsonasync_url_data_options_callback" id="http_postjsonasync_url_data_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>[ data ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> | <span class="type">*</span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> }</li>
+<li><strong>[ callback ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+<p>异步 JSON POST 请求. 内部会设置 <code>contentType</code> 为 <code>application/json</code>, 并通过 <code>JSON.stringify(data)</code> 构造请求体.</p>
+<h2>[m] postMultipart<span><a class="mark" href="#http_m_postmultipart" id="http_m_postmultipart">#</a></span></h2>
 <h3>postMultipart(url, files, options?, callback?)<span><a class="mark" href="#http_postmultipart_url_files_options_callback" id="http_postmultipart_url_files_options_callback">#</a></span></h3>
 <div class="signature"><ul>
 <li><code>url</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 请求的URL地址, 需要以&quot;http://&quot;或&quot;https://&quot;开头. 如果url没有以&quot;http://&quot;开头, 则默认为&quot;http://&quot;.</li>
@@ -372,7 +519,18 @@ log(res.body.string());
     file: open(&quot;/sdcard/1.txt&quot;)
 });
 log(res.body.string());
-</code></pre><h2>[m] request<span><a class="mark" href="#http_m_request" id="http_m_request">#</a></span></h2>
+</code></pre><h2>[m] postMultipartAsync<span><a class="mark" href="#http_m_postmultipartasync" id="http_m_postmultipartasync">#</a></span></h2>
+<h3>postMultipartAsync(url, files, options?, callback?)<span><a class="mark" href="#http_postmultipartasync_url_files_options_callback" id="http_postmultipartasync_url_files_options_callback">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>url</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+<li><strong>files</strong> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+<li><strong>[ options ]</strong> { <span class="type"><a href="httpRequestBuilderOptionsType.html">HttpRequestBuilderOptions</a></span> }</li>
+<li><strong>[ callback ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">function</a></span> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_object">object</a></span> }</li>
+</ul>
+<p>异步 multipart/form-data 请求. <code>files</code> 参数格式与 <a href="#http_m_postmultipart">postMultipart</a> 一致.</p>
+<h2>[m] request<span><a class="mark" href="#http_m_request" id="http_m_request">#</a></span></h2>
 <h3>request(url, options?, callback?)<span><a class="mark" href="#http_request_url_options_callback" id="http_request_url_options_callback">#</a></span></h3>
 <div class="signature"><ul>
 <li><code>url</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 请求的URL地址, 需要以&quot;http://&quot;或&quot;https://&quot;开头. 如果url没有以&quot;http://&quot;开头, 则默认为&quot;http://&quot;.</li>

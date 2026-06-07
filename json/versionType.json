@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\versionType.md",
+  "source": "../api/versionType.md",
   "modules": [
     {
       "textRaw": "版本工具类 (Version)",

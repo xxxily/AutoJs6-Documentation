@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\shell.md",
+  "source": "../api/shell.md",
   "modules": [
     {
       "textRaw": "Shell",

@@ -1,11 +1,18 @@
 {
-  "source": "..\\api\\http.md",
+  "source": "../api/http.md",
   "modules": [
     {
       "textRaw": "HTTP",
       "name": "http",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Mar 21, 2023.</p>\n\n<hr>\n<p>http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.</p>\n<blockquote>\n<p>注: 与 <a href=\"web\">web</a> 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">http</p>\n\n<hr>\n",
+      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Mar 21, 2023.</p>\n\n<hr>\n<p>http 模块主要用于发送 HTTP 请求, 获取并解析 HTTP 响应.</p>\n<blockquote>\n<p>注: 与 <a href=\"web\">web</a> 模块不同, web 模块主要用于 WebView 网页的注入及客户端构建.</p>\n</blockquote>\n",
       "modules": [
+        {
+          "textRaw": "`6.7.0` 速查",
+          "name": "`6.7.0`_速查",
+          "desc": "<p>AutoJs6 <code>6.7.0</code> 的 HTTP 模块已经覆盖同步请求、回调请求和异步请求三类用法.</p>\n<p>新增或已确认的高频能力:</p>\n<ul>\n<li><code>http.requestAsync</code> / <code>http.getAsync</code> / <code>http.headAsync</code> / <code>http.postAsync</code> / <code>http.postJsonAsync</code> / <code>http.postMultipartAsync</code> / <code>http.putAsync</code> / <code>http.deleteAsync</code> / <code>http.delAsync</code>.</li>\n<li><code>http.head</code> / <code>http.put</code> / <code>http.delete</code> / <code>http.del</code>.</li>\n<li><code>options.cacheBody</code> 与 <code>options.bodyCacheThresholdBytes</code>, 用于控制响应体重复读取缓存.</li>\n<li><code>options.insecure</code> / <code>options.isInsecure</code>, 用于跳过 TLS 证书和主机名校验.</li>\n<li><code>options.client</code>, 用于通过 OkHttpClient.Builder 的一参或两参方法配置客户端.</li>\n<li><code>response.body.stream()</code> / <code>response.body.saveToFile(path, bufferSize?)</code> / <code>response.body.close()</code>.</li>\n</ul>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/http/Http.kt</code>, <code>RequestBuilder.kt</code>, <code>ResponseBodyNativeObject.kt</code>, <code>HttpSaveResult.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">http</p>\n\n<hr>\n",
+          "type": "module",
+          "displayName": "`6.7.0` 速查"
+        },
         {
           "textRaw": "[m] get",
           "name": "[m]_get",
@@ -47,7 +54,7 @@
               "textRaw": "get(url, options, callback)",
               "type": "method",
               "name": "get",
-              "desc": "<p><strong><code>Overload 3/3</code></strong> <strong><code>Async</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址 (默认使用 HTTP 协议)</li>\n<li><strong>options</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的构建选项</li>\n<li><strong>callback</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的响应回调</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"httpResponseType\">HttpResponse</a> } - 请求的响应实例</li>\n</ul>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址</li>\n<li><code>options</code> {Object} 请求选项. 参见[http.request()][].</li>\n<li><code>callback</code> {Function} 回调函数, 可选, 其参数是一个[Response][]对象. 如果不加回调函数, 则该请求将阻塞、同步地执行.</li>\n</ul>\n<p>对地址url进行一次HTTP GET 请求. 如果没有回调函数, 则在请求完成或失败时返回此次请求的响应(参见[Response][]).</p>\n<p>最简单GET请求如下:</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;);\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>采用回调形式的GET请求如下：</p>\n<pre><code>console.show();\nhttp.get(&quot;www.baidu.com&quot;, {}, function(res, err){\n    if(err){\n        console.error(err);\n        return;\n    }\n    log(&quot;code = &quot; + res.statusCode);\n    log(&quot;html = &quot; + res.body.string());\n});\n</code></pre><p>如果要增加HTTP头部信息, 则在options参数中添加, 例如：</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;, {\n    headers: {\n        &#39;Accept-Language&#39;: &#39;zh-cn,zh;q=0.5&#39;,\n        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11&#39;\n    }\n});\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>一个请求天气并解析返回的天气JSON结果的例子如下：</p>\n<pre><code>var city = &quot;广州&quot;;\nvar res = http.get(&quot;http://www.sojson.com/open/api/weather/json.shtml?city=&quot; + city);\nif(res.statusCode != 200){\n    toast(&quot;请求失败: &quot; + res.statusCode + &quot; &quot; + res.statusMessage);\n}else{\n    var weather = res.body.json();\n    log(weather);\n    toast(util.format(&quot;温度: %s 湿度: %s 空气质量: %s&quot;, weather.data.wendu,\n        weather.data.shidu, weather.quality));\n}\n</code></pre>",
+              "desc": "<p><strong><code>Overload 3/3</code></strong> <strong><code>Async</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址 (默认使用 HTTP 协议)</li>\n<li><strong>options</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> } - 请求的构建选项</li>\n<li><strong>callback</strong> { <a href=\"dataTypes#function\">function</a> } - 请求的响应回调</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#void\">void</a> } - 回调模式下不直接返回响应实例</li>\n</ul>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> } - 请求的 URL 地址</li>\n<li><code>options</code> {Object} 请求选项. 参见[http.request()][].</li>\n<li><code>callback</code> {Function} 回调函数, 可选, 其参数是一个[Response][]对象. 如果不加回调函数, 则该请求将阻塞、同步地执行.</li>\n</ul>\n<p>对地址url进行一次HTTP GET 请求. 如果没有回调函数, 则在请求完成或失败时返回此次请求的响应(参见[Response][]).</p>\n<p>最简单GET请求如下:</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;);\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>采用回调形式的GET请求如下：</p>\n<pre><code>console.show();\nhttp.get(&quot;www.baidu.com&quot;, {}, function(res, err){\n    if(err){\n        console.error(err);\n        return;\n    }\n    log(&quot;code = &quot; + res.statusCode);\n    log(&quot;html = &quot; + res.body.string());\n});\n</code></pre><p>如果要增加HTTP头部信息, 则在options参数中添加, 例如：</p>\n<pre><code>console.show();\nvar r = http.get(&quot;www.baidu.com&quot;, {\n    headers: {\n        &#39;Accept-Language&#39;: &#39;zh-cn,zh;q=0.5&#39;,\n        &#39;User-Agent&#39;: &#39;Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11&#39;\n    }\n});\nlog(&quot;code = &quot; + r.statusCode);\nlog(&quot;html = &quot; + r.body.string());\n</code></pre><p>一个请求天气并解析返回的天气JSON结果的例子如下：</p>\n<pre><code>var city = &quot;广州&quot;;\nvar res = http.get(&quot;http://www.sojson.com/open/api/weather/json.shtml?city=&quot; + city);\nif(res.statusCode != 200){\n    toast(&quot;请求失败: &quot; + res.statusCode + &quot; &quot; + res.statusMessage);\n}else{\n    var weather = res.body.json();\n    log(weather);\n    toast(util.format(&quot;温度: %s 湿度: %s 空气质量: %s&quot;, weather.data.wendu,\n        weather.data.shidu, weather.quality));\n}\n</code></pre>",
               "signatures": [
                 {
                   "params": [
@@ -67,6 +74,250 @@
           ],
           "type": "module",
           "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] requestAsync",
+          "name": "[m]_requestasync",
+          "methods": [
+            {
+              "textRaw": "requestAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "requestAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>在后台线程执行 HTTP 请求, 并返回 AutoJs6 运行时的异步操作对象. 如果提供回调, 回调会在 UI 线程收到 <code>response</code> 或 <code>error</code>.</p>\n<pre><code class=\"lang-js\">http.getAsync(&#39;https://example.com&#39;, { cacheBody: true }, function (res, err) {\n    if (err) {\n        console.error(err);\n        return;\n    }\n    console.log(res.statusCode);\n    console.log(res.body.string());\n});\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] requestAsync"
+        },
+        {
+          "textRaw": "[m] getAsync",
+          "name": "[m]_getasync",
+          "methods": [
+            {
+              "textRaw": "getAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "getAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 GET 请求. 参数与 <a href=\"#m-get\">get</a> 类似.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getAsync"
+        },
+        {
+          "textRaw": "[m] head",
+          "name": "[m]_head",
+          "methods": [
+            {
+              "textRaw": "head(url, options?, callback?)",
+              "type": "method",
+              "name": "head",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>发送 HEAD 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] head"
+        },
+        {
+          "textRaw": "[m] headAsync",
+          "name": "[m]_headasync",
+          "methods": [
+            {
+              "textRaw": "headAsync(url, options?, callback?)",
+              "type": "method",
+              "name": "headAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 HEAD 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] headAsync"
+        },
+        {
+          "textRaw": "[m] put",
+          "name": "[m]_put",
+          "methods": [
+            {
+              "textRaw": "put(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "put",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"httpResponseType\">HttpResponse</a> | <a href=\"dataTypes#void\">void</a> }</li>\n</ul>\n<p>发送 PUT 请求. 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>; 当 <code>contentType</code> 为 <code>application/json</code> 时会使用 <code>JSON.stringify(data)</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] put"
+        },
+        {
+          "textRaw": "[m] putAsync",
+          "name": "[m]_putasync",
+          "methods": [
+            {
+              "textRaw": "putAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "putAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 PUT 请求.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] putAsync"
+        },
+        {
+          "textRaw": "[m] delete",
+          "name": "[m]_delete",
+          "methods": [
+            {
+              "textRaw": "delete(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "delete",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>发送 DELETE 请求. <code>del</code> 是此方法的别名.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] delete"
+        },
+        {
+          "textRaw": "[m] deleteAsync",
+          "name": "[m]_deleteasync",
+          "methods": [
+            {
+              "textRaw": "deleteAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "deleteAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>异步 DELETE 请求. <code>delAsync</code> 是此方法的别名.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] deleteAsync"
         },
         {
           "textRaw": "[m] post",
@@ -129,6 +380,38 @@
           "displayName": "[m] post"
         },
         {
+          "textRaw": "[m] postAsync",
+          "name": "[m]_postasync",
+          "methods": [
+            {
+              "textRaw": "postAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "postAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#string\">string</a> | <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 POST 请求. <code>data</code> 的处理方式与 <a href=\"#m-post\">post</a> 一致, 默认 <code>contentType</code> 为 <code>application/x-www-form-urlencoded</code>.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postAsync"
+        },
+        {
           "textRaw": "[m] postJson",
           "name": "[m]_postjson",
           "methods": [
@@ -189,6 +472,38 @@
           "displayName": "[m] postJson"
         },
         {
+          "textRaw": "[m] postJsonAsync",
+          "name": "[m]_postjsonasync",
+          "methods": [
+            {
+              "textRaw": "postJsonAsync(url, data?, options?, callback?)",
+              "type": "method",
+              "name": "postJsonAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ data ]</strong> { <a href=\"dataTypes#object\">object</a> | * }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 JSON POST 请求. 内部会设置 <code>contentType</code> 为 <code>application/json</code>, 并通过 <code>JSON.stringify(data)</code> 构造请求体.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "data?"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postJsonAsync"
+        },
+        {
           "textRaw": "[m] postMultipart",
           "name": "[m]_postmultipart",
           "methods": [
@@ -247,6 +562,38 @@
           ],
           "type": "module",
           "displayName": "[m] postMultipart"
+        },
+        {
+          "textRaw": "[m] postMultipartAsync",
+          "name": "[m]_postmultipartasync",
+          "methods": [
+            {
+              "textRaw": "postMultipartAsync(url, files, options?, callback?)",
+              "type": "method",
+              "name": "postMultipartAsync",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>url</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>files</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"httpRequestBuilderOptionsType\">HttpRequestBuilderOptions</a> }</li>\n<li><strong>[ callback ]</strong> { <a href=\"dataTypes#function\">function</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>异步 multipart/form-data 请求. <code>files</code> 参数格式与 <a href=\"#m-postmultipart\">postMultipart</a> 一致.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "url"
+                    },
+                    {
+                      "name": "files"
+                    },
+                    {
+                      "name": "options?"
+                    },
+                    {
+                      "name": "callback?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] postMultipartAsync"
         },
         {
           "textRaw": "[m] request",

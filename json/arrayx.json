@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\arrayx.md",
+  "source": "../api/arrayx.md",
   "modules": [
     {
       "textRaw": "Arrayx (Array 扩展)",

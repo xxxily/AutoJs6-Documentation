@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\mathx.md",
+  "source": "../api/mathx.md",
   "modules": [
     {
       "textRaw": "Mathx (Math 扩展)",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\eventEmitterType.md",
+  "source": "../api/eventEmitterType.md",
   "modules": [
     {
       "textRaw": "事件发射器 (EventEmitter)",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\noticeOptionsType.md",
+  "source": "../api/noticeOptionsType.md",
   "modules": [
     {
       "textRaw": "NoticeOptions",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\manual.md",
+  "source": "../api/manual.md",
   "modules": [
     {
       "textRaw": "AutoJs6 使用手册 (Manual)",

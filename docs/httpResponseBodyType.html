@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>HttpResponseBody | AutoJs6 文档 - 6.5.0</title>
+    <title>HttpResponseBody | AutoJs6 文档 - 6.7.0</title>
     <link rel="stylesheet" href="assets/fonts.css">
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/sh.css">
@@ -23,6 +23,8 @@
         <ul>
 <li><a class="nav-overview" href="overview.html">Overview - 综述</a></li>
 <li><a class="nav-documentation" href="documentation.html">About - 关于文档</a></li>
+<li><a class="nav-documentationAudit" href="documentationAudit.html">Documentation Audit - 文档覆盖审计</a></li>
+<li><a class="nav-documentationRoadmap" href="documentationRoadmap.html">Documentation Roadmap - 文档更新推进清单</a></li>
 <li><a class="nav-progress" href="progress.html">Progress - 文档部署进度</a></li>
 <li><a class="nav-changelog" href="changelog.html">Changelog - 文档更新日志</a></li>
 </ul>
@@ -72,9 +74,19 @@
 <li><a class="nav-http" href="http.html">HTTP</a></li>
 <li><a class="nav-base64" href="base64.html">Base64</a></li>
 <li><a class="nav-crypto" href="crypto.html">Crypto - 密文</a></li>
+<li><a class="nav-sqlite" href="sqlite.html">SQLite</a></li>
+<li><a class="nav-mime" href="mime.html">MIME</a></li>
+<li><a class="nav-nanoid" href="nanoid.html">NanoID</a></li>
+<li><a class="nav-sysprops" href="sysprops.html">Sysprops - 系统属性</a></li>
+<li><a class="nav-pinyin" href="pinyin.html">Pinyin - 汉语拼音</a></li>
+<li><a class="nav-pinyin4j" href="pinyin4j.html">Pinyin4j - 汉语拼音</a></li>
 <li><a class="nav-opencc" href="opencc.html">OpenCC - 中文转换</a></li>
 <li><a class="nav-i18n" href="i18n.html">Internationalization - 国际化</a></li>
 <li><a class="nav-s13n" href="s13n.html">Standardization - 标准化</a></li>
+<li><a class="nav-cvt" href="cvt.html">Cvt - 单位转换</a></li>
+<li><a class="nav-fmt" href="fmt.html">Fmt - 数据格式化</a></li>
+<li><a class="nav-zip" href="zip.html">Zip</a></li>
+<li><a class="nav-mediainfo" href="mediainfo.html">MediaInfo - 媒体信息</a></li>
 <li><a class="nav-e4x" href="e4x.html">E4X</a></li>
 </ul>
 <div class="line"></div>
@@ -162,7 +174,7 @@
 
     <div id="column1" data-id="httpResponseBodyType" class="interior">
         <header>
-            <h1>AutoJs6 文档 - 6.5.0</h1>
+            <h1>AutoJs6 文档 - 6.7.0</h1>
             <div id="gtoc">
                 <p class="index">
                     <a href="index.html" name="toc">索引</a> |
@@ -175,19 +187,131 @@
         <div id="toc">
             <h2>目录</h2>
             <ul>
-<li><span class="stability_undefined"><a href="#httpresponsebodytype_httpresponsebody">HttpResponseBody</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_httpresponsebody">HttpResponseBody</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_string">[m] string</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_string">string()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_bytes">[m] bytes</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_bytes">bytes()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_json">[m] json</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_json">json()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_stream">[m] stream</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_stream">stream()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_savetofile">[m] saveToFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_savetofile_path_buffersize">saveToFile(path, bufferSize?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_close">[m] close</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_close">close()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_code">[p] code</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_path">[p] path</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_bytescopied">[p] bytesCopied</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_success">[p] success</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_p_error">[p] error</a></span></li>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_m_issuccess">[m] isSuccess</a></span><ul>
+<li><span class="stability_undefined"><a href="#httpresponsebodytype_issuccess">isSuccess()</a></span></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
         </div>
 
         <div id="apicontent">
             <h1>HttpResponseBody<span><a class="mark" href="#httpresponsebodytype_httpresponsebody" id="httpresponsebodytype_httpresponsebody">#</a></span></h1>
+<p>HttpResponseBody 是 <code>http</code> 模块响应对象的 <code>body</code> 字段类型.</p>
+<blockquote>
+<p>源码依据: <code>runtime/api/augment/http/ResponseBodyNativeObject.kt</code>, <code>HttpSaveResult.kt</code>.</p>
+</blockquote>
 <hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Mar 2, 2023.</p>
+<p style="font: bold 2em sans-serif; color: #FF7043">HttpResponseBody</p>
 
 <hr>
+<h2>[m] string<span><a class="mark" href="#httpresponsebodytype_m_string" id="httpresponsebodytype_m_string">#</a></span></h2>
+<h3>string()<span><a class="mark" href="#httpresponsebodytype_string" id="httpresponsebodytype_string">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> }</li>
+</ul>
+</div><p>读取响应体字符串. 读取完整内容后会自动关闭响应体. 如果请求选项启用了 <code>cacheBody</code> 且内容大小不超过阈值, 结果会被缓存以支持重复读取.</p>
+<h2>[m] bytes<span><a class="mark" href="#httpresponsebodytype_m_bytes" id="httpresponsebodytype_m_bytes">#</a></span></h2>
+<h3>bytes()<span><a class="mark" href="#httpresponsebodytype_bytes" id="httpresponsebodytype_bytes">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_bytearray">ByteArray</a></span> }</li>
+</ul>
+</div><p>读取响应体字节数组. 读取完整内容后会自动关闭响应体.</p>
+<h2>[m] json<span><a class="mark" href="#httpresponsebodytype_m_json" id="httpresponsebodytype_m_json">#</a></span></h2>
+<h3>json()<span><a class="mark" href="#httpresponsebodytype_json" id="httpresponsebodytype_json">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type">*</span> }</li>
+</ul>
+</div><p>读取响应体字符串并使用 <code>JSON.parse</code> 解析.</p>
+<h2>[m] stream<span><a class="mark" href="#httpresponsebodytype_m_stream" id="httpresponsebodytype_m_stream">#</a></span></h2>
+<h3>stream()<span><a class="mark" href="#httpresponsebodytype_stream" id="httpresponsebodytype_stream">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html">java.io.InputStream</a></span> }</li>
+</ul>
+<p>返回响应体输入流. 此方法不会自动关闭响应体, 调用方需要自行关闭流或调用 <a href="#httpresponsebodytype_m_close">close</a>.</p>
+<h2>[m] saveToFile<span><a class="mark" href="#httpresponsebodytype_m_savetofile" id="httpresponsebodytype_m_savetofile">#</a></span></h2>
+<h3>saveToFile(path, bufferSize?)<span><a class="mark" href="#httpresponsebodytype_savetofile_path_buffersize" id="httpresponsebodytype_savetofile_path_buffersize">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><strong>path</strong> { <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> } - 保存目标文件路径, 不可为目录</li>
+<li><strong>[ bufferSize = <code>8192</code> ]</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 缓冲区大小</li>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="#httpresponsebodytype_httpsaveresult">HttpSaveResult</a></span> }</li>
+</ul>
+<p>将响应体直接保存到文件, 避免把大响应整体加载到内存.</p>
+<pre><code class="lang-js">let res = http.get(&#39;https://example.com/file.zip&#39;);
+let saved = res.body.saveToFile(&#39;./file.zip&#39;);
+console.log(saved.success, saved.bytesCopied);
+</code></pre>
+<h2>[m] close<span><a class="mark" href="#httpresponsebodytype_m_close" id="httpresponsebodytype_m_close">#</a></span></h2>
+<h3>close()<span><a class="mark" href="#httpresponsebodytype_close" id="httpresponsebodytype_close">#</a></span></h3>
+<p><strong><code>6.7.0</code></strong></p>
+<ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
+</ul>
+<p>显式关闭响应体.</p>
+<hr>
+<p style="font: bold 2em sans-serif; color: #FF7043">HttpSaveResult</p>
 
+<hr>
+<h2>[p] code<span><a class="mark" href="#httpresponsebodytype_p_code" id="httpresponsebodytype_p_code">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - <code>0</code> 表示成功</li>
+</ul>
+</div><h2>[p] path<span><a class="mark" href="#httpresponsebodytype_p_path" id="httpresponsebodytype_p_path">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_string">string</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> } - 目标路径</li>
+</ul>
+</div><h2>[p] bytesCopied<span><a class="mark" href="#httpresponsebodytype_p_bytescopied" id="httpresponsebodytype_p_bytescopied">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 已写入字节数</li>
+</ul>
+</div><h2>[p] success<span><a class="mark" href="#httpresponsebodytype_p_success" id="httpresponsebodytype_p_success">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> } - 是否成功</li>
+</ul>
+</div><h2>[p] error<span><a class="mark" href="#httpresponsebodytype_p_error" id="httpresponsebodytype_p_error">#</a></span></h2>
+<div class="signature"><ul>
+<li>{ <span class="type"><a href="dataTypes.html#datatypes_error">Error</a></span> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> } - 保存失败时的错误对象</li>
+</ul>
+</div><h2>[m] isSuccess<span><a class="mark" href="#httpresponsebodytype_m_issuccess" id="httpresponsebodytype_m_issuccess">#</a></span></h2>
+<h3>isSuccess()<span><a class="mark" href="#httpresponsebodytype_issuccess" id="httpresponsebodytype_issuccess">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
+</ul>
+</div>
         </div>
     </div>
 </div>

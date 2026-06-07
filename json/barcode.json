@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\barcode.md",
+  "source": "../api/barcode.md",
   "modules": [
     {
       "textRaw": "条码 (Barcode)",

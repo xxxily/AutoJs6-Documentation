@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\global.md",
+  "source": "../api/global.md",
   "modules": [
     {
       "textRaw": "全局对象 (Global)",

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\openCCConversionType.md",
+  "source": "../api/openCCConversionType.md",
   "modules": [
     {
       "textRaw": "OpenCCConversion",

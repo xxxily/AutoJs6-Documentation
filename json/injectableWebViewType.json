@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\injectableWebViewType.md",
+  "source": "../api/injectableWebViewType.md",
   "modules": [
     {
       "textRaw": "InjectableWebView",

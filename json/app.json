@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\app.md",
+  "source": "../api/app.md",
   "modules": [
     {
       "textRaw": "通用应用 (App)",

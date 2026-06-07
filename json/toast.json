@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\toast.md",
+  "source": "../api/toast.md",
   "modules": [
     {
       "textRaw": "消息浮动框 (Toast)",

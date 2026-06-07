@@ -1,5 +1,7 @@
 @include overview
 @include documentation
+@include documentationAudit
+@include documentationRoadmap
 @include qa
 
 @include global
@@ -23,6 +25,7 @@
 @include notice
 @include console
 @include shell
+@include shizuku
 @include media
 @include sensors
 @include recorder
@@ -38,6 +41,17 @@
 @include http
 @include base64
 @include crypto
+@include sqlite
+@include mime
+@include nanoid
+@include sysprops
+@include pinyin
+@include pinyin4j
 @include opencc
 @include i18n
+@include s13n
+@include cvt
+@include fmt
+@include zip
+@include mediainfo
 @include e4x

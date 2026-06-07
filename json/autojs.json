@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\autojs.md",
+  "source": "../api/autojs.md",
   "modules": [
     {
       "textRaw": "AutoJs6 本体应用",

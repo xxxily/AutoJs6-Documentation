@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\webSocketType.md",
+  "source": "../api/webSocketType.md",
   "modules": [
     {
       "textRaw": "WebSocket",

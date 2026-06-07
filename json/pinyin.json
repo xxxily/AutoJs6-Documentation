@@ -1,0 +1,260 @@
+{
+  "source": "../api/pinyin.md",
+  "modules": [
+    {
+      "textRaw": "Pinyin - 汉语拼音",
+      "name": "pinyin_-_汉语拼音",
+      "desc": "<p><code>pinyin</code> 模块用于将汉字转换为拼音, 支持多音字、分词、姓氏模式和多种输出风格.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/pinyin/Pinyin.kt</code>, <code>runtime/api/augment/pinyin/PinyinCore.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">pinyin</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] pinyin",
+          "name": "[@]_pinyin",
+          "methods": [
+            {
+              "textRaw": "pinyin(hans, options?)",
+              "type": "method",
+              "name": "pinyin",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p><code>pinyin(...)</code> 与 <a href=\"#m-convert\">pinyin.convert(...)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] pinyin"
+        },
+        {
+          "textRaw": "[m] convert",
+          "name": "[m]_convert",
+          "methods": [
+            {
+              "textRaw": "convert(hans, options?)",
+              "type": "method",
+              "name": "convert",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>hans</strong> { <a href=\"dataTypes#string\">string</a> } - 待转换字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>style</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 输出风格, 默认 <code>STYLE_TONE</code></li>\n<li><strong>mode</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 转换模式, 默认 <code>MODE_NORMAL</code></li>\n<li><strong>segment</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用分词, 默认 <code>false</code></li>\n<li><strong>heteronym</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否启用多音字, 默认 <code>false</code></li>\n<li><strong>group</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否组合词组结果, 默认 <code>false</code></li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>返回二维数组. 每个汉字或词组对应一个拼音候选数组. 返回数组额外带有 <code>compact()</code> 方法.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.convert(&#39;重庆&#39;));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { heteronym: true }));\nconsole.log(pinyin.convert(&#39;重庆&#39;, { segment: true, group: true }).compact());\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "hans"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] convert"
+        },
+        {
+          "textRaw": "[m] simple",
+          "name": "[m]_simple",
+          "methods": [
+            {
+              "textRaw": "simple(str, enableNumericTone?, enableSegment?)",
+              "type": "method",
+              "name": "simple",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>str</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ enableNumericTone = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><strong>[ enableSegment = <code>false</code> ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>返回拼接后的简化拼音字符串.</p>\n<pre><code class=\"lang-js\">console.log(pinyin.simple(&#39;中文&#39;)); // zhongwen\nconsole.log(pinyin.simple(&#39;中文&#39;, true)); // zhong1wen2\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "str"
+                    },
+                    {
+                      "name": "enableNumericTone?"
+                    },
+                    {
+                      "name": "enableSegment?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] simple"
+        },
+        {
+          "textRaw": "[m] fromCodePoint",
+          "name": "[m]_fromcodepoint",
+          "methods": [
+            {
+              "textRaw": "fromCodePoint(codePoint)",
+              "type": "method",
+              "name": "fromCodePoint",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>codePoint</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>按 Unicode code point 查询单字拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "codePoint"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromCodePoint"
+        },
+        {
+          "textRaw": "[m] fromPhrase",
+          "name": "[m]_fromphrase",
+          "methods": [
+            {
+              "textRaw": "fromPhrase(phrase)",
+              "type": "method",
+              "name": "fromPhrase",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>phrase</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#array\">array</a> }</li>\n</ul>\n<p>查询词组拼音.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "phrase"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] fromPhrase"
+        },
+        {
+          "textRaw": "[m] compare",
+          "name": "[m]_compare",
+          "methods": [
+            {
+              "textRaw": "compare(a, b)",
+              "type": "method",
+              "name": "compare",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. 知识库回答中不应将其描述为可用排序函数.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "a"
+                    },
+                    {
+                      "name": "b"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compare"
+        },
+        {
+          "textRaw": "[m] compact",
+          "name": "[m]_compact",
+          "methods": [
+            {
+              "textRaw": "compact(arr)",
+              "type": "method",
+              "name": "compact",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<p>当前源码中此方法为占位实现, 返回空字符串. <code>convert()</code> 返回值上绑定的 <code>compact()</code> 方法由运行时另行绑定.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">常量</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "arr"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] compact"
+        },
+        {
+          "textRaw": "[p] STYLE_NORMAL",
+          "name": "[p]_style_normal",
+          "desc": "<p>普通风格, 不带声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_NORMAL"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE",
+          "name": "[p]_style_tone",
+          "desc": "<p>标准风格, 声调在韵母上. 这是默认风格.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE"
+        },
+        {
+          "textRaw": "[p] STYLE_TONE2",
+          "name": "[p]_style_tone2",
+          "desc": "<p>数字形式标记声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TONE2"
+        },
+        {
+          "textRaw": "[p] STYLE_TO3NE",
+          "name": "[p]_style_to3ne",
+          "desc": "<p>数字方式, 声母后加声调.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_TO3NE"
+        },
+        {
+          "textRaw": "[p] STYLE_INITIALS",
+          "name": "[p]_style_initials",
+          "desc": "<p>仅保留声母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_INITIALS"
+        },
+        {
+          "textRaw": "[p] STYLE_FIRST_LETTER",
+          "name": "[p]_style_first_letter",
+          "desc": "<p>仅保留首字母.</p>\n",
+          "type": "module",
+          "displayName": "[p] STYLE_FIRST_LETTER"
+        },
+        {
+          "textRaw": "[p] MODE_NORMAL",
+          "name": "[p]_mode_normal",
+          "desc": "<p>普通模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_NORMAL"
+        },
+        {
+          "textRaw": "[p] MODE_SURNAME",
+          "name": "[p]_mode_surname",
+          "desc": "<p>姓氏模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_SURNAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACE_NAME",
+          "name": "[p]_mode_place_name",
+          "desc": "<p>地名模式.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACE_NAME"
+        },
+        {
+          "textRaw": "[p] MODE_PLACENAME",
+          "name": "[p]_mode_placename",
+          "desc": "<p>地名模式兼容别名.</p>\n",
+          "type": "module",
+          "displayName": "[p] MODE_PLACENAME"
+        }
+      ],
+      "type": "module",
+      "displayName": "Pinyin - 汉语拼音"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\scriptingJava.md",
+  "source": "../api/scriptingJava.md",
   "modules": [
     {
       "textRaw": "脚本化 Java",

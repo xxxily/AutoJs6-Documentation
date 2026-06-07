@@ -1,0 +1,157 @@
+{
+  "source": "../api/mediainfo.md",
+  "modules": [
+    {
+      "textRaw": "MediaInfo - 媒体信息",
+      "name": "mediainfo_-_媒体信息",
+      "desc": "<p><code>mediainfo</code> 模块用于读取媒体文件的元信息.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/mediainfo/Mediainfo.kt</code>, <code>runtime/api/augment/mediainfo/MediainfoNativeObject.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">mediainfo</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[@] mediainfo",
+          "name": "[@]_mediainfo",
+          "methods": [
+            {
+              "textRaw": "mediainfo(path)",
+              "type": "method",
+              "name": "mediainfo",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p><code>mediainfo(path)</code> 与 <a href=\"#m-read\">mediainfo.read(path)</a> 等价.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "path"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[@] mediainfo"
+        },
+        {
+          "textRaw": "[m] read",
+          "name": "[m]_read",
+          "methods": [
+            {
+              "textRaw": "read(path)",
+              "type": "method",
+              "name": "read",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>path</strong> { <a href=\"dataTypes#string\">string</a> } - 媒体文件路径, 不可为空</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"#mediainfonativeobject\">MediainfoNativeObject</a> }</li>\n</ul>\n<p>读取媒体文件信息.</p>\n<pre><code class=\"lang-js\">let info = mediainfo.read(&#39;./video.mp4&#39;);\nconsole.log(info.inform);\nconsole.log(info.general(&#39;Format&#39;));\nconsole.log(info.video(&#39;Width&#39;));\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">MediainfoNativeObject</p>\n\n<hr>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "path"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] read"
+        },
+        {
+          "textRaw": "[p] path",
+          "name": "[p]_path",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>运行时解析后的媒体文件路径.</p>\n",
+          "type": "module",
+          "displayName": "[p] path"
+        },
+        {
+          "textRaw": "[p] inform",
+          "name": "[p]_inform",
+          "desc": "<ul>\n<li>{ <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>MediaInfo 输出的原始文本.</p>\n",
+          "type": "module",
+          "displayName": "[p] inform"
+        },
+        {
+          "textRaw": "[m] general",
+          "name": "[m]_general",
+          "methods": [
+            {
+              "textRaw": "general(parameter?)",
+              "type": "method",
+              "name": "general",
+              "desc": "<p>读取 General 流信息. <code>parameter</code> 为空时返回该流的默认信息.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "parameter?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] general"
+        },
+        {
+          "textRaw": "[m] video",
+          "name": "[m]_video",
+          "methods": [
+            {
+              "textRaw": "video(parameter?)",
+              "type": "method",
+              "name": "video",
+              "desc": "<p>读取 Video 流信息.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "parameter?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] video"
+        },
+        {
+          "textRaw": "[m] audio",
+          "name": "[m]_audio",
+          "methods": [
+            {
+              "textRaw": "audio(parameter?)",
+              "type": "method",
+              "name": "audio",
+              "desc": "<p>读取 Audio 流信息.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "parameter?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] audio"
+        },
+        {
+          "textRaw": "其他流类型",
+          "name": "其他流类型",
+          "desc": "<p>模块会根据 <code>MediaInfo.StreamKind</code> 枚举动态创建同名小写函数, 因此除 <code>general</code> / <code>video</code> / <code>audio</code> 外, 还可能存在 <code>text</code> / <code>image</code> / <code>menu</code> 等函数, 具体取决于底层 MediaInfo 库.</p>\n",
+          "type": "module",
+          "displayName": "其他流类型"
+        },
+        {
+          "textRaw": "动态属性",
+          "name": "动态属性",
+          "desc": "<p>模块会解析 <code>inform</code> 文本, 将各节转换为小写分组属性, 并将字段名称转换为 camelCase. 例如 <code>Overall bit rate</code> 可能被转换为 <code>overallBitRate</code>.</p>\n",
+          "type": "module",
+          "displayName": "动态属性"
+        }
+      ],
+      "type": "module",
+      "displayName": "MediaInfo - 媒体信息"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\androidBundleType.md",
+  "source": "../api/androidBundleType.md",
   "modules": [
     {
       "textRaw": "AndroidBundle",

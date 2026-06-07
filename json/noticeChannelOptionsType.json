@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\noticeChannelOptionsType.md",
+  "source": "../api/noticeChannelOptionsType.md",
   "modules": [
     {
       "textRaw": "NoticeChannelOptions",

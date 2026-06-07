@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\color.md",
+  "source": "../api/color.md",
   "modules": [
     {
       "textRaw": "颜色 (Color)",

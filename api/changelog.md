@@ -1,5 +1,24 @@
 # 文档更新日志 (Changelog)
 
+## v1.2.0
+
+<p style="font: bold 0.8em sans-serif; color: #888888">2026/06/07</p>
+
+- `新增` [文档覆盖审计](https://docs.autojs6.com/#/documentationAudit) 页面, 记录文档仓库 `1.1.8` 与 AutoJs6 上游 `6.7.0` 源码之间的差异基线
+- `新增` [文档更新推进清单](https://docs.autojs6.com/#/documentationRoadmap) 页面, 记录已完成、待更新和后续 agent 验收规则
+- `新增` [单位转换 (Cvt)](https://docs.autojs6.com/#/cvt) 文档, 覆盖 `cvt.bytes` / `cvt.bytes.strict` / `cvt.bytes.loose`
+- `新增` [数据格式化 (Fmt)](https://docs.autojs6.com/#/fmt) 文档, 覆盖 `fmt.bytes` / `fmt.bytes.strict` / `fmt.bytes.loose`
+- `新增` [SQLite](https://docs.autojs6.com/#/sqlite) 文档, 覆盖 `sqlite.open`、`Database` 与 `CursorWrapper` 基础能力
+- `新增` [Zip](https://docs.autojs6.com/#/zip) 文档, 覆盖 `zip.open` / `zipFile` / `zipDir` / `zipFiles` / `unzip` 及 `ZipNativeObject`
+- `新增` [MediaInfo](https://docs.autojs6.com/#/mediainfo) 文档, 覆盖 `mediainfo.read` 与动态媒体流信息读取
+- `新增` [MIME](https://docs.autojs6.com/#/mime) 文档, 覆盖 MIME 字符串解析结果
+- `新增` [NanoID](https://docs.autojs6.com/#/nanoid) 文档, 覆盖随机 ID 生成
+- `新增` [系统属性 (Sysprops)](https://docs.autojs6.com/#/sysprops) 文档, 覆盖系统属性读取及过滤
+- `新增` [汉语拼音 (Pinyin)](https://docs.autojs6.com/#/pinyin) 与 [Pinyin4j](https://docs.autojs6.com/#/pinyin4j) 文档
+- `优化` [HTTP](https://docs.autojs6.com/#/http) 章节补充 `6.7.0` 新增异步请求、PUT/DELETE/HEAD、响应体保存及请求选项
+- `优化` [HttpRequestBuilderOptions](https://docs.autojs6.com/#/httpRequestBuilderOptionsType) 与 [HttpResponseBody](https://docs.autojs6.com/#/httpResponseBodyType) 类型说明
+- `优化` 更新侧边栏、静态页目录、全量文档和部署进度
+
 ## v1.1.8
 
 <p style="font: bold 0.8em sans-serif; color: #888888">2023/12/01</p>

@@ -1,0 +1,155 @@
+{
+  "source": "../api/cvt.md",
+  "modules": [
+    {
+      "textRaw": "Cvt - 单位转换",
+      "name": "cvt_-_单位转换",
+      "desc": "<p><code>cvt</code> 模块用于数据单位转换. 当前公开实现以字节单位转换为主.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/converter/Converter.kt</code>, <code>runtime/api/augment/converter/Bytes.kt</code>, <code>runtime/api/augment/converter/core/Bytes.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">cvt</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] bytes",
+          "name": "[m]_bytes",
+          "methods": [
+            {
+              "textRaw": "bytes(source, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> } - 数值或带单位字符串</li>\n<li><strong>[ options ]</strong> {{<ul>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 来源单位</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> } - 目标单位, 默认 <code>AUTO</code></li>\n<li><strong>fractionDigits</strong> { <a href=\"dataTypes#number\">number</a> } - 小数位数, 默认 <code>2</code></li>\n<li><strong>autoCarryThreshold</strong> { <a href=\"dataTypes#number\">number</a> } - 自动进位阈值, 仅 <code>toUnit</code> 为 <code>AUTO</code> 时允许</li>\n<li><strong>strict</strong> { <a href=\"dataTypes#boolean\">boolean</a> } - 是否使用严格单位模式</li>\n</ul>\n</li>\n<li>}}</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n<p>将字节数据转换为目标单位的数值.</p>\n<pre><code class=\"lang-js\">console.log(cvt.bytes(1024, &#39;KB&#39;)); // 1\nconsole.log(cvt.bytes(&#39;1 MB&#39;, &#39;KB&#39;)); // 1024\nconsole.log(cvt.bytes(1536, { toUnit: &#39;KB&#39;, fractionDigits: 1 })); // 1.5\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "textRaw": "bytes(source, fromUnit, toUnit, options?)",
+              "type": "method",
+              "name": "bytes",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li><strong>source</strong> { <a href=\"dataTypes#number\">number</a> | <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>fromUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>toUnit</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ options ]</strong> { <a href=\"dataTypes#object\">object</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> | <a href=\"https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html\">java.math.BigDecimal</a> }</li>\n</ul>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "fromUnit"
+                    },
+                    {
+                      "name": "toUnit"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] bytes"
+        }
+      ],
+      "properties": [
+        {
+          "textRaw": "[m] bytes.strict",
+          "name": "strict",
+          "methods": [
+            {
+              "textRaw": "bytes.strict(source, options?)",
+              "type": "method",
+              "name": "strict",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>严格模式转换. 严格模式区分 SI 与 IEC 单位:</p>\n<ul>\n<li><code>KB</code> / <code>MB</code> / <code>GB</code> 等使用 <code>1000</code> 进位.</li>\n<li><code>KiB</code> / <code>MiB</code> / <code>GiB</code> 等使用 <code>1024</code> 进位.</li>\n</ul>\n<p>在严格模式中, <code>options.strict</code> 必须为空.</p>\n<pre><code class=\"lang-js\">console.log(cvt.bytes.strict(1000, &#39;KB&#39;)); // 1\nconsole.log(cvt.bytes.strict(1024, &#39;KiB&#39;)); // 1\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[m] bytes.loose",
+          "name": "loose",
+          "methods": [
+            {
+              "textRaw": "bytes.loose(source, options?)",
+              "type": "method",
+              "name": "loose",
+              "desc": "<p><strong><code>6.7.0</code></strong></p>\n<p>宽松模式转换. 宽松模式会将 <code>KiB</code> 等 IEC 标识折算为普通单位文本, 并以 <code>1024</code> 为换算基数. 在宽松模式中, <code>options.strict</code> 必须为空.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "source"
+                    },
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "textRaw": "[p] bytes.UNITS",
+          "name": "UNITS",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;KMGTPEZYRQ&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>支持的单位前缀, 依次表示 K/M/G/T/P/E/Z/Y/R/Q.</p>\n"
+        },
+        {
+          "textRaw": "[p] bytes.AUTO",
+          "name": "AUTO",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>&quot;AUTO&quot;</code> ]] { <a href=\"dataTypes#string\">string</a> }</li>\n</ul>\n<p>自动选择目标单位.</p>\n"
+        },
+        {
+          "textRaw": "[p] bytes.IEC_DIV",
+          "name": "IEC_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1024</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        },
+        {
+          "textRaw": "[p] bytes.SI_DIV",
+          "name": "SI_DIV",
+          "desc": "<p><strong><code>6.7.0</code></strong></p>\n<ul>\n<li>[[ <code>1000</code> ]] { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n"
+        }
+      ],
+      "type": "module",
+      "displayName": "Cvt - 单位转换"
+    }
+  ]
+}

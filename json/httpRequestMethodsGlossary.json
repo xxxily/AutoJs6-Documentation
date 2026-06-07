@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\httpRequestMethodsGlossary.md",
+  "source": "../api/httpRequestMethodsGlossary.md",
   "modules": [
     {
       "textRaw": "HTTP Request Methods (HTTP 请求方法)",

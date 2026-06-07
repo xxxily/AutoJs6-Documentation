@@ -1,0 +1,222 @@
+{
+  "source": "../api/sysprops.md",
+  "modules": [
+    {
+      "textRaw": "Sysprops - 系统属性",
+      "name": "sysprops_-_系统属性",
+      "desc": "<p><code>sysprops</code> 模块用于读取 Android 系统属性.</p>\n<blockquote>\n<p>源码依据: <code>runtime/api/augment/sysprops/Sysprops.kt</code>.</p>\n</blockquote>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">sysprops</p>\n\n<hr>\n",
+      "modules": [
+        {
+          "textRaw": "[m] get",
+          "name": "[m]_get",
+          "methods": [
+            {
+              "textRaw": "get(propName, defaultValue?)",
+              "type": "method",
+              "name": "get",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#string\">string</a> | null }</li>\n</ul>\n<p>读取字符串系统属性.</p>\n<pre><code class=\"lang-js\">console.log(sysprops.get(&#39;ro.product.model&#39;));\n</code></pre>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] get"
+        },
+        {
+          "textRaw": "[m] getInt",
+          "name": "[m]_getint",
+          "methods": [
+            {
+              "textRaw": "getInt(propName, defaultValue?)",
+              "type": "method",
+              "name": "getInt",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#number\">number</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>读取整数系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getInt"
+        },
+        {
+          "textRaw": "[m] getBoolean",
+          "name": "[m]_getboolean",
+          "methods": [
+            {
+              "textRaw": "getBoolean(propName, defaultValue?)",
+              "type": "method",
+              "name": "getBoolean",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><strong>propName</strong> { <a href=\"dataTypes#string\">string</a> }</li>\n<li><strong>[ defaultValue ]</strong> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>读取布尔系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "name": "propName"
+                    },
+                    {
+                      "name": "defaultValue?"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getBoolean"
+        },
+        {
+          "textRaw": "[m] getAll",
+          "name": "[m]_getall",
+          "methods": [
+            {
+              "textRaw": "getAll()",
+              "type": "method",
+              "name": "getAll",
+              "desc": "<p><strong><code>6.6.0</code></strong></p>\n<ul>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#object\">object</a> }</li>\n</ul>\n<p>读取全部可访问系统属性.</p>\n",
+              "signatures": [
+                {
+                  "params": []
+                }
+              ]
+            },
+            {
+              "textRaw": "getAll(keyFilter)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**keyFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**keyFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "keyFilter"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按属性名过滤.</p>\n"
+            },
+            {
+              "textRaw": "getAll(keyFilter, valueFilter)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**keyFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**keyFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "**valueFilter** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                      "name": "**valueFilter**",
+                      "type": " [string](dataTypes#string) | [RegExp](dataTypes#regexp) "
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "keyFilter"
+                    },
+                    {
+                      "name": "valueFilter"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按属性名和属性值过滤.</p>\n"
+            },
+            {
+              "textRaw": "getAll(options)",
+              "type": "method",
+              "name": "getAll",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**options** {{ ",
+                      "options": [
+                        {
+                          "textRaw": "**key** / **keys** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                          "name": "**key**",
+                          "desc": "/ **keys** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) }"
+                        },
+                        {
+                          "textRaw": "**value** / **values** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) } ",
+                          "name": "**value**",
+                          "desc": "/ **values** { [string](dataTypes#string) | [RegExp](dataTypes#regexp) }"
+                        }
+                      ],
+                      "name": "**options**",
+                      "desc": "{{"
+                    },
+                    {
+                      "textRaw": "}} ",
+                      "name": "}}"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { [object](dataTypes#object) } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " [object](dataTypes#object) "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>过滤器为字符串时使用包含匹配; 过滤器为正则时使用正则匹配.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getAll"
+        }
+      ],
+      "type": "module",
+      "displayName": "Sysprops - 系统属性"
+    }
+  ]
+}

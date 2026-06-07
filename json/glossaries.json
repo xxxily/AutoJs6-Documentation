@@ -1,5 +1,5 @@
 {
-  "source": "..\\api\\glossaries.md",
+  "source": "../api/glossaries.md",
   "modules": [
     {
       "textRaw": "术语 (Glossaries)",
