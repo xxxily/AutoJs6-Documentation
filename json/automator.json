@@ -4,8 +4,14 @@
     {
       "textRaw": "自动化 (Automator)",
       "name": "自动化_(automator)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n",
       "modules": [
+        {
+          "textRaw": "6.7.0 源码校对",
+          "name": "6.7.0_源码校对",
+          "desc": "<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Auto.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Automator.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomator.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomatorNativeObject.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/accessibility/SimpleActionAutomator.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/inputevent/RootAutomator.java</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/engine/RootAutomatorEngine.kt</code></li>\n</ul>\n<p>运行时中 <code>auto</code>, <code>automator</code>, <code>selector</code>, <code>RootAutomator</code> 均由 <code>ScriptRuntime.augment(...)</code> 注入. <code>RootAutomator</code> 仅注入构造器, 不存在 <code>$RootAutomator</code> 模块对象.</p>\n<p>当前源码公开的 <code>auto</code> / <code>$auto</code> 入口包括 <code>start</code>, <code>enable</code>, <code>stop</code>, <code>disable</code>, <code>hasInstance</code>, <code>hasService</code>, <code>exists</code>, <code>isRunning</code>, <code>isOperational</code>, <code>stateListener</code>, <code>registerEvent</code>, <code>registerEvents</code>, <code>removeEvent</code>, <code>removeEvents</code>, <code>waitFor</code>, <code>setMode</code>, <code>setFlags</code>, <code>setWindowFilter</code>, <code>launchSettings</code>, <code>clearCache</code>, <code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>; getter 包括 <code>service</code>, <code>services</code>, <code>windows</code>, <code>root</code>, <code>rootInActiveWindow</code>, <code>windowRoots</code>, <code>state</code>.</p>\n<p>当前源码公开的 <code>automator</code> / <code>$automator</code> 入口包括全局坐标和系统动作: <code>click</code>, <code>longClick</code>, <code>press</code>, <code>swipe</code>, <code>gesture</code>, <code>gestureAsync</code>, <code>gestures</code>, <code>gesturesAsync</code>, <code>scrollDown</code>, <code>scrollUp</code>, <code>input</code>, <code>setText</code>, <code>back</code>, <code>home</code>, <code>powerDialog</code>, <code>notifications</code>, <code>quickSettings</code>, <code>recents</code>, <code>splitScreen</code>; 模块补充入口包括 <code>isServiceRunning</code>, <code>ensureService</code>, <code>waitForService</code>, <code>captureScreen</code>, <code>lockScreen</code>, <code>takeScreenshot</code>, <code>headsethook</code>, <code>accessibilityButton</code>, <code>accessibilityButtonChooser</code>, <code>accessibilityShortcut</code>, <code>accessibilityAllApps</code>, <code>dismissNotificationShade</code>.</p>\n<p>坐标触摸动作在 <code>6.7.0</code> 源码中走无障碍 <code>dispatchGesture</code>, 因此依赖可用的无障碍服务; <code>captureScreen()</code> 要求 Android R / API 30+ 的无障碍截图能力.</p>\n<p><code>RootAutomator</code> 构造要求 root 或可用 Shizuku. 底层公开 <code>sendEvent</code>, <code>touch</code>, <code>setScreenMetrics</code>, <code>touchX</code>, <code>touchY</code>, <code>sendSync</code>, <code>sendMtSync</code>, <code>tap</code>, <code>swipe</code>, <code>press</code>, <code>longPress</code>, <code>touchDown</code>, <code>touchUp</code>, <code>touchMove</code>, <code>getDefaultId</code>, <code>setDefaultId</code>, <code>exit</code>. 默认触点 ID 为 <code>0</code>.</p>\n",
+          "type": "module",
+          "displayName": "6.7.0 源码校对"
+        },
         {
           "textRaw": "简易自动化 (SimpleActionAutomator)",
           "name": "简易自动化_(simpleactionautomator)",
@@ -62,7 +68,7 @@
     {
       "textRaw": "基于坐标的触摸模拟",
       "name": "基于坐标的触摸模拟",
-      "desc": "<p>本章节介绍了一些使用坐标进行点击、滑动的函数. 这些函数有的需要安卓7.0以上, 有的需要root权限.</p>\n<p>要获取要点击的位置的坐标, 可以在开发者选项中开启&quot;指针位置&quot;.</p>\n<p>基于坐标的脚本通常会有分辨率的问题, 这时可以通过<code>setScreenMetrics()</code>函数来进行自动坐标放缩. 这个函数会影响本章节的所有点击、长按、滑动等函数. 通过设定脚本设计时的分辨率, 使得脚本在其他分辨率下自动放缩坐标.</p>\n<p>控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过<code>.click()</code>函数来点击, 这时如果安卓版本在7.0以上或者有root权限, 就可以通过以下方式来点击：</p>\n<pre><code>//获取这个控件\nvar widget = id(&quot;xxx&quot;).findOne();\n//获取其中心位置并点击\nclick(widget.bounds().centerX(), widget.bounds().centerY());\n//如果用root权限则用Tap\n</code></pre>",
+      "desc": "<p>本章节介绍使用坐标进行点击、滑动的函数. 在 AutoJs6 <code>6.7.0</code> 中, 这些全局坐标动作主要通过无障碍服务的手势分发实现, 因此需要确保无障碍服务可用.</p>\n<p>要获取要点击的位置的坐标, 可以在开发者选项中开启&quot;指针位置&quot;.</p>\n<p>基于坐标的脚本通常会有分辨率的问题, 这时可以通过<code>setScreenMetrics()</code>函数来进行自动坐标放缩. 这个函数会影响本章节的所有点击、长按、滑动等函数. 通过设定脚本设计时的分辨率, 使得脚本在其他分辨率下自动放缩坐标.</p>\n<p>控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过<code>.click()</code>函数来点击, 这时可通过以下方式点击控件中心坐标：</p>\n<pre><code>//获取这个控件\nvar widget = id(&quot;xxx&quot;).findOne();\n//获取其中心位置并点击\nclick(widget.bounds().centerX(), widget.bounds().centerY());\n//如果用root权限则用Tap\n</code></pre>",
       "methods": [
         {
           "textRaw": "setScreenMetrics(width, height)",
@@ -105,7 +111,7 @@
     {
       "textRaw": "RootAutomator",
       "name": "rootautomator",
-      "desc": "<p>RootAutomator是一个使用root权限来模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.</p>\n<p>一个脚本中最好只存在一个RootAutomator, 并且保证脚本结束退出他. 可以在exit事件中退出RootAutomator, 例如：</p>\n<pre><code>var ra = new RootAutomator();\nevents.on(&#39;exit&#39;, function(){\n  ra.exit();\n});\n//执行一些点击操作\n...\n\n</code></pre><p><strong>注意以下命令需要root权限</strong></p>\n",
+      "desc": "<p>RootAutomator 是一个使用 root 或 Shizuku 后端模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.</p>\n<p>一个脚本中最好只存在一个RootAutomator, 并且保证脚本结束退出他. 可以在exit事件中退出RootAutomator, 例如：</p>\n<pre><code>var ra = new RootAutomator();\nevents.on(&#39;exit&#39;, function(){\n  ra.exit();\n});\n//执行一些点击操作\n...\n\n</code></pre><p><strong>注意以下命令需要 root 权限或可用的 Shizuku 输入设备访问能力.</strong></p>\n",
       "methods": [
         {
           "textRaw": "RootAutomator.tap(x, y[, id])",
@@ -127,10 +133,10 @@
                   "desc": "纵坐标"
                 },
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1, 可以通过setDefaultId指定. ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0, 可以通过setDefaultId指定. ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1, 可以通过setDefaultId指定.",
+                  "desc": "多点触摸id, 可选, 默认为0, 可以通过setDefaultId指定.",
                   "optional": true
                 }
               ]
@@ -153,7 +159,7 @@
           "desc": "<p>点击位置(x, y). 其中id是一个整数值, 用于区分多点触摸, 不同的id表示不同的&quot;手指&quot;, 例如：</p>\n<pre><code>var ra = new RootAutomator();\n//让&quot;手指1&quot;点击位置(100, 100)\nra.tap(100, 100, 1);\n//让&quot;手指2&quot;点击位置(200, 200);\nra.tap(200, 200, 2);\nra.exit();\n</code></pre><p>如果不需要多点触摸, 则不需要id这个参数.\n多点触摸通常用于手势或游戏操作, 例如模拟双指捏合、双指上滑等.</p>\n<p>某些情况下可能存在tap点击无反应的情况, 这时可以用<code>RootAutomator.press()</code>函数代替.</p>\n"
         },
         {
-          "textRaw": "RootAutomator.swipe(x1, x2, y1, y2[, duration, id])",
+          "textRaw": "RootAutomator.swipe(x1, y1, x2, y2[, duration, id])",
           "type": "method",
           "name": "swipe",
           "signatures": [
@@ -191,10 +197,10 @@
                   "optional": true
                 },
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1",
+                  "desc": "多点触摸id, 可选, 默认为0",
                   "optional": true
                 }
               ]
@@ -205,10 +211,10 @@
                   "name": "x1"
                 },
                 {
-                  "name": "x2"
+                  "name": "y1"
                 },
                 {
-                  "name": "y1"
+                  "name": "x2"
                 },
                 {
                   "name": "y2"
@@ -252,10 +258,10 @@
                   "desc": "按下时长"
                 },
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1",
+                  "desc": "多点触摸id, 可选, 默认为0",
                   "optional": true
                 }
               ]
@@ -281,7 +287,7 @@
           "desc": "<p>模拟按下位置(x, y), 时长为duration毫秒.</p>\n"
         },
         {
-          "textRaw": "RootAutomator.longPress(x, y[\\, id\\])",
+          "textRaw": "RootAutomator.longPress(x, y[, id])",
           "type": "method",
           "name": "longPress",
           "signatures": [
@@ -300,16 +306,11 @@
                   "desc": "纵坐标"
                 },
                 {
-                  "textRaw": "`duration` {number} 按下时长 ",
-                  "name": "duration",
-                  "type": "number",
-                  "desc": "按下时长"
-                },
-                {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1"
+                  "desc": "多点触摸id, 可选, 默认为0",
+                  "optional": true
                 }
               ]
             },
@@ -319,10 +320,11 @@
                   "name": "x"
                 },
                 {
-                  "name": "y[\\"
+                  "name": "y"
                 },
                 {
-                  "name": "id\\"
+                  "name": "id",
+                  "optional": true
                 }
               ]
             }
@@ -349,10 +351,10 @@
                   "desc": "纵坐标"
                 },
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1",
+                  "desc": "多点触摸id, 可选, 默认为0",
                   "optional": true
                 }
               ]
@@ -394,10 +396,10 @@
                   "desc": "纵坐标"
                 },
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1",
+                  "desc": "多点触摸id, 可选, 默认为0",
                   "optional": true
                 }
               ]
@@ -427,10 +429,10 @@
             {
               "params": [
                 {
-                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为1 ",
+                  "textRaw": "`id` {number} 多点触摸id, 可选, 默认为0 ",
                   "name": "id",
                   "type": "number",
-                  "desc": "多点触摸id, 可选, 默认为1",
+                  "desc": "多点触摸id, 可选, 默认为0",
                   "optional": true
                 }
               ]

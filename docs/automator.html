@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#automator_automator">自动化 (Automator)</a></span><ul>
+<li><span class="stability_undefined"><a href="#automator_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_simpleactionautomator">简易自动化 (SimpleActionAutomator)</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator">高权限自动化 (RootAutomator)</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_automatorconfiguration">自动化配置 (AutomatorConfiguration)</a></span></li>
@@ -212,9 +213,9 @@
 </li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_1">RootAutomator</a></span><ul>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_tap_x_y_id">RootAutomator.tap(x, y[, id])</a></span></li>
-<li><span class="stability_undefined"><a href="#automator_rootautomator_swipe_x1_x2_y1_y2_duration_id">RootAutomator.swipe(x1, x2, y1, y2[, duration, id])</a></span></li>
+<li><span class="stability_undefined"><a href="#automator_rootautomator_swipe_x1_y1_x2_y2_duration_id">RootAutomator.swipe(x1, y1, x2, y2[, duration, id])</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_press_x_y_duration_id">RootAutomator.press(x, y, duration[, id])</a></span></li>
-<li><span class="stability_undefined"><a href="#automator_rootautomator_longpress_x_y_id">RootAutomator.longPress(x, y[\, id])</a></span></li>
+<li><span class="stability_undefined"><a href="#automator_rootautomator_longpress_x_y_id">RootAutomator.longPress(x, y[, id])</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_touchdown_x_y_id">RootAutomator.touchDown(x, y[, id])</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_touchmove_x_y_id">RootAutomator.touchMove(x, y[, id])</a></span></li>
 <li><span class="stability_undefined"><a href="#automator_rootautomator_touchup_id">RootAutomator.touchUp([id])</a></span></li>
@@ -254,11 +255,23 @@
 
         <div id="apicontent">
             <h1>自动化 (Automator)<span><a class="mark" href="#automator_automator" id="automator_automator">#</a></span></h1>
-<hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
-
-<hr>
+<h2>6.7.0 源码校对<span><a class="mark" href="#automator_6_7_0" id="automator_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Auto.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Automator.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomator.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomatorNativeObject.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/accessibility/SimpleActionAutomator.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/inputevent/RootAutomator.java</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/engine/RootAutomatorEngine.kt</code></li>
+</ul>
+<p>运行时中 <code>auto</code>, <code>automator</code>, <code>selector</code>, <code>RootAutomator</code> 均由 <code>ScriptRuntime.augment(...)</code> 注入. <code>RootAutomator</code> 仅注入构造器, 不存在 <code>$RootAutomator</code> 模块对象.</p>
+<p>当前源码公开的 <code>auto</code> / <code>$auto</code> 入口包括 <code>start</code>, <code>enable</code>, <code>stop</code>, <code>disable</code>, <code>hasInstance</code>, <code>hasService</code>, <code>exists</code>, <code>isRunning</code>, <code>isOperational</code>, <code>stateListener</code>, <code>registerEvent</code>, <code>registerEvents</code>, <code>removeEvent</code>, <code>removeEvents</code>, <code>waitFor</code>, <code>setMode</code>, <code>setFlags</code>, <code>setWindowFilter</code>, <code>launchSettings</code>, <code>clearCache</code>, <code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>; getter 包括 <code>service</code>, <code>services</code>, <code>windows</code>, <code>root</code>, <code>rootInActiveWindow</code>, <code>windowRoots</code>, <code>state</code>.</p>
+<p>当前源码公开的 <code>automator</code> / <code>$automator</code> 入口包括全局坐标和系统动作: <code>click</code>, <code>longClick</code>, <code>press</code>, <code>swipe</code>, <code>gesture</code>, <code>gestureAsync</code>, <code>gestures</code>, <code>gesturesAsync</code>, <code>scrollDown</code>, <code>scrollUp</code>, <code>input</code>, <code>setText</code>, <code>back</code>, <code>home</code>, <code>powerDialog</code>, <code>notifications</code>, <code>quickSettings</code>, <code>recents</code>, <code>splitScreen</code>; 模块补充入口包括 <code>isServiceRunning</code>, <code>ensureService</code>, <code>waitForService</code>, <code>captureScreen</code>, <code>lockScreen</code>, <code>takeScreenshot</code>, <code>headsethook</code>, <code>accessibilityButton</code>, <code>accessibilityButtonChooser</code>, <code>accessibilityShortcut</code>, <code>accessibilityAllApps</code>, <code>dismissNotificationShade</code>.</p>
+<p>坐标触摸动作在 <code>6.7.0</code> 源码中走无障碍 <code>dispatchGesture</code>, 因此依赖可用的无障碍服务; <code>captureScreen()</code> 要求 Android R / API 30+ 的无障碍截图能力.</p>
+<p><code>RootAutomator</code> 构造要求 root 或可用 Shizuku. 底层公开 <code>sendEvent</code>, <code>touch</code>, <code>setScreenMetrics</code>, <code>touchX</code>, <code>touchY</code>, <code>sendSync</code>, <code>sendMtSync</code>, <code>tap</code>, <code>swipe</code>, <code>press</code>, <code>longPress</code>, <code>touchDown</code>, <code>touchUp</code>, <code>touchMove</code>, <code>getDefaultId</code>, <code>setDefaultId</code>, <code>exit</code>. 默认触点 ID 为 <code>0</code>.</p>
 <h2>简易自动化 (SimpleActionAutomator)<span><a class="mark" href="#automator_simpleactionautomator" id="automator_simpleactionautomator">#</a></span></h2>
 <p>待补充...</p>
 <h2>高权限自动化 (RootAutomator)<span><a class="mark" href="#automator_rootautomator" id="automator_rootautomator">#</a></span></h2>
@@ -279,10 +292,10 @@
 <p>详情参阅 <a href="uiObjectActionsType.html">控件节点行为 (UiObjectActions)</a> 章节.</p>
 <hr>
 <h1>基于坐标的触摸模拟<span><a class="mark" href="#automator" id="automator">#</a></span></h1>
-<p>本章节介绍了一些使用坐标进行点击、滑动的函数. 这些函数有的需要安卓7.0以上, 有的需要root权限.</p>
+<p>本章节介绍使用坐标进行点击、滑动的函数. 在 AutoJs6 <code>6.7.0</code> 中, 这些全局坐标动作主要通过无障碍服务的手势分发实现, 因此需要确保无障碍服务可用.</p>
 <p>要获取要点击的位置的坐标, 可以在开发者选项中开启&quot;指针位置&quot;.</p>
 <p>基于坐标的脚本通常会有分辨率的问题, 这时可以通过<code>setScreenMetrics()</code>函数来进行自动坐标放缩. 这个函数会影响本章节的所有点击、长按、滑动等函数. 通过设定脚本设计时的分辨率, 使得脚本在其他分辨率下自动放缩坐标.</p>
-<p>控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过<code>.click()</code>函数来点击, 这时如果安卓版本在7.0以上或者有root权限, 就可以通过以下方式来点击：</p>
+<p>控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过<code>.click()</code>函数来点击, 这时可通过以下方式点击控件中心坐标：</p>
 <pre><code>//获取这个控件
 var widget = id(&quot;xxx&quot;).findOne();
 //获取其中心位置并点击
@@ -353,7 +366,7 @@ for(var i = 0; i &lt; 100; i++){
 <pre><code>gestures([0, 500, [800, 300], [500, 1000]],
          [0, 500, [300, 1500], [500, 1000]]);
 </code></pre><h1>RootAutomator<span><a class="mark" href="#automator_rootautomator_1" id="automator_rootautomator_1">#</a></span></h1>
-<p>RootAutomator是一个使用root权限来模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.</p>
+<p>RootAutomator 是一个使用 root 或 Shizuku 后端模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.</p>
 <p>一个脚本中最好只存在一个RootAutomator, 并且保证脚本结束退出他. 可以在exit事件中退出RootAutomator, 例如：</p>
 <pre><code>var ra = new RootAutomator();
 events.on(&#39;exit&#39;, function(){
@@ -362,12 +375,12 @@ events.on(&#39;exit&#39;, function(){
 //执行一些点击操作
 ...
 
-</code></pre><p><strong>注意以下命令需要root权限</strong></p>
+</code></pre><p><strong>注意以下命令需要 root 权限或可用的 Shizuku 输入设备访问能力.</strong></p>
 <h2>RootAutomator.tap(x, y[, id])<span><a class="mark" href="#automator_rootautomator_tap_x_y_id" id="automator_rootautomator_tap_x_y_id">#</a></span></h2>
 <div class="signature"><ul>
 <li><code>x</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 横坐标</li>
 <li><code>y</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 纵坐标</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1, 可以通过setDefaultId指定.</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0, 可以通过setDefaultId指定.</li>
 </ul>
 </div><p>点击位置(x, y). 其中id是一个整数值, 用于区分多点触摸, 不同的id表示不同的&quot;手指&quot;, 例如：</p>
 <pre><code>var ra = new RootAutomator();
@@ -379,14 +392,14 @@ ra.exit();
 </code></pre><p>如果不需要多点触摸, 则不需要id这个参数.
 多点触摸通常用于手势或游戏操作, 例如模拟双指捏合、双指上滑等.</p>
 <p>某些情况下可能存在tap点击无反应的情况, 这时可以用<code>RootAutomator.press()</code>函数代替.</p>
-<h2>RootAutomator.swipe(x1, x2, y1, y2[, duration, id])<span><a class="mark" href="#automator_rootautomator_swipe_x1_x2_y1_y2_duration_id" id="automator_rootautomator_swipe_x1_x2_y1_y2_duration_id">#</a></span></h2>
+<h2>RootAutomator.swipe(x1, y1, x2, y2[, duration, id])<span><a class="mark" href="#automator_rootautomator_swipe_x1_y1_x2_y2_duration_id" id="automator_rootautomator_swipe_x1_y1_x2_y2_duration_id">#</a></span></h2>
 <div class="signature"><ul>
 <li><code>x1</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 滑动起点横坐标</li>
 <li><code>y1</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 滑动起点纵坐标</li>
 <li><code>x2</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 滑动终点横坐标</li>
 <li><code>y2</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 滑动终点纵坐标</li>
 <li><code>duration</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 滑动时长, 单位毫秒, 默认值为300</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟一次从(x1, y1)到(x2, y2)的时间为duration毫秒的滑动.</p>
 <h2>RootAutomator.press(x, y, duration[, id])<span><a class="mark" href="#automator_rootautomator_press_x_y_duration_id" id="automator_rootautomator_press_x_y_duration_id">#</a></span></h2>
@@ -394,15 +407,14 @@ ra.exit();
 <li><code>x</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 横坐标</li>
 <li><code>y</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 纵坐标</li>
 <li><code>duration</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 按下时长</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟按下位置(x, y), 时长为duration毫秒.</p>
-<h2>RootAutomator.longPress(x, y[\, id])<span><a class="mark" href="#automator_rootautomator_longpress_x_y_id" id="automator_rootautomator_longpress_x_y_id">#</a></span></h2>
+<h2>RootAutomator.longPress(x, y[, id])<span><a class="mark" href="#automator_rootautomator_longpress_x_y_id" id="automator_rootautomator_longpress_x_y_id">#</a></span></h2>
 <div class="signature"><ul>
 <li><code>x</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 横坐标</li>
 <li><code>y</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 纵坐标</li>
-<li><code>duration</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 按下时长</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟长按位置(x, y).</p>
 <p>以上为简单模拟触摸操作的函数. 如果要模拟一些复杂的手势, 需要更底层的函数.</p>
@@ -410,19 +422,19 @@ ra.exit();
 <div class="signature"><ul>
 <li><code>x</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 横坐标</li>
 <li><code>y</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 纵坐标</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟手指按下位置(x, y).</p>
 <h2>RootAutomator.touchMove(x, y[, id])<span><a class="mark" href="#automator_rootautomator_touchmove_x_y_id" id="automator_rootautomator_touchmove_x_y_id">#</a></span></h2>
 <div class="signature"><ul>
 <li><code>x</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 横坐标</li>
 <li><code>y</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 纵坐标</li>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟移动手指到位置(x, y).</p>
 <h2>RootAutomator.touchUp([id])<span><a class="mark" href="#automator_rootautomator_touchup_id" id="automator_rootautomator_touchup_id">#</a></span></h2>
 <div class="signature"><ul>
-<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为1</li>
+<li><code>id</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 多点触摸id, 可选, 默认为0</li>
 </ul>
 </div><p>模拟手指弹起.</p>
 <h1>使用root权限点击和滑动的简单命令<span><a class="mark" href="#automator_root" id="automator_root">#</a></span></h1>

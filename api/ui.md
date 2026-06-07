@@ -1,11 +1,25 @@
 # 用户界面 (UI)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UI.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UIWidget.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/UI.kt`
+- `app/src/main/java/org/autojs/autojs/script/JavaScriptSource.java`
+- `app/src/main/java/org/autojs/autojs/execution/ScriptExecuteActivity.kt`
+
+运行时中 `ui` / `$ui` 由 augment 注入, 全局同时提供 `isUiThread`.
+
+当前源码公开函数包括 `run`, `__inflate__`, `inflate`, `useAndroidLayout`, `post`, `layout`, `layoutFile`, `registerWidget`, `setContentView`, `statusBarColor`, `statusBarIconLight`, `statusBarIconLightBy`, `backgroundColor`, `navigationBarColor`, `navigationBarIconLight`, `navigationBarIconLightBy`, `findById`, `findByStringId`, `findView`, `finish`, `keepScreenOn`, `getStatusBarHeight`, `getVisibleStatusBarHeight`, `getNavigationBarHeight`, `getVisibleNavigationBarHeight`. getter 包括 `R`, `__widgets__`, `root`, `emitter`, `statusBarHeight`, `visibleStatusBarHeight`, `navigationBarHeight`, `visibleNavigationBarHeight`.
+
+`ui.run(action)` 在 UI 线程会立即执行, 否则投递到 UI handler 并阻塞等待结果; `ui.post(action, delay?)` 投递到 UI 线程并返回 boolean. `ui.layoutFile(path)` 通过运行时 `files` 读取布局文件.
+
+`layout`, `setContentView`, 状态栏 / 导航栏设置, `finish`, `keepScreenOn` 需要 UI 模式 activity; `inflate` 可在普通主题 context 下使用. `registerWidget(name, widget)` 要求 widget 继承 `UIWidget`.
+
+UI 模式由脚本前 300 个 token 的字符串指令解析, 会跳过注释和换行; 支持 `"ui"`, `"auto"`, `"jsox"` / `"x"` 及组合.
 
 ui模块提供了编写用户界面的支持.
 
@@ -13,7 +27,7 @@ ui模块提供了编写用户界面的支持.
     View: https://developer.android.google.cn/reference/android/view/View?hl=cn
     Widget: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
 
-带有ui的脚本的的最前面必须使用`"ui";`指定ui模式, 否则脚本将不会以ui模式运行. 正确示范:s
+带有ui的脚本的最前面必须使用`"ui";`指定ui模式, 否则脚本将不会以ui模式运行. 正确示范:
 
 ```
 "ui";
@@ -21,7 +35,7 @@ ui模块提供了编写用户界面的支持.
 //脚本的其他代码
 ```
 
-字符串"ui"的前面可以有注释、空行和空格**[v4.1.0新增]**, 但是不能有其他代码.
+字符串 `"ui"` 的前面可以有注释、空行和空格, 但不能有其他普通执行代码. AutoJs6 `6.7.0` 会在脚本前 300 个 token 内解析 `"ui"`, `"auto"`, `"jsox"` / `"x"` 等模式指令.
 
 界面是由视图(View)组成的. View分成两种, 控件(Widget)和布局(Layout). 控件(Widget)用来具体显示文字、图片、网页等, 比如文本控件(text)用来显示文字, 按钮控件(button)则可以显示一个按钮并提供点击效果, 图片控件(img)则用来显示来自网络或者文件的图片, 除此之外还有输入框控件(input)、进度条控件(progressbar)、单选复选框控件(checkbox)等；布局(Layout)则是装着一个或多个控件的"容器", 用于控制在他里面的控件的位置, 比如垂直布局(vertical)会把他里面的控件从上往下依次显示(即纵向排列), 水平布局(horizontal)则会把他里面的控件从左往右依次显示(即横向排列), 以及帧布局(frame), 他会把他里面的控件直接在左上角显示, 如果有多个控件, 后面的控件会重叠在前面的控件上.
 

@@ -1,11 +1,23 @@
 # 悬浮窗 (Floaty)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/floaty/Floaty.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/Floaty.kt`
+- `app/src/main/java/org/autojs/autojs/core/floaty/BaseResizableFloatyWindow.kt`
+- `app/src/main/java/org/autojs/autojs/core/floaty/RawWindow.kt`
+- `app/src/main/java/org/autojs/autojs/permission/DisplayOverOtherAppsPermission.kt`
+
+运行时中 `floaty` / `$floaty` 由 augment 注入. 当前公开入口包括 `window`, `rawWindow`, `hasPermission`, `requestPermission`, `ensurePermission`, `closeAll`, `getClip`.
+
+Rhino 公开入口的 `window(layout)` / `rawWindow(layout)` 只接受 XML / XML 字符串布局, 源码会从 `XMLObject` / `XMLList` 或字符串构建布局; 不接受已创建的 Android `View` 对象.
+
+创建悬浮窗前会检查并等待悬浮窗权限, 最多约 60 秒; `ensurePermission()` 在无权限时直接抛错. `getClip(maxDelayAfterWindowReady?)` 会借助悬浮窗在较新 Android 系统上读取剪贴板, 默认最大等待 `500ms`.
+
+`window` 返回可调整窗口, `rawWindow` 返回原始窗口. 两者共有 `setPosition`, `setSize`, `requestFocus`, `disableFocus`, `close`, `exitOnClose` 和 `x`, `y`, `width`, `height`; `rawWindow` 额外公开 `setTouchable`, `window` 额外公开调整开关相关属性 / setter.
 
 floaty模块提供了悬浮窗的相关函数, 可以在屏幕上显示自定义悬浮窗, 控制悬浮窗大小、位置等.
 
@@ -17,13 +29,13 @@ setInterval(()=>{}, 1000);
 
 ## floaty.window(layout)
 
-* `layout` {xml} | {View} 悬浮窗界面的XML或者View
+* `layout` {xml} | {string} 悬浮窗界面的 XML 或 XML 字符串
 
 指定悬浮窗的布局, 创建并**显示**一个悬浮窗, 返回一个`FloatyWindow`对象.
 
 该悬浮窗自带关闭、调整大小、调整位置按键, 可根据需要调用`setAdjustEnabled()`函数来显示或隐藏.
 
-其中layout参数可以是xml布局或者一个View, 更多信息参见ui模块的说明.
+其中 layout 参数可以是 XML 布局或 XML 字符串, 更多信息参见 ui 模块的说明.
 
 例子：
 
@@ -52,7 +64,7 @@ ui.run(function(){
 
 ## floaty.rawWindow(layout)
 
-* `layout` {xml} | {View} 悬浮窗界面的XML或者View
+* `layout` {xml} | {string} 悬浮窗界面的 XML 或 XML 字符串
 
 指定悬浮窗的布局, 创建并**显示**一个原始悬浮窗, 返回一个`FloatyRawWindow`对象.
 

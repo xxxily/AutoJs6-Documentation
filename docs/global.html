@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#global_global">全局对象 (Global)</a></span><ul>
+<li><span class="stability_undefined"><a href="#global_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#global">覆写保护</a></span></li>
 <li><span class="stability_undefined"><a href="#global_global_1">[@] global</a></span></li>
 <li><span class="stability_undefined"><a href="#global_m_sleep">[m] sleep</a></span><ul>
@@ -383,10 +384,6 @@
 <li><span class="stability_undefined"><a href="#global_isfunction_o">isFunction(o)</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#global_m_ishtmldocument">[m] isHTMLDocument</a></span><ul>
-<li><span class="stability_undefined"><a href="#global_ishtmldocument_o">isHTMLDocument(o)</a></span></li>
-</ul>
-</li>
 <li><span class="stability_undefined"><a href="#global_m_isint16array">[m] isInt16Array</a></span><ul>
 <li><span class="stability_undefined"><a href="#global_isint16array_o">isInt16Array(o)</a></span></li>
 </ul>
@@ -471,10 +468,6 @@
 <li><span class="stability_undefined"><a href="#global_isweakset_o">isWeakSet(o)</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#global_m_iswindow">[m] isWindow</a></span><ul>
-<li><span class="stability_undefined"><a href="#global_iswindow_o">isWindow(o)</a></span></li>
-</ul>
-</li>
 <li><span class="stability_undefined"><a href="#global_m_isxml">[m] isXML</a></span><ul>
 <li><span class="stability_undefined"><a href="#global_isxml_o">isXML(o)</a></span></li>
 </ul>
@@ -516,6 +509,28 @@
 <p>AutoJs6 的内置模块均支持全局使用, 如 <code>app</code>, <code>images</code>, <code>device</code> 等.</p>
 <p>为便于使用, 一些 AutoJs6 模块中的方法也被全局化,<br>如 <code>images.captureScreen()</code>, <code>dialogs.alert()</code>, <code>app.launch()</code> 等.<br>全局化方法均以 <code>Global</code> 标签标注.</p>
 <p>脚本文件可直接运行使用, 也可作为模块被导入使用 (<code>require</code> 方法).<br>当作为模块使用时, <code>exports</code> 和 <code>module</code> 可作为全局对象使用.<br>另在 UI 模式下也有一些专属全局对象, 如 <code>activity</code>.</p>
+<h2>6.7.0 源码校对<span><a class="mark" href="#global_6_7_0" id="global_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/engine/RhinoJavaScriptEngine.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Global.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Legacy.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/IsNullish.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Species.kt</code></li>
+</ul>
+<p>运行时初始化时, <code>Global</code> 通过 <code>assignWithRuntime(...)</code> 直接写入顶级作用域, 不生成单独的 <code>global</code> 模块对象; <code>Legacy</code>, <code>isNullish</code> 与 <code>species</code> 同步注册兼容入口. <code>Augmentable.augment(target, true)</code> 注册的常规模块会同时提供 <code>name</code> 与 <code>$name</code>, 但 <code>Global</code> 是例外.</p>
+<p>当前源码公开的补充全局能力包括:</p>
+<ul>
+<li>属性 / getter: <code>isAutoJs6</code>, <code>WIDTH</code>, <code>HEIGHT</code>, <code>axios</code>, <code>cheerio</code>, <code>dayjs</code>, <code>i18n</code>.</li>
+<li>状态与类型: <code>TODO</code>, <code>isUiThread</code>, <code>isJavaObject</code>, <code>isInteger</code>, <code>isBigInt</code>, <code>isPrimitive</code>, <code>isReference</code>, <code>isEmptyObject</code>, <code>unwrapJavaObject</code>, <code>isNullish</code>, <code>isObject</code>, <code>isObjectSpecies</code>.</li>
+<li>运行控制: <code>sleep</code>, <code>isStopped</code>, <code>isShuttingDown</code>, <code>notStopped</code>, <code>isRunning</code>, <code>exit</code>, <code>stop</code>.</li>
+<li>系统上下文: <code>setClip</code>, <code>getClip</code>, <code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>, <code>wait</code>, <code>waitForActivity</code>, <code>waitForPackage</code>.</li>
+<li>工具函数: <code>random</code>, <code>setScreenMetrics</code>, <code>requiresApi</code>, <code>requiresAutojsVersion</code>, <code>getScaleBases</code>, <code>getScaleBaseX</code>, <code>getScaleBaseY</code>, <code>setScaleBases</code>, <code>setScaleBaseX</code>, <code>setScaleBaseY</code>, <code>cX</code>, <code>cY</code>, <code>cYx</code>, <code>cXy</code>.</li>
+</ul>
+<p><code>currentPackage</code> / <code>currentActivity</code> / <code>currentComponent</code> 的 <code>mode</code> 支持 <code>auto</code>, <code>a11y</code> / <code>accessibility</code>, <code>shizuku</code>, <code>root</code> 以及 <code>{ by | mode }</code> 对象. <code>auto</code> 模式按 Shizuku, root shell, accessibility 顺序尝试.</p>
+<p><code>wait(condition, limit?, interval?, callback?)</code> 默认 <code>limit = 10000ms</code>, <code>interval = 200ms</code>; <code>limit &lt; 100</code> 视为次数限制, 否则视为毫秒限制. 源码禁止直接将 <code>UiObject</code> 作为 <code>condition</code>; <code>callback</code> 必须是对象, 且 <code>then</code> / <code>else</code> 必须是函数. <code>waitForActivity</code> 与 <code>waitForPackage</code> 有源码级 UI 线程禁止; <code>wait</code> 本身没有该显式限制.</p>
 <h2>覆写保护<span><a class="mark" href="#global" id="global">#</a></span></h2>
 <p>AutoJs6 对部分全局对象及内置模块增加了覆写保护.<br>以下全局声明或赋值将导致异常或非预期结果:</p>
 <pre><code class="lang-js">/* 以全局对象 selector 为例. */
@@ -689,7 +704,7 @@ console.log(text);
 </blockquote>
 <h2>[m] wait<span><a class="mark" href="#global_m_wait" id="global_m_wait">#</a></span></h2>
 <h3>wait(condition)<span><a class="mark" href="#global_wait_condition" id="global_wait_condition">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; any)</a></span> | <span class="type"><a href="dataTypes.html#datatypes_pickupselector">PickupSelector</a></span> } - 结束等待条件</li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
@@ -753,7 +768,7 @@ wait(&#39;立即开始&#39;) ? toast(&#39;√&#39;) : toast(&#39;×&#39;);
 <p>参阅: <a href="uiSelectorType.html#uiselectortype_m_pickup">pickup</a></p>
 </blockquote>
 <h3>wait(condition, limit)<span><a class="mark" href="#global_wait_condition_limit" id="global_wait_condition_limit">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 2/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 2/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; any)</a></span> | <span class="type"><a href="uiSelectorType.html#uiselectortype_m_pickup">PickupSelector</a></span> } - 结束等待条件</li>
 <li><strong>limit</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 等待条件检测限制</li>
@@ -766,7 +781,7 @@ wait(() =&gt; device.isScreenOff(), 20); /* limit &lt; 100, 视为次数限制. 
 wait(() =&gt; device.isScreenOff(), 5e3); /* limit &gt;= 100, 视为时间限制. */
 </code></pre>
 <h3>wait(condition, limit, interval)<span><a class="mark" href="#global_wait_condition_limit_interval" id="global_wait_condition_limit_interval">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 3/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 3/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; any)</a></span> | <span class="type"><a href="uiSelectorType.html#uiselectortype_m_pickup">PickupSelector</a></span> } - 结束等待条件</li>
 <li><strong>limit</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 等待条件检测限制</li>
@@ -786,7 +801,7 @@ wait(() =&gt; device.isScreenOff(), 20, 0);
 <p>例如在第三次检查时, 条件满足:<br>检查 (×) - 间歇 - 检查 (×) - 间歇 - 检查 (√) - 立即结束 wait()</p>
 </blockquote>
 <h3>wait(condition, callback)<span><a class="mark" href="#global_wait_condition_callback" id="global_wait_condition_callback">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 4/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 4/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; T)</a></span> | <span class="type"><a href="uiSelectorType.html#uiselectortype_m_pickup">PickupSelector</a></span> } - 结束等待条件</li>
 <li><strong>callback</strong> {{<ul>
@@ -856,7 +871,7 @@ result; /* 一个数字 (如 99.99732126036437) 或 NaN. */
 }).forEach(x =&gt; console.log(x));
 </code></pre>
 <h3>wait(condition, limit, callback)<span><a class="mark" href="#global_wait_condition_limit_callback" id="global_wait_condition_limit_callback">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 5/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 5/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; T)</a></span> | <span class="type"><a href="uiSelectorType.html#uiselectortype_m_pickup">PickupSelector</a></span> } - 结束等待条件</li>
 <li><strong>limit</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 等待条件检测限制</li>
@@ -874,7 +889,7 @@ result; /* 一个数字 (如 99.99732126036437) 或 NaN. */
 <p>参阅: <a href="#global_waitcondition_limit">wait(condition, limit)</a></p>
 </blockquote>
 <h3>wait(condition, limit, interval, callback)<span><a class="mark" href="#global_wait_condition_limit_interval_callback" id="global_wait_condition_limit_interval_callback">#</a></span></h3>
-<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 6/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>
+<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 6/6</code></strong> <strong><code>A11Y?</code></strong></p>
 <ul>
 <li><strong>condition</strong> { <span class="type"><a href="dataTypes.html#datatypes_function">(() =&gt; T)</a></span> | <span class="type"><a href="uiSelectorType.html#uiselectortype_m_pickup">PickupSelector</a></span> } - 结束等待条件</li>
 <li><strong>limit</strong> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> } - 等待条件检测限制</li>
@@ -1420,7 +1435,7 @@ cX(100); /* 相当于 cX(100, 1096) . */
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_number">number</a></span> }</li>
 </ul>
 <p>无参时, 返回当前设备高度.</p>
-<pre><code class="lang-js">console.log(cY() === device.width); // true
+<pre><code class="lang-js">console.log(cY() === device.height); // true
 </code></pre>
 <h3>cY(y, base)<span><a class="mark" href="#global_cy_y_base" id="global_cy_y_base">#</a></span></h3>
 <p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 2/4</code></strong></p>
@@ -1803,13 +1818,6 @@ species.isRegExp(/test$/); // true
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
 </ul>
 </div><p>判断对象的 &quot;种类&quot; 是否为 <code>Function</code>.</p>
-<h3>[m] isHTMLDocument<span><a class="mark" href="#global_m_ishtmldocument" id="global_m_ishtmldocument">#</a></span></h3>
-<h4>isHTMLDocument(o)<span><a class="mark" href="#global_ishtmldocument_o" id="global_ishtmldocument_o">#</a></span></h4>
-<div class="signature"><ul>
-<li><strong>o</strong> { <span class="type"><a href="dataTypes.html#datatypes_any">any</a></span> } - 任意对象</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
-</ul>
-</div><p>判断对象的 &quot;种类&quot; 是否为 <code>HTMLDocument</code>.</p>
 <h3>[m] isInt16Array<span><a class="mark" href="#global_m_isint16array" id="global_m_isint16array">#</a></span></h3>
 <h4>isInt16Array(o)<span><a class="mark" href="#global_isint16array_o" id="global_isint16array_o">#</a></span></h4>
 <div class="signature"><ul>
@@ -1957,13 +1965,6 @@ species.isRegExp(/test$/); // true
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
 </ul>
 </div><p>判断对象的 &quot;种类&quot; 是否为 <code>WeakSet</code>.</p>
-<h3>[m] isWindow<span><a class="mark" href="#global_m_iswindow" id="global_m_iswindow">#</a></span></h3>
-<h4>isWindow(o)<span><a class="mark" href="#global_iswindow_o" id="global_iswindow_o">#</a></span></h4>
-<div class="signature"><ul>
-<li><strong>o</strong> { <span class="type"><a href="dataTypes.html#datatypes_any">any</a></span> } - 任意对象</li>
-<li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_boolean">boolean</a></span> }</li>
-</ul>
-</div><p>判断对象的 &quot;种类&quot; 是否为 <code>Window</code>.</p>
 <h3>[m] isXML<span><a class="mark" href="#global_m_isxml" id="global_m_isxml">#</a></span></h3>
 <h4>isXML(o)<span><a class="mark" href="#global_isxml_o" id="global_isxml_o">#</a></span></h4>
 <div class="signature"><ul>

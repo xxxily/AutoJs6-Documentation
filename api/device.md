@@ -1,11 +1,20 @@
 # 设备 (Device)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/device/Device.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/Device.java`
+
+运行时中 `device` / `$device` 由 augment 注入. 基础 `Device.java` 提供设备信息、屏幕、亮度、音量、电池、内存、唤醒 / 熄屏、震动、方向、网络和部分硬件标识读取能力; augment 层补充当前 AutoJs6 运行时便捷函数.
+
+当前 augment 公开函数包括 `summary`, `digest`, `vibrate`, `isScreenOff`, `isScreenPortrait`, `isScreenLandscape`, `getIpAddress`, `getIpv6Address`, `getGatewayAddress`, 网络状态检查, `getSharedDeviceId`, 指针位置相关函数. getter 包括 `width`, `height`, `rotation`, `orientation`, `density`.
+
+`vibrate` 支持毫秒数、摩斯字符串、震动时间数组等形式; 两参数形式可表达字符串选项、关闭 / 持续时间或数组 pattern 的 repeat/off 参数.
+
+亮度、音量、指针位置等系统设置相关能力受 Android 权限和系统版本限制. Android API 23+ 不能再通过私有 `Settings.System` 字段直接修改指针位置, 当前实现改由 `PointerLocationTool` 处理.
 
 device模块提供了与设备有关的信息与操作, 例如获取设备宽高, 内存使用率, IMEI, 调整设备亮度、音量等.
 

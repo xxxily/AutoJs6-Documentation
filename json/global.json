@@ -7,6 +7,13 @@
       "desc": "<p>在 JavaScript 中, <a href=\"https://stackoverflow.com/questions/9108925/how-is-almost-everything-in-javascript-an-object/\">几乎一切都是对象</a>.<br>此处的全局 &quot;对象&quot; 包括 [ 变量 / 方法 / 构造器 ] 等.<br>全局对象随处可用, 包括 ECMA 标准内置对象 (如 [ Number / RegExp / String ] 等).</p>\n<p>AutoJs6 的内置模块均支持全局使用, 如 <code>app</code>, <code>images</code>, <code>device</code> 等.</p>\n<p>为便于使用, 一些 AutoJs6 模块中的方法也被全局化,<br>如 <code>images.captureScreen()</code>, <code>dialogs.alert()</code>, <code>app.launch()</code> 等.<br>全局化方法均以 <code>Global</code> 标签标注.</p>\n<p>脚本文件可直接运行使用, 也可作为模块被导入使用 (<code>require</code> 方法).<br>当作为模块使用时, <code>exports</code> 和 <code>module</code> 可作为全局对象使用.<br>另在 UI 模式下也有一些专属全局对象, 如 <code>activity</code>.</p>\n",
       "modules": [
         {
+          "textRaw": "6.7.0 源码校对",
+          "name": "6.7.0_源码校对",
+          "desc": "<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/engine/RhinoJavaScriptEngine.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Global.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Legacy.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/IsNullish.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Species.kt</code></li>\n</ul>\n<p>运行时初始化时, <code>Global</code> 通过 <code>assignWithRuntime(...)</code> 直接写入顶级作用域, 不生成单独的 <code>global</code> 模块对象; <code>Legacy</code>, <code>isNullish</code> 与 <code>species</code> 同步注册兼容入口. <code>Augmentable.augment(target, true)</code> 注册的常规模块会同时提供 <code>name</code> 与 <code>$name</code>, 但 <code>Global</code> 是例外.</p>\n<p>当前源码公开的补充全局能力包括:</p>\n<ul>\n<li>属性 / getter: <code>isAutoJs6</code>, <code>WIDTH</code>, <code>HEIGHT</code>, <code>axios</code>, <code>cheerio</code>, <code>dayjs</code>, <code>i18n</code>.</li>\n<li>状态与类型: <code>TODO</code>, <code>isUiThread</code>, <code>isJavaObject</code>, <code>isInteger</code>, <code>isBigInt</code>, <code>isPrimitive</code>, <code>isReference</code>, <code>isEmptyObject</code>, <code>unwrapJavaObject</code>, <code>isNullish</code>, <code>isObject</code>, <code>isObjectSpecies</code>.</li>\n<li>运行控制: <code>sleep</code>, <code>isStopped</code>, <code>isShuttingDown</code>, <code>notStopped</code>, <code>isRunning</code>, <code>exit</code>, <code>stop</code>.</li>\n<li>系统上下文: <code>setClip</code>, <code>getClip</code>, <code>currentPackage</code>, <code>currentActivity</code>, <code>currentComponent</code>, <code>wait</code>, <code>waitForActivity</code>, <code>waitForPackage</code>.</li>\n<li>工具函数: <code>random</code>, <code>setScreenMetrics</code>, <code>requiresApi</code>, <code>requiresAutojsVersion</code>, <code>getScaleBases</code>, <code>getScaleBaseX</code>, <code>getScaleBaseY</code>, <code>setScaleBases</code>, <code>setScaleBaseX</code>, <code>setScaleBaseY</code>, <code>cX</code>, <code>cY</code>, <code>cYx</code>, <code>cXy</code>.</li>\n</ul>\n<p><code>currentPackage</code> / <code>currentActivity</code> / <code>currentComponent</code> 的 <code>mode</code> 支持 <code>auto</code>, <code>a11y</code> / <code>accessibility</code>, <code>shizuku</code>, <code>root</code> 以及 <code>{ by | mode }</code> 对象. <code>auto</code> 模式按 Shizuku, root shell, accessibility 顺序尝试.</p>\n<p><code>wait(condition, limit?, interval?, callback?)</code> 默认 <code>limit = 10000ms</code>, <code>interval = 200ms</code>; <code>limit &lt; 100</code> 视为次数限制, 否则视为毫秒限制. 源码禁止直接将 <code>UiObject</code> 作为 <code>condition</code>; <code>callback</code> 必须是对象, 且 <code>then</code> / <code>else</code> 必须是函数. <code>waitForActivity</code> 与 <code>waitForPackage</code> 有源码级 UI 线程禁止; <code>wait</code> 本身没有该显式限制.</p>\n",
+          "type": "module",
+          "displayName": "6.7.0 源码校对"
+        },
+        {
           "textRaw": "覆写保护",
           "name": "覆写保护",
           "desc": "<p>AutoJs6 对部分全局对象及内置模块增加了覆写保护.<br>以下全局声明或赋值将导致异常或非预期结果:</p>\n<pre><code class=\"lang-js\">/* 以全局对象 selector 为例. */\n\n/* 声明无效. */\nlet selector = 1; /* 异常: 变量 selector 重复声明. */\nconst selector = 1; /* 同上. */\nvar selector = 1; /* 同上. */\n\n/* 覆写无效 (非严格模式). */\nselector = 1;\ntypeof selector; // &quot;function&quot; - 静默失败, 覆写未生效.\n\n/* 覆写无效 (严格模式). */\n&quot;use strict&quot;;\nselector = 1; /* 异常: 无法修改只读属性: selector. */\n</code></pre>\n<p>局部作用域不受上述情况影响:</p>\n<pre><code class=\"lang-js\">(function () {\n    let selector = 1;\n    return typeof selector;\n})(); // &quot;number&quot;\n</code></pre>\n<p>截至目前 (2022/10) 受覆写保护的对象有:</p>\n<pre><code class=\"lang-text\">selector\ncontinuation\n</code></pre>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">global</p>\n\n<hr>\n",
@@ -219,7 +226,7 @@
               "textRaw": "wait(condition)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"dataTypes#pickupselector\">PickupSelector</a> } - 结束等待条件</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>阻塞等待, 直到条件满足.<br>默认等待时间为 10 秒, 条件检查间隔为 200 毫秒.<br>若超时, 放弃等待, 并返回特定的条件超时结果 (如 false).<br>若超时之前条件得以满足, 结束等待, 并返回特定的条件满足结果 (如 true).</p>\n<blockquote>\n<p>注: 不同于 while 和 for 等循环语句的 &quot;条件&quot;,<br>该方法的条件是结束等待条件, 只要不满足条件, 就一直等待.<br>而循环语句的条件, 是只要满足条件, 就一直循环.</p>\n</blockquote>\n<p>等待条件支持函数及选择器.</p>\n<p>函数示例, 等待设备屏幕关闭:</p>\n<pre><code class=\"lang-js\">wait(function () {\n    return device.isScreenOff();\n});\n\n/* 使用箭头函数. */\nwait(() =&gt; device.isScreenOff());\n\n/* 使用 bind. */\nwait(device.isScreenOff.bind(device));\n\n/* 对结果分支处理. */\nif (wait(() =&gt; device.isScreenOff())) {\n    console.log(&quot;等待屏幕关闭成功&quot;);\n} else {\n    console.log(&quot;等待屏幕关闭超时&quot;);\n}\n</code></pre>\n<p>选择器示例, 等待文本为 &quot;立即开始&quot; 的控件出现:</p>\n<pre><code class=\"lang-js\">/* 以下三种方式为 Pickup 选择器的不同格式, 效果相同. */\nwait(&#39;立即开始&#39;);\nwait(content(&#39;立即开始&#39;)); /* 同上. */\nwait({ content: &#39;立即开始&#39; }); /* 同上. */\n\n/* 函数方式. */\nwait(() =&gt; content(&#39;立即开始&#39;).exists());\nwait(() =&gt; pickup(&#39;立即开始&#39;, &#39;?&#39;)); /* 同上. */\n\n/* wait 返回结果的简单应用. */\nwait(&#39;立即开始&#39;) &amp;&amp; toast(&#39;OK&#39;);\nwait(&#39;立即开始&#39;) ? toast(&#39;√&#39;) : toast(&#39;×&#39;);\n</code></pre>\n<p>等待条件的满足与否, 与函数返回值有关.<br>例如当函数返回 true 时, 等待条件即满足.</p>\n<p>下面列出不满足条件的几种返回值:<br>[ <a href=\"dataTypes#boolean\">false</a> / <a href=\"dataTypes#null\">null</a> / <a href=\"dataTypes#undefined\">undefined</a> / <a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/NaN/\">NaN</a> ]<br>除此之外的返回值均视为满足条件 (包括空字符串和数字 0 等).</p>\n<p>一种常见的错误用例, 即函数条件缺少返回值:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    if (device.isScreenOff()) {\n        console.log(&quot;屏幕已成功关闭&quot;);\n    }\n});\n</code></pre>\n<p>上述示例中, 等待条件永远无法满足, 因函数一直返回 undefined.</p>\n<p>添加合适的返回值即可修正:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    if (device.isScreenOff()) {\n        console.log(&quot;屏幕已成功关闭&quot;);\n        return true;\n    }\n});\n</code></pre>\n<blockquote>\n<p>参阅: <a href=\"uiSelectorType#m-pickup\">pickup</a></p>\n</blockquote>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"dataTypes#pickupselector\">PickupSelector</a> } - 结束等待条件</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p>阻塞等待, 直到条件满足.<br>默认等待时间为 10 秒, 条件检查间隔为 200 毫秒.<br>若超时, 放弃等待, 并返回特定的条件超时结果 (如 false).<br>若超时之前条件得以满足, 结束等待, 并返回特定的条件满足结果 (如 true).</p>\n<blockquote>\n<p>注: 不同于 while 和 for 等循环语句的 &quot;条件&quot;,<br>该方法的条件是结束等待条件, 只要不满足条件, 就一直等待.<br>而循环语句的条件, 是只要满足条件, 就一直循环.</p>\n</blockquote>\n<p>等待条件支持函数及选择器.</p>\n<p>函数示例, 等待设备屏幕关闭:</p>\n<pre><code class=\"lang-js\">wait(function () {\n    return device.isScreenOff();\n});\n\n/* 使用箭头函数. */\nwait(() =&gt; device.isScreenOff());\n\n/* 使用 bind. */\nwait(device.isScreenOff.bind(device));\n\n/* 对结果分支处理. */\nif (wait(() =&gt; device.isScreenOff())) {\n    console.log(&quot;等待屏幕关闭成功&quot;);\n} else {\n    console.log(&quot;等待屏幕关闭超时&quot;);\n}\n</code></pre>\n<p>选择器示例, 等待文本为 &quot;立即开始&quot; 的控件出现:</p>\n<pre><code class=\"lang-js\">/* 以下三种方式为 Pickup 选择器的不同格式, 效果相同. */\nwait(&#39;立即开始&#39;);\nwait(content(&#39;立即开始&#39;)); /* 同上. */\nwait({ content: &#39;立即开始&#39; }); /* 同上. */\n\n/* 函数方式. */\nwait(() =&gt; content(&#39;立即开始&#39;).exists());\nwait(() =&gt; pickup(&#39;立即开始&#39;, &#39;?&#39;)); /* 同上. */\n\n/* wait 返回结果的简单应用. */\nwait(&#39;立即开始&#39;) &amp;&amp; toast(&#39;OK&#39;);\nwait(&#39;立即开始&#39;) ? toast(&#39;√&#39;) : toast(&#39;×&#39;);\n</code></pre>\n<p>等待条件的满足与否, 与函数返回值有关.<br>例如当函数返回 true 时, 等待条件即满足.</p>\n<p>下面列出不满足条件的几种返回值:<br>[ <a href=\"dataTypes#boolean\">false</a> / <a href=\"dataTypes#null\">null</a> / <a href=\"dataTypes#undefined\">undefined</a> / <a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/NaN/\">NaN</a> ]<br>除此之外的返回值均视为满足条件 (包括空字符串和数字 0 等).</p>\n<p>一种常见的错误用例, 即函数条件缺少返回值:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    if (device.isScreenOff()) {\n        console.log(&quot;屏幕已成功关闭&quot;);\n    }\n});\n</code></pre>\n<p>上述示例中, 等待条件永远无法满足, 因函数一直返回 undefined.</p>\n<p>添加合适的返回值即可修正:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    if (device.isScreenOff()) {\n        console.log(&quot;屏幕已成功关闭&quot;);\n        return true;\n    }\n});\n</code></pre>\n<blockquote>\n<p>参阅: <a href=\"uiSelectorType#m-pickup\">pickup</a></p>\n</blockquote>\n",
               "signatures": [
                 {
                   "params": [
@@ -234,7 +241,7 @@
               "textRaw": "wait(condition, limit)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 2/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p><a href=\"#waitcondition\">wait(condition)</a> 增加条件检测限制.<br>达到限制后, 表示等待超时, 并放弃等待.<br>限制分为 &quot;次数限制&quot; (limit &lt; 100) 和 &quot;时间限制&quot; (limit &gt;= 100).</p>\n<pre><code class=\"lang-js\">/* 等待屏幕关闭, 最多检测屏幕状态 20 次. */\nwait(() =&gt; device.isScreenOff(), 20); /* limit &lt; 100, 视为次数限制. */\n/* 等待屏幕关闭, 最多检测屏幕状态 5 秒钟. */\nwait(() =&gt; device.isScreenOff(), 5e3); /* limit &gt;= 100, 视为时间限制. */\n</code></pre>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 2/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p><a href=\"#waitcondition\">wait(condition)</a> 增加条件检测限制.<br>达到限制后, 表示等待超时, 并放弃等待.<br>限制分为 &quot;次数限制&quot; (limit &lt; 100) 和 &quot;时间限制&quot; (limit &gt;= 100).</p>\n<pre><code class=\"lang-js\">/* 等待屏幕关闭, 最多检测屏幕状态 20 次. */\nwait(() =&gt; device.isScreenOff(), 20); /* limit &lt; 100, 视为次数限制. */\n/* 等待屏幕关闭, 最多检测屏幕状态 5 秒钟. */\nwait(() =&gt; device.isScreenOff(), 5e3); /* limit &gt;= 100, 视为时间限制. */\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -252,7 +259,7 @@
               "textRaw": "wait(condition, limit, interval)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 3/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>interval</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测间隔</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p><a href=\"#waitcondition-limit\">wait(condition, limit)</a> 增加条件检测间隔.<br>只要条件不满足, wait() 方法会持续检测, 直到条件满足或达到检测限制.<br>interval 参数用于设置条件检测之间的间歇时长, 默认为 200 毫秒.</p>\n<pre><code class=\"lang-text\">检查条件 (不满足) - 间歇 - 检查条件 (不满足) - 间歇 - 检查条件...\n</code></pre>\n<pre><code class=\"lang-js\">/* 等待屏幕关闭, 最多检测屏幕状态 20 次, 每次检查间歇 3 秒钟. */\nwait(() =&gt; device.isScreenOff(), 20, 3e3);\n/* 等待屏幕关闭, 最多检测屏幕状态 20 次, 并采用不间断检测 (无间歇). */\nwait(() =&gt; device.isScreenOff(), 20, 0);\n</code></pre>\n<blockquote>\n<p>注: 在最后一次条件检查之后, 将不再发生间歇.<br>包括条件满足或达到检测限制.</p>\n<p>例如在第三次检查时, 条件满足:<br>检查 (×) - 间歇 - 检查 (×) - 间歇 - 检查 (√) - 立即结束 wait()</p>\n</blockquote>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 3/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; any)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>interval</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测间隔</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#boolean\">boolean</a> }</li>\n</ul>\n<p><a href=\"#waitcondition-limit\">wait(condition, limit)</a> 增加条件检测间隔.<br>只要条件不满足, wait() 方法会持续检测, 直到条件满足或达到检测限制.<br>interval 参数用于设置条件检测之间的间歇时长, 默认为 200 毫秒.</p>\n<pre><code class=\"lang-text\">检查条件 (不满足) - 间歇 - 检查条件 (不满足) - 间歇 - 检查条件...\n</code></pre>\n<pre><code class=\"lang-js\">/* 等待屏幕关闭, 最多检测屏幕状态 20 次, 每次检查间歇 3 秒钟. */\nwait(() =&gt; device.isScreenOff(), 20, 3e3);\n/* 等待屏幕关闭, 最多检测屏幕状态 20 次, 并采用不间断检测 (无间歇). */\nwait(() =&gt; device.isScreenOff(), 20, 0);\n</code></pre>\n<blockquote>\n<p>注: 在最后一次条件检查之后, 将不再发生间歇.<br>包括条件满足或达到检测限制.</p>\n<p>例如在第三次检查时, 条件满足:<br>检查 (×) - 间歇 - 检查 (×) - 间歇 - 检查 (√) - 立即结束 wait()</p>\n</blockquote>\n",
               "signatures": [
                 {
                   "params": [
@@ -273,7 +280,7 @@
               "textRaw": "wait(condition, callback)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 4/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition\">wait(condition)</a> 增加回调对象.</p>\n<p>回调对象集合了两个方法, then 与 else 分别对应等待成功与等待失败的情况:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; device.isScreenOff(), {\n    then: () =&gt; console.log(&quot;等待屏幕关闭成功&quot;),\n    else: () =&gt; console.log(&quot;等待屏幕关闭超时&quot;),\n});\n</code></pre>\n<p>两种方法都将最后一次检查结果作为实参, 可在方法体内直接使用:</p>\n<pre><code class=\"lang-js\">/* 等待一个落在 99.99 到 100 区间的随机数. */\nwait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        console.log(`获取随机数成功, 数字是: ${o}`);\n    },\n    else() {\n        console.log(&quot;获取 99.99 到 100 的随机数超时&quot;);\n    },\n});\n</code></pre>\n<blockquote>\n<p>注: else 回调方法的参数只能是 [ <a href=\"dataTypes#boolean\">false</a> / <a href=\"dataTypes#null\">null</a> / <a href=\"dataTypes#undefined\">undefined</a> / <a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/NaN/\">NaN</a> ],<br>因此 else 的参数几乎不会用到.</p>\n</blockquote>\n<p>需特别注意, 回调方法的返回值具有穿透性.<br>在回调方法内使用 return 语句, 将直接影响 wait() 的返回值 (undefined 除外).</p>\n<p>上述示例中, then 和 else 回调都没有返回值, 因此 wait() 返回值是 boolean 类型, 表示等待条件是否满足.<br>下述示例在回调函数中增加了返回值 (非 undefined), 则 wait() 也将返回这个值.</p>\n<pre><code class=\"lang-js\">let result = wait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        console.log(`获取随机数成功`);\n        return o;\n    },\n    else() {\n        console.log(&quot;获取 99.99 到 100 的随机数超时&quot;);\n        return NaN;\n    },\n});\nresult; /* 一个数字 (如 99.99732126036437) 或 NaN. */\n</code></pre>\n<p>上述示例如果等待条件满足, 则返回 then 的返回值 (number 类型),<br>等待条件超时, 则返回 else 的返回值 (NaN, 也为 number 类型).</p>\n<p>如果去掉 else 的返回语句, 则等待条件超时后, wait() 将返回 false (boolean 类型).</p>\n<p>如需对 wait() 的返回值做进一步处理, 则建议两个回调方法的返回值类型一致:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        return [ o - 1, o, o + 1 ];\n    },\n    else() {\n        /* 即使等待条件超时, 也可调用 forEach 方法. */\n        return [];\n    },\n}).forEach(x =&gt; console.log(x));\n</code></pre>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 4/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition\">wait(condition)</a> 增加回调对象.</p>\n<p>回调对象集合了两个方法, then 与 else 分别对应等待成功与等待失败的情况:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; device.isScreenOff(), {\n    then: () =&gt; console.log(&quot;等待屏幕关闭成功&quot;),\n    else: () =&gt; console.log(&quot;等待屏幕关闭超时&quot;),\n});\n</code></pre>\n<p>两种方法都将最后一次检查结果作为实参, 可在方法体内直接使用:</p>\n<pre><code class=\"lang-js\">/* 等待一个落在 99.99 到 100 区间的随机数. */\nwait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        console.log(`获取随机数成功, 数字是: ${o}`);\n    },\n    else() {\n        console.log(&quot;获取 99.99 到 100 的随机数超时&quot;);\n    },\n});\n</code></pre>\n<blockquote>\n<p>注: else 回调方法的参数只能是 [ <a href=\"dataTypes#boolean\">false</a> / <a href=\"dataTypes#null\">null</a> / <a href=\"dataTypes#undefined\">undefined</a> / <a href=\"https://developer.mozilla.org/zh-CN/docs/Glossary/NaN/\">NaN</a> ],<br>因此 else 的参数几乎不会用到.</p>\n</blockquote>\n<p>需特别注意, 回调方法的返回值具有穿透性.<br>在回调方法内使用 return 语句, 将直接影响 wait() 的返回值 (undefined 除外).</p>\n<p>上述示例中, then 和 else 回调都没有返回值, 因此 wait() 返回值是 boolean 类型, 表示等待条件是否满足.<br>下述示例在回调函数中增加了返回值 (非 undefined), 则 wait() 也将返回这个值.</p>\n<pre><code class=\"lang-js\">let result = wait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        console.log(`获取随机数成功`);\n        return o;\n    },\n    else() {\n        console.log(&quot;获取 99.99 到 100 的随机数超时&quot;);\n        return NaN;\n    },\n});\nresult; /* 一个数字 (如 99.99732126036437) 或 NaN. */\n</code></pre>\n<p>上述示例如果等待条件满足, 则返回 then 的返回值 (number 类型),<br>等待条件超时, 则返回 else 的返回值 (NaN, 也为 number 类型).</p>\n<p>如果去掉 else 的返回语句, 则等待条件超时后, wait() 将返回 false (boolean 类型).</p>\n<p>如需对 wait() 的返回值做进一步处理, 则建议两个回调方法的返回值类型一致:</p>\n<pre><code class=\"lang-js\">wait(() =&gt; {\n    let num = Math.random() * 100;\n    return num &gt; 99.99 &amp;&amp; num;\n}, {\n    then(o) {\n        return [ o - 1, o, o + 1 ];\n    },\n    else() {\n        /* 即使等待条件超时, 也可调用 forEach 方法. */\n        return [];\n    },\n}).forEach(x =&gt; console.log(x));\n</code></pre>\n",
               "signatures": [
                 {
                   "params": [
@@ -291,7 +298,7 @@
               "textRaw": "wait(condition, limit, callback)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 5/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition-callback\">wait(condition, callback)</a> 增加条件检测限制.</p>\n<blockquote>\n<p>参阅: <a href=\"#waitcondition-limit\">wait(condition, limit)</a></p>\n</blockquote>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 5/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition-callback\">wait(condition, callback)</a> 增加条件检测限制.</p>\n<blockquote>\n<p>参阅: <a href=\"#waitcondition-limit\">wait(condition, limit)</a></p>\n</blockquote>\n",
               "signatures": [
                 {
                   "params": [
@@ -312,7 +319,7 @@
               "textRaw": "wait(condition, limit, interval, callback)",
               "type": "method",
               "name": "wait",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 6/6</code></strong> <strong><code>A11Y?</code></strong> <strong><code>Non-UI</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>interval</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测间隔</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition-callback\">wait(condition, limit, callback)</a> 增加条件检测间隔.</p>\n<blockquote>\n<p>参阅: <a href=\"#waitcondition-limit-interval\">wait(condition, limit, interval)</a></p>\n</blockquote>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 6/6</code></strong> <strong><code>A11Y?</code></strong></p>\n<ul>\n<li><strong>condition</strong> { <a href=\"dataTypes#function\">(() =&gt; T)</a> | <a href=\"uiSelectorType#m-pickup\">PickupSelector</a> } - 结束等待条件</li>\n<li><strong>limit</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测限制</li>\n<li><strong>interval</strong> { <a href=\"dataTypes#number\">number</a> } - 等待条件检测间隔</li>\n<li><strong>callback</strong> {{<ul>\n<li>then(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n<li>else(result?: <a href=\"dataTypes#generic\">T</a>)?: <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n</li>\n<li>}} - 等待结束回调对象</li>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#generic\">R</a> extends <a href=\"dataTypes#void\">void</a> ? <a href=\"dataTypes#boolean\">boolean</a> : <a href=\"dataTypes#generic\">R</a> }</li>\n<li><ins><strong>template</strong></ins> <a href=\"dataTypes#generic\">T</a>, <a href=\"dataTypes#generic\">R</a></li>\n</ul>\n<p><a href=\"#waitcondition-callback\">wait(condition, limit, callback)</a> 增加条件检测间隔.</p>\n<blockquote>\n<p>参阅: <a href=\"#waitcondition-limit-interval\">wait(condition, limit, interval)</a></p>\n</blockquote>\n",
               "signatures": [
                 {
                   "params": [
@@ -1064,7 +1071,7 @@
               "textRaw": "cY()",
               "type": "method",
               "name": "cY",
-              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/5</code></strong></p>\n<ul>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>无参时, 返回当前设备高度.</p>\n<pre><code class=\"lang-js\">console.log(cY() === device.width); // true\n</code></pre>\n",
+              "desc": "<p><strong><code>6.2.0</code></strong> <strong><code>Global</code></strong> <strong><code>Overload 1/5</code></strong></p>\n<ul>\n<li><ins><strong>returns</strong></ins> { <a href=\"dataTypes#number\">number</a> }</li>\n</ul>\n<p>无参时, 返回当前设备高度.</p>\n<pre><code class=\"lang-js\">console.log(cY() === device.height); // true\n</code></pre>\n",
               "signatures": [
                 {
                   "params": []
@@ -1720,44 +1727,6 @@
               ],
               "type": "module",
               "displayName": "[m] isFunction"
-            },
-            {
-              "textRaw": "[m] isHTMLDocument",
-              "name": "[m]_ishtmldocument",
-              "methods": [
-                {
-                  "textRaw": "isHTMLDocument(o)",
-                  "type": "method",
-                  "name": "isHTMLDocument",
-                  "signatures": [
-                    {
-                      "params": [
-                        {
-                          "textRaw": "**o** { [any](dataTypes#any) } - 任意对象 ",
-                          "name": "**o**",
-                          "type": " [any](dataTypes#any) ",
-                          "desc": "任意对象"
-                        },
-                        {
-                          "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
-                          "name": "<ins>**returns**</ins>",
-                          "type": " [boolean](dataTypes#boolean) "
-                        }
-                      ]
-                    },
-                    {
-                      "params": [
-                        {
-                          "name": "o"
-                        }
-                      ]
-                    }
-                  ],
-                  "desc": "<p>判断对象的 &quot;种类&quot; 是否为 <code>HTMLDocument</code>.</p>\n"
-                }
-              ],
-              "type": "module",
-              "displayName": "[m] isHTMLDocument"
             },
             {
               "textRaw": "[m] isInt16Array",
@@ -2556,44 +2525,6 @@
               ],
               "type": "module",
               "displayName": "[m] isWeakSet"
-            },
-            {
-              "textRaw": "[m] isWindow",
-              "name": "[m]_iswindow",
-              "methods": [
-                {
-                  "textRaw": "isWindow(o)",
-                  "type": "method",
-                  "name": "isWindow",
-                  "signatures": [
-                    {
-                      "params": [
-                        {
-                          "textRaw": "**o** { [any](dataTypes#any) } - 任意对象 ",
-                          "name": "**o**",
-                          "type": " [any](dataTypes#any) ",
-                          "desc": "任意对象"
-                        },
-                        {
-                          "textRaw": "<ins>**returns**</ins> { [boolean](dataTypes#boolean) } ",
-                          "name": "<ins>**returns**</ins>",
-                          "type": " [boolean](dataTypes#boolean) "
-                        }
-                      ]
-                    },
-                    {
-                      "params": [
-                        {
-                          "name": "o"
-                        }
-                      ]
-                    }
-                  ],
-                  "desc": "<p>判断对象的 &quot;种类&quot; 是否为 <code>Window</code>.</p>\n"
-                }
-              ],
-              "type": "module",
-              "displayName": "[m] isWindow"
             },
             {
               "textRaw": "[m] isXML",

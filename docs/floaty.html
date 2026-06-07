@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#floaty_floaty">悬浮窗 (Floaty)</a></span><ul>
+<li><span class="stability_undefined"><a href="#floaty_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#floaty_floaty_window_layout">floaty.window(layout)</a></span></li>
 <li><span class="stability_undefined"><a href="#floaty_floaty_rawwindow_layout">floaty.rawWindow(layout)</a></span></li>
 <li><span class="stability_undefined"><a href="#floaty_floaty_closeall">floaty.closeAll()</a></span></li>
@@ -223,21 +224,30 @@
 
         <div id="apicontent">
             <h1>悬浮窗 (Floaty)<span><a class="mark" href="#floaty_floaty" id="floaty_floaty">#</a></span></h1>
-<hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
-
-<hr>
+<h2>6.7.0 源码校对<span><a class="mark" href="#floaty_6_7_0" id="floaty_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/floaty/Floaty.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/Floaty.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/floaty/BaseResizableFloatyWindow.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/floaty/RawWindow.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/permission/DisplayOverOtherAppsPermission.kt</code></li>
+</ul>
+<p>运行时中 <code>floaty</code> / <code>$floaty</code> 由 augment 注入. 当前公开入口包括 <code>window</code>, <code>rawWindow</code>, <code>hasPermission</code>, <code>requestPermission</code>, <code>ensurePermission</code>, <code>closeAll</code>, <code>getClip</code>.</p>
+<p>Rhino 公开入口的 <code>window(layout)</code> / <code>rawWindow(layout)</code> 只接受 XML / XML 字符串布局, 源码会从 <code>XMLObject</code> / <code>XMLList</code> 或字符串构建布局; 不接受已创建的 Android <code>View</code> 对象.</p>
+<p>创建悬浮窗前会检查并等待悬浮窗权限, 最多约 60 秒; <code>ensurePermission()</code> 在无权限时直接抛错. <code>getClip(maxDelayAfterWindowReady?)</code> 会借助悬浮窗在较新 Android 系统上读取剪贴板, 默认最大等待 <code>500ms</code>.</p>
+<p><code>window</code> 返回可调整窗口, <code>rawWindow</code> 返回原始窗口. 两者共有 <code>setPosition</code>, <code>setSize</code>, <code>requestFocus</code>, <code>disableFocus</code>, <code>close</code>, <code>exitOnClose</code> 和 <code>x</code>, <code>y</code>, <code>width</code>, <code>height</code>; <code>rawWindow</code> 额外公开 <code>setTouchable</code>, <code>window</code> 额外公开调整开关相关属性 / setter.</p>
 <p>floaty模块提供了悬浮窗的相关函数, 可以在屏幕上显示自定义悬浮窗, 控制悬浮窗大小、位置等.</p>
 <p>悬浮窗在脚本停止运行时会自动关闭, 因此, 要保持悬浮窗不被关闭, 可以用一个空的setInterval来实现, 例如：</p>
 <pre><code>setInterval(()=&gt;{}, 1000);
 </code></pre><h2>floaty.window(layout)<span><a class="mark" href="#floaty_floaty_window_layout" id="floaty_floaty_window_layout">#</a></span></h2>
 <div class="signature"><ul>
-<li><code>layout</code> { <span class="type">xml</span> } | { <span class="type">View</span> } 悬浮窗界面的XML或者View</li>
+<li><code>layout</code> { <span class="type">xml</span> } | { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 悬浮窗界面的 XML 或 XML 字符串</li>
 </ul>
 </div><p>指定悬浮窗的布局, 创建并<strong>显示</strong>一个悬浮窗, 返回一个<code>FloatyWindow</code>对象.</p>
 <p>该悬浮窗自带关闭、调整大小、调整位置按键, 可根据需要调用<code>setAdjustEnabled()</code>函数来显示或隐藏.</p>
-<p>其中layout参数可以是xml布局或者一个View, 更多信息参见ui模块的说明.</p>
+<p>其中 layout 参数可以是 XML 布局或 XML 字符串, 更多信息参见 ui 模块的说明.</p>
 <p>例子：</p>
 <pre><code>var w = floaty.window(
     &lt;frame gravity=&quot;center&quot;&gt;
@@ -255,7 +265,7 @@ setTimeout(()=&gt;{
 </code></pre><p>有关返回的<code>FloatyWindow</code>对象的说明, 参见下面的<code>FloatyWindow</code>章节.</p>
 <h2>floaty.rawWindow(layout)<span><a class="mark" href="#floaty_floaty_rawwindow_layout" id="floaty_floaty_rawwindow_layout">#</a></span></h2>
 <div class="signature"><ul>
-<li><code>layout</code> { <span class="type">xml</span> } | { <span class="type">View</span> } 悬浮窗界面的XML或者View</li>
+<li><code>layout</code> { <span class="type">xml</span> } | { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 悬浮窗界面的 XML 或 XML 字符串</li>
 </ul>
 </div><p>指定悬浮窗的布局, 创建并<strong>显示</strong>一个原始悬浮窗, 返回一个<code>FloatyRawWindow</code>对象.</p>
 <p>与<code>floaty.window()</code>函数不同的是, 该悬浮窗不会增加任何额外设施（例如调整大小、位置按钮）, 您可以根据自己需要编写任何布局.</p>

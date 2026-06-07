@@ -297,25 +297,41 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <li>[x] <a href="pinyin.html">Pinyin</a>: 已对照 <code>PinyinCore.kt</code> 补齐选项、格式枚举、多音字、分词、姓氏模式和占位方法边界.</li>
 <li>[x] <a href="pinyin4j.html">Pinyin4j</a>: 已对照实现补齐兼容 API、格式参数、默认值、别名、返回结构和错误边界.</li>
 <li>[x] <a href="cvt.html">Cvt</a> / <a href="fmt.html">Fmt</a>: 已补充字节单位转换边界、大小写、空格、非法输入、<code>AUTO</code> 和 <code>HALF_UP</code> 四舍五入规则.</li>
+<li>[x] <a href="global.html">Global</a>: 已补充 6.7.0 运行时注入依据、当前全局能力清单, 修正 <code>wait</code>, <code>cY</code>, <code>species</code> 过时说明.</li>
+<li>[x] <a href="automator.html">Automator</a>: 已补充 <code>auto</code> / <code>automator</code> / <code>RootAutomator</code> 当前入口、无障碍手势限制、Root/Shizuku 边界.</li>
+<li>[x] <a href="uiSelectorType.html">UiSelector</a>: 已补充选择器动态全局注入、<code>*Match</code> 新命名、阻塞查找 UI 线程限制.</li>
+<li>[x] <a href="uiObjectType.html">UiObject</a>: 已补充 <code>AccessibilityNodeInfoCompat</code> 包装关系、状态方法、行为方法和 deprecated 入口.</li>
+<li>[x] <a href="app.html">App</a>: 已补充 Intent、启动、双开、Root/Shizuku 启动、应用查询和文件操作入口.</li>
+<li>[x] <a href="autojs.html">AutoJs6</a>: 已补充版本、资源、方向、权限、Root 模式、重启/退出和 <code>autojs.version</code> 能力.</li>
+<li>[x] <a href="device.html">Device</a>: 已补充设备信息、屏幕、震动、网络、指针位置和系统权限边界.</li>
+<li>[x] <a href="files.html">Files</a>: 已补充路径解析、全局 <code>open</code>, 读写、移动复制、列表、大小格式化和存储权限边界.</li>
+<li>[x] <a href="engines.html">Engines</a>: 已重写占位页, 补充执行配置、<code>getEngines</code>, <code>execArgv</code>, 事件和 <code>ScriptExecution</code> / <code>ScriptEngine</code>.</li>
+<li>[x] <a href="tasks.html">Tasks</a>: 已重写占位页, 补充定时任务、广播任务、查询、删除、更新、<code>callback</code> / <code>async</code> 行为.</li>
+<li>[x] <a href="ui.html">UI</a>: 已补充 UI 模式解析、线程调度、布局、控件注册、状态栏 / 导航栏和 activity 要求.</li>
+<li>[x] <a href="floaty.html">Floaty</a>: 已补充悬浮窗权限、窗口类型、剪贴板读取、公开 Rhino 入口和窗口对象方法.</li>
+<li>[x] <a href="web.html">Web</a>: 已补充 WebView 注入、WebClient、WebSocket 当前构造行为, 移除 Auto.js 4.1.1 旧引用.</li>
+<li>[x] <a href="ocr.html">OCR</a>: 已补充 MLKit / Paddle / Rapid 三模式、参数分派、区域裁剪和 Paddle 插件 / INRT 边界.</li>
+<li>[x] <a href="notice.html">Notice</a>: 已补充通知重载、配置、渠道、Intent、优先级和 Android O+ 渠道差异.</li>
+<li>[x] <a href="console.html">Console</a>: 已补充日志、trace、assert、build、全局日志配置和 abandoned 输入 API 当前异常行为.</li>
 </ul>
 </div><h3>P1: 高价值既有页面源码校对<span><a class="mark" href="#documentationroadmap_p1" id="documentationroadmap_p1">#</a></span></h3>
 <div class="signature"><ul>
-<li>[ ] <a href="global.html">Global - 全局对象</a>: 对照全局函数、全局类、legacy 兼容项.</li>
-<li>[ ] <a href="automator.html">Automator - 自动化</a>: 对照自动化动作、RootAutomator、无障碍桥接限制.</li>
-<li>[ ] <a href="uiSelectorType.html">UiSelector - 选择器</a>: 对照选择器方法、过滤条件、链式调用和兼容别名.</li>
-<li>[ ] <a href="uiObjectType.html">UiObject - 控件节点</a>: 对照控件属性、动作、查找方法和回收/刷新行为.</li>
-<li>[ ] <a href="app.html">App - 通用应用</a>: 对照 Intent、启动、卸载、应用信息、权限相关方法.</li>
-<li>[ ] <a href="autojs.html">AutoJs6 - 本体应用</a>: 对照版本、构建信息、项目/脚本入口能力.</li>
-<li>[ ] <a href="device.html">Device - 设备</a>: 对照设备信息、亮度、音量、电池、屏幕、剪贴板能力.</li>
-<li>[ ] <a href="files.html">File - 文件</a>: 对照路径解析、读写、移动复制、递归、编码和权限边界.</li>
-<li>[ ] <a href="engines.html">Engine - 引擎</a>: 对照脚本执行、引擎枚举、停止、事件与隔离行为.</li>
-<li>[ ] <a href="tasks.html">Task - 任务</a>: 对照定时任务、广播/Intent、持久化与 Android 版本限制.</li>
-<li>[ ] <a href="ui.html">UI - 用户界面</a>: 对照 UI DSL、组件、事件、线程要求和生命周期.</li>
-<li>[ ] <a href="floaty.html">Floaty - 悬浮窗</a>: 对照权限、窗口类型、坐标、关闭与 Android 版本限制.</li>
-<li>[ ] <a href="web.html">Web - 万维网</a>: 对照 WebView 注入、WebSocket、客户端配置.</li>
-<li>[ ] <a href="ocr.html">OCR - 光学字符识别</a>: 对照 MLKit / Paddle / Rapid OCR 能力、选项与模型限制.</li>
-<li>[ ] <a href="notice.html">Notice - 消息通知</a>: 对照通知渠道、构建器、权限和 Android 版本差异.</li>
-<li>[ ] <a href="console.html">Console - 控制台</a>: 对照日志、格式化、计时、悬浮控制台和构建选项.</li>
+<li>[x] <a href="global.html">Global - 全局对象</a>: 已对照全局函数、全局类、legacy 兼容项.</li>
+<li>[x] <a href="automator.html">Automator - 自动化</a>: 已对照自动化动作、RootAutomator、无障碍桥接限制.</li>
+<li>[x] <a href="uiSelectorType.html">UiSelector - 选择器</a>: 已对照选择器方法、过滤条件、链式调用和兼容别名.</li>
+<li>[x] <a href="uiObjectType.html">UiObject - 控件节点</a>: 已对照控件属性、动作、查找方法和回收/刷新行为.</li>
+<li>[x] <a href="app.html">App - 通用应用</a>: 已对照 Intent、启动、卸载、应用信息、权限相关方法.</li>
+<li>[x] <a href="autojs.html">AutoJs6 - 本体应用</a>: 已对照版本、构建信息、项目/脚本入口能力.</li>
+<li>[x] <a href="device.html">Device - 设备</a>: 已对照设备信息、亮度、音量、电池、屏幕、指针位置和权限边界.</li>
+<li>[x] <a href="files.html">File - 文件</a>: 已对照路径解析、读写、移动复制、递归、编码和权限边界.</li>
+<li>[x] <a href="engines.html">Engine - 引擎</a>: 已对照脚本执行、引擎枚举、停止、事件与隔离行为.</li>
+<li>[x] <a href="tasks.html">Task - 任务</a>: 已对照定时任务、广播/Intent、持久化与 Android 版本限制.</li>
+<li>[x] <a href="ui.html">UI - 用户界面</a>: 已对照 UI DSL、组件、事件、线程要求和生命周期.</li>
+<li>[x] <a href="floaty.html">Floaty - 悬浮窗</a>: 已对照权限、窗口类型、坐标、关闭与 Android 版本限制.</li>
+<li>[x] <a href="web.html">Web - 万维网</a>: 已对照 WebView 注入、WebSocket、客户端配置.</li>
+<li>[x] <a href="ocr.html">OCR - 光学字符识别</a>: 已对照 MLKit / Paddle / Rapid OCR 能力、选项与模型限制.</li>
+<li>[x] <a href="notice.html">Notice - 消息通知</a>: 已对照通知渠道、构建器、权限和 Android 版本差异.</li>
+<li>[x] <a href="console.html">Console - 控制台</a>: 已对照日志、格式化、计时、悬浮控制台和构建选项.</li>
 </ul>
 </div><h3>P2: 类型页与知识库结构化<span><a class="mark" href="#documentationroadmap_p2" id="documentationroadmap_p2">#</a></span></h3>
 <div class="signature"><ul>
@@ -418,83 +434,83 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 </tr>
 <tr>
 <td><a href="global.html">Global</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="automator.html">Automator</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 权限/动作矩阵</td>
 </tr>
 <tr>
 <td><a href="uiSelectorType.html">UiSelector</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="uiObjectType.html">UiObject</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="app.html">App</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 Intent 选项类型页</td>
 </tr>
 <tr>
 <td><a href="autojs.html">AutoJs6</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 机器可读索引</td>
 </tr>
 <tr>
 <td><a href="device.html">Device</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 权限/Android 版本矩阵</td>
 </tr>
 <tr>
 <td><a href="files.html">Files</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 文件对象类型页</td>
 </tr>
 <tr>
 <td><a href="engines.html">Engines</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 <code>ExecutionConfig</code> 类型页</td>
 </tr>
 <tr>
 <td><a href="tasks.html">Tasks</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 <code>TimedTask</code> / <code>IntentTask</code> 类型页</td>
 </tr>
 <tr>
 <td><a href="ui.html">UI</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 UI 组件索引</td>
 </tr>
 <tr>
 <td><a href="floaty.html">Floaty</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 窗口对象类型页</td>
 </tr>
 <tr>
 <td><a href="web.html">Web</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 InjectableWebView / WebSocket 类型页</td>
 </tr>
 <tr>
 <td><a href="ocr.html">OCR</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 OCR 选项与结果类型索引</td>
 </tr>
 <tr>
 <td><a href="notice.html">Notice</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 Notice 选项类型页</td>
 </tr>
 <tr>
 <td><a href="console.html">Console</a></td>
-<td><code>[ ]</code> 待源码校对</td>
-<td>P1</td>
+<td><code>[x]</code> P1 源码校对完成</td>
+<td>P2 ConsoleBuildOptions 校对</td>
 </tr>
 </tbody>
 </table>
@@ -502,8 +518,8 @@ rtk proxy rg -n &quot;目标 API 名称|目标页面标题&quot; api docs json
 <h2>残留风险<span><a class="mark" href="#documentationroadmap_4" id="documentationroadmap_4">#</a></span></h2>
 <div class="signature"><ul>
 <li>[ ] <code>generator</code> 仍依赖 marked <code>0.3.19</code>; 安全版本 marked <code>4.0.10</code> 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.</li>
-<li>[ ] P0 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.</li>
-<li>[ ] 仍有大量旧页面来自 Auto.js 4.x 文档, 后续必须逐页与 AutoJs6 源码核对.</li>
+<li>[ ] P0 / P1 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.</li>
+<li>[ ] P1 页面已补源码依据小节, 但部分长页面仍保留早期叙述结构; P2 应继续抽取机器可读索引和权限矩阵.</li>
 </ul>
 </div>
         </div>

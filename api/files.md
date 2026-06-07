@@ -1,11 +1,20 @@
 # 文件 (Files)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/files/Files.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/Files.kt`
+
+运行时中 `files` / `$files` 由 augment 注入. augment 层还将 `open` 作为全局函数注册, 并补充 `path`, `join`, `toFile`.
+
+当前源码公开的文件能力包括 `path`, `nonNullPath`, `cwd`, `open`, `create`, `createIfNotExists`, `createWithDirs`, `exists`, `ensureDir`, `read`, `readAssets`, `readBytes`, `write`, `append`, `appendBytes`, `writeBytes`, `copy`, `renameWithoutExtension`, `rename`, `move`, `getExtension`, `getName`, `getNameWithoutExtension`, `remove`, `removeDir`, `listDir`, `isFile`, `isDir`, `isEmptyDir`, `getHumanReadableSize`, `formatSizeWithUnit`, `getSimplifiedPath`, `join`.
+
+`files.path(null)` 会走运行时当前文件路径处理; `files.toFile(path)` 使用 `nonNullPath`, 空路径会抛出参数异常. `open(path, mode?, encoding?, bufferSize?)` 会按 Rhino `Context.toString` / number 规则转换参数.
+
+文件读写、移动、删除是否成功仍受 Android 存储权限、目标路径和系统版本限制影响; 知识库回答时不应把文件 API 视为绕过系统权限的能力.
 
 files模块提供了一些常见的文件处理, 包括文件读写、移动、复制、删掉等.
 

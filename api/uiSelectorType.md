@@ -59,6 +59,24 @@ console.log(sel.findOnce()); /* 查找控件的动作. */
 console.log(sel.click()); /* 执行控件行为的动作. */
 ```
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Selector.kt`
+- `app/src/main/java/org/autojs/autojs/core/accessibility/UiSelector.kt`
+- `app/src/main/java/org/autojs/autojs/core/automator/UiObject.kt`
+- `app/src/main/java/org/autojs/autojs/core/automator/UiObjectCollection.kt`
+
+运行时中 `selector` / `$selector` 由 augment 注入, `selector()` 返回空选择器. `UiSelector` 构建方法也会动态注入为全局函数, 并额外提供 `pickup`, `detect`, `existsAll`, `existsOne`.
+
+构建方法链式返回自身; `plus` 返回新选择器, `append` 修改当前选择器但不作为全局函数. 当前源码覆盖的筛选条件包括 `id`, `text`, `desc`, `content`, `className`, `packageName`, `bounds`, `left`, `top`, `right`, `bottom`, `width`, `height`, `center`, `min`, `max`, `screenCenter`, `screenCoverage`, 布尔状态筛选, `action`, `filter`, `algorithm`, `depth`, `row`, `column`, `drawingOrder`, `indexInParent`, `childCount` 等.
+
+字符串匹配构建方法支持 `StartsWith`, `EndsWith`, `Contains`, `Match`. 旧的 `*Matches` 名称仍在源码中保留, 但已标记 deprecated, 新文档和新脚本应优先使用 `*Match`.
+
+阻塞查找方法 `findOne`, `untilFindOne`, `untilFind`, `waitFor` 不应在 UI 线程中调用; 源码中 `waitFor` 和无参 `findOne()` 已标记 deprecated.
+
 ---
 
 <p style="font: bold 2em sans-serif; color: #FF7043">UiSelector</p>

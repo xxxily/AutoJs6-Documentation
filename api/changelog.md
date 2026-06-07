@@ -17,6 +17,10 @@
 - `新增` [汉语拼音 (Pinyin)](https://docs.autojs6.com/#/pinyin) 与 [Pinyin4j](https://docs.autojs6.com/#/pinyin4j) 文档
 - `优化` [HTTP](https://docs.autojs6.com/#/http) 章节补充 `6.7.0` 新增异步请求、PUT/DELETE/HEAD、响应体保存及请求选项
 - `优化` [HttpRequestBuilderOptions](https://docs.autojs6.com/#/httpRequestBuilderOptionsType) 与 [HttpResponseBody](https://docs.autojs6.com/#/httpResponseBodyType) 类型说明
+- `优化` 完成 P1 高频 API 源码校对, 覆盖 [Global](https://docs.autojs6.com/#/global), [Automator](https://docs.autojs6.com/#/automator), [UiSelector](https://docs.autojs6.com/#/uiSelectorType), [UiObject](https://docs.autojs6.com/#/uiObjectType), [App](https://docs.autojs6.com/#/app), [AutoJs6](https://docs.autojs6.com/#/autojs), [Device](https://docs.autojs6.com/#/device), [Files](https://docs.autojs6.com/#/files), [Engines](https://docs.autojs6.com/#/engines), [Tasks](https://docs.autojs6.com/#/tasks), [UI](https://docs.autojs6.com/#/ui), [Floaty](https://docs.autojs6.com/#/floaty), [Web](https://docs.autojs6.com/#/web), [OCR](https://docs.autojs6.com/#/ocr), [Notice](https://docs.autojs6.com/#/notice), [Console](https://docs.autojs6.com/#/console)
+- `修复` [Global](https://docs.autojs6.com/#/global) 中 `cY()` 示例高度引用、`wait` UI 线程标签和 `species` 中源码不存在的条目
+- `修复` [Web](https://docs.autojs6.com/#/web) 与 [OCR](https://docs.autojs6.com/#/ocr) 中 Auto.js 4.x / 2023 年旧说明, 补充 Rapid OCR 与当前 WebSocket / WebView 行为
+- `修复` [Console](https://docs.autojs6.com/#/console) 中 `input` / `rawInput` 的废弃行为说明
 - `优化` 更新侧边栏、静态页目录、全量文档和部署进度
 
 ## v1.1.8

@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#uiselectortype_uiselector">选择器 (UiSelector)</a></span><ul>
+<li><span class="stability_undefined"><a href="#uiselectortype_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#uiselectortype_uiselector_1">[@] UiSelector</a></span></li>
 <li><span class="stability_undefined"><a href="#uiselectortype_m_id">[m#] id</a></span><ul>
 <li><span class="stability_undefined"><a href="#uiselectortype_id_str">id(str)</a></span></li>
@@ -1024,6 +1025,19 @@ console.log(sel.exists()); /* 查看状态的动作. */
 console.log(sel.findOnce()); /* 查找控件的动作. */
 console.log(sel.click()); /* 执行控件行为的动作. */
 </code></pre>
+<h2>6.7.0 源码校对<span><a class="mark" href="#uiselectortype_6_7_0" id="uiselectortype_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Selector.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/accessibility/UiSelector.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/automator/UiObject.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/automator/UiObjectCollection.kt</code></li>
+</ul>
+<p>运行时中 <code>selector</code> / <code>$selector</code> 由 augment 注入, <code>selector()</code> 返回空选择器. <code>UiSelector</code> 构建方法也会动态注入为全局函数, 并额外提供 <code>pickup</code>, <code>detect</code>, <code>existsAll</code>, <code>existsOne</code>.</p>
+<p>构建方法链式返回自身; <code>plus</code> 返回新选择器, <code>append</code> 修改当前选择器但不作为全局函数. 当前源码覆盖的筛选条件包括 <code>id</code>, <code>text</code>, <code>desc</code>, <code>content</code>, <code>className</code>, <code>packageName</code>, <code>bounds</code>, <code>left</code>, <code>top</code>, <code>right</code>, <code>bottom</code>, <code>width</code>, <code>height</code>, <code>center</code>, <code>min</code>, <code>max</code>, <code>screenCenter</code>, <code>screenCoverage</code>, 布尔状态筛选, <code>action</code>, <code>filter</code>, <code>algorithm</code>, <code>depth</code>, <code>row</code>, <code>column</code>, <code>drawingOrder</code>, <code>indexInParent</code>, <code>childCount</code> 等.</p>
+<p>字符串匹配构建方法支持 <code>StartsWith</code>, <code>EndsWith</code>, <code>Contains</code>, <code>Match</code>. 旧的 <code>*Matches</code> 名称仍在源码中保留, 但已标记 deprecated, 新文档和新脚本应优先使用 <code>*Match</code>.</p>
+<p>阻塞查找方法 <code>findOne</code>, <code>untilFindOne</code>, <code>untilFind</code>, <code>waitFor</code> 不应在 UI 线程中调用; 源码中 <code>waitFor</code> 和无参 <code>findOne()</code> 已标记 deprecated.</p>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">UiSelector</p>
 

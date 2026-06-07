@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#notice_notice">消息通知 (Notice)</a></span><ul>
+<li><span class="stability_undefined"><a href="#notice_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#notice">简单操作</a></span></li>
 <li><span class="stability_undefined"><a href="#notice_1">通知渠道</a></span><ul>
 <li><span class="stability_undefined"><a href="#notice_2">创建渠道</a></span></li>
@@ -269,6 +270,18 @@
 <blockquote>
 <p>注: 不同安卓系统的通知表现可能存在较大差异, 与文档描述也可能存在出入.</p>
 </blockquote>
+<h2>6.7.0 源码校对<span><a class="mark" href="#notice_6_7_0" id="notice_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Notice.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Channel.kt</code></li>
+</ul>
+<p>运行时中 <code>notice</code> / <code>$notice</code> 由 augment 注入, <code>notice</code> 本身可调用, 最多接受 3 个参数并返回 notification id. 当前公开函数包括 <code>isEnabled</code>, <code>ensureEnabled</code>, <code>launchSettings</code>, <code>config</code>, <code>cancel</code>, <code>getBuilder</code>; getter 包括 <code>builder</code>; 嵌套 <code>notice.channel</code> 提供通知渠道管理.</p>
+<p><code>notice(...)</code> 支持 <code>notice(builder, options?)</code>, <code>notice(content, options?)</code>, <code>notice(title, content, options?)</code>, <code>notice(options?)</code>. 当选项缺少 <code>title</code>, <code>content</code>, <code>bigContent</code> 时会使用默认标题 / 内容; <code>channelId</code> 来自 options 或配置, 并会自动 <code>Channel.createIfNeeded</code>.</p>
+<p><code>notificationId</code> 可由 options 指定; 否则取决于配置是否使用动态默认 ID. <code>intent</code> 可为 JavaScript intent 对象、Android <code>Intent</code>, Activity short form 或 URL / 近似网址字符串. <code>priority</code> 支持数字或字符串 <code>default</code>, <code>low</code>, <code>min</code>, <code>high</code>, <code>max</code>. <code>autoCancel</code>, <code>isSilent</code> / <code>silent</code> 会按 options 和全局配置解析.</p>
+<p><code>notice.config(obj)</code> 会修改运行时通知配置中的可变基础属性; nullish 值会按默认配置重置. <code>notice.cancel(id)</code> 对 nullish / <code>NaN</code> 参数不执行取消.</p>
+<p><code>notice.channel.create</code>, <code>createIfNeeded</code>, <code>remove</code>, <code>contains</code>, <code>get</code>, <code>getAll</code> 只在 Android O / API 26+ 真正操作通知渠道; 低版本系统中对应查询 / 删除会返回 false, null 或空集合. 渠道创建选项包括 <code>id</code>, <code>name</code>, <code>description</code>, <code>importance</code>, <code>enableVibration</code>, <code>vibrationPattern</code>, <code>enableLights</code>, <code>lightColor</code>, <code>lockscreenVisibility</code>. Android 系统对已创建渠道的部分字段修改有限制, 必须以系统实际行为为准.</p>
 <h2>简单操作<span><a class="mark" href="#notice" id="notice">#</a></span></h2>
 <p>显示一条通知:</p>
 <pre><code class="lang-js">/* 内容为 hello (标题为空). */

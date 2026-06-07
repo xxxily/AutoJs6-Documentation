@@ -4,7 +4,594 @@
     {
       "textRaw": "任务 (Tasks)",
       "name": "任务_(tasks)",
-      "desc": "<hr>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">此章节待补充或完善...</p>\n<p style=\"font: italic 1em sans-serif; color: #78909C\">Marked by SuperMonster003 on Oct 22, 2022.</p>\n\n<hr>\n",
+      "desc": "<p>tasks 模块用于创建、查询、更新和移除 AutoJs6 的定时任务与广播任务.</p>\n",
+      "modules": [
+        {
+          "textRaw": "6.7.0 源码校对",
+          "name": "6.7.0_源码校对",
+          "desc": "<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/tasks/Tasks.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/timing/TimedTask.java</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/timing/IntentTask.java</code></li>\n</ul>\n<p>运行时中 <code>tasks</code> 由 <code>ScriptRuntime.augment(...)</code> 注入为全局对象. 当前公开入口包括 <code>addTask</code>, <code>addDailyTask</code>, <code>addWeeklyTask</code>, <code>addDisposableTask</code>, <code>addIntentTask</code>, <code>getTimedTask</code>, <code>getIntentTask</code>, <code>removeTask</code>, <code>removeTimedTask</code>, <code>removeIntentTask</code>, <code>updateTask</code>, <code>queryTimedTasks</code>, <code>queryIntentTasks</code>, <code>timeFlagToDays</code>, <code>daysToTimeFlag</code>.</p>\n<p>新增任务的 <code>options.path</code> 是必填脚本路径, 会转换为运行时路径. 定时任务的 <code>time</code> 优先于 <code>date</code>, 空值默认当前时间; 可接受毫秒数、JavaScript <code>Date</code> 或字符串. 任务配置项 <code>delay</code>, <code>interval</code>, <code>loopTimes</code> 默认分别为 <code>0</code>, <code>0</code>, <code>1</code>.</p>\n<p>若 <code>options.callback</code> 存在, 必须是函数; 当 <code>async</code> / <code>isAsync</code> 为真或当前处于 UI 线程时, 源码会用 <code>Threads.start(...)</code> 异步执行回调, 否则同步返回任务或回调结果.</p>\n<hr>\n<p style=\"font: bold 2em sans-serif; color: #FF7043\">tasks</p>\n\n<hr>\n",
+          "type": "module",
+          "displayName": "6.7.0 源码校对"
+        },
+        {
+          "textRaw": "[m] addTask",
+          "name": "[m]_addtask",
+          "methods": [
+            {
+              "textRaw": "addTask(task)",
+              "type": "method",
+              "name": "addTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**task** { TimedTask | IntentTask } - 待加入任务管理器的任务对象 ",
+                      "name": "**task**",
+                      "type": " TimedTask | IntentTask ",
+                      "desc": "待加入任务管理器的任务对象"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask | IntentTask } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask | IntentTask "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "task"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>加入一个已构造的定时任务或广播任务.</p>\n<p>传入非 <code>TimedTask</code> / <code>IntentTask</code> 对象时, 源码会抛出参数异常. 常规脚本更推荐使用 <a href=\"#m-adddailytask\">addDailyTask</a>, <a href=\"#m-addweeklytask\">addWeeklyTask</a>, <a href=\"#m-adddisposabletask\">addDisposableTask</a> 或 <a href=\"#m-addintenttask\">addIntentTask</a> 由模块创建任务.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addTask"
+        },
+        {
+          "textRaw": "[m] addDailyTask",
+          "name": "[m]_adddailytask",
+          "methods": [
+            {
+              "textRaw": "addDailyTask(options?)",
+              "type": "method",
+              "name": "addDailyTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 每日任务选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 每日任务选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask | any | Thread } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask | any | Thread "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>新增每日定时任务.</p>\n<p>常用选项:</p>\n<ul>\n<li><code>path</code> {string} - 必填, 要执行的脚本路径.</li>\n<li><code>time</code> {number | Date | string} - 触发时间; 字符串按本地时间格式解析.</li>\n<li><code>date</code> {number | Date | string} - <code>time</code> 为空时使用的备用时间.</li>\n<li><code>delay</code> {number} - 延迟执行毫秒数, 默认 <code>0</code>.</li>\n<li><code>interval</code> {number} - 循环间隔毫秒数, 默认 <code>0</code>.</li>\n<li><code>loopTimes</code> {number} - 循环次数, 默认 <code>1</code>.</li>\n<li><code>callback</code> {Function} - 任务加入后的回调.</li>\n<li><code>async</code> / <code>isAsync</code> {boolean} - 是否异步执行回调.</li>\n</ul>\n<pre><code class=\"lang-js\">tasks.addDailyTask({\n    path: &#39;./daily.js&#39;,\n    time: &#39;08:30&#39;,\n});\n</code></pre>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addDailyTask"
+        },
+        {
+          "textRaw": "[m] addWeeklyTask",
+          "name": "[m]_addweeklytask",
+          "methods": [
+            {
+              "textRaw": "addWeeklyTask(options?)",
+              "type": "method",
+              "name": "addWeeklyTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 每周任务选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 每周任务选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask | any | Thread } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask | any | Thread "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>新增每周定时任务.</p>\n<p>除 <a href=\"#m-adddailytask\">addDailyTask</a> 的通用选项外, 支持:</p>\n<ul>\n<li><code>daysOfWeek</code> {Array | any} - 星期集合, 为空时默认今天.</li>\n</ul>\n<p><code>daysOfWeek</code> 的元素可使用英文全称或缩写, 中文星期名, 或数字 <code>0..7</code>. 其中源码按 <code>LocalDate.now().dayOfWeek.value % 7</code> 处理默认值; 非法星期值会抛出 <code>Unknown day</code> 异常.</p>\n<pre><code class=\"lang-js\">tasks.addWeeklyTask({\n    path: &#39;./weekly.js&#39;,\n    time: &#39;20:00&#39;,\n    daysOfWeek: [ &#39;mon&#39;, &#39;三&#39;, 5 ],\n});\n</code></pre>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addWeeklyTask"
+        },
+        {
+          "textRaw": "[m] addDisposableTask",
+          "name": "[m]_adddisposabletask",
+          "methods": [
+            {
+              "textRaw": "addDisposableTask(options?)",
+              "type": "method",
+              "name": "addDisposableTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 一次性任务选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 一次性任务选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask | any | Thread } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask | any | Thread "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>新增一次性定时任务.</p>\n<p><code>path</code>, <code>time</code> / <code>date</code>, <code>delay</code>, <code>interval</code>, <code>loopTimes</code>, <code>callback</code>, <code>async</code> / <code>isAsync</code> 的处理规则与 <a href=\"#m-adddailytask\">addDailyTask</a> 一致.</p>\n<pre><code class=\"lang-js\">tasks.addDisposableTask({\n    path: &#39;./once.js&#39;,\n    date: new Date(Date.now() + 60e3),\n});\n</code></pre>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addDisposableTask"
+        },
+        {
+          "textRaw": "[m] addIntentTask",
+          "name": "[m]_addintenttask",
+          "methods": [
+            {
+              "textRaw": "addIntentTask(options?)",
+              "type": "method",
+              "name": "addIntentTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 广播任务选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 广播任务选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { IntentTask | any | Thread } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " IntentTask | any | Thread "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>新增通过 Intent / Broadcast 触发的任务.</p>\n<p>常用选项:</p>\n<ul>\n<li><code>path</code> {string} - 必填, 要执行的脚本路径.</li>\n<li><code>action</code> {string} - 广播 action.</li>\n<li><code>dataType</code> {string} - Intent data type.</li>\n<li><code>isLocal</code> / <code>local</code> {boolean} - 是否使用本地广播.</li>\n<li><code>callback</code> {Function} - 任务加入后的回调.</li>\n<li><code>async</code> / <code>isAsync</code> {boolean} - 是否异步执行回调.</li>\n</ul>\n<p>当 <code>action</code> 为 AutoJs6 启动广播 action 时, 源码会先默认 <code>isLocal = true</code>, 但最终仍可被 <code>local</code> / <code>isLocal</code> 选项覆盖.</p>\n<p><code>IntentTask</code> 实体包含 <code>category</code> 字段, 但 <code>addIntentTask(options)</code> 当前源码没有从 <code>options</code> 读取 <code>category</code>.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] addIntentTask"
+        },
+        {
+          "textRaw": "[m] getTimedTask",
+          "name": "[m]_gettimedtask",
+          "methods": [
+            {
+              "textRaw": "getTimedTask(id)",
+              "type": "method",
+              "name": "getTimedTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**id** {number} - 定时任务 ID ",
+                      "name": "**id**",
+                      "type": "number",
+                      "desc": "定时任务 ID"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask | null "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "id"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按 ID 查询定时任务. 未找到时返回 <code>null</code>.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getTimedTask"
+        },
+        {
+          "textRaw": "[m] getIntentTask",
+          "name": "[m]_getintenttask",
+          "methods": [
+            {
+              "textRaw": "getIntentTask(id)",
+              "type": "method",
+              "name": "getIntentTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**id** {number} - 广播任务 ID ",
+                      "name": "**id**",
+                      "type": "number",
+                      "desc": "广播任务 ID"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { IntentTask | null } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " IntentTask | null "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "id"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按 ID 查询广播任务. 未找到时返回 <code>null</code>.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] getIntentTask"
+        },
+        {
+          "textRaw": "[m] removeTask",
+          "name": "[m]_removetask",
+          "methods": [
+            {
+              "textRaw": "removeTask(task)",
+              "type": "method",
+              "name": "removeTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**task** { TimedTask | IntentTask } - 要移除的任务对象 ",
+                      "name": "**task**",
+                      "type": " TimedTask | IntentTask ",
+                      "desc": "要移除的任务对象"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { boolean } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " boolean "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "task"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>移除指定任务对象.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeTask"
+        },
+        {
+          "textRaw": "[m] removeTimedTask",
+          "name": "[m]_removetimedtask",
+          "methods": [
+            {
+              "textRaw": "removeTimedTask(id)",
+              "type": "method",
+              "name": "removeTimedTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**id** {number} - 定时任务 ID ",
+                      "name": "**id**",
+                      "type": "number",
+                      "desc": "定时任务 ID"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { boolean } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " boolean "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "id"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按 ID 移除定时任务.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeTimedTask"
+        },
+        {
+          "textRaw": "[m] removeIntentTask",
+          "name": "[m]_removeintenttask",
+          "methods": [
+            {
+              "textRaw": "removeIntentTask(id)",
+              "type": "method",
+              "name": "removeIntentTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**id** {number} - 广播任务 ID ",
+                      "name": "**id**",
+                      "type": "number",
+                      "desc": "广播任务 ID"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { boolean } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " boolean "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "id"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>按 ID 移除广播任务.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] removeIntentTask"
+        },
+        {
+          "textRaw": "[m] updateTask",
+          "name": "[m]_updatetask",
+          "methods": [
+            {
+              "textRaw": "updateTask(task)",
+              "type": "method",
+              "name": "updateTask",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**task** { TimedTask | IntentTask } - 要更新的任务对象 ",
+                      "name": "**task**",
+                      "type": " TimedTask | IntentTask ",
+                      "desc": "要更新的任务对象"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { boolean } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " boolean "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "task"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>更新已存在的任务.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] updateTask"
+        },
+        {
+          "textRaw": "[m] queryTimedTasks",
+          "name": "[m]_querytimedtasks",
+          "methods": [
+            {
+              "textRaw": "queryTimedTasks(options?)",
+              "type": "method",
+              "name": "queryTimedTasks",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 查询过滤选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 查询过滤选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { TimedTask[] } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " TimedTask[] "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询定时任务列表.</p>\n<p>支持过滤:</p>\n<ul>\n<li><code>path</code> {string} - 脚本路径.</li>\n</ul>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] queryTimedTasks"
+        },
+        {
+          "textRaw": "[m] queryIntentTasks",
+          "name": "[m]_queryintenttasks",
+          "methods": [
+            {
+              "textRaw": "queryIntentTasks(options?)",
+              "type": "method",
+              "name": "queryIntentTasks",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**[ options ]** { Object } - 查询过滤选项 ",
+                      "name": "**[",
+                      "desc": "options ]** { Object } - 查询过滤选项"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { IntentTask[] } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " IntentTask[] "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "options?"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>查询广播任务列表.</p>\n<p>支持过滤:</p>\n<ul>\n<li><code>path</code> {string} - 脚本路径.</li>\n<li><code>action</code> {string} - 广播 action.</li>\n</ul>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] queryIntentTasks"
+        },
+        {
+          "textRaw": "[m] timeFlagToDays",
+          "name": "[m]_timeflagtodays",
+          "methods": [
+            {
+              "textRaw": "timeFlagToDays(flag)",
+              "type": "method",
+              "name": "timeFlagToDays",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**flag** {number} - 星期位标记 ",
+                      "name": "**flag**",
+                      "type": "number",
+                      "desc": "星期位标记"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { number[] } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " number[] "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "flag"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>将星期位标记转换为星期数组.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] timeFlagToDays"
+        },
+        {
+          "textRaw": "[m] daysToTimeFlag",
+          "name": "[m]_daystotimeflag",
+          "methods": [
+            {
+              "textRaw": "daysToTimeFlag(days)",
+              "type": "method",
+              "name": "daysToTimeFlag",
+              "signatures": [
+                {
+                  "params": [
+                    {
+                      "textRaw": "**days** {Array} - 星期数组 ",
+                      "name": "**days**",
+                      "type": "Array",
+                      "desc": "星期数组"
+                    },
+                    {
+                      "textRaw": "<ins>**returns**</ins> { number } ",
+                      "name": "<ins>**returns**</ins>",
+                      "type": " number "
+                    }
+                  ]
+                },
+                {
+                  "params": [
+                    {
+                      "name": "days"
+                    }
+                  ]
+                }
+              ],
+              "desc": "<p>将星期数组转换为星期位标记. 星期值解析规则与 <a href=\"#m-addweeklytask\">addWeeklyTask</a> 的 <code>daysOfWeek</code> 一致.</p>\n"
+            }
+          ],
+          "type": "module",
+          "displayName": "[m] daysToTimeFlag"
+        },
+        {
+          "textRaw": "TimedTask",
+          "name": "timedtask",
+          "desc": "<p><code>TimedTask</code> 是定时任务实体. 源码字段 / 访问器包括 <code>id</code>, <code>millis</code>, <code>timeFlag</code>, <code>scheduled</code>, <code>delay</code>, <code>interval</code>, <code>loopTimes</code>, <code>scriptPath</code>; <code>getNextTime()</code> 返回下一次触发时间对应的毫秒数.</p>\n",
+          "type": "module",
+          "displayName": "TimedTask"
+        },
+        {
+          "textRaw": "IntentTask",
+          "name": "intenttask",
+          "desc": "<p><code>IntentTask</code> 是广播任务实体. 源码字段 / 访问器包括 <code>scriptPath</code>, <code>action</code>, <code>category</code>, <code>dataType</code>, <code>local</code>.</p>\n",
+          "type": "module",
+          "displayName": "IntentTask"
+        }
+      ],
       "type": "module",
       "displayName": "任务 (Tasks)"
     }

@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#autojs_autojs6">AutoJs6 本体应用</a></span><ul>
+<li><span class="stability_undefined"><a href="#autojs_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#autojs_m_getlanguage">[m] getLanguage</a></span><ul>
 <li><span class="stability_undefined"><a href="#autojs_getlanguage">getLanguage()</a></span></li>
 </ul>
@@ -257,6 +258,19 @@
         <div id="apicontent">
             <h1>AutoJs6 本体应用<span><a class="mark" href="#autojs_autojs6" id="autojs_autojs6">#</a></span></h1>
 <p>autojs 全局对象主要包含与 AutoJs6 应用本身相关的属性及方法, 如获取 AutoJs6 的 [ Root 状态 / 语言标签 / 权限状态 ] 等.</p>
+<h2>6.7.0 源码校对<span><a class="mark" href="#autojs_6_7_0" id="autojs_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Autojs.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Version.kt</code></li>
+</ul>
+<p>运行时中 <code>autojs</code> / <code>$autojs</code> 由 augment 注入, 并同步挂载到 <code>app.autojs</code>.</p>
+<p>当前源码公开属性 / getter 包括 <code>versionCode</code>, <code>versionName</code>, <code>versionDate</code>, <code>name</code>, <code>packageName</code>, <code>R</code>, <code>rotation</code>, <code>orientation</code>, <code>themeColor</code>. 其中 <code>R</code> 也作为全局 getter 注册, 与 <code>autojs.R</code> 同源, 按资源 type / name 动态调用 Android <code>getIdentifier()</code>.</p>
+<p>当前源码公开函数包括 <code>isScreenPortrait</code>, <code>isScreenLandscape</code>, <code>isRootAvailable</code>, <code>getRootMode</code>, <code>setRootMode</code>, <code>canModifySystemSettings</code>, <code>canWriteSecureSettings</code>, <code>canDisplayOverOtherApps</code>, <code>getLanguage</code>, <code>getLanguageTag</code>, <code>restart</code>, <code>exit</code>.</p>
+<p><code>setRootMode(mode, writeIntoPref?)</code> 的 <code>mode</code> 支持数字 <code>1</code>, <code>0</code>, <code>-1</code>, boolean, 或字符串 <code>root</code>, <code>non-root</code>, <code>auto</code>. 第二参数可为 boolean; 字符串只有匹配 <code>write_into_pref</code> 时才视为写入偏好设置.</p>
+<p><code>restart(scriptsAfterRestart?)</code> 与 <code>exit(scriptsAfterRestart?)</code> 的参数支持空、字符串或列表. 字符串 <code>&quot;@&quot;</code> 代表当前脚本路径; 非 <code>.js</code> 结尾的字符串会自动补 <code>.js</code>; 其他类型会抛出参数异常.</p>
+<p><code>autojs.version</code> 当前公开 <code>code</code>, <code>name</code>, <code>date</code>, <code>isHigherThan</code>, <code>isLowerThan</code>, <code>isEqual</code>, <code>isAtLeast</code>; 比较参数可为内部 <code>Version</code> 或字符串.</p>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">autojs</p>
 

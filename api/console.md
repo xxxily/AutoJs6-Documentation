@@ -2,6 +2,24 @@
 
 AutoJs6 的控制台类似 Web 浏览器的调试控制台, 用于信息输出或辅助代码调试.
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/console/Console.kt`
+- `app/src/main/java/org/autojs/autojs/core/console/GlobalConsole.kt`
+
+运行时中 `console` / `$console` 由 augment 注入. 全局函数包括 `log`, `verbose`, `warn`, `print`; `err` 是 `console.error` 别名; `openConsole` / `showConsole`, `clearConsole`, `launchConsole` 也作为全局入口保留.
+
+当前源码公开函数包括 `show`, `hide`, `reset`, `clear`, `expand`, `collapse`, `assert`, `input`, `rawInput`, `log`, `verbose`, `info`, `warn`, `error`, `print`, `time`, `timeEnd`, `build`, 多个浮动控制台 setter, `setGlobalLogConfig`, `resetGlobalLogConfig`, `launch`, `printAllStackTrace`.
+
+`console.trace` 是 AutoJs6 自定义函数, 会采集调用栈并按字符串或数字日志级别输出. `console.assert(value, message?)` 在 `value` 为函数时会先调用函数, 断言失败时输出默认 `AssertionError` 或给定消息.
+
+`console.input` 与 `console.rawInput` 在当前源码中已废弃并会抛出 `RuntimeException(error_abandoned_method)`, 不是静默无效.
+
+`console.build(options?)` 会把对象字段映射到 `setX` 或 `isX` setter; 数组值会展开为多个参数, 未知字段会抛错. setter 返回 console proxy, 支持链式调用. `setGlobalLogConfig(config)` 要求 JavaScript 对象, 支持 `file`, `filePattern`, `maxFileSize`, `maxBackupSize`, `immediateFlush`, `resetConfiguration`, `rootLevel`.
+
 ## 显示控制台
 
 AutoJs6 支持以下几种方式显示控制台:
@@ -1085,7 +1103,7 @@ console.setGlobalLogConfig({
 - **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-此方法已于 `6.3.1` 版本被废弃, 使用后将无任何效果.
+此方法已于 `6.3.1` 版本被废弃. 在 AutoJs6 `6.7.0` 源码中, 调用后会抛出 `RuntimeException(error_abandoned_method)`.
 
 ## [m] rawInput
 
@@ -1097,4 +1115,4 @@ console.setGlobalLogConfig({
 - **args** { [...](documentation#可变参数)[any](dataTypes#any)[[]](documentation#可变参数) } - [占位符替换参数](glossaries#占位符替换参数)
 - <ins>**returns**</ins> { [void](dataTypes#void) }
 
-此方法已于 `6.3.1` 版本被废弃, 使用后将无任何效果.
+此方法已于 `6.3.1` 版本被废弃. 在 AutoJs6 `6.7.0` 源码中, 调用后会抛出 `RuntimeException(error_abandoned_method)`.

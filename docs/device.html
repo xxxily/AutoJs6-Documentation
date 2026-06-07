@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#device_device">设备 (Device)</a></span><ul>
+<li><span class="stability_undefined"><a href="#device_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#device_device_width">device.width</a></span></li>
 <li><span class="stability_undefined"><a href="#device_device_height">device.height</a></span></li>
 <li><span class="stability_undefined"><a href="#device_device_buildid">device.buildId</a></span></li>
@@ -242,11 +243,17 @@
 
         <div id="apicontent">
             <h1>设备 (Device)<span><a class="mark" href="#device_device" id="device_device">#</a></span></h1>
-<hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
-
-<hr>
+<h2>6.7.0 源码校对<span><a class="mark" href="#device_6_7_0" id="device_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/device/Device.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/Device.java</code></li>
+</ul>
+<p>运行时中 <code>device</code> / <code>$device</code> 由 augment 注入. 基础 <code>Device.java</code> 提供设备信息、屏幕、亮度、音量、电池、内存、唤醒 / 熄屏、震动、方向、网络和部分硬件标识读取能力; augment 层补充当前 AutoJs6 运行时便捷函数.</p>
+<p>当前 augment 公开函数包括 <code>summary</code>, <code>digest</code>, <code>vibrate</code>, <code>isScreenOff</code>, <code>isScreenPortrait</code>, <code>isScreenLandscape</code>, <code>getIpAddress</code>, <code>getIpv6Address</code>, <code>getGatewayAddress</code>, 网络状态检查, <code>getSharedDeviceId</code>, 指针位置相关函数. getter 包括 <code>width</code>, <code>height</code>, <code>rotation</code>, <code>orientation</code>, <code>density</code>.</p>
+<p><code>vibrate</code> 支持毫秒数、摩斯字符串、震动时间数组等形式; 两参数形式可表达字符串选项、关闭 / 持续时间或数组 pattern 的 repeat/off 参数.</p>
+<p>亮度、音量、指针位置等系统设置相关能力受 Android 权限和系统版本限制. Android API 23+ 不能再通过私有 <code>Settings.System</code> 字段直接修改指针位置, 当前实现改由 <code>PointerLocationTool</code> 处理.</p>
 <p>device模块提供了与设备有关的信息与操作, 例如获取设备宽高, 内存使用率, IMEI, 调整设备亮度、音量等.</p>
 <p>此模块的部分函数, 例如调整音量, 需要&quot;修改系统设置&quot;的权限. 如果没有该权限, 会抛出<code>SecurityException</code>并跳转到权限设置界面.</p>
 <h2>device.width<span><a class="mark" href="#device_device_width" id="device_device_width">#</a></span></h2>

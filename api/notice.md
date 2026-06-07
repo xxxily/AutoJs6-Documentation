@@ -6,6 +6,24 @@ notice 模块用于创建并显示消息通知.
 
 > 注: 不同安卓系统的通知表现可能存在较大差异, 与文档描述也可能存在出入.
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Notice.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/notice/Channel.kt`
+
+运行时中 `notice` / `$notice` 由 augment 注入, `notice` 本身可调用, 最多接受 3 个参数并返回 notification id. 当前公开函数包括 `isEnabled`, `ensureEnabled`, `launchSettings`, `config`, `cancel`, `getBuilder`; getter 包括 `builder`; 嵌套 `notice.channel` 提供通知渠道管理.
+
+`notice(...)` 支持 `notice(builder, options?)`, `notice(content, options?)`, `notice(title, content, options?)`, `notice(options?)`. 当选项缺少 `title`, `content`, `bigContent` 时会使用默认标题 / 内容; `channelId` 来自 options 或配置, 并会自动 `Channel.createIfNeeded`.
+
+`notificationId` 可由 options 指定; 否则取决于配置是否使用动态默认 ID. `intent` 可为 JavaScript intent 对象、Android `Intent`, Activity short form 或 URL / 近似网址字符串. `priority` 支持数字或字符串 `default`, `low`, `min`, `high`, `max`. `autoCancel`, `isSilent` / `silent` 会按 options 和全局配置解析.
+
+`notice.config(obj)` 会修改运行时通知配置中的可变基础属性; nullish 值会按默认配置重置. `notice.cancel(id)` 对 nullish / `NaN` 参数不执行取消.
+
+`notice.channel.create`, `createIfNeeded`, `remove`, `contains`, `get`, `getAll` 只在 Android O / API 26+ 真正操作通知渠道; 低版本系统中对应查询 / 删除会返回 false, null 或空集合. 渠道创建选项包括 `id`, `name`, `description`, `importance`, `enableVibration`, `vibrationPattern`, `enableLights`, `lightColor`, `lockscreenVisibility`. Android 系统对已创建渠道的部分字段修改有限制, 必须以系统实际行为为准.
+
 ## 简单操作
 
 显示一条通知:

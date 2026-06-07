@@ -187,7 +187,10 @@
         <div id="toc">
             <h2>目录</h2>
             <ul>
-<li><span class="stability_undefined"><a href="#ui_ui">用户界面 (UI)</a></span></li>
+<li><span class="stability_undefined"><a href="#ui_ui">用户界面 (UI)</a></span><ul>
+<li><span class="stability_undefined"><a href="#ui_6_7_0">6.7.0 源码校对</a></span></li>
+</ul>
+</li>
 <li><span class="stability_undefined"><a href="#ui_view">视图: View</a></span><ul>
 <li><span class="stability_undefined"><a href="#ui_attr_name_value">attr(name, value)</a></span></li>
 <li><span class="stability_undefined"><a href="#ui_attr_name">attr(name)</a></span></li>
@@ -321,20 +324,30 @@
 
         <div id="apicontent">
             <h1>用户界面 (UI)<span><a class="mark" href="#ui_ui" id="ui_ui">#</a></span></h1>
-<hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
-
-<hr>
+<h2>6.7.0 源码校对<span><a class="mark" href="#ui_6_7_0" id="ui_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UI.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/ui/UIWidget.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/UI.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/script/JavaScriptSource.java</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/execution/ScriptExecuteActivity.kt</code></li>
+</ul>
+<p>运行时中 <code>ui</code> / <code>$ui</code> 由 augment 注入, 全局同时提供 <code>isUiThread</code>.</p>
+<p>当前源码公开函数包括 <code>run</code>, <code>__inflate__</code>, <code>inflate</code>, <code>useAndroidLayout</code>, <code>post</code>, <code>layout</code>, <code>layoutFile</code>, <code>registerWidget</code>, <code>setContentView</code>, <code>statusBarColor</code>, <code>statusBarIconLight</code>, <code>statusBarIconLightBy</code>, <code>backgroundColor</code>, <code>navigationBarColor</code>, <code>navigationBarIconLight</code>, <code>navigationBarIconLightBy</code>, <code>findById</code>, <code>findByStringId</code>, <code>findView</code>, <code>finish</code>, <code>keepScreenOn</code>, <code>getStatusBarHeight</code>, <code>getVisibleStatusBarHeight</code>, <code>getNavigationBarHeight</code>, <code>getVisibleNavigationBarHeight</code>. getter 包括 <code>R</code>, <code>__widgets__</code>, <code>root</code>, <code>emitter</code>, <code>statusBarHeight</code>, <code>visibleStatusBarHeight</code>, <code>navigationBarHeight</code>, <code>visibleNavigationBarHeight</code>.</p>
+<p><code>ui.run(action)</code> 在 UI 线程会立即执行, 否则投递到 UI handler 并阻塞等待结果; <code>ui.post(action, delay?)</code> 投递到 UI 线程并返回 boolean. <code>ui.layoutFile(path)</code> 通过运行时 <code>files</code> 读取布局文件.</p>
+<p><code>layout</code>, <code>setContentView</code>, 状态栏 / 导航栏设置, <code>finish</code>, <code>keepScreenOn</code> 需要 UI 模式 activity; <code>inflate</code> 可在普通主题 context 下使用. <code>registerWidget(name, widget)</code> 要求 widget 继承 <code>UIWidget</code>.</p>
+<p>UI 模式由脚本前 300 个 token 的字符串指令解析, 会跳过注释和换行; 支持 <code>&quot;ui&quot;</code>, <code>&quot;auto&quot;</code>, <code>&quot;jsox&quot;</code> / <code>&quot;x&quot;</code> 及组合.</p>
 <p>ui模块提供了编写用户界面的支持.</p>
 <pre><code>给Android开发者或者高阶用户的提醒, Auto.js的UI系统来自于Android, 所有属性和方法都能在Android源码中找到. 如果某些代码或属性没有出现在Auto.js的文档中, 可以参考Android的文档.
 View: https://developer.android.google.cn/reference/android/view/View?hl=cn
 Widget: https://developer.android.google.cn/reference/android/widget/package-summary?hl=cn
-</code></pre><p>带有ui的脚本的的最前面必须使用<code>&quot;ui&quot;;</code>指定ui模式, 否则脚本将不会以ui模式运行. 正确示范:s</p>
+</code></pre><p>带有ui的脚本的最前面必须使用<code>&quot;ui&quot;;</code>指定ui模式, 否则脚本将不会以ui模式运行. 正确示范:</p>
 <pre><code>&quot;ui&quot;;
 
 //脚本的其他代码
-</code></pre><p>字符串&quot;ui&quot;的前面可以有注释、空行和空格<strong>[v4.1.0新增]</strong>, 但是不能有其他代码.</p>
+</code></pre><p>字符串 <code>&quot;ui&quot;</code> 的前面可以有注释、空行和空格, 但不能有其他普通执行代码. AutoJs6 <code>6.7.0</code> 会在脚本前 300 个 token 内解析 <code>&quot;ui&quot;</code>, <code>&quot;auto&quot;</code>, <code>&quot;jsox&quot;</code> / <code>&quot;x&quot;</code> 等模式指令.</p>
 <p>界面是由视图(View)组成的. View分成两种, 控件(Widget)和布局(Layout). 控件(Widget)用来具体显示文字、图片、网页等, 比如文本控件(text)用来显示文字, 按钮控件(button)则可以显示一个按钮并提供点击效果, 图片控件(img)则用来显示来自网络或者文件的图片, 除此之外还有输入框控件(input)、进度条控件(progressbar)、单选复选框控件(checkbox)等；布局(Layout)则是装着一个或多个控件的&quot;容器&quot;, 用于控制在他里面的控件的位置, 比如垂直布局(vertical)会把他里面的控件从上往下依次显示(即纵向排列), 水平布局(horizontal)则会把他里面的控件从左往右依次显示(即横向排列), 以及帧布局(frame), 他会把他里面的控件直接在左上角显示, 如果有多个控件, 后面的控件会重叠在前面的控件上.</p>
 <p>我们使用xml来编写界面, 并通过<code>ui.layout()</code>函数指定界面的布局xml. 举个例子：</p>
 <pre><code>&quot;ui&quot;;

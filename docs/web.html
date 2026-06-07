@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#web_web">万维网 (Web)</a></span><ul>
+<li><span class="stability_undefined"><a href="#web_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#web_m_newinjectablewebview">[m] newInjectableWebView</a></span><ul>
 <li><span class="stability_undefined"><a href="#web_newinjectablewebview_url">newInjectableWebView(url?)</a></span></li>
 <li><span class="stability_undefined"><a href="#web_newinjectablewebview_activity">newInjectableWebView(activity)</a></span></li>
@@ -214,6 +215,16 @@
 <blockquote>
 <p>注: 与 <a href="http.html">http</a> 模块不同, http 模块主要用于网络的请求与响应.</p>
 </blockquote>
+<h2>6.7.0 源码校对<span><a class="mark" href="#web_6_7_0" id="web_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/web/Web.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/web/WebSocket.kt</code></li>
+</ul>
+<p>运行时中 <code>web</code> / <code>$web</code> 由 augment 注入, 并将 <code>newInjectableWebView</code>, <code>newInjectableWebClient</code>, <code>newWebSocket</code> 全局化.</p>
+<p><code>newInjectableWebView(context?, url?)</code> 最多接受 2 个参数. 若第一个参数是字符串, 源码会将其视为 URL 并使用 <code>activity</code> context; 无参数时优先使用 UI <code>activity</code>, 否则使用全局 context. 非 Android <code>Context</code> 会回退为全局 context.</p>
+<p><code>newInjectableWebClient()</code> 不接受参数. <code>newWebSocket(url)</code> 使用运行时 <code>http.okhttp</code>; 构造器形式支持 <code>WebSocket(url)</code> 或 <code>WebSocket(client, url)</code>, 其中 <code>client</code> 必须是 <code>MutableOkHttp</code>, 否则回退运行时默认 client.</p>
 <hr>
 <p style="font: bold 2em sans-serif; color: #FF7043">web</p>
 
@@ -281,7 +292,7 @@ settings.setDomStorageEnabled(true);
 settings.setDisplayZoomControls(false);
 </code></pre>
 <blockquote>
-<p>注: 上述设置参考自 Auto.js 4.1.1 Alpha2 源码.</p>
+<p>注: 上述设置已按 AutoJs6 <code>6.7.0</code> 的 <code>InjectableWebView</code> 初始化逻辑校对.</p>
 </blockquote>
 <p>此外, <code>InjectableWebView</code> 内部还初始化了一个默认的 <a href="https://developer.android.com/reference/android/webkit/WebChromeClient">WebChromeClient</a> 客户端:</p>
 <pre><code class="lang-java">setWebChromeClient(new WebChromeClient());

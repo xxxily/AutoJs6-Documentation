@@ -2,6 +2,26 @@
 
 autojs 全局对象主要包含与 AutoJs6 应用本身相关的属性及方法, 如获取 AutoJs6 的 [ Root 状态 / 语言标签 / 权限状态 ] 等.
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Autojs.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/autojs/Version.kt`
+
+运行时中 `autojs` / `$autojs` 由 augment 注入, 并同步挂载到 `app.autojs`.
+
+当前源码公开属性 / getter 包括 `versionCode`, `versionName`, `versionDate`, `name`, `packageName`, `R`, `rotation`, `orientation`, `themeColor`. 其中 `R` 也作为全局 getter 注册, 与 `autojs.R` 同源, 按资源 type / name 动态调用 Android `getIdentifier()`.
+
+当前源码公开函数包括 `isScreenPortrait`, `isScreenLandscape`, `isRootAvailable`, `getRootMode`, `setRootMode`, `canModifySystemSettings`, `canWriteSecureSettings`, `canDisplayOverOtherApps`, `getLanguage`, `getLanguageTag`, `restart`, `exit`.
+
+`setRootMode(mode, writeIntoPref?)` 的 `mode` 支持数字 `1`, `0`, `-1`, boolean, 或字符串 `root`, `non-root`, `auto`. 第二参数可为 boolean; 字符串只有匹配 `write_into_pref` 时才视为写入偏好设置.
+
+`restart(scriptsAfterRestart?)` 与 `exit(scriptsAfterRestart?)` 的参数支持空、字符串或列表. 字符串 `"@"` 代表当前脚本路径; 非 `.js` 结尾的字符串会自动补 `.js`; 其他类型会抛出参数异常.
+
+`autojs.version` 当前公开 `code`, `name`, `date`, `isHigherThan`, `isLowerThan`, `isEqual`, `isAtLeast`; 比较参数可为内部 `Version` 或字符串.
+
 ---
 
 <p style="font: bold 2em sans-serif; color: #FF7043">autojs</p>

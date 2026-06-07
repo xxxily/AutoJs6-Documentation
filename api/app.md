@@ -1,11 +1,20 @@
 # 通用应用 (App)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/app/App.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/AppUtils.kt`
+
+运行时中 `app` / `$app` 由 augment 注入, 并将 `autojs` 挂载为 `app.autojs`. `App` 模块的主要能力覆盖 Intent 构造与启动、应用启动 / 卸载 / 查询、文件查看编辑、邮件、广播与 URL 打开.
+
+当前源码公开并全局化的入口包括 `intent`, `startActivity`, `startDualActivity`, `intentToShell`, `startService`, `sendEmail`, `sendBroadcast`, `sendLocalBroadcastSync`, `parseUri`, `openUrl`, `openDualUrl`, `getUriForFile`, `getAppByAlias`, `launch`, `launchDual`, `launchPackage`, `launchDualPackage`, `launchApp`, `launchDualApp`, `getPackageName`, `getAppName`, 设置页相关别名, `isInstalled`, `isDualInstalled`, `uninstall`, `uninstallDual`, `viewFile`, `editFile`, `kill`, `killDual`.
+
+`startActivity` 可接受字符串、Android `Intent`, URI 或 JavaScript 对象. 字符串包含 `://` 时按 URL 打开; 形如网址但无协议时会自动补 `http://`; 其他字符串按 Activity short form 解析. 选项对象可包含 `dual`, `root`, `shizuku` 等字段; root / Shizuku 分支通过 `am start` shell 命令启动.
+
+Intent 对象必须是 Android `Intent` 或可转换的 JavaScript 对象; 非法类型会抛出参数异常.
 
 app模块提供一系列函数, 用于使用其他应用、与其他应用交互. 例如发送意图、打开文件、发送邮件等.
 
@@ -32,7 +41,7 @@ toastLog(app.versionCode);
 如果在Auto.js中运行则为Auto.js的版本名称；在打包的软件中则为打包软件的版本名称.
 
 ```
-toastLog(app.verionName);
+toastLog(app.versionName);
 ```
 
 ## app.autojs.versionCode

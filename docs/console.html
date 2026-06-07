@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#console_console">控制台 (Console)</a></span><ul>
+<li><span class="stability_undefined"><a href="#console_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#console">显示控制台</a></span></li>
 <li><span class="stability_undefined"><a href="#console_1">模块作用</a></span></li>
 <li><span class="stability_undefined"><a href="#console_2">浮动窗口</a></span></li>
@@ -371,6 +372,18 @@
         <div id="apicontent">
             <h1>控制台 (Console)<span><a class="mark" href="#console_console" id="console_console">#</a></span></h1>
 <p>AutoJs6 的控制台类似 Web 浏览器的调试控制台, 用于信息输出或辅助代码调试.</p>
+<h2>6.7.0 源码校对<span><a class="mark" href="#console_6_7_0" id="console_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/console/Console.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/core/console/GlobalConsole.kt</code></li>
+</ul>
+<p>运行时中 <code>console</code> / <code>$console</code> 由 augment 注入. 全局函数包括 <code>log</code>, <code>verbose</code>, <code>warn</code>, <code>print</code>; <code>err</code> 是 <code>console.error</code> 别名; <code>openConsole</code> / <code>showConsole</code>, <code>clearConsole</code>, <code>launchConsole</code> 也作为全局入口保留.</p>
+<p>当前源码公开函数包括 <code>show</code>, <code>hide</code>, <code>reset</code>, <code>clear</code>, <code>expand</code>, <code>collapse</code>, <code>assert</code>, <code>input</code>, <code>rawInput</code>, <code>log</code>, <code>verbose</code>, <code>info</code>, <code>warn</code>, <code>error</code>, <code>print</code>, <code>time</code>, <code>timeEnd</code>, <code>build</code>, 多个浮动控制台 setter, <code>setGlobalLogConfig</code>, <code>resetGlobalLogConfig</code>, <code>launch</code>, <code>printAllStackTrace</code>.</p>
+<p><code>console.trace</code> 是 AutoJs6 自定义函数, 会采集调用栈并按字符串或数字日志级别输出. <code>console.assert(value, message?)</code> 在 <code>value</code> 为函数时会先调用函数, 断言失败时输出默认 <code>AssertionError</code> 或给定消息.</p>
+<p><code>console.input</code> 与 <code>console.rawInput</code> 在当前源码中已废弃并会抛出 <code>RuntimeException(error_abandoned_method)</code>, 不是静默无效.</p>
+<p><code>console.build(options?)</code> 会把对象字段映射到 <code>setX</code> 或 <code>isX</code> setter; 数组值会展开为多个参数, 未知字段会抛错. setter 返回 console proxy, 支持链式调用. <code>setGlobalLogConfig(config)</code> 要求 JavaScript 对象, 支持 <code>file</code>, <code>filePattern</code>, <code>maxFileSize</code>, <code>maxBackupSize</code>, <code>immediateFlush</code>, <code>resetConfiguration</code>, <code>rootLevel</code>.</p>
 <h2>显示控制台<span><a class="mark" href="#console" id="console">#</a></span></h2>
 <p>AutoJs6 支持以下几种方式显示控制台:</p>
 <ul>
@@ -1260,7 +1273,7 @@ console.timeEnd(&#39;fruit&#39;);
 <li><strong>args</strong> { <span class="type"><a href="documentation.html#documentation_可变参数">...</a><a href="dataTypes.html#datatypes_any">any</a><a href="documentation.html#documentation_可变参数">[]</a></span> } - <a href="glossaries.html#glossaries_占位符替换参数">占位符替换参数</a></li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
-<p>此方法已于 <code>6.3.1</code> 版本被废弃, 使用后将无任何效果.</p>
+<p>此方法已于 <code>6.3.1</code> 版本被废弃. 在 AutoJs6 <code>6.7.0</code> 源码中, 调用后会抛出 <code>RuntimeException(error_abandoned_method)</code>.</p>
 <h2>[m] rawInput<span><a class="mark" href="#console_m_rawinput" id="console_m_rawinput">#</a></span></h2>
 <h3>rawInput(data, ...args)<span><a class="mark" href="#console_rawinput_data_args" id="console_rawinput_data_args">#</a></span></h3>
 <p><strong><code>ABANDONED</code></strong></p>
@@ -1269,7 +1282,7 @@ console.timeEnd(&#39;fruit&#39;);
 <li><strong>args</strong> { <span class="type"><a href="documentation.html#documentation_可变参数">...</a><a href="dataTypes.html#datatypes_any">any</a><a href="documentation.html#documentation_可变参数">[]</a></span> } - <a href="glossaries.html#glossaries_占位符替换参数">占位符替换参数</a></li>
 <li><ins><strong>returns</strong></ins> { <span class="type"><a href="dataTypes.html#datatypes_void">void</a></span> }</li>
 </ul>
-<p>此方法已于 <code>6.3.1</code> 版本被废弃, 使用后将无任何效果.</p>
+<p>此方法已于 <code>6.3.1</code> 版本被废弃. 在 AutoJs6 <code>6.7.0</code> 源码中, 调用后会抛出 <code>RuntimeException(error_abandoned_method)</code>.</p>
 
         </div>
     </div>

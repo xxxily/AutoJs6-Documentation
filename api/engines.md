@@ -1,232 +1,209 @@
 # 引擎 (Engines)
 
+engines 模块包含脚本引擎枚举、脚本执行、脚本停止和跨引擎事件通信相关函数.
+
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/engines/Engines.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/Engines.kt`
+- `app/src/main/java/org/autojs/autojs/execution/ExecutionConfig.kt`
+- `app/src/main/java/org/autojs/autojs/engine/JavaScriptEngine.java`
+
+运行时中 `engines` 既是 `ScriptRuntime` 字段, 也由 augment 层补充同名模块函数. 当前公开入口包括 `all`, `myEngine`, `getEngines`, `stopAll`, `stopAllAndToast`, `execScript`, `execScriptFile`, `execAutoFile`.
+
+`engines` 实现 `AsEmitter`, 因此模块对象本身具备事件发射能力. 当前引擎启动时, `ExecutionConfig.arguments` 会被转换为 `myEngine().execArgv`.
+
+> 注: `execScript` / `execScriptFile` / `execAutoFile` 的 `config.path` 或 `config.workingDirectory` 在 `6.7.0` 源码中代表脚本工作目录, 不是旧文档里描述的 `require` 搜索路径数组.
+
 ---
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+<p style="font: bold 2em sans-serif; color: #FF7043">engines</p>
 
 ---
 
-engines模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数, 包括运行其他脚本, 关闭脚本等.
+## [m] execScript
 
-例如, 获取脚本所在目录：
+### execScript(name, script, config?)
 
-```
-toast(engines.myEngine().cwd());
-```
+- **name** {string} - 要运行的脚本名称, 用于任务显示和源码标识.
+- **script** {string} - 要运行的脚本文本.
+- **[ config ]** {Object} - 运行配置.
+- <ins>**returns**</ins> { ScriptExecution }
 
-## engines.execScript(name, script[, config])
+在新的脚本环境中执行字符串脚本. 新环境中的全局变量与当前脚本不共享, 脚本会在新的线程中运行.
 
-* `name` {string} 要运行的脚本名称. 这个名称和文件名称无关, 只是在任务管理中显示的名称.
-* `script` {string} 要运行的脚本内容.
-* `config` {Object} 运行配置项
-    * `delay` {number} 延迟执行的毫秒数, 默认为0
-    * `loopTimes` {number} 循环运行次数, 默认为1. 0为无限循环.
-    * `interval` {number} 循环运行时两次运行之间的时间间隔, 默认为0
-    * `path` {Array} | {string} 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.
-
-在新的脚本环境中运行脚本script. 返回一个[ScriptExectuion](#engines_scriptexecution)对象.
-
-所谓新的脚本环境, 指定是, 脚本中的变量和原脚本的变量是不共享的, 并且, 脚本会在新的线程中运行.
-
-最简单的例子如下：
-
-```
-engines.execScript("hello world", "toast('hello world')");
+```js
+engines.execScript('hello world', 'toast("hello world")');
 ```
 
-如果要循环运行, 则：
+`execScript` 内部使用 `StringScriptSource`, source prefix 为 `$engine/`.
 
+## [m] execScriptFile
+
+### execScriptFile(path, config?)
+
+- **path** {string} - 要运行的脚本路径.
+- **[ config ]** {Object} - 运行配置.
+- <ins>**returns**</ins> { ScriptExecution }
+
+在新的脚本环境中运行脚本文件.
+
+```js
+engines.execScriptFile('/sdcard/scripts/receiver.js');
 ```
-//每隔3秒运行一次脚本, 循环10次
-engines.execScript("hello world", "toast('hello world')", {
-    loopTimes: 10,
-    interval: 3000
+
+源码会将 `path` 解析为非空运行时路径, 并使用 `JavaScriptFileSource` 执行.
+
+## [m] execAutoFile
+
+### execAutoFile(path, config?)
+
+- **path** {string} - 要运行的录制文件路径.
+- **[ config ]** {Object} - 运行配置.
+- <ins>**returns**</ins> { ScriptExecution }
+
+在新的脚本环境中运行录制文件.
+
+```js
+engines.execAutoFile('/sdcard/scripts/1.auto');
+```
+
+源码会将 `path` 解析为非空运行时路径, 并使用 `AutoFileSource` 执行.
+
+## [p] config
+
+`execScript`, `execScriptFile`, `execAutoFile` 的 `config` 可为空, 或为 `ExecutionConfig` / JavaScript 对象.
+
+支持字段:
+
+- `path` {string} - 工作目录, 会写入 `ExecutionConfig.workingDirectory`.
+- `workingDirectory` {string} - 工作目录, 与 `path` 等价.
+- `delay` {number} - 延迟执行毫秒数, 默认 `0`.
+- `interval` {number} - 循环间隔毫秒数, 默认 `0`.
+- `loopTimes` {number} - 循环次数, 默认 `1`, `0` 表示无限循环.
+- `arguments` {Object} - 启动参数, 会写入新引擎的 `execArgv`.
+
+非法 `config` 类型会抛出参数异常.
+
+```js
+let execution = engines.execScriptFile('./worker.js', {
+    workingDirectory: files.cwd(),
+    delay: 1000,
+    arguments: {
+        from: engines.myEngine().getSource().toString(),
+    },
 });
 ```
 
-用字符串来编写脚本非常不方便, 可以结合 `Function.toString()`的方法来执行特定函数:
+## [m] stopAll
 
-```
-function helloWorld(){
-    //注意, 这里的变量和脚本主体的变量并不共享
-    toast("hello world");
-}
-engines.execScript("hello world", "helloWorld();\n" + helloWorld.toString());
-```
+### stopAll()
 
-如果要传递变量, 则可以把这些封装成一个函数：
+- <ins>**returns**</ins> { number }
 
-```
-function exec(action, args){
-    args = args || {};
-    engines.execScript(action.name, action.name + "(" + JSON.stringify(args) + ");\n" + action.toString());
-}
+停止所有正在运行的脚本, 包括当前脚本自身. 返回停止数量.
 
-//要执行的函数, 是一个简单的加法
-function add(args){
-    toast(args.a + args.b);
-}
+## [m] stopAllAndToast
 
-//在新的脚本环境中执行 1 + 2
-exec(add, {a: 1, b:2});
-```
+### stopAllAndToast()
 
-## engines.execScriptFile(path[, config])
+- <ins>**returns**</ins> { number }
 
-* `path` {string} 要运行的脚本路径.
-* `config` {Object} 运行配置项
-    * `delay` {number} 延迟执行的毫秒数, 默认为0
-    * `loopTimes` {number} 循环运行次数, 默认为1. 0为无限循环.
-    * `interval` {number} 循环运行时两次运行之间的时间间隔, 默认为0
-    * `path` {Array} | {string} 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.
+停止所有正在运行的脚本并显示停止数量, 包括当前脚本自身.
 
-在新的脚本环境中运行脚本文件path. 返回一个[ScriptExecution](#ScriptExecution)对象.
+## [m] myEngine
 
-```
-engines.execScriptFile("/sdcard/脚本/1.js");
-```
+### myEngine()
 
-## engines.execAutoFile(path[, config])
+- <ins>**returns**</ins> { JavaScriptEngine }
 
-* `path` {string} 要运行的录制文件路径.
-* `config` {Object} 运行配置项
-    * `delay` {number} 延迟执行的毫秒数, 默认为0
-    * `loopTimes` {number} 循环运行次数, 默认为1. 0为无限循环.
-    * `interval` {number} 循环运行时两次运行之间的时间间隔, 默认为0
-    * `path` {Array} | {string} 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.
+返回当前脚本引擎对象.
 
-在新的脚本环境中运行录制文件path. 返回一个[ScriptExecution](#ScriptExecution)对象.
-
-```
-engines.execAutoFile("/sdcard/脚本/1.auto");
-```
-
-## engines.stopAll()
-
-停止所有正在运行的脚本. 包括当前脚本自身.
-
-## engines.stopAllAndToast()
-
-停止所有正在运行的脚本并显示停止的脚本数量. 包括当前脚本自身.
-
-## engines.myEngine()
-
-返回当前脚本的脚本引擎对象([ScriptEngine](#engines_scriptengine))
-
-**[v4.1.0新增]**
-特别的, 该对象可以通过`execArgv`来获取他的运行参数, 包括外部参数、intent等. 例如：
-
-```
+```js
+log(engines.myEngine().cwd());
 log(engines.myEngine().execArgv);
 ```
 
-普通脚本的运行参数通常为空, 通过定时任务的广播启动的则可以获取到启动的intent.
+普通脚本的 `execArgv` 通常为空; 通过 `engines.execScript*` 传入 `config.arguments` 或由任务 / Intent 启动时, 可从 `execArgv` 读取参数.
 
-## engines.all()
+## [m] all
 
-* 返回 {Array}
+### all()
 
-返回当前所有正在运行的脚本的脚本引擎[ScriptEngine](#engines_scriptengine)的数组.
+- <ins>**returns**</ins> { ScriptEngine[] }
 
-```
+返回当前所有正在运行脚本的脚本引擎数组.
+
+```js
 log(engines.all());
 ```
 
-# ScriptExecution
+## [m] getEngines
 
-执行脚本时返回的对象, 可以通过他获取执行的引擎、配置等, 也可以停止这个执行.
+### getEngines()
 
-要停止这个脚本的执行, 使用`exectuion.getEngine().forceStop()`.
+- <ins>**returns**</ins> { Set&lt;ScriptEngine&gt; }
 
-## ScriptExecution.getEngine()
+返回脚本引擎集合. 该方法直接透出运行时 `ScriptEngineService.engines` 集合.
 
-返回执行该脚本的脚本引擎对象([ScriptEngine](#engines_scriptengine))
+## ScriptExecution
 
-## ScriptExecution.getConfig()
+执行脚本时返回的对象, 可通过它获取执行引擎、运行配置, 或停止对应引擎.
 
-返回该脚本的运行配置([ScriptConfig](#engines_scriptconfig))
+### ScriptExecution.getEngine()
 
-# ScriptEngine
+- <ins>**returns**</ins> { ScriptEngine }
+
+返回执行该脚本的脚本引擎对象.
+
+### ScriptExecution.getConfig()
+
+- <ins>**returns**</ins> { ScriptConfig }
+
+返回该脚本的运行配置.
+
+## ScriptEngine
 
 脚本引擎对象.
 
-## ScriptEngine.forceStop()
+### ScriptEngine.forceStop()
 
-停止脚本引擎的执行.
+停止脚本引擎执行.
 
-## ScriptEngine.cwd()
+### ScriptEngine.cwd()
 
-* 返回 {string}
+- <ins>**returns**</ins> { string | null }
 
-返回脚本执行的路径. 对于一个脚本文件而言为这个脚本所在的文件夹；对于其他脚本, 例如字符串脚本, 则为`null`或者执行时的设置值.
+返回脚本执行目录. 对脚本文件通常为脚本所在目录; 对字符串脚本则取决于执行配置.
 
-## ScriptEngine.getSource()
+### ScriptEngine.getSource()
 
-* 返回 [ScriptSource](#engines_scriptsource)
+- <ins>**returns**</ins> { ScriptSource }
 
-返回当前脚本引擎正在执行的脚本对象.
+返回当前脚本引擎正在执行的脚本源对象.
 
-```
-log(engines.myEngine().getSource());
-```
+### ScriptEngine.emit(eventName, ...args)
 
-## ScriptEngine.emit(eventName[, ...args])
+- **eventName** {string} - 事件名称.
+- **...args** {any} - 事件参数.
 
-* `eventName` {string} 事件名称
-* `...args` {any} 事件参数
+向该脚本引擎发送事件. 目标脚本可通过 `events` 模块监听并在脚本主线程处理.
 
-向该脚本引擎发送一个事件, 该事件可以在该脚本引擎对应的脚本的events模块监听到并在脚本主线程执行事件处理.
-
-例如脚本receiver.js的内容如下：
-
-```
-//监听say事件
-events.on("say", function(words){
-    toastLog(words);
-});
-//保持脚本运行
-setInterval(()=>{}, 1000);
+```js
+/* receiver.js */
+events.on('say', words => toastLog(words));
+setInterval(() => {}, 1000);
 ```
 
-同一目录另一脚本可以启动他并发送该事件：
-
-```
-//运行脚本
-var e = engines.execScriptFile("./receiver.js");
-//等待脚本启动
+```js
+let execution = engines.execScriptFile('./receiver.js');
 sleep(2000);
-//向该脚本发送事件
-e.getEngine().emit("say", "你好");
+execution.getEngine().emit('say', 'hello');
 ```
 
-# ScriptConfig
+## ScriptConfig
 
-脚本执行时的配置.
-
-## delay
-
-* {number}
-
-延迟执行的毫秒数
-
-## interval
-
-* {number}
-
-循环运行时两次运行之间的时间间隔
-
-## loopTimes
-
-* {number}
-
-循环运行次数
-
-## getPath()
-
-* 返回 {Array}
-
-返回一个字符串数组表示脚本运行时模块寻找的路径.
-
-
-
+脚本执行配置. 对 `engines.execScript*` 入口而言, 当前源码支持 `delay`, `interval`, `loopTimes`, `workingDirectory` 和 `arguments` 等字段.

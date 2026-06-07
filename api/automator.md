@@ -1,11 +1,27 @@
 # 自动化 (Automator)
 
----
+## 6.7.0 源码校对
 
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
 
----
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Auto.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/Automator.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomator.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/automator/RootAutomatorNativeObject.kt`
+- `app/src/main/java/org/autojs/autojs/core/accessibility/SimpleActionAutomator.kt`
+- `app/src/main/java/org/autojs/autojs/core/inputevent/RootAutomator.java`
+- `app/src/main/java/org/autojs/autojs/engine/RootAutomatorEngine.kt`
+
+运行时中 `auto`, `automator`, `selector`, `RootAutomator` 均由 `ScriptRuntime.augment(...)` 注入. `RootAutomator` 仅注入构造器, 不存在 `$RootAutomator` 模块对象.
+
+当前源码公开的 `auto` / `$auto` 入口包括 `start`, `enable`, `stop`, `disable`, `hasInstance`, `hasService`, `exists`, `isRunning`, `isOperational`, `stateListener`, `registerEvent`, `registerEvents`, `removeEvent`, `removeEvents`, `waitFor`, `setMode`, `setFlags`, `setWindowFilter`, `launchSettings`, `clearCache`, `currentPackage`, `currentActivity`, `currentComponent`; getter 包括 `service`, `services`, `windows`, `root`, `rootInActiveWindow`, `windowRoots`, `state`.
+
+当前源码公开的 `automator` / `$automator` 入口包括全局坐标和系统动作: `click`, `longClick`, `press`, `swipe`, `gesture`, `gestureAsync`, `gestures`, `gesturesAsync`, `scrollDown`, `scrollUp`, `input`, `setText`, `back`, `home`, `powerDialog`, `notifications`, `quickSettings`, `recents`, `splitScreen`; 模块补充入口包括 `isServiceRunning`, `ensureService`, `waitForService`, `captureScreen`, `lockScreen`, `takeScreenshot`, `headsethook`, `accessibilityButton`, `accessibilityButtonChooser`, `accessibilityShortcut`, `accessibilityAllApps`, `dismissNotificationShade`.
+
+坐标触摸动作在 `6.7.0` 源码中走无障碍 `dispatchGesture`, 因此依赖可用的无障碍服务; `captureScreen()` 要求 Android R / API 30+ 的无障碍截图能力.
+
+`RootAutomator` 构造要求 root 或可用 Shizuku. 底层公开 `sendEvent`, `touch`, `setScreenMetrics`, `touchX`, `touchY`, `sendSync`, `sendMtSync`, `tap`, `swipe`, `press`, `longPress`, `touchDown`, `touchUp`, `touchMove`, `getDefaultId`, `setDefaultId`, `exit`. 默认触点 ID 为 `0`.
 
 ## 简易自动化 (SimpleActionAutomator)
 
@@ -47,13 +63,13 @@ UiObjectActions 是一个 Java 接口, 代表 [控件节点 (UiObject)](uiObject
 
 # 基于坐标的触摸模拟
 
-本章节介绍了一些使用坐标进行点击、滑动的函数. 这些函数有的需要安卓7.0以上, 有的需要root权限.
+本章节介绍使用坐标进行点击、滑动的函数. 在 AutoJs6 `6.7.0` 中, 这些全局坐标动作主要通过无障碍服务的手势分发实现, 因此需要确保无障碍服务可用.
 
 要获取要点击的位置的坐标, 可以在开发者选项中开启"指针位置".
 
 基于坐标的脚本通常会有分辨率的问题, 这时可以通过`setScreenMetrics()`函数来进行自动坐标放缩. 这个函数会影响本章节的所有点击、长按、滑动等函数. 通过设定脚本设计时的分辨率, 使得脚本在其他分辨率下自动放缩坐标.
 
-控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过`.click()`函数来点击, 这时如果安卓版本在7.0以上或者有root权限, 就可以通过以下方式来点击：
+控件和坐标也可以相互结合. 一些控件是无法点击的(clickable为false), 无法通过`.click()`函数来点击, 这时可通过以下方式点击控件中心坐标：
 
 ```
 //获取这个控件
@@ -158,7 +174,7 @@ gestures([0, 500, [800, 300], [500, 1000]],
 
 # RootAutomator
 
-RootAutomator是一个使用root权限来模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.
+RootAutomator 是一个使用 root 或 Shizuku 后端模拟触摸的对象, 用它可以完成触摸与多点触摸, 并且这些动作的执行没有延迟.
 
 一个脚本中最好只存在一个RootAutomator, 并且保证脚本结束退出他. 可以在exit事件中退出RootAutomator, 例如：
 
@@ -172,13 +188,13 @@ events.on('exit', function(){
 
 ```
 
-**注意以下命令需要root权限**
+**注意以下命令需要 root 权限或可用的 Shizuku 输入设备访问能力.**
 
 ## RootAutomator.tap(x, y[, id])
 
 * `x` {number} 横坐标
 * `y` {number} 纵坐标
-* `id` {number} 多点触摸id, 可选, 默认为1, 可以通过setDefaultId指定.
+* `id` {number} 多点触摸id, 可选, 默认为0, 可以通过setDefaultId指定.
 
 点击位置(x, y). 其中id是一个整数值, 用于区分多点触摸, 不同的id表示不同的"手指", 例如：
 
@@ -196,14 +212,14 @@ ra.exit();
 
 某些情况下可能存在tap点击无反应的情况, 这时可以用`RootAutomator.press()`函数代替.
 
-## RootAutomator.swipe(x1, x2, y1, y2[, duration, id])
+## RootAutomator.swipe(x1, y1, x2, y2[, duration, id])
 
 * `x1` {number} 滑动起点横坐标
 * `y1` {number} 滑动起点纵坐标
 * `x2` {number} 滑动终点横坐标
 * `y2` {number} 滑动终点纵坐标
 * `duration` {number} 滑动时长, 单位毫秒, 默认值为300
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟一次从(x1, y1)到(x2, y2)的时间为duration毫秒的滑动.
 
@@ -212,16 +228,15 @@ ra.exit();
 * `x` {number} 横坐标
 * `y` {number} 纵坐标
 * `duration` {number} 按下时长
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟按下位置(x, y), 时长为duration毫秒.
 
-## RootAutomator.longPress(x, y[\, id\])
+## RootAutomator.longPress(x, y[, id])
 
 * `x` {number} 横坐标
 * `y` {number} 纵坐标
-* `duration` {number} 按下时长
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟长按位置(x, y).
 
@@ -231,7 +246,7 @@ ra.exit();
 
 * `x` {number} 横坐标
 * `y` {number} 纵坐标
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟手指按下位置(x, y).
 
@@ -239,13 +254,13 @@ ra.exit();
 
 * `x` {number} 横坐标
 * `y` {number} 纵坐标
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟移动手指到位置(x, y).
 
 ## RootAutomator.touchUp([id])
 
-* `id` {number} 多点触摸id, 可选, 默认为1
+* `id` {number} 多点触摸id, 可选, 默认为0
 
 模拟手指弹起.
 

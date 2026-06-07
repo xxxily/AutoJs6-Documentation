@@ -188,13 +188,38 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#engines_engines">引擎 (Engines)</a></span><ul>
-<li><span class="stability_undefined"><a href="#engines_engines_execscript_name_script_config">engines.execScript(name, script[, config])</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_execscriptfile_path_config">engines.execScriptFile(path[, config])</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_execautofile_path_config">engines.execAutoFile(path[, config])</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_stopall">engines.stopAll()</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_stopallandtoast">engines.stopAllAndToast()</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_myengine">engines.myEngine()</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_engines_all">engines.all()</a></span></li>
+<li><span class="stability_undefined"><a href="#engines_6_7_0">6.7.0 源码校对</a></span></li>
+<li><span class="stability_undefined"><a href="#engines_m_execscript">[m] execScript</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_execscript_name_script_config">execScript(name, script, config?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_execscriptfile">[m] execScriptFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_execscriptfile_path_config">execScriptFile(path, config?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_execautofile">[m] execAutoFile</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_execautofile_path_config">execAutoFile(path, config?)</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_p_config">[p] config</a></span></li>
+<li><span class="stability_undefined"><a href="#engines_m_stopall">[m] stopAll</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_stopall">stopAll()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_stopallandtoast">[m] stopAllAndToast</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_stopallandtoast">stopAllAndToast()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_myengine">[m] myEngine</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_myengine">myEngine()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_all">[m] all</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_all">all()</a></span></li>
+</ul>
+</li>
+<li><span class="stability_undefined"><a href="#engines_m_getengines">[m] getEngines</a></span><ul>
+<li><span class="stability_undefined"><a href="#engines_getengines">getEngines()</a></span></li>
 </ul>
 </li>
 <li><span class="stability_undefined"><a href="#engines_scriptexecution">ScriptExecution</a></span><ul>
@@ -206,14 +231,10 @@
 <li><span class="stability_undefined"><a href="#engines_scriptengine_forcestop">ScriptEngine.forceStop()</a></span></li>
 <li><span class="stability_undefined"><a href="#engines_scriptengine_cwd">ScriptEngine.cwd()</a></span></li>
 <li><span class="stability_undefined"><a href="#engines_scriptengine_getsource">ScriptEngine.getSource()</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_scriptengine_emit_eventname_args">ScriptEngine.emit(eventName[, ...args])</a></span></li>
+<li><span class="stability_undefined"><a href="#engines_scriptengine_emit_eventname_args">ScriptEngine.emit(eventName, ...args)</a></span></li>
 </ul>
 </li>
-<li><span class="stability_undefined"><a href="#engines_scriptconfig">ScriptConfig</a></span><ul>
-<li><span class="stability_undefined"><a href="#engines_delay">delay</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_interval">interval</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_looptimes">loopTimes</a></span></li>
-<li><span class="stability_undefined"><a href="#engines_getpath">getPath()</a></span></li>
+<li><span class="stability_undefined"><a href="#engines_scriptconfig">ScriptConfig</a></span></li>
 </ul>
 </li>
 </ul>
@@ -222,161 +243,157 @@
 
         <div id="apicontent">
             <h1>引擎 (Engines)<span><a class="mark" href="#engines_engines" id="engines_engines">#</a></span></h1>
+<p>engines 模块包含脚本引擎枚举、脚本执行、脚本停止和跨引擎事件通信相关函数.</p>
+<h2>6.7.0 源码校对<span><a class="mark" href="#engines_6_7_0" id="engines_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/engines/Engines.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/Engines.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/execution/ExecutionConfig.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/engine/JavaScriptEngine.java</code></li>
+</ul>
+<p>运行时中 <code>engines</code> 既是 <code>ScriptRuntime</code> 字段, 也由 augment 层补充同名模块函数. 当前公开入口包括 <code>all</code>, <code>myEngine</code>, <code>getEngines</code>, <code>stopAll</code>, <code>stopAllAndToast</code>, <code>execScript</code>, <code>execScriptFile</code>, <code>execAutoFile</code>.</p>
+<p><code>engines</code> 实现 <code>AsEmitter</code>, 因此模块对象本身具备事件发射能力. 当前引擎启动时, <code>ExecutionConfig.arguments</code> 会被转换为 <code>myEngine().execArgv</code>.</p>
+<blockquote>
+<p>注: <code>execScript</code> / <code>execScriptFile</code> / <code>execAutoFile</code> 的 <code>config.path</code> 或 <code>config.workingDirectory</code> 在 <code>6.7.0</code> 源码中代表脚本工作目录, 不是旧文档里描述的 <code>require</code> 搜索路径数组.</p>
+</blockquote>
 <hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
+<p style="font: bold 2em sans-serif; color: #FF7043">engines</p>
 
 <hr>
-<p>engines模块包含了一些与脚本环境、脚本运行、脚本引擎有关的函数, 包括运行其他脚本, 关闭脚本等.</p>
-<p>例如, 获取脚本所在目录：</p>
-<pre><code>toast(engines.myEngine().cwd());
-</code></pre><h2>engines.execScript(name, script[, config])<span><a class="mark" href="#engines_engines_execscript_name_script_config" id="engines_engines_execscript_name_script_config">#</a></span></h2>
+<h2>[m] execScript<span><a class="mark" href="#engines_m_execscript" id="engines_m_execscript">#</a></span></h2>
+<h3>execScript(name, script, config?)<span><a class="mark" href="#engines_execscript_name_script_config" id="engines_execscript_name_script_config">#</a></span></h3>
 <div class="signature"><ul>
-<li><code>name</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 要运行的脚本名称. 这个名称和文件名称无关, 只是在任务管理中显示的名称.</li>
-<li><code>script</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 要运行的脚本内容.</li>
-<li><code>config</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } 运行配置项<ul>
-<li><code>delay</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 延迟执行的毫秒数, 默认为0</li>
-<li><code>loopTimes</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行次数, 默认为1. 0为无限循环.</li>
-<li><code>interval</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行时两次运行之间的时间间隔, 默认为0</li>
-<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">Array</a> } | { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.</li>
+<li><strong>name</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 要运行的脚本名称, 用于任务显示和源码标识.</li>
+<li><strong>script</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 要运行的脚本文本.</li>
+<li><strong>[ config ]</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } - 运行配置.</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptExecution</span> }</li>
 </ul>
-</li>
+</div><p>在新的脚本环境中执行字符串脚本. 新环境中的全局变量与当前脚本不共享, 脚本会在新的线程中运行.</p>
+<pre><code class="lang-js">engines.execScript(&#39;hello world&#39;, &#39;toast(&quot;hello world&quot;)&#39;);
+</code></pre>
+<p><code>execScript</code> 内部使用 <code>StringScriptSource</code>, source prefix 为 <code>$engine/</code>.</p>
+<h2>[m] execScriptFile<span><a class="mark" href="#engines_m_execscriptfile" id="engines_m_execscriptfile">#</a></span></h2>
+<h3>execScriptFile(path, config?)<span><a class="mark" href="#engines_execscriptfile_path_config" id="engines_execscriptfile_path_config">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>path</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 要运行的脚本路径.</li>
+<li><strong>[ config ]</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } - 运行配置.</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptExecution</span> }</li>
 </ul>
-</div><p>在新的脚本环境中运行脚本script. 返回一个<a href="#engines_engines_scriptexecution">ScriptExectuion</a>对象.</p>
-<p>所谓新的脚本环境, 指定是, 脚本中的变量和原脚本的变量是不共享的, 并且, 脚本会在新的线程中运行.</p>
-<p>最简单的例子如下：</p>
-<pre><code>engines.execScript(&quot;hello world&quot;, &quot;toast(&#39;hello world&#39;)&quot;);
-</code></pre><p>如果要循环运行, 则：</p>
-<pre><code>//每隔3秒运行一次脚本, 循环10次
-engines.execScript(&quot;hello world&quot;, &quot;toast(&#39;hello world&#39;)&quot;, {
-    loopTimes: 10,
-    interval: 3000
+</div><p>在新的脚本环境中运行脚本文件.</p>
+<pre><code class="lang-js">engines.execScriptFile(&#39;/sdcard/scripts/receiver.js&#39;);
+</code></pre>
+<p>源码会将 <code>path</code> 解析为非空运行时路径, 并使用 <code>JavaScriptFileSource</code> 执行.</p>
+<h2>[m] execAutoFile<span><a class="mark" href="#engines_m_execautofile" id="engines_m_execautofile">#</a></span></h2>
+<h3>execAutoFile(path, config?)<span><a class="mark" href="#engines_execautofile_path_config" id="engines_execautofile_path_config">#</a></span></h3>
+<div class="signature"><ul>
+<li><strong>path</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 要运行的录制文件路径.</li>
+<li><strong>[ config ]</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } - 运行配置.</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptExecution</span> }</li>
+</ul>
+</div><p>在新的脚本环境中运行录制文件.</p>
+<pre><code class="lang-js">engines.execAutoFile(&#39;/sdcard/scripts/1.auto&#39;);
+</code></pre>
+<p>源码会将 <code>path</code> 解析为非空运行时路径, 并使用 <code>AutoFileSource</code> 执行.</p>
+<h2>[p] config<span><a class="mark" href="#engines_p_config" id="engines_p_config">#</a></span></h2>
+<p><code>execScript</code>, <code>execScriptFile</code>, <code>execAutoFile</code> 的 <code>config</code> 可为空, 或为 <code>ExecutionConfig</code> / JavaScript 对象.</p>
+<p>支持字段:</p>
+<ul>
+<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 工作目录, 会写入 <code>ExecutionConfig.workingDirectory</code>.</li>
+<li><code>workingDirectory</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 工作目录, 与 <code>path</code> 等价.</li>
+<li><code>delay</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } - 延迟执行毫秒数, 默认 <code>0</code>.</li>
+<li><code>interval</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } - 循环间隔毫秒数, 默认 <code>0</code>.</li>
+<li><code>loopTimes</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } - 循环次数, 默认 <code>1</code>, <code>0</code> 表示无限循环.</li>
+<li><code>arguments</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } - 启动参数, 会写入新引擎的 <code>execArgv</code>.</li>
+</ul>
+<p>非法 <code>config</code> 类型会抛出参数异常.</p>
+<pre><code class="lang-js">let execution = engines.execScriptFile(&#39;./worker.js&#39;, {
+    workingDirectory: files.cwd(),
+    delay: 1000,
+    arguments: {
+        from: engines.myEngine().getSource().toString(),
+    },
 });
-</code></pre><p>用字符串来编写脚本非常不方便, 可以结合 <code>Function.toString()</code>的方法来执行特定函数:</p>
-<pre><code>function helloWorld(){
-    //注意, 这里的变量和脚本主体的变量并不共享
-    toast(&quot;hello world&quot;);
-}
-engines.execScript(&quot;hello world&quot;, &quot;helloWorld();\n&quot; + helloWorld.toString());
-</code></pre><p>如果要传递变量, 则可以把这些封装成一个函数：</p>
-<pre><code>function exec(action, args){
-    args = args || {};
-    engines.execScript(action.name, action.name + &quot;(&quot; + JSON.stringify(args) + &quot;);\n&quot; + action.toString());
-}
-
-//要执行的函数, 是一个简单的加法
-function add(args){
-    toast(args.a + args.b);
-}
-
-//在新的脚本环境中执行 1 + 2
-exec(add, {a: 1, b:2});
-</code></pre><h2>engines.execScriptFile(path[, config])<span><a class="mark" href="#engines_engines_execscriptfile_path_config" id="engines_engines_execscriptfile_path_config">#</a></span></h2>
+</code></pre>
+<h2>[m] stopAll<span><a class="mark" href="#engines_m_stopall" id="engines_m_stopall">#</a></span></h2>
+<h3>stopAll()<span><a class="mark" href="#engines_stopall" id="engines_stopall">#</a></span></h3>
 <div class="signature"><ul>
-<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 要运行的脚本路径.</li>
-<li><code>config</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } 运行配置项<ul>
-<li><code>delay</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 延迟执行的毫秒数, 默认为0</li>
-<li><code>loopTimes</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行次数, 默认为1. 0为无限循环.</li>
-<li><code>interval</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行时两次运行之间的时间间隔, 默认为0</li>
-<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">Array</a> } | { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.</li>
+<li><ins><strong>returns</strong></ins> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
 </ul>
-</li>
-</ul>
-</div><p>在新的脚本环境中运行脚本文件path. 返回一个<a href="#engines_ScriptExecution">ScriptExecution</a>对象.</p>
-<pre><code>engines.execScriptFile(&quot;/sdcard/脚本/1.js&quot;);
-</code></pre><h2>engines.execAutoFile(path[, config])<span><a class="mark" href="#engines_engines_execautofile_path_config" id="engines_engines_execautofile_path_config">#</a></span></h2>
+</div><p>停止所有正在运行的脚本, 包括当前脚本自身. 返回停止数量.</p>
+<h2>[m] stopAllAndToast<span><a class="mark" href="#engines_m_stopallandtoast" id="engines_m_stopallandtoast">#</a></span></h2>
+<h3>stopAllAndToast()<span><a class="mark" href="#engines_stopallandtoast" id="engines_stopallandtoast">#</a></span></h3>
 <div class="signature"><ul>
-<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 要运行的录制文件路径.</li>
-<li><code>config</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="type">Object</a> } 运行配置项<ul>
-<li><code>delay</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 延迟执行的毫秒数, 默认为0</li>
-<li><code>loopTimes</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行次数, 默认为1. 0为无限循环.</li>
-<li><code>interval</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> } 循环运行时两次运行之间的时间间隔, 默认为0</li>
-<li><code>path</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">Array</a> } | { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 指定脚本运行的目录. 这些路径会用于require时寻找模块文件.</li>
+<li><ins><strong>returns</strong></ins> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
 </ul>
-</li>
-</ul>
-</div><p>在新的脚本环境中运行录制文件path. 返回一个<a href="#engines_ScriptExecution">ScriptExecution</a>对象.</p>
-<pre><code>engines.execAutoFile(&quot;/sdcard/脚本/1.auto&quot;);
-</code></pre><h2>engines.stopAll()<span><a class="mark" href="#engines_engines_stopall" id="engines_engines_stopall">#</a></span></h2>
-<p>停止所有正在运行的脚本. 包括当前脚本自身.</p>
-<h2>engines.stopAllAndToast()<span><a class="mark" href="#engines_engines_stopallandtoast" id="engines_engines_stopallandtoast">#</a></span></h2>
-<p>停止所有正在运行的脚本并显示停止的脚本数量. 包括当前脚本自身.</p>
-<h2>engines.myEngine()<span><a class="mark" href="#engines_engines_myengine" id="engines_engines_myengine">#</a></span></h2>
-<p>返回当前脚本的脚本引擎对象(<a href="#engines_engines_scriptengine">ScriptEngine</a>)</p>
-<p><strong>[v4.1.0新增]</strong>
-特别的, 该对象可以通过<code>execArgv</code>来获取他的运行参数, 包括外部参数、intent等. 例如：</p>
-<pre><code>log(engines.myEngine().execArgv);
-</code></pre><p>普通脚本的运行参数通常为空, 通过定时任务的广播启动的则可以获取到启动的intent.</p>
-<h2>engines.all()<span><a class="mark" href="#engines_engines_all" id="engines_engines_all">#</a></span></h2>
+</div><p>停止所有正在运行的脚本并显示停止数量, 包括当前脚本自身.</p>
+<h2>[m] myEngine<span><a class="mark" href="#engines_m_myengine" id="engines_m_myengine">#</a></span></h2>
+<h3>myEngine()<span><a class="mark" href="#engines_myengine" id="engines_myengine">#</a></span></h3>
 <div class="signature"><ul>
-<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">Array</a> }</li>
+<li><ins><strong>returns</strong></ins> { <span class="type">JavaScriptEngine</span> }</li>
 </ul>
-</div><p>返回当前所有正在运行的脚本的脚本引擎<a href="#engines_engines_scriptengine">ScriptEngine</a>的数组.</p>
-<pre><code>log(engines.all());
-</code></pre><h1>ScriptExecution<span><a class="mark" href="#engines_scriptexecution" id="engines_scriptexecution">#</a></span></h1>
-<p>执行脚本时返回的对象, 可以通过他获取执行的引擎、配置等, 也可以停止这个执行.</p>
-<p>要停止这个脚本的执行, 使用<code>exectuion.getEngine().forceStop()</code>.</p>
-<h2>ScriptExecution.getEngine()<span><a class="mark" href="#engines_scriptexecution_getengine" id="engines_scriptexecution_getengine">#</a></span></h2>
-<p>返回执行该脚本的脚本引擎对象(<a href="#engines_engines_scriptengine">ScriptEngine</a>)</p>
-<h2>ScriptExecution.getConfig()<span><a class="mark" href="#engines_scriptexecution_getconfig" id="engines_scriptexecution_getconfig">#</a></span></h2>
-<p>返回该脚本的运行配置(<a href="#engines_engines_scriptconfig">ScriptConfig</a>)</p>
-<h1>ScriptEngine<span><a class="mark" href="#engines_scriptengine" id="engines_scriptengine">#</a></span></h1>
+</div><p>返回当前脚本引擎对象.</p>
+<pre><code class="lang-js">log(engines.myEngine().cwd());
+log(engines.myEngine().execArgv);
+</code></pre>
+<p>普通脚本的 <code>execArgv</code> 通常为空; 通过 <code>engines.execScript*</code> 传入 <code>config.arguments</code> 或由任务 / Intent 启动时, 可从 <code>execArgv</code> 读取参数.</p>
+<h2>[m] all<span><a class="mark" href="#engines_m_all" id="engines_m_all">#</a></span></h2>
+<h3>all()<span><a class="mark" href="#engines_all" id="engines_all">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptEngine[]</span> }</li>
+</ul>
+</div><p>返回当前所有正在运行脚本的脚本引擎数组.</p>
+<pre><code class="lang-js">log(engines.all());
+</code></pre>
+<h2>[m] getEngines<span><a class="mark" href="#engines_m_getengines" id="engines_m_getengines">#</a></span></h2>
+<h3>getEngines()<span><a class="mark" href="#engines_getengines" id="engines_getengines">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type">Set&lt;ScriptEngine&gt;</span> }</li>
+</ul>
+</div><p>返回脚本引擎集合. 该方法直接透出运行时 <code>ScriptEngineService.engines</code> 集合.</p>
+<h2>ScriptExecution<span><a class="mark" href="#engines_scriptexecution" id="engines_scriptexecution">#</a></span></h2>
+<p>执行脚本时返回的对象, 可通过它获取执行引擎、运行配置, 或停止对应引擎.</p>
+<h3>ScriptExecution.getEngine()<span><a class="mark" href="#engines_scriptexecution_getengine" id="engines_scriptexecution_getengine">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptEngine</span> }</li>
+</ul>
+</div><p>返回执行该脚本的脚本引擎对象.</p>
+<h3>ScriptExecution.getConfig()<span><a class="mark" href="#engines_scriptexecution_getconfig" id="engines_scriptexecution_getconfig">#</a></span></h3>
+<div class="signature"><ul>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptConfig</span> }</li>
+</ul>
+</div><p>返回该脚本的运行配置.</p>
+<h2>ScriptEngine<span><a class="mark" href="#engines_scriptengine" id="engines_scriptengine">#</a></span></h2>
 <p>脚本引擎对象.</p>
-<h2>ScriptEngine.forceStop()<span><a class="mark" href="#engines_scriptengine_forcestop" id="engines_scriptengine_forcestop">#</a></span></h2>
-<p>停止脚本引擎的执行.</p>
-<h2>ScriptEngine.cwd()<span><a class="mark" href="#engines_scriptengine_cwd" id="engines_scriptengine_cwd">#</a></span></h2>
+<h3>ScriptEngine.forceStop()<span><a class="mark" href="#engines_scriptengine_forcestop" id="engines_scriptengine_forcestop">#</a></span></h3>
+<p>停止脚本引擎执行.</p>
+<h3>ScriptEngine.cwd()<span><a class="mark" href="#engines_scriptengine_cwd" id="engines_scriptengine_cwd">#</a></span></h3>
 <div class="signature"><ul>
-<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> }</li>
+<li><ins><strong>returns</strong></ins> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type" class="type">null</a> }</li>
 </ul>
-</div><p>返回脚本执行的路径. 对于一个脚本文件而言为这个脚本所在的文件夹；对于其他脚本, 例如字符串脚本, 则为<code>null</code>或者执行时的设置值.</p>
-<h2>ScriptEngine.getSource()<span><a class="mark" href="#engines_scriptengine_getsource" id="engines_scriptengine_getsource">#</a></span></h2>
+</div><p>返回脚本执行目录. 对脚本文件通常为脚本所在目录; 对字符串脚本则取决于执行配置.</p>
+<h3>ScriptEngine.getSource()<span><a class="mark" href="#engines_scriptengine_getsource" id="engines_scriptengine_getsource">#</a></span></h3>
 <div class="signature"><ul>
-<li>返回 <a href="#engines_engines_scriptsource">ScriptSource</a></li>
+<li><ins><strong>returns</strong></ins> { <span class="type">ScriptSource</span> }</li>
 </ul>
-</div><p>返回当前脚本引擎正在执行的脚本对象.</p>
-<pre><code>log(engines.myEngine().getSource());
-</code></pre><h2>ScriptEngine.emit(eventName[, ...args])<span><a class="mark" href="#engines_scriptengine_emit_eventname_args" id="engines_scriptengine_emit_eventname_args">#</a></span></h2>
+</div><p>返回当前脚本引擎正在执行的脚本源对象.</p>
+<h3>ScriptEngine.emit(eventName, ...args)<span><a class="mark" href="#engines_scriptengine_emit_eventname_args" id="engines_scriptengine_emit_eventname_args">#</a></span></h3>
 <div class="signature"><ul>
-<li><code>eventName</code> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } 事件名称</li>
-<li><code>...args</code> { <span class="type">any</span> } 事件参数</li>
+<li><strong>eventName</strong> { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">string</a> } - 事件名称.</li>
+<li><strong>...args</strong> { <span class="type">any</span> } - 事件参数.</li>
 </ul>
-</div><p>向该脚本引擎发送一个事件, 该事件可以在该脚本引擎对应的脚本的events模块监听到并在脚本主线程执行事件处理.</p>
-<p>例如脚本receiver.js的内容如下：</p>
-<pre><code>//监听say事件
-events.on(&quot;say&quot;, function(words){
-    toastLog(words);
-});
-//保持脚本运行
-setInterval(()=&gt;{}, 1000);
-</code></pre><p>同一目录另一脚本可以启动他并发送该事件：</p>
-<pre><code>//运行脚本
-var e = engines.execScriptFile(&quot;./receiver.js&quot;);
-//等待脚本启动
+</div><p>向该脚本引擎发送事件. 目标脚本可通过 <code>events</code> 模块监听并在脚本主线程处理.</p>
+<pre><code class="lang-js">/* receiver.js */
+events.on(&#39;say&#39;, words =&gt; toastLog(words));
+setInterval(() =&gt; {}, 1000);
+</code></pre>
+<pre><code class="lang-js">let execution = engines.execScriptFile(&#39;./receiver.js&#39;);
 sleep(2000);
-//向该脚本发送事件
-e.getEngine().emit(&quot;say&quot;, &quot;你好&quot;);
-</code></pre><h1>ScriptConfig<span><a class="mark" href="#engines_scriptconfig" id="engines_scriptconfig">#</a></span></h1>
-<p>脚本执行时的配置.</p>
-<h2>delay<span><a class="mark" href="#engines_delay" id="engines_delay">#</a></span></h2>
-<div class="signature"><ul>
-<li>{ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
-</ul>
-</div><p>延迟执行的毫秒数</p>
-<h2>interval<span><a class="mark" href="#engines_interval" id="engines_interval">#</a></span></h2>
-<div class="signature"><ul>
-<li>{ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
-</ul>
-</div><p>循环运行时两次运行之间的时间间隔</p>
-<h2>loopTimes<span><a class="mark" href="#engines_looptimes" id="engines_looptimes">#</a></span></h2>
-<div class="signature"><ul>
-<li>{ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
-</ul>
-</div><p>循环运行次数</p>
-<h2>getPath()<span><a class="mark" href="#engines_getpath" id="engines_getpath">#</a></span></h2>
-<div class="signature"><ul>
-<li>返回 { <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="type">Array</a> }</li>
-</ul>
-</div><p>返回一个字符串数组表示脚本运行时模块寻找的路径.</p>
+execution.getEngine().emit(&#39;say&#39;, &#39;hello&#39;);
+</code></pre>
+<h2>ScriptConfig<span><a class="mark" href="#engines_scriptconfig" id="engines_scriptconfig">#</a></span></h2>
+<p>脚本执行配置. 对 <code>engines.execScript*</code> 入口而言, 当前源码支持 <code>delay</code>, <code>interval</code>, <code>loopTimes</code>, <code>workingDirectory</code> 和 <code>arguments</code> 等字段.</p>
 
         </div>
     </div>

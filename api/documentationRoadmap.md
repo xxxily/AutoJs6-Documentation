@@ -77,25 +77,41 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 - [x] [Pinyin](pinyin): 已对照 `PinyinCore.kt` 补齐选项、格式枚举、多音字、分词、姓氏模式和占位方法边界.
 - [x] [Pinyin4j](pinyin4j): 已对照实现补齐兼容 API、格式参数、默认值、别名、返回结构和错误边界.
 - [x] [Cvt](cvt) / [Fmt](fmt): 已补充字节单位转换边界、大小写、空格、非法输入、`AUTO` 和 `HALF_UP` 四舍五入规则.
+- [x] [Global](global): 已补充 6.7.0 运行时注入依据、当前全局能力清单, 修正 `wait`, `cY`, `species` 过时说明.
+- [x] [Automator](automator): 已补充 `auto` / `automator` / `RootAutomator` 当前入口、无障碍手势限制、Root/Shizuku 边界.
+- [x] [UiSelector](uiSelectorType): 已补充选择器动态全局注入、`*Match` 新命名、阻塞查找 UI 线程限制.
+- [x] [UiObject](uiObjectType): 已补充 `AccessibilityNodeInfoCompat` 包装关系、状态方法、行为方法和 deprecated 入口.
+- [x] [App](app): 已补充 Intent、启动、双开、Root/Shizuku 启动、应用查询和文件操作入口.
+- [x] [AutoJs6](autojs): 已补充版本、资源、方向、权限、Root 模式、重启/退出和 `autojs.version` 能力.
+- [x] [Device](device): 已补充设备信息、屏幕、震动、网络、指针位置和系统权限边界.
+- [x] [Files](files): 已补充路径解析、全局 `open`, 读写、移动复制、列表、大小格式化和存储权限边界.
+- [x] [Engines](engines): 已重写占位页, 补充执行配置、`getEngines`, `execArgv`, 事件和 `ScriptExecution` / `ScriptEngine`.
+- [x] [Tasks](tasks): 已重写占位页, 补充定时任务、广播任务、查询、删除、更新、`callback` / `async` 行为.
+- [x] [UI](ui): 已补充 UI 模式解析、线程调度、布局、控件注册、状态栏 / 导航栏和 activity 要求.
+- [x] [Floaty](floaty): 已补充悬浮窗权限、窗口类型、剪贴板读取、公开 Rhino 入口和窗口对象方法.
+- [x] [Web](web): 已补充 WebView 注入、WebClient、WebSocket 当前构造行为, 移除 Auto.js 4.1.1 旧引用.
+- [x] [OCR](ocr): 已补充 MLKit / Paddle / Rapid 三模式、参数分派、区域裁剪和 Paddle 插件 / INRT 边界.
+- [x] [Notice](notice): 已补充通知重载、配置、渠道、Intent、优先级和 Android O+ 渠道差异.
+- [x] [Console](console): 已补充日志、trace、assert、build、全局日志配置和 abandoned 输入 API 当前异常行为.
 
 ### P1: 高价值既有页面源码校对
 
-- [ ] [Global - 全局对象](global): 对照全局函数、全局类、legacy 兼容项.
-- [ ] [Automator - 自动化](automator): 对照自动化动作、RootAutomator、无障碍桥接限制.
-- [ ] [UiSelector - 选择器](uiSelectorType): 对照选择器方法、过滤条件、链式调用和兼容别名.
-- [ ] [UiObject - 控件节点](uiObjectType): 对照控件属性、动作、查找方法和回收/刷新行为.
-- [ ] [App - 通用应用](app): 对照 Intent、启动、卸载、应用信息、权限相关方法.
-- [ ] [AutoJs6 - 本体应用](autojs): 对照版本、构建信息、项目/脚本入口能力.
-- [ ] [Device - 设备](device): 对照设备信息、亮度、音量、电池、屏幕、剪贴板能力.
-- [ ] [File - 文件](files): 对照路径解析、读写、移动复制、递归、编码和权限边界.
-- [ ] [Engine - 引擎](engines): 对照脚本执行、引擎枚举、停止、事件与隔离行为.
-- [ ] [Task - 任务](tasks): 对照定时任务、广播/Intent、持久化与 Android 版本限制.
-- [ ] [UI - 用户界面](ui): 对照 UI DSL、组件、事件、线程要求和生命周期.
-- [ ] [Floaty - 悬浮窗](floaty): 对照权限、窗口类型、坐标、关闭与 Android 版本限制.
-- [ ] [Web - 万维网](web): 对照 WebView 注入、WebSocket、客户端配置.
-- [ ] [OCR - 光学字符识别](ocr): 对照 MLKit / Paddle / Rapid OCR 能力、选项与模型限制.
-- [ ] [Notice - 消息通知](notice): 对照通知渠道、构建器、权限和 Android 版本差异.
-- [ ] [Console - 控制台](console): 对照日志、格式化、计时、悬浮控制台和构建选项.
+- [x] [Global - 全局对象](global): 已对照全局函数、全局类、legacy 兼容项.
+- [x] [Automator - 自动化](automator): 已对照自动化动作、RootAutomator、无障碍桥接限制.
+- [x] [UiSelector - 选择器](uiSelectorType): 已对照选择器方法、过滤条件、链式调用和兼容别名.
+- [x] [UiObject - 控件节点](uiObjectType): 已对照控件属性、动作、查找方法和回收/刷新行为.
+- [x] [App - 通用应用](app): 已对照 Intent、启动、卸载、应用信息、权限相关方法.
+- [x] [AutoJs6 - 本体应用](autojs): 已对照版本、构建信息、项目/脚本入口能力.
+- [x] [Device - 设备](device): 已对照设备信息、亮度、音量、电池、屏幕、指针位置和权限边界.
+- [x] [File - 文件](files): 已对照路径解析、读写、移动复制、递归、编码和权限边界.
+- [x] [Engine - 引擎](engines): 已对照脚本执行、引擎枚举、停止、事件与隔离行为.
+- [x] [Task - 任务](tasks): 已对照定时任务、广播/Intent、持久化与 Android 版本限制.
+- [x] [UI - 用户界面](ui): 已对照 UI DSL、组件、事件、线程要求和生命周期.
+- [x] [Floaty - 悬浮窗](floaty): 已对照权限、窗口类型、坐标、关闭与 Android 版本限制.
+- [x] [Web - 万维网](web): 已对照 WebView 注入、WebSocket、客户端配置.
+- [x] [OCR - 光学字符识别](ocr): 已对照 MLKit / Paddle / Rapid OCR 能力、选项与模型限制.
+- [x] [Notice - 消息通知](notice): 已对照通知渠道、构建器、权限和 Android 版本差异.
+- [x] [Console - 控制台](console): 已对照日志、格式化、计时、悬浮控制台和构建选项.
 
 ### P2: 类型页与知识库结构化
 
@@ -127,27 +143,27 @@ rtk proxy rg -n "目标 API 名称|目标页面标题" api docs json
 | [HttpRequestBuilderOptions](httpRequestBuilderOptionsType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
 | [HttpResponse](httpResponseType) | `[x]` P0 源码校对完成 | P2 机器可读索引 |
 | [HttpResponseBody](httpResponseBodyType) | `[x]` P0 源码校对完成 | P2 独立 `HttpSaveResult` 类型页 |
-| [Global](global) | `[ ]` 待源码校对 | P1 |
-| [Automator](automator) | `[ ]` 待源码校对 | P1 |
-| [UiSelector](uiSelectorType) | `[ ]` 待源码校对 | P1 |
-| [UiObject](uiObjectType) | `[ ]` 待源码校对 | P1 |
-| [App](app) | `[ ]` 待源码校对 | P1 |
-| [AutoJs6](autojs) | `[ ]` 待源码校对 | P1 |
-| [Device](device) | `[ ]` 待源码校对 | P1 |
-| [Files](files) | `[ ]` 待源码校对 | P1 |
-| [Engines](engines) | `[ ]` 待源码校对 | P1 |
-| [Tasks](tasks) | `[ ]` 待源码校对 | P1 |
-| [UI](ui) | `[ ]` 待源码校对 | P1 |
-| [Floaty](floaty) | `[ ]` 待源码校对 | P1 |
-| [Web](web) | `[ ]` 待源码校对 | P1 |
-| [OCR](ocr) | `[ ]` 待源码校对 | P1 |
-| [Notice](notice) | `[ ]` 待源码校对 | P1 |
-| [Console](console) | `[ ]` 待源码校对 | P1 |
+| [Global](global) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
+| [Automator](automator) | `[x]` P1 源码校对完成 | P2 权限/动作矩阵 |
+| [UiSelector](uiSelectorType) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
+| [UiObject](uiObjectType) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
+| [App](app) | `[x]` P1 源码校对完成 | P2 Intent 选项类型页 |
+| [AutoJs6](autojs) | `[x]` P1 源码校对完成 | P2 机器可读索引 |
+| [Device](device) | `[x]` P1 源码校对完成 | P2 权限/Android 版本矩阵 |
+| [Files](files) | `[x]` P1 源码校对完成 | P2 文件对象类型页 |
+| [Engines](engines) | `[x]` P1 源码校对完成 | P2 `ExecutionConfig` 类型页 |
+| [Tasks](tasks) | `[x]` P1 源码校对完成 | P2 `TimedTask` / `IntentTask` 类型页 |
+| [UI](ui) | `[x]` P1 源码校对完成 | P2 UI 组件索引 |
+| [Floaty](floaty) | `[x]` P1 源码校对完成 | P2 窗口对象类型页 |
+| [Web](web) | `[x]` P1 源码校对完成 | P2 InjectableWebView / WebSocket 类型页 |
+| [OCR](ocr) | `[x]` P1 源码校对完成 | P2 OCR 选项与结果类型索引 |
+| [Notice](notice) | `[x]` P1 源码校对完成 | P2 Notice 选项类型页 |
+| [Console](console) | `[x]` P1 源码校对完成 | P2 ConsoleBuildOptions 校对 |
 
 ---
 
 ## 残留风险
 
 - [ ] `generator` 仍依赖 marked `0.3.19`; 安全版本 marked `4.0.10` 与当前 TOC 生成逻辑不兼容, 需要后续单独改造生成器兼容层.
-- [ ] P0 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.
-- [ ] 仍有大量旧页面来自 Auto.js 4.x 文档, 后续必须逐页与 AutoJs6 源码核对.
+- [ ] P0 / P1 页面已完成源码对照和边界补充, 但高频类型仍未全部拆成独立页面, 后续知识库结构化仍需 P2 推进.
+- [ ] P1 页面已补源码依据小节, 但部分长页面仍保留早期叙述结构; P2 应继续抽取机器可读索引和权限矩阵.

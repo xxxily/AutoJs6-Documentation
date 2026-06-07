@@ -19,18 +19,18 @@
 |               [Global - 全局对象](global)               | &gt; 90% |
 |            [Automator - 自动化](automator)             | &gt; 60% |
 |              [AutoJs6 - 本体应用](autojs)               |    √     |
-|                  [App - 通用应用](app)                  |          |
+|                  [App - 通用应用](app)                  | &gt; 50% |
 |                 [Color - 颜色](color)                 |    √     |
 |                 [Image - 图像](image)                 |          |
 |                 [OCR - 光学字符识别](ocr)                 |    √     |
 |               [Barcode - 条码](barcode)               | &lt; 1%  |
 |               [QR Code - 二维码](qrcode)               | &lt; 1%  |
 |                  [Keys - 按键](keys)                  |          |
-|                [Device - 设备](device)                |          |
+|                [Device - 设备](device)                | &gt; 50% |
 |              [Storage - 储存](storages)               |    √     |
-|                 [File - 文件](files)                  |          |
-|               [Engine - 引擎](engines)                |          |
-|                 [Task - 任务](tasks)                  |          |
+|                 [File - 文件](files)                  | &gt; 60% |
+|               [Engine - 引擎](engines)                | &gt; 60% |
+|                 [Task - 任务](tasks)                  | &gt; 60% |
 |               [Module - 模块](modules)                |          |
 |               [Plugins - 插件](plugins)               |    √     |
 |               [Toast - 消息浮动框](toast)                |    √     |
@@ -46,9 +46,9 @@
 |          [Continuation - 协程](continuation)          |          |
 |               [Event - 事件监听](events)                |          |
 |               [Dialog - 对话框](dialogs)               |          |
-|               [Floaty - 悬浮窗](floaty)                |          |
+|               [Floaty - 悬浮窗](floaty)                | &gt; 60% |
 |                [Canvas - 画布](canvas)                |          |
-|                   [UI - 用户界面](ui)                   |          |
+|                   [UI - 用户界面](ui)                   | &gt; 60% |
 |                  [Web - 万维网](web)                   | &gt; 80% |
 |                    [HTTP](http)                     | &gt; 20% |
 |                  [Base64](base64)                   |    √     |

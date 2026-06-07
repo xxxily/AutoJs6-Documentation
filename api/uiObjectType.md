@@ -11,6 +11,23 @@ UiObject 通常被称为 [ 控件 / 节点 / 控件节点 ], 可看做是一个�
 
 > 注: 在 AutoJs6 中, 由 [UiObject](uiObjectType) 代表一个控件节点, 它继承自 [AccessibilityNodeInfoCompat](https://developer.android.com/reference/androidx/core/view/accessibility/AccessibilityNodeInfoCompat), 而并非一个 [View](https://developer.android.com/reference/android/view/View).
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/core/automator/UiObject.kt`
+- `app/src/main/java/org/autojs/autojs/core/automator/UiObjectActions.kt`
+- `app/src/main/java/org/autojs/autojs/core/automator/UiObjectCollection.kt`
+- `app/src/main/java/org/autojs/autojs/core/accessibility/UiSelector.kt`
+
+当前 `UiObject` 是 `AccessibilityNodeInfoCompat` 的包装层, 不是 Android `View`. 可通过选择器查找获得, 并可继续执行层级导航、状态读取、查找和无障碍行为.
+
+源码公开的层级 / 几何 / 状态方法包括 `parent`, `child`, `offset`, `sibling`, `children`, `siblings`, `find`, `findOne`, `bounds`, `id`, `idEntry`, `idHex`, `text`, `desc`, `content`, `className`, `packageName`, `depth`, `clickable`, `longClickable`, `checkable`, `checked`, `focusable`, `focused`, `selected`, `enabled`, `scrollable`, `editable`, `multiLine`, `row`, `column`, `actionNames`, `hasAction`, `compass`, `summary`, `snapshot`, `isShifted` 等.
+
+`brother` 在源码中已标记 deprecated, 新脚本应使用 `offset`; `boundsInParent` 也已标记 deprecated.
+
+`UiObject` 继承 `UiObjectActions`, 行为入口包括 `click`, `longClick`, `focus`, `clearFocus`, `copy`, `paste`, `select`, `cut`, `collapse`, `expand`, `dismiss`, `show`, `scrollForward`, `scrollBackward`, `scrollUp`, `scrollDown`, `scrollLeft`, `scrollRight`, `contextClick`, `setSelection`, `setText`, `setProgress`, `scrollTo` 等. 这些行为依赖无障碍节点支持对应 action.
+
 ---
 
 <p style="font: bold 2em sans-serif; color: #FF7043">UiObject</p>

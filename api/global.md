@@ -14,6 +14,32 @@ AutoJs6 的内置模块均支持全局使用, 如 `app`, `images`, `device` 等.
 当作为模块使用时, `exports` 和 `module` 可作为全局对象使用.  
 另在 UI 模式下也有一些专属全局对象, 如 `activity`.
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/engine/RhinoJavaScriptEngine.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Global.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Legacy.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/global/IsNullish.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/global/Species.kt`
+
+运行时初始化时, `Global` 通过 `assignWithRuntime(...)` 直接写入顶级作用域, 不生成单独的 `global` 模块对象; `Legacy`, `isNullish` 与 `species` 同步注册兼容入口. `Augmentable.augment(target, true)` 注册的常规模块会同时提供 `name` 与 `$name`, 但 `Global` 是例外.
+
+当前源码公开的补充全局能力包括:
+
+- 属性 / getter: `isAutoJs6`, `WIDTH`, `HEIGHT`, `axios`, `cheerio`, `dayjs`, `i18n`.
+- 状态与类型: `TODO`, `isUiThread`, `isJavaObject`, `isInteger`, `isBigInt`, `isPrimitive`, `isReference`, `isEmptyObject`, `unwrapJavaObject`, `isNullish`, `isObject`, `isObjectSpecies`.
+- 运行控制: `sleep`, `isStopped`, `isShuttingDown`, `notStopped`, `isRunning`, `exit`, `stop`.
+- 系统上下文: `setClip`, `getClip`, `currentPackage`, `currentActivity`, `currentComponent`, `wait`, `waitForActivity`, `waitForPackage`.
+- 工具函数: `random`, `setScreenMetrics`, `requiresApi`, `requiresAutojsVersion`, `getScaleBases`, `getScaleBaseX`, `getScaleBaseY`, `setScaleBases`, `setScaleBaseX`, `setScaleBaseY`, `cX`, `cY`, `cYx`, `cXy`.
+
+`currentPackage` / `currentActivity` / `currentComponent` 的 `mode` 支持 `auto`, `a11y` / `accessibility`, `shizuku`, `root` 以及 `{ by | mode }` 对象. `auto` 模式按 Shizuku, root shell, accessibility 顺序尝试.
+
+`wait(condition, limit?, interval?, callback?)` 默认 `limit = 10000ms`, `interval = 200ms`; `limit < 100` 视为次数限制, 否则视为毫秒限制. 源码禁止直接将 `UiObject` 作为 `condition`; `callback` 必须是对象, 且 `then` / `else` 必须是函数. `waitForActivity` 与 `waitForPackage` 有源码级 UI 线程禁止; `wait` 本身没有该显式限制.
+
 ## 覆写保护
 
 AutoJs6 对部分全局对象及内置模块增加了覆写保护.  
@@ -249,7 +275,7 @@ notice 模块的全局化对象, 参阅 [消息通知 (Notice)](notice) 模块�
 
 ### wait(condition)
 
-**`6.2.0`** **`Global`** **`Overload 1/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 1/6`** **`A11Y?`**
 
 - **condition** { [(() => any)](dataTypes#function) | [PickupSelector](dataTypes#pickupselector) } - 结束等待条件
 - <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
@@ -337,7 +363,7 @@ wait(() => {
 
 ### wait(condition, limit)
 
-**`6.2.0`** **`Global`** **`Overload 2/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 2/6`** **`A11Y?`**
 
 - **condition** { [(() => any)](dataTypes#function) | [PickupSelector](uiSelectorType#m-pickup) } - 结束等待条件
 - **limit** { [number](dataTypes#number) } - 等待条件检测限制
@@ -356,7 +382,7 @@ wait(() => device.isScreenOff(), 5e3); /* limit >= 100, 视为时间限制. */
 
 ### wait(condition, limit, interval)
 
-**`6.2.0`** **`Global`** **`Overload 3/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 3/6`** **`A11Y?`**
 
 - **condition** { [(() => any)](dataTypes#function) | [PickupSelector](uiSelectorType#m-pickup) } - 结束等待条件
 - **limit** { [number](dataTypes#number) } - 等待条件检测限制
@@ -386,7 +412,7 @@ wait(() => device.isScreenOff(), 20, 0);
 
 ### wait(condition, callback)
 
-**`6.2.0`** **`Global`** **`Overload 4/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 4/6`** **`A11Y?`**
 
 - **condition** { [(() => T)](dataTypes#function) | [PickupSelector](uiSelectorType#m-pickup) } - 结束等待条件
 - **callback** {{
@@ -474,7 +500,7 @@ wait(() => {
 
 ### wait(condition, limit, callback)
 
-**`6.2.0`** **`Global`** **`Overload 5/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 5/6`** **`A11Y?`**
 
 - **condition** { [(() => T)](dataTypes#function) | [PickupSelector](uiSelectorType#m-pickup) } - 结束等待条件
 - **limit** { [number](dataTypes#number) } - 等待条件检测限制
@@ -491,7 +517,7 @@ wait(() => {
 
 ### wait(condition, limit, interval, callback)
 
-**`6.2.0`** **`Global`** **`Overload 6/6`** **`A11Y?`** **`Non-UI`**
+**`6.2.0`** **`Global`** **`Overload 6/6`** **`A11Y?`**
 
 - **condition** { [(() => T)](dataTypes#function) | [PickupSelector](uiSelectorType#m-pickup) } - 结束等待条件
 - **limit** { [number](dataTypes#number) } - 等待条件检测限制
@@ -1173,7 +1199,7 @@ cX(100); /* 相当于 cX(100, 1096) . */
 无参时, 返回当前设备高度.
 
 ```js
-console.log(cY() === device.width); // true
+console.log(cY() === device.height); // true
 ```
 
 ### cY(y, base)
@@ -1660,15 +1686,6 @@ species.isRegExp(/test$/); // true
 
 判断对象的 "种类" 是否为 `Function`.
 
-### [m] isHTMLDocument
-
-#### isHTMLDocument(o)
-
-- **o** { [any](dataTypes#any) } - 任意对象
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
-
-判断对象的 "种类" 是否为 `HTMLDocument`.
-
 ### [m] isInt16Array
 
 #### isInt16Array(o)
@@ -1857,15 +1874,6 @@ species.isRegExp(/test$/); // true
 - <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
 
 判断对象的 "种类" 是否为 `WeakSet`.
-
-### [m] isWindow
-
-#### isWindow(o)
-
-- **o** { [any](dataTypes#any) } - 任意对象
-- <ins>**returns**</ins> { [boolean](dataTypes#boolean) }
-
-判断对象的 "种类" 是否为 `Window`.
 
 ### [m] isXML
 

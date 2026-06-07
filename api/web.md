@@ -6,6 +6,20 @@ web 模块主要用于 [WebView](https://developer.android.com/reference/android
 
 > 注: 与 [http](http) 模块不同, http 模块主要用于网络的请求与响应.
 
+## 6.7.0 源码校对
+
+本页已按 AutoJs6 `6.7.0` (`ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`) 对照以下源码路径校对:
+
+- `app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/web/Web.kt`
+- `app/src/main/java/org/autojs/autojs/runtime/api/augment/web/WebSocket.kt`
+
+运行时中 `web` / `$web` 由 augment 注入, 并将 `newInjectableWebView`, `newInjectableWebClient`, `newWebSocket` 全局化.
+
+`newInjectableWebView(context?, url?)` 最多接受 2 个参数. 若第一个参数是字符串, 源码会将其视为 URL 并使用 `activity` context; 无参数时优先使用 UI `activity`, 否则使用全局 context. 非 Android `Context` 会回退为全局 context.
+
+`newInjectableWebClient()` 不接受参数. `newWebSocket(url)` 使用运行时 `http.okhttp`; 构造器形式支持 `WebSocket(url)` 或 `WebSocket(client, url)`, 其中 `client` 必须是 `MutableOkHttp`, 否则回退运行时默认 client.
+
 ---
 
 <p style="font: bold 2em sans-serif; color: #FF7043">web</p>
@@ -91,7 +105,7 @@ settings.setDomStorageEnabled(true);
 settings.setDisplayZoomControls(false);
 ```
 
-> 注: 上述设置参考自 Auto.js 4.1.1 Alpha2 源码.
+> 注: 上述设置已按 AutoJs6 `6.7.0` 的 `InjectableWebView` 初始化逻辑校对.
 
 此外, `InjectableWebView` 内部还初始化了一个默认的 [WebChromeClient](https://developer.android.com/reference/android/webkit/WebChromeClient) 客户端:
 

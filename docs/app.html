@@ -188,6 +188,7 @@
             <h2>目录</h2>
             <ul>
 <li><span class="stability_undefined"><a href="#app_app">通用应用 (App)</a></span><ul>
+<li><span class="stability_undefined"><a href="#app_6_7_0">6.7.0 源码校对</a></span></li>
 <li><span class="stability_undefined"><a href="#app_app_versioncode">app.versionCode</a></span></li>
 <li><span class="stability_undefined"><a href="#app_app_versionname">app.versionName</a></span></li>
 <li><span class="stability_undefined"><a href="#app_app_autojs_versioncode">app.autojs.versionCode</a></span></li>
@@ -221,11 +222,17 @@
 
         <div id="apicontent">
             <h1>通用应用 (App)<span><a class="mark" href="#app_app" id="app_app">#</a></span></h1>
-<hr>
-<p style="font: italic 1em sans-serif; color: #78909C">此章节待补充或完善...</p>
-<p style="font: italic 1em sans-serif; color: #78909C">Marked by SuperMonster003 on Oct 22, 2022.</p>
-
-<hr>
+<h2>6.7.0 源码校对<span><a class="mark" href="#app_6_7_0" id="app_6_7_0">#</a></span></h2>
+<p>本页已按 AutoJs6 <code>6.7.0</code> (<code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code>) 对照以下源码路径校对:</p>
+<ul>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/app/App.kt</code></li>
+<li><code>app/src/main/java/org/autojs/autojs/runtime/api/AppUtils.kt</code></li>
+</ul>
+<p>运行时中 <code>app</code> / <code>$app</code> 由 augment 注入, 并将 <code>autojs</code> 挂载为 <code>app.autojs</code>. <code>App</code> 模块的主要能力覆盖 Intent 构造与启动、应用启动 / 卸载 / 查询、文件查看编辑、邮件、广播与 URL 打开.</p>
+<p>当前源码公开并全局化的入口包括 <code>intent</code>, <code>startActivity</code>, <code>startDualActivity</code>, <code>intentToShell</code>, <code>startService</code>, <code>sendEmail</code>, <code>sendBroadcast</code>, <code>sendLocalBroadcastSync</code>, <code>parseUri</code>, <code>openUrl</code>, <code>openDualUrl</code>, <code>getUriForFile</code>, <code>getAppByAlias</code>, <code>launch</code>, <code>launchDual</code>, <code>launchPackage</code>, <code>launchDualPackage</code>, <code>launchApp</code>, <code>launchDualApp</code>, <code>getPackageName</code>, <code>getAppName</code>, 设置页相关别名, <code>isInstalled</code>, <code>isDualInstalled</code>, <code>uninstall</code>, <code>uninstallDual</code>, <code>viewFile</code>, <code>editFile</code>, <code>kill</code>, <code>killDual</code>.</p>
+<p><code>startActivity</code> 可接受字符串、Android <code>Intent</code>, URI 或 JavaScript 对象. 字符串包含 <code>://</code> 时按 URL 打开; 形如网址但无协议时会自动补 <code>http://</code>; 其他字符串按 Activity short form 解析. 选项对象可包含 <code>dual</code>, <code>root</code>, <code>shizuku</code> 等字段; root / Shizuku 分支通过 <code>am start</code> shell 命令启动.</p>
+<p>Intent 对象必须是 Android <code>Intent</code> 或可转换的 JavaScript 对象; 非法类型会抛出参数异常.</p>
 <p>app模块提供一系列函数, 用于使用其他应用、与其他应用交互. 例如发送意图、打开文件、发送邮件等.</p>
 <p>同时提供了方便的进阶函数startActivity和sendBroadcast, 用他们可完成app模块没有内置的和其他应用的交互.</p>
 <h2>app.versionCode<span><a class="mark" href="#app_app_versioncode" id="app_app_versioncode">#</a></span></h2>
@@ -241,7 +248,7 @@
 </ul>
 </div><p>当前软件的版本名称, 例如&quot;3.0.0 Beta&quot;.</p>
 <p>如果在Auto.js中运行则为Auto.js的版本名称；在打包的软件中则为打包软件的版本名称.</p>
-<pre><code>toastLog(app.verionName);
+<pre><code>toastLog(app.versionName);
 </code></pre><h2>app.autojs.versionCode<span><a class="mark" href="#app_app_autojs_versioncode" id="app_app_autojs_versioncode">#</a></span></h2>
 <div class="signature"><ul>
 <li>{ <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type" class="type">number</a> }</li>
