@@ -9,7 +9,7 @@
         {
           "textRaw": "当前基准",
           "name": "当前基准",
-          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>上游源码仓库</td>\n<td><a href=\"http://project.autojs6.com\">SuperMonster003/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库版本</td>\n<td><code>1.2.0</code></td>\n</tr>\n<tr>\n<td>推进清单创建日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>若后续上游 AutoJs6 出现新提交或新版本, 应先更新本基准, 再继续校对.</p>\n</blockquote>\n<hr>\n",
+          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>上游源码仓库</td>\n<td><a href=\"https://github.com/xxxily/AutoJs6\">xxxily/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库版本</td>\n<td><code>1.2.0</code></td>\n</tr>\n<tr>\n<td>推进清单创建日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<blockquote>\n<p>若后续上游 AutoJs6 出现新提交或新版本, 应先更新本基准, 再继续校对.</p>\n</blockquote>\n<hr>\n",
           "type": "module",
           "displayName": "当前基准"
         },

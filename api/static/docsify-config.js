@@ -1,6 +1,6 @@
 window.$docsify = {
     name: 'AutoJs6',
-    repo: 'SuperMonster003/AutoJs6-Documentation',
+    repo: 'xxxily/AutoJs6-Documentation',
     notFoundPage: true,
     loadSidebar: true,
     subMaxLevel: 3,

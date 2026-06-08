@@ -4,7 +4,7 @@
     {
       "textRaw": "Runtime API Index - 运行时 API 索引",
       "name": "runtime_api_index_-_运行时_api_索引",
-      "desc": "<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
+      "desc": "<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>xxxily/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
       "modules": [
         {
           "textRaw": "注入规则",

@@ -4,7 +4,7 @@
 
 源码基准:
 
-- 上游仓库: `SuperMonster003/AutoJs6`
+- 上游仓库: `xxxily/AutoJs6`
 - 基准提交: `ed3eb10e88db5a8425fd94bdddefa4176e5e1c94`
 - 版本: `6.7.0`
 

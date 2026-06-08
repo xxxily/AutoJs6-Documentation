@@ -85,7 +85,7 @@
             {
               "textRaw": "OCR 特性",
               "name": "ocr_特性",
-              "desc": "<p>AutoJs6 的 OCR 特性是基于 <a href=\"https://developers.google.com/ml-kit?hl=zh-cn\">Google ML Kit</a> 的 <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn\">文字识别 API</a> 及 <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a> 的 <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a> 实现的.</p>\n<blockquote>\n<p>注:<br>AutoJs6 基于 MLKit 引擎的 <a href=\"http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt\">OCR 实现源码</a> 参考自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/TonyJiangWJ/Auto.js\">Auto.js</a> 项目.<br>AutoJs6 基于 Paddle Lite 引擎的 <a href=\"http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt\">OCR 实现源码</a> 源自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"http://pr.autojs6.com/120\">GitHub PR</a>.</p>\n</blockquote>\n<blockquote>\n<p>参阅: <a href=\"ocr\">光学字符识别 (OCR)</a> 模块</p>\n</blockquote>\n",
+              "desc": "<p>AutoJs6 的 OCR 特性是基于 <a href=\"https://developers.google.com/ml-kit?hl=zh-cn\">Google ML Kit</a> 的 <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn\">文字识别 API</a> 及 <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a> 的 <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a> 实现的.</p>\n<blockquote>\n<p>注:<br>AutoJs6 基于 MLKit 引擎的 <a href=\"https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt\">OCR 实现源码</a> 参考自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/TonyJiangWJ/Auto.js\">Auto.js</a> 项目.<br>AutoJs6 基于 Paddle Lite 引擎的 <a href=\"https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt\">OCR 实现源码</a> 源自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/xxxily/AutoJs6/pulls/120\">GitHub PR</a>.</p>\n</blockquote>\n<blockquote>\n<p>参阅: <a href=\"ocr\">光学字符识别 (OCR)</a> 模块</p>\n</blockquote>\n",
               "type": "module",
               "displayName": "OCR 特性"
             },
@@ -192,7 +192,7 @@
         {
           "textRaw": "反馈",
           "name": "反馈",
-          "desc": "<p>如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.</p>\n<p>关于 <strong>应用文档</strong> 的反馈:<br><a href=\"http://docs-issues.autojs6.com\">http://docs-issues.autojs6.com</a></p>\n<p>关于 <strong>AutoJs6</strong> 的反馈:<br><a href=\"http://issues.autojs6.com\">http://issues.autojs6.com</a></p>\n",
+          "desc": "<p>如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.</p>\n<p>关于 <strong>应用文档</strong> 的反馈:<br><a href=\"https://github.com/xxxily/AutoJs6-Documentation/issues\">https://github.com/xxxily/AutoJs6-Documentation/issues</a></p>\n<p>关于 <strong>AutoJs6</strong> 的反馈:<br><a href=\"https://github.com/xxxily/AutoJs6/issues\">https://github.com/xxxily/AutoJs6/issues</a></p>\n",
           "type": "module",
           "displayName": "反馈"
         }

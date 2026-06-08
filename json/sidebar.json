@@ -1007,7 +1007,7 @@
     },
     {
       "type": "text",
-      "text": "[GitHub - 应用项目地址](http://project.autojs6.com)"
+      "text": "[GitHub - 应用项目地址](https://github.com/xxxily/AutoJs6)"
     },
     {
       "type": "list_item_end"
@@ -1017,7 +1017,7 @@
     },
     {
       "type": "text",
-      "text": "[GitHub - 文档项目地址](http://docs-project.autojs6.com)"
+      "text": "[GitHub - 文档项目地址](https://github.com/xxxily/AutoJs6-Documentation)"
     },
     {
       "type": "list_item_end"

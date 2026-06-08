@@ -5,7 +5,7 @@
       "textRaw": "关于文档 (About)",
       "name": "关于文档 (About)",
       "type": "misc",
-      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"http://docs-project.autojs6.com\">SuperMonster003/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
+      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"https://github.com/xxxily/AutoJs6-Documentation\">xxxily/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
       "miscs": [
         {
           "textRaw": "文档阅读示例",
@@ -524,7 +524,7 @@
         {
           "textRaw": "声明",
           "name": "声明",
-          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.  </p>\n",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"https://github.com/xxxily/AutoJs6\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/issues\">Issue</a> 或 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/pulls\">PR</a>.  </p>\n",
           "type": "misc",
           "displayName": "声明"
         }

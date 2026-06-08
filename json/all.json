@@ -11,7 +11,7 @@
     {
       "textRaw": "综述 (Overview)",
       "name": "综述_(overview)",
-      "desc": "<hr>\n<p><a href=\"http://project.autojs6.com\">AutoJs6</a>: 安卓平台 JavaScript 自动化工具.</p>\n<ul>\n<li>脚本语言: <a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">JavaScript</a>  </li>\n<li>脚本引擎: <a href=\"https://github.com/mozilla/rhino/\">Rhino</a>  </li>\n<li>支持特性: <a href=\"https://262.ecma-international.org/5.1/\">ES5</a> (全部), <a href=\"https://262.ecma-international.org/6.0/\">ES6</a> (部分)</li>\n</ul>\n<hr>\n<p>扩展阅读:</p>\n<ul>\n<li>了解 JavaScript<ul>\n<li><a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">MDN - JavaScript 基础</a></li>\n<li><a href=\"https://zh.javascript.info/\">JavaScript.info - JavaScript 教程</a></li>\n</ul>\n</li>\n<li>查看 Rhino 引擎兼容性列表<ul>\n<li><a href=\"https://mozilla.github.io/rhino/compat/engines.html\">Rhino ES2015 Support</a></li>\n</ul>\n</li>\n<li>使用 PC (个人计算机) 开发<ul>\n<li><a href=\"http://vscext-project.autojs6.com\">AutoJs6 VSCode Extension</a></li>\n</ul>\n</li>\n<li>使用 Node.js 开发<ul>\n<li><a href=\"https://pro.autojs.org/\">Auto.js Pro</a></li>\n</ul>\n</li>\n<li>使用 TypeScript 开发<ul>\n<li><a href=\"https://github.com/pboymt/autojs-dev/\">Auto.js DevTools</a></li>\n</ul>\n</li>\n</ul>\n<hr>\n<p>阅读文档:</p>\n<ul>\n<li>宽屏设备网页阅读<ul>\n<li>点击左侧边栏条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>移动设备网页阅读<ul>\n<li>点击左下方抽屉按钮 - 展开侧边栏并点击条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>AutoJs6 应用内阅读<ul>\n<li>点击首页 &quot;文档&quot; 标签 - 点击条目 - 阅读相关章节</li>\n<li>点击首页右上方 &quot;搜索&quot; 图标 - 在当前页面检索内容</li>\n<li>文档页面左上方的导航链接可实现页面跳转:<ul>\n<li>点击 &quot;索引&quot; - 跳转至章节索引页面</li>\n<li>点击 &quot;查看全部&quot; - 所有章节内容在同一页面列出</li>\n</ul>\n</li>\n<li>阅读文档时, &quot;文档&quot; 标签可作为快捷按钮使用:<ul>\n<li>点击 &quot;文档&quot; 标签 - 返回至当前页面顶部</li>\n<li>长按 &quot;文档&quot; 标签 - 跳转至章节索引页面</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>启动器快速启动阅读<ul>\n<li>AutoJs6 设置页面 - 启动器快捷方式 - 点击 &quot;文档&quot; 图标</li>\n<li>将 &quot;文档&quot; 快捷方式添加到启动器 (俗称 &quot;桌面&quot;)</li>\n<li>在启动器点击 &quot;文档&quot; 图标即可阅读文档</li>\n<li>部分高版本安卓系统支持长按 AutoJs6 应用图标直接激活快捷方式或拖放添加到启动器</li>\n</ul>\n</li>\n</ul>\n<blockquote>\n<p>注: 初次阅读文档或首次使用 AutoJs6 建议从 <a href=\"documentation\">关于文档</a> 开始.\n<!-- [end-include:overview.md] --></p>\n</blockquote>\n<!-- [start-include:documentation.md] -->\n",
+      "desc": "<hr>\n<p><a href=\"https://github.com/xxxily/AutoJs6\">AutoJs6</a>: 安卓平台 JavaScript 自动化工具.</p>\n<ul>\n<li>脚本语言: <a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">JavaScript</a>  </li>\n<li>脚本引擎: <a href=\"https://github.com/mozilla/rhino/\">Rhino</a>  </li>\n<li>支持特性: <a href=\"https://262.ecma-international.org/5.1/\">ES5</a> (全部), <a href=\"https://262.ecma-international.org/6.0/\">ES6</a> (部分)</li>\n</ul>\n<hr>\n<p>扩展阅读:</p>\n<ul>\n<li>了解 JavaScript<ul>\n<li><a href=\"https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/\">MDN - JavaScript 基础</a></li>\n<li><a href=\"https://zh.javascript.info/\">JavaScript.info - JavaScript 教程</a></li>\n</ul>\n</li>\n<li>查看 Rhino 引擎兼容性列表<ul>\n<li><a href=\"https://mozilla.github.io/rhino/compat/engines.html\">Rhino ES2015 Support</a></li>\n</ul>\n</li>\n<li>使用 PC (个人计算机) 开发<ul>\n<li><a href=\"http://vscext-project.autojs6.com\">AutoJs6 VSCode Extension</a></li>\n</ul>\n</li>\n<li>使用 Node.js 开发<ul>\n<li><a href=\"https://pro.autojs.org/\">Auto.js Pro</a></li>\n</ul>\n</li>\n<li>使用 TypeScript 开发<ul>\n<li><a href=\"https://github.com/pboymt/autojs-dev/\">Auto.js DevTools</a></li>\n</ul>\n</li>\n</ul>\n<hr>\n<p>阅读文档:</p>\n<ul>\n<li>宽屏设备网页阅读<ul>\n<li>点击左侧边栏条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>移动设备网页阅读<ul>\n<li>点击左下方抽屉按钮 - 展开侧边栏并点击条目 - 阅读相关章节</li>\n</ul>\n</li>\n<li>AutoJs6 应用内阅读<ul>\n<li>点击首页 &quot;文档&quot; 标签 - 点击条目 - 阅读相关章节</li>\n<li>点击首页右上方 &quot;搜索&quot; 图标 - 在当前页面检索内容</li>\n<li>文档页面左上方的导航链接可实现页面跳转:<ul>\n<li>点击 &quot;索引&quot; - 跳转至章节索引页面</li>\n<li>点击 &quot;查看全部&quot; - 所有章节内容在同一页面列出</li>\n</ul>\n</li>\n<li>阅读文档时, &quot;文档&quot; 标签可作为快捷按钮使用:<ul>\n<li>点击 &quot;文档&quot; 标签 - 返回至当前页面顶部</li>\n<li>长按 &quot;文档&quot; 标签 - 跳转至章节索引页面</li>\n</ul>\n</li>\n</ul>\n</li>\n<li>启动器快速启动阅读<ul>\n<li>AutoJs6 设置页面 - 启动器快捷方式 - 点击 &quot;文档&quot; 图标</li>\n<li>将 &quot;文档&quot; 快捷方式添加到启动器 (俗称 &quot;桌面&quot;)</li>\n<li>在启动器点击 &quot;文档&quot; 图标即可阅读文档</li>\n<li>部分高版本安卓系统支持长按 AutoJs6 应用图标直接激活快捷方式或拖放添加到启动器</li>\n</ul>\n</li>\n</ul>\n<blockquote>\n<p>注: 初次阅读文档或首次使用 AutoJs6 建议从 <a href=\"documentation\">关于文档</a> 开始.\n<!-- [end-include:overview.md] --></p>\n</blockquote>\n<!-- [start-include:documentation.md] -->\n",
       "type": "module",
       "displayName": "综述 (Overview)"
     },
@@ -23,7 +23,7 @@
         {
           "textRaw": "审计基准",
           "name": "审计基准",
-          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>应用源码仓库</td>\n<td><a href=\"http://project.autojs6.com\">SuperMonster003/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库旧版本</td>\n<td><code>1.1.8</code></td>\n</tr>\n<tr>\n<td>旧文档最近更新</td>\n<td><code>2023/12/01</code></td>\n</tr>\n<tr>\n<td>审计日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<p>结论: <code>1.1.8</code> 版本文档已明显落后于 AutoJs6 <code>6.7.0</code> 的实际能力. 主要证据包括:</p>\n<ul>\n<li>上游 <code>README.md</code> 的发行历史已经包含 <code>v6.7.0</code>, 并声明 <code>cvt</code> / <code>fmt</code> / <code>zip</code> / <code>mediainfo</code> 等模块.</li>\n<li>上游 <code>ScriptRuntime.kt</code> 已将 <code>mime</code> / <code>sysprops</code> / <code>sqlite</code> / <code>zip</code> / <code>nanoid</code> / <code>pinyin</code> / <code>pinyin4j</code> / <code>mediainfo</code> 等对象注入脚本运行时.</li>\n<li>旧文档导航与全量文档中缺少上述多个模块页面, 且 <code>http</code> 等既有页面未覆盖 <code>6.7.0</code> 新增的异步请求、PUT/DELETE/HEAD、响应体流式保存和请求选项.</li>\n</ul>\n<hr>\n",
+          "desc": "<table>\n<thead>\n<tr>\n<th>项目</th>\n<th>基准</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>应用源码仓库</td>\n<td><a href=\"https://github.com/xxxily/AutoJs6\">xxxily/AutoJs6</a></td>\n</tr>\n<tr>\n<td>源码基准提交</td>\n<td><code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></td>\n</tr>\n<tr>\n<td>源码基准版本</td>\n<td><code>6.7.0</code></td>\n</tr>\n<tr>\n<td>文档仓库旧版本</td>\n<td><code>1.1.8</code></td>\n</tr>\n<tr>\n<td>旧文档最近更新</td>\n<td><code>2023/12/01</code></td>\n</tr>\n<tr>\n<td>审计日期</td>\n<td><code>2026/06/07</code></td>\n</tr>\n</tbody>\n</table>\n<p>结论: <code>1.1.8</code> 版本文档已明显落后于 AutoJs6 <code>6.7.0</code> 的实际能力. 主要证据包括:</p>\n<ul>\n<li>上游 <code>README.md</code> 的发行历史已经包含 <code>v6.7.0</code>, 并声明 <code>cvt</code> / <code>fmt</code> / <code>zip</code> / <code>mediainfo</code> 等模块.</li>\n<li>上游 <code>ScriptRuntime.kt</code> 已将 <code>mime</code> / <code>sysprops</code> / <code>sqlite</code> / <code>zip</code> / <code>nanoid</code> / <code>pinyin</code> / <code>pinyin4j</code> / <code>mediainfo</code> 等对象注入脚本运行时.</li>\n<li>旧文档导航与全量文档中缺少上述多个模块页面, 且 <code>http</code> 等既有页面未覆盖 <code>6.7.0</code> 新增的异步请求、PUT/DELETE/HEAD、响应体流式保存和请求选项.</li>\n</ul>\n<hr>\n",
           "type": "module",
           "displayName": "审计基准"
         },
@@ -62,7 +62,7 @@
     {
       "textRaw": "Runtime API Index - 运行时 API 索引",
       "name": "runtime_api_index_-_运行时_api_索引",
-      "desc": "<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
+      "desc": "<p>本章节面向后续知识库构建, 记录 AutoJs6 <code>6.7.0</code> 运行时实际注入到脚本环境的对象、别名、源码路径和文档入口.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>xxxily/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/Augmentable.kt</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
       "modules": [
         {
           "textRaw": "注入规则",
@@ -99,7 +99,7 @@
     {
       "textRaw": "Permission Capability Matrix - 权限能力矩阵",
       "name": "permission_capability_matrix_-_权限能力矩阵",
-      "desc": "<p>本章节集中记录 AutoJs6 <code>6.7.0</code> 中对 Android 权限、系统服务、Root、Shizuku、无障碍或特定 Android 版本敏感的脚本能力.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>SuperMonster003/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n<li>主包 SDK: <code>minSdk=24</code>, <code>targetSdk=36</code></li>\n<li>INRT 包 SDK: <code>targetSdk=29</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/AndroidManifest.xml</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/*</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/*</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
+      "desc": "<p>本章节集中记录 AutoJs6 <code>6.7.0</code> 中对 Android 权限、系统服务、Root、Shizuku、无障碍或特定 Android 版本敏感的脚本能力.</p>\n<p>源码基准:</p>\n<ul>\n<li>上游仓库: <code>xxxily/AutoJs6</code></li>\n<li>基准提交: <code>ed3eb10e88db5a8425fd94bdddefa4176e5e1c94</code></li>\n<li>版本: <code>6.7.0</code></li>\n<li>主包 SDK: <code>minSdk=24</code>, <code>targetSdk=36</code></li>\n<li>INRT 包 SDK: <code>targetSdk=29</code></li>\n</ul>\n<p>源码依据:</p>\n<ul>\n<li><code>app/src/main/AndroidManifest.xml</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/ScriptRuntime.kt</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/runtime/api/augment/*</code></li>\n<li><code>app/src/main/java/org/autojs/autojs/core/*</code></li>\n</ul>\n<p>机器可读数据:</p>\n<ul>\n<li><code>json/runtimeApiIndexData.json</code></li>\n</ul>\n<hr>\n",
       "modules": [
         {
           "textRaw": "能力矩阵",
@@ -203,7 +203,7 @@
             {
               "textRaw": "OCR 特性",
               "name": "ocr_特性",
-              "desc": "<p>AutoJs6 的 OCR 特性是基于 <a href=\"https://developers.google.com/ml-kit?hl=zh-cn\">Google ML Kit</a> 的 <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn\">文字识别 API</a> 及 <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a> 的 <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a> 实现的.</p>\n<blockquote>\n<p>注:<br>AutoJs6 基于 MLKit 引擎的 <a href=\"http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt\">OCR 实现源码</a> 参考自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/TonyJiangWJ/Auto.js\">Auto.js</a> 项目.<br>AutoJs6 基于 Paddle Lite 引擎的 <a href=\"http://project.autojs6.com/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt\">OCR 实现源码</a> 源自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"http://pr.autojs6.com/120\">GitHub PR</a>.</p>\n</blockquote>\n<blockquote>\n<p>参阅: <a href=\"ocr\">光学字符识别 (OCR)</a> 模块</p>\n</blockquote>\n",
+              "desc": "<p>AutoJs6 的 OCR 特性是基于 <a href=\"https://developers.google.com/ml-kit?hl=zh-cn\">Google ML Kit</a> 的 <a href=\"https://developers.google.com/ml-kit/vision/text-recognition/android?hl=zh-cn\">文字识别 API</a> 及 <a href=\"https://www.paddlepaddle.org.cn/\">Baidu PaddlePaddle</a> 的 <a href=\"https://github.com/PaddlePaddle/Paddle-Lite\">Paddle Lite</a> 实现的.</p>\n<blockquote>\n<p>注:<br>AutoJs6 基于 MLKit 引擎的 <a href=\"https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrMLKit.kt\">OCR 实现源码</a> 参考自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/TonyJiangWJ/Auto.js\">Auto.js</a> 项目.<br>AutoJs6 基于 Paddle Lite 引擎的 <a href=\"https://github.com/xxxily/AutoJs6/blob/master/app/src/main/java/org/autojs/autojs/runtime/api/OcrPaddle.kt\">OCR 实现源码</a> 源自 <a href=\"https://github.com/TonyJiangWJ\">TonyJiangWJ</a> 的 <a href=\"https://github.com/xxxily/AutoJs6/pulls/120\">GitHub PR</a>.</p>\n</blockquote>\n<blockquote>\n<p>参阅: <a href=\"ocr\">光学字符识别 (OCR)</a> 模块</p>\n</blockquote>\n",
               "type": "module",
               "displayName": "OCR 特性"
             },
@@ -310,7 +310,7 @@
         {
           "textRaw": "反馈",
           "name": "反馈",
-          "desc": "<p>如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.</p>\n<p>关于 <strong>应用文档</strong> 的反馈:<br><a href=\"http://docs-issues.autojs6.com\">http://docs-issues.autojs6.com</a></p>\n<p>关于 <strong>AutoJs6</strong> 的反馈:<br><a href=\"http://issues.autojs6.com\">http://issues.autojs6.com</a></p>\n<!-- [end-include:qa.md] -->\n<!-- [start-include:global.md] -->\n",
+          "desc": "<p>如有任何问题或建议, 可在 GitHub 项目议题页面发起新的反馈.</p>\n<p>关于 <strong>应用文档</strong> 的反馈:<br><a href=\"https://github.com/xxxily/AutoJs6-Documentation/issues\">https://github.com/xxxily/AutoJs6-Documentation/issues</a></p>\n<p>关于 <strong>AutoJs6</strong> 的反馈:<br><a href=\"https://github.com/xxxily/AutoJs6/issues\">https://github.com/xxxily/AutoJs6/issues</a></p>\n<!-- [end-include:qa.md] -->\n<!-- [start-include:global.md] -->\n",
           "type": "module",
           "displayName": "反馈"
         }
@@ -28078,7 +28078,7 @@
       "textRaw": "关于文档 (About)",
       "name": "关于文档 (About)",
       "type": "misc",
-      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"http://docs-project.autojs6.com\">SuperMonster003/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
+      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"https://github.com/xxxily/AutoJs6-Documentation\">xxxily/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
       "miscs": [
         {
           "textRaw": "文档阅读示例",
@@ -28597,7 +28597,7 @@
         {
           "textRaw": "声明",
           "name": "声明",
-          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<!-- [start-include:documentationAudit.md] -->\n",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"https://github.com/xxxily/AutoJs6\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/issues\">Issue</a> 或 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/pulls\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<!-- [start-include:documentationAudit.md] -->\n",
           "type": "misc",
           "displayName": "声明"
         }
@@ -28607,7 +28607,7 @@
       "textRaw": "关于文档 (About)",
       "name": "关于文档 (About)",
       "type": "misc",
-      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"http://docs-project.autojs6.com\">SuperMonster003/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
+      "desc": "<p>AutoJs6 文档, 包含模块 API 使用方法及用例.<br>项目复刻 (Fork) 自 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">hyb1996/AutoJs-Docs</a> (GitHub).<br>项目地址: <a href=\"https://github.com/xxxily/AutoJs6-Documentation\">xxxily/AutoJs6-Documentation</a> (GitHub).</p>\n<hr>\n",
       "miscs": [
         {
           "textRaw": "文档阅读示例",
@@ -29126,7 +29126,7 @@
         {
           "textRaw": "声明",
           "name": "声明",
-          "desc": "<p>当前项目 (文档) 及 <a href=\"http://project.autojs6.com\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"http://docs-issues.autojs6.com\">Issue</a> 或 <a href=\"http://docs-pr.autojs6.com\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<p>Roadmap\n<!-- [start-include:runtimeApiIndex.md] --></p>\n",
+          "desc": "<p>当前项目 (文档) 及 <a href=\"https://github.com/xxxily/AutoJs6\">AutoJs6</a> (App) 均为二次开发.<br>相对于 <a href=\"https://github.com/hyb1996/Auto.js/\">原始 App</a>, 二次开发的 App 中会增加或修改部分模块功能.<br>相对于 <a href=\"https://github.com/hyb1996/AutoJs-Docs/\">原始文档</a>, 二次开发的文档将进行部分增删或重新编写.<br>开发者无法保证对 API 的完全理解及文档的无纰漏撰写.<br>如有任何不当之处, 欢迎提交 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/issues\">Issue</a> 或 <a href=\"https://github.com/xxxily/AutoJs6-Documentation/pulls\">PR</a>.<br><!-- [end-include:documentation.md] --></p>\n<p>Roadmap\n<!-- [start-include:runtimeApiIndex.md] --></p>\n",
           "type": "misc",
           "displayName": "声明"
         }

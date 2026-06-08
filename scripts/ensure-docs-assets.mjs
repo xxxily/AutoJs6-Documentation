@@ -9,8 +9,8 @@ const cnamePath = resolve(docsDir, 'CNAME');
 await mkdir(docsDir, { recursive: true });
 
 const cname = existsSync(cnamePath) ? await readFile(cnamePath, 'utf8') : '';
-if (cname.trim() !== 'docs.autojs6.com') {
-  await writeFile(cnamePath, 'docs.autojs6.com\n');
+if (cname.trim() !== 'autojs6.anzz.top') {
+  await writeFile(cnamePath, 'autojs6.anzz.top\n');
 }
 
 await cp(resolve(root, 'api/images'), resolve(docsDir, 'images'), {

@@ -14,14 +14,14 @@
             {
               "textRaw": "查看内置模块源代码",
               "name": "查看内置模块源代码",
-              "desc": "<p>除 <a href=\"http://project.autojs6.com/tree/master/app/src/main/assets/modules\">直接查看开源代码</a> 外, 还可以将内置模块解压到本地存储后查看:<br>下载 <a href=\"http://download.autojs6.com\">AutoJs6 APK</a> 并使用压缩软件将 APK 内的 <code>\\assets\\modules</code> 文件夹解压到本地.<br>模块通常以 <code>__%name%__.js</code> 格式命名, 其中 <code>%name%</code> 对应模块名.<br>可使用文本编辑器等软件查看模块源代码.</p>\n",
+              "desc": "<p>除 <a href=\"https://github.com/xxxily/AutoJs6/tree/master/app/src/main/assets/modules\">直接查看开源代码</a> 外, 还可以将内置模块解压到本地存储后查看:<br>下载 <a href=\"http://download.autojs6.com\">AutoJs6 APK</a> 并使用压缩软件将 APK 内的 <code>\\assets\\modules</code> 文件夹解压到本地.<br>模块通常以 <code>__%name%__.js</code> 格式命名, 其中 <code>%name%</code> 对应模块名.<br>可使用文本编辑器等软件查看模块源代码.</p>\n",
               "type": "module",
               "displayName": "查看内置模块源代码"
             },
             {
               "textRaw": "修改或增加内置模块",
               "name": "修改或增加内置模块",
-              "desc": "<p>注: 此小节内容可能需要用户具备一定的编程基础及开发经验.</p>\n<p>注: 此操作需要重新打包生成 <code>新的 AutoJs6 APK</code> (下文作 <code>新生 APK</code>).<br>因 <code>新生 APK</code> 包名发生变化, 需卸载已安装的 <code>开源 AutoJs6 APK</code> (下文作 <code>开源 APK</code>) 后再安装 <code>新生 APK</code>.<br>当 <code>开源 APK</code> 出现新版本时, 同样需卸载 <code>新生 APK</code> 才能安装新版本的 <code>开源 APK</code>.<br>此时, 修改或增加的内置模块将失效.<br>如欲将自己的代码整合到 <code>开源 APK</code> 中, 可向开源项目提交 <a href=\"http://pr.autojs6.com\">Pull Request (PR)</a>.</p>\n<p>克隆 (Clone) <a href=\"http://project.autojs6.com\">AutoJs6 源码</a>.<br>使用 <a href=\"https://developer.android.com/studio/archive\">Android Studio</a> 打开并完成项目构建 (Build).<br>定位 <code>\\app\\src\\main\\assets\\modules</code> 目录.</p>\n",
+              "desc": "<p>注: 此小节内容可能需要用户具备一定的编程基础及开发经验.</p>\n<p>注: 此操作需要重新打包生成 <code>新的 AutoJs6 APK</code> (下文作 <code>新生 APK</code>).<br>因 <code>新生 APK</code> 包名发生变化, 需卸载已安装的 <code>开源 AutoJs6 APK</code> (下文作 <code>开源 APK</code>) 后再安装 <code>新生 APK</code>.<br>当 <code>开源 APK</code> 出现新版本时, 同样需卸载 <code>新生 APK</code> 才能安装新版本的 <code>开源 APK</code>.<br>此时, 修改或增加的内置模块将失效.<br>如欲将自己的代码整合到 <code>开源 APK</code> 中, 可向开源项目提交 <a href=\"https://github.com/xxxily/AutoJs6/pulls\">Pull Request (PR)</a>.</p>\n<p>克隆 (Clone) <a href=\"https://github.com/xxxily/AutoJs6\">AutoJs6 源码</a>.<br>使用 <a href=\"https://developer.android.com/studio/archive\">Android Studio</a> 打开并完成项目构建 (Build).<br>定位 <code>\\app\\src\\main\\assets\\modules</code> 目录.</p>\n",
               "modules": [
                 {
                   "textRaw": "修改模块",

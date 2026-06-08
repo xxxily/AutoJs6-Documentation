@@ -4,7 +4,7 @@
 
 AutoJs6 文档, 包含模块 API 使用方法及用例.  
 项目复刻 (Fork) 自 [hyb1996/AutoJs-Docs](https://github.com/hyb1996/AutoJs-Docs/) (GitHub).  
-项目地址: [SuperMonster003/AutoJs6-Documentation](https://github.com/xxxily/AutoJs6-Documentation) (GitHub).
+项目地址: [xxxily/AutoJs6-Documentation](https://github.com/xxxily/AutoJs6-Documentation) (GitHub).
 
 ---
 

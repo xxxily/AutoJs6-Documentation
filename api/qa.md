@@ -281,4 +281,4 @@ function rotate(src, degrees, px, py) {
 https://github.com/xxxily/AutoJs6-Documentation/issues
 
 关于 <strong>AutoJs6</strong> 的反馈:  
-http://issues.autojs6.com
+https://github.com/xxxily/AutoJs6/issues
